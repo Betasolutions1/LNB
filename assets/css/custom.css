@@ -1,5 +1,19 @@
 
+.tab_border:active
+{
+border-bottom: 2px solid #808080;
 
+
+}
+.tab-pane li :active
+{
+  border-bottom: 2px solid #808080;
+}
+
+.tab_trans
+{
+  background: transparent;
+}
 .pst_box:hover
 {
     border-radius: 5px;
@@ -13,7 +27,15 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
-
+footer
+{
+      position:fixed;
+      bottom:0;
+      left:0px;
+      width:100%;
+      background-color:#808080;
+      height:7%;
+}
 .pst_cmt_wid
 {
     width: 550px;
@@ -25,15 +47,16 @@
 }
 
 .paper {
-            
+
             width: 100%;
             height: 100%;
             margin: 0 auto;
-            
+
             position: relative;
             color: #444;
             line-height: 20px;
-            border: 1px solid #d2d2d2;
+            /*border: 1px solid #d2d2d2;*/
+
             background: #fff;
             background: -webkit-gradient(linear, 0 0, 0 100%, from(#5a5a5a), color-stop(4%, #fff)) 0 4px;
             background: -webkit-linear-gradient(top, #5a5a5a 0%, #fff 3.1%) 0 4px;
@@ -52,15 +75,18 @@
             -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
             -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
             box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-            
-            
+
+
             }
 
 .ws_ta_tab_a
 {
     background-color: #88bf6c;
 }
-
+.centered
+{
+  margin-left: 50%;
+}
 /*---------------------------------todostart-----------------*/
 
 .panel
@@ -249,7 +275,10 @@ ul
 {
     margin-right: -1px;
 }
-
+li>a
+{
+  color:#808080;
+}
 .tabs-right>li
 {
     margin-left: -1px;
@@ -260,7 +289,7 @@ ul
             .tabs-left>li.active>a:hover,
             .tabs-left>li.active>a:focus
 {
-	
+
     border-bottom-color: #ddd;
     border-right-color: transparent;
 }
@@ -269,7 +298,7 @@ ul
             .tabs-right>li.active>a:hover,
             .tabs-right>li.active>a:focus
 {
-    background: #afdf7c;
+    background: #808080;
     color: #fff;
     -webkit-clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
     clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
@@ -287,6 +316,10 @@ ul
     border-radius: 0 4px 4px 0;
     margin-right: 0;
 }
+.nav-tabs>li>a:hover
+{
+  background: #808080;
+}
 
 .vertical-text
 {
@@ -301,7 +334,10 @@ ul
     width: 180px;
     margin-bottom: 110px;
 }
-
+/*.tabs-right>ul>li:hover
+{
+  background: #808080;
+}*/
 .vertical-text>li>a
 {
     border-bottom: 1px solid #ddd;
@@ -463,7 +499,7 @@ ul
 
 .club_sub_div_height
 {
-    min-height: 900px;
+    /*min-height: 900px;*/
     height: 100%;
     overflow: auto;
 }
@@ -569,7 +605,7 @@ ul
 
 ::-webkit-scrollbar-thumb:window-inactive
 {
-	
+
 }
 
 .club_suggest_top_div
@@ -581,7 +617,7 @@ ul
 .club_sugg_scroll
 {
     overflow-y: scroll;
-    height: 250px;
+    height: 450px;
     background-color: #d3d3d3;
 }
 
@@ -803,15 +839,15 @@ ul
 {
   border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: opacity 0.3s ease-in-out;   
+    transition: opacity 0.3s ease-in-out;
 }
 
 .triangle-down {
 /*-webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
 clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);*/
     border:3px solid #fff;
-    
-	
+
+
 }
 .sidebar {
   position: -webkit-sticky;
@@ -821,4 +857,13 @@ clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);*/
 
 
 
-
+/*testing*/
+/*.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }*/
+  /*testing end*/

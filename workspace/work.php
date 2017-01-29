@@ -82,45 +82,59 @@
       <div class="remodal" data-remodal-id="modal">
   <a data-remodal-action="close" class="remodal-close"></a>
 
-	<form class="form-horizontal" role="form" method="post" action="">
+<form class="form-horizontal" role="form" method="post" action="script_code.php">
   <div>
      
                                                                                         <div class="form-group">
+                                                                                            <label class="col-sm-2 control-label">TITLE</label>
+                                                                                            <div class="col-sm-10">
+                                                                                                <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" name="todo_title">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
                                                                                             <label class="col-sm-2 control-label">Date</label>
                                                                                             <div class="col-sm-10">
-                                                                                            <?php $date=date('Y-m-d');?>
-                                                                                                <input type="text" class="form-control" id="led_cur_date" placeholder="" value="<?php echo $date;?>" name="led_cur_date" readonly/>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-2 control-label">Details</label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <input type="text" class="form-control" id="led_details" placeholder="" name="led_details">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-2 control-label">Credit</label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <input type="text" class="form-control" id="led_credit" placeholder="" name="led_credit">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-2 control-label">Debit</label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <input type="text" class="form-control" id="led_debit" placeholder="" name="led_debit">
+                                                                                         
+                                                                                                <input type="text" class="form-control" id="todo_date" name="todo_date" placeholder="Date" name="todo_date">
                                                                                             </div>
                                                                                         </div>
                                                                                         
-                                                                                       
+                                                                                        <div class="form-group">
+                                                                                            <label for="type" class="col-sm-2 control-label">TYPE</label>
+                                                                                            <div class="col-sm-10">
+                                                                                                <div class="row">
+                                                                                                    <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type">
+                                                                                                        <option>CONSIGNMENTS</option>
+                                                                                                        <option>MEETINGS</option>
+                                                                                                        <option>CALL</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                                <!--<input type="text" class="form-control" id="inputEmail3" placeholder="Email">-->
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label for="contact" class="col-sm-2 control-label">CONTACT</label>
+                                                                                            <div class="col-sm-10">
+                                                                                                <div class="row">
+                                                                                                    <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts">
+                                                                                                        <option>Mustard</option>
+                                                                                                        <option>Ketchup</option>
+                                                                                                        <option>Relish</option>
+                                                                                                        <option>Tent</option>
+                                                                                                        <option>Flashlight</option>
+                                                                                                        <option>Toilet Paper</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                               
+                                                                                            </div>
                                                                                            
-                                                                                            
-                                                                                           
+                                                                                        </div>
                                                                                     
   </div>
   <br>
  
   <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-  <button type="submit" data-remodal-action="confirm" onClick="ledger_insert();" class="remodal-confirm">Credit Or Debit</button>
+  <button type="submit" data-remodal-action="confirm" name="to_insert" onClick="todo_insert();" class="remodal-confirm">INK</button>
   
    </form>
 		

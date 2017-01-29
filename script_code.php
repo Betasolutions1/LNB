@@ -49,6 +49,17 @@ if(isset($_POST['cmt_ins']))
 		header("location:index.php");
 	}
 }
+
+//---TODO Insertion----
+
+if(isset($_POST['to_insert']))
+{
+	$todo_ins=mysqli_query($conn,"INSERT INTO `user_todolist`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`, `todo_datetime`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]','$_POST[todo_date]')");
+	if($todo_ins)
+	{
+		header("location:index.php");
+	}
+}
 ?>
 
 

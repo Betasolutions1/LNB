@@ -114,16 +114,7 @@
                                                                                        
                                                                                            
                                                                                             
-                                                                                           <?php /*?> <div class="form-group">
-                                                                                                <div class="col-sm-offset-2 col-sm-10">
-</div>
-                                                                                            </div>
-                                                                                            <div class="form-group">
-                                                                                                <div class="col-sm-offset-2 col-sm-10">
-                                                                                                    <input type="submit" class="btn btn-primary" name="todo_ins" value="INK" onClick="ledger_insert();">
-                                                                                                </div>
-                                                                                            </div><?php */?>
-                                                                                     
+                                                                                           
                                                                                     
   </div>
   <br>
@@ -134,8 +125,8 @@
    </form>
 		
 
-  <a data-remodal-action="cancel" class="remodal-cancel" href="#">Cancel</a>
-  <a data-remodal-action="confirm" class="remodal-confirm" href="#">OK</a>
+  <!--<a data-remodal-action="cancel" class="remodal-cancel" href="#">Cancel</a>
+  <a data-remodal-action="confirm" class="remodal-confirm" href="#">OK</a>-->
 </div>
       <!--End todo Model Code-->
                                         

@@ -435,6 +435,10 @@ ul
 
 .club_login_wid
 {
+}
+
+.club_login_wid
+{
     width: 400px;
     text-align: center;
 }
@@ -444,10 +448,8 @@ ul
     background-color: #afdf7c;
     color: #fff;
 }
-
 .btn_grn:hover
 {
-    background-color: #a2db67;
-    color: #fff;
+    background-color:#a2db67;
+    color:#fff;
 }
-

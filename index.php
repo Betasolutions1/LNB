@@ -29,7 +29,42 @@ if(!$_SESSION['Email'])
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-        <style>
+    
+    
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
+        <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+        <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="css/style.css">
+        
+        <!--REmodel Begin-->
+        
+        <!-- Load local jQuery -->
+    <script src="Remodal-1.1.0/libs/jquery-loader.js"></script>
+
+    <!-- Load local QUnit -->
+    <link rel="stylesheet" href="Remodal-1.1.0/libs/qunit/qunit/qunit.css" media="screen">
+    <script src="Remodal-1.1.0/libs/qunit/qunit/qunit.js"></script>
+
+    <!-- Load local lib and tests -->
+    <link rel="stylesheet" href="Remodal-1.1.0/src/remodal.css">
+    <link rel="stylesheet" href="Remodal-1.1.0/src/remodal-default-theme.css">
+    <script src="Remodal-1.1.0/src/remodal.js"></script>
+    <script src="Remodal-1.1.0/remodal_test.js"></script>
+    <style>
+      .remodal-overlay.without-animation.remodal-is-opening,
+      .remodal-overlay.without-animation.remodal-is-closing,
+      .remodal.without-animation.remodal-is-opening,
+      .remodal.without-animation.remodal-is-closing,
+      .remodal-bg.without-animation.remodal-is-opening,
+      .remodal-bg.without-animation.remodal-is-closing {
+        animation: none;
+      }
+    </style>
+        
+        
+        <!--End Remodel-->
+        
+             <style>
             /*#parallelogram {
             width: 150px;
             height: 100px;
@@ -278,11 +313,29 @@ $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
                 <div class="col-lg-6 col-md-6 "> 
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
-                            workspace
-</div>
+                            <ul class="nav nav-tabs"> 
+                                <li class="active">
+                                    <a href="#tab6" data-toggle="tab"><i class="fa fa-pencil"></i> Work</a>
+                                </li>                                 
+                                <li>
+                                    <a href="#tab7" data-toggle="tab"><i class="fa fa-pencil"></i> Space</a>
+                                </li>                                 
+                               
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab6">
+                                    <div class="accordion-wrap">
+                                        <?php include 'workspace/work.php';?>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab7">
+                                    <p>Tab 2 content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="tab-pane" id="club-vr">
                             club
-</div>
+						</div>
                         <div class="tab-pane " id="dairy-vr">
                             <ul class="nav nav-tabs"> 
                                 <li class="active">
@@ -573,6 +626,9 @@ $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+         
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script src="js/index.js"></script>
         <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
         <!--Bookmark Begin-->
          <script>

@@ -512,10 +512,10 @@ $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
                                     <?php include 'Dairy_files/industry.php';?>
                                 </div>
                                 <div class="tab-pane" id="tab3">
-                                    <p>Tab 3 content goes here...</p>
+                                    <?php include 'Dairy_files/inked.php';?>
                                 </div>
                                 <div class="tab-pane" id="tab4">
-                                    <p>Tab 4 content goes here...</p>
+                                     <?php include 'Dairy_files/noted.php';?>
                                 </div>
                                 <div class="tab-pane" id="tab5">
                                     <p>Tab 5 content goes here...</p>

@@ -443,13 +443,3 @@ ul
     text-align: center;
 }
 
-.btn_grn
-{
-    background-color: #afdf7c;
-    color: #fff;
-}
-.btn_grn:hover
-{
-    background-color:#a2db67;
-    color:#fff;
-}

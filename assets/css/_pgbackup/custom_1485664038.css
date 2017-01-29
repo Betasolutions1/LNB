@@ -1,0 +1,26 @@
+
+
+.pst_box:hover
+{
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.shdw:hover
+{
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.pst_cmt_wid
+{
+    width: 550px;
+}
+
+.pst_main_background
+{
+    background-color: #fff;
+}
+

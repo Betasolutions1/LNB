@@ -36,7 +36,7 @@
 							?>
 					
 					
-                    <span><a href=""  onClick="unlike(<?php $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >unlike</a></span>
+                    <span><a href=""  onClick="unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >unlike</a></span>
                     <?php
 				}else
 				{
@@ -44,7 +44,7 @@
 					//echo $_SESSION['id'];
 				?>
                 
-                <span><a href=""  onClick="like(<?php $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >like</a></span>
+                <span><a href=""  onClick="like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >like</a></span>
                 <?php
 				}
 				?>

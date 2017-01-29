@@ -111,12 +111,13 @@
 					                        	{
 							                    ?>
                                                     <span><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive" style=""></span>
+                                                     <?php
+												}
+												?>
                                                     <br>
                                                       <p style="margin-top:10px;"><?php echo $resp['post_txt'];?></p> 
                                                     <span style="font-size:10px;"> - <?php echo $resp['post_time'];?></span>
-                                                    <?php
-												}
-												?>
+                                                   
                                                 </div>
                                                 <div class="pst_cmt">
                                                  <?php $ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
@@ -159,6 +160,11 @@
                                                         <form method="post" action="script_code.php">
                                                         <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
               											<input type="hidden" name="cmt_post_id" value="<?php echo $resp['post_id'];?>">
+                                                        <?php
+                                                        $date=date('Y-m-d h:i');
+														
+														?>
+                                                        <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
                                                         <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write..."> 
                                                         <input type="submit" name="cmt_ins" style="display:none;">
                                                             </form>

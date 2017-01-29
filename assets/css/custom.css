@@ -60,4 +60,153 @@
     background-color: #88bf6c;
 }
 
+/*---------------------------------todostart-----------------*/
+.panel
+            {
+            border-radius: 5px;
+            min-width: 240px;
+            color: #5D6B79;
+            background: #fff;
+            overflow: hidden;
+            text-align: left;
+            }
+            .panel .panel-title
+            {
+            display: relative;
+            border-bottom: 1px solid #D1D1D1;
+            padding: 12px 14px;
+            font-size: 20px;
+            background-color: #fcfcfc;
+            }
+            .panel .panel-title:after
+            {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            content: "";
+            display: block;
+            width: 19px;
+            height: 15px;
+            }
+            .panel .panel-content
+            {
+            font-size: 16px;
+            text-align: left:;
+            }
+            .panel .panel-content .task
+            {
+            padding: 18px 14px;
+            border-bottom: 1px solid #f0f2f3;
+            }
+            .panel .panel-content .task input[type=checkbox]
+            {
+            visibility: hidden;
+            width: 0;
+            }
+            .panel .panel-content .task label
+            {
+            display: inline-block;
+            cursor: pointer;
+            padding-left: 40px;
+            position: relative;
+            color: #8a9a9b;
+            transition: color 0.2s linear;
+            }
+            .panel .panel-content .task label .line-through
+            {
+            position: absolute;
+            display: block;
+            height: 1px;
+            background-color: #34bf6e;
+            top: 60%;
+            right: 100%;
+            left: 42px;
+            transition: right 0.2s linear;
+            }
+            .panel .panel-content .task label:before,
+            .panel .panel-content .task label:after
+            {
+            content: "";
+            display: block;
+            position: absolute;
+            }
+            .panel .panel-content .task label:before
+            {
+            top: -2px;
+            left: 0;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #8a9a9b;
+            border-radius: 50%;
+            }
+            .panel .panel-content .task label:after
+            {
+            top: 4px;
+            left: 8px;
+            width: 5px;
+            height: 9px;
+            border: 4px solid #34bf6e;
+            border-top: transparent;
+            border-left: transparent;
+            transform: scale(2) rotate(45deg);
+            opacity: 0;
+            transform-origin: center center;
+            transition: transform 0.2s, opacity 0.2s;
+            }
+            .panel .panel-content .task input[type=checkbox]:checked + label
+            {
+            color: #afdf7c;
+            }
+            .panel .panel-content .task input[type=checkbox]:checked + label .line-through
+            {
+            right: 0;
+            }
+            .panel .panel-content .task input[type=checkbox]:checked + label:before
+            {
+            border-color: #34bf6e;
+            }
+            .panel .panel-content .task input[type=checkbox]:checked + label:after
+            {
+            transform: scale(1) rotate(45deg);
+            opacity: 1;
+            }
+            ul
+            {
+            list-style-type: none;
+            }
+            /*--------------------------todolist css end-----------------------*/
+            .pad_todo
+            {
+            margin-bottom: 20px transparent;
+            }
+            .todo_right
+            {
+            line-height: 1px;
+            text-align: right;
+            vertical-align: middle;
+            }
+            .todo_div
+            {
+            }
+            .td_div
+            {
+            position: null;
+            }
+            .td_div
+            {
+            display: flex;
+            background: #ddd;
+            }
+
+
+
+/*----------------------index.html-----------------*/
+/*-----------------------index_end-----------------*/
+
+
+
+
+
+
+
 

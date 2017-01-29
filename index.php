@@ -286,17 +286,20 @@ $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
                         <div class="tab-pane " id="dairy-vr">
                             <ul class="nav nav-tabs"> 
                                 <li class="active">
-                                    <a href="#tab1" data-toggle="tab">Home</a>
+                                    <a href="#tab1" data-toggle="tab">Card Files</a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab2" data-toggle="tab">Profile</a>
+                                    <a href="#tab2" data-toggle="tab">Industry</a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab3" data-toggle="tab">Messages</a>
+                                    <a href="#tab3" data-toggle="tab">Inked</a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab4" data-toggle="tab">Settings</a>
-                                </li>                                 
+                                    <a href="#tab4" data-toggle="tab">Noted</a>
+                                </li> 
+                                <li>
+                                    <a href="#tab5" data-toggle="tab">Ankita</a>
+                                </li>                                
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab1">
@@ -506,13 +509,16 @@ $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab2">
-                                    <p>Tab 2 content goes here...</p>
+                                    <?php include 'Dairy_files/industry.php';?>
                                 </div>
                                 <div class="tab-pane" id="tab3">
-                                    <p>Tab 3 content goes here...</p>
+                                    <?php include 'Dairy_files/inked.php';?>
                                 </div>
                                 <div class="tab-pane" id="tab4">
-                                    <p>Tab 4 content goes here...</p>
+                                     <?php include 'Dairy_files/noted.php';?>
+                                </div>
+                                <div class="tab-pane" id="tab5">
+                                    <p>Tab 5 content goes here...</p>
                                 </div>
                             </div>
                         </div>

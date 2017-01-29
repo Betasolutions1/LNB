@@ -19,6 +19,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+        <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
+        <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+        <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="css/style.css">
         <style>
             /*#parallelogram {
             width: 150px;
@@ -255,8 +259,78 @@
                 <div class="col-lg-6 col-md-6 "> 
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
-                            workspace
-</div>
+                            <ul class="nav nav-tabs"> 
+                                <li class="active">
+                                    <a href="#tab6" data-toggle="tab"><i class="fa fa-pencil"></i> Work</a>
+                                </li>                                 
+                                <li>
+                                    <a href="#tab7" data-toggle="tab"><i class="fa fa-pencil"></i> Space</a>
+                                </li>                                 
+                                <!-- <li>
+        <a href="#tab8" data-toggle="tab" data-pg-id="687">Messages</a>
+    </li>     
+    <li data-pg-id="688">
+        <a href="#tab9" data-toggle="tab" data-pg-id="689">Settings</a>
+    </li>     -->
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab6">
+                                    <div class="accordion-wrap">
+                                        <div class="accordion">
+                                            <a href="#" class="active"><i class="fa fa-user"></i> TODO</a>
+                                            <div class="sub-nav active">
+                                                <div class="html about-me">
+                                                    <div class="photo">
+                                                        <div class="photo-overlay">
+                                                            <span class="plus">+</span>
+                                                        </div>
+                                                    </div>
+                                                    <h4>@khadkamhn</h4>
+                                                    <p>Hi, It's me Mohan. I'm a web and graphics designer. Designing is my passion and I have been working on various designing projects.</p>
+                                                    <div class="social-link">
+                                                        <a class="link link-twitter" href="http://twitter.com/khadkamhn/" target="_blank"><i class="fa fa-twitter"></i></a>
+                                                        <a class="link link-codepen" href="http://codepen.io/khadkamhn/" target="_blank"><i class="fa fa-codepen"></i></a>
+                                                        <a class="link link-facebook" href="http://facebook.com/khadkamhn/" target="_blank"><i class="fa fa-facebook"></i></a>
+                                                        <a class="link link-dribbble" href="http://dribbble.com/khadkamhn" target="_blank"><i class="fa fa-dribbble"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#"><i class="fa fa-comments"></i> LEDGER</a>
+                                            <div class="sub-nav">
+                                                <div class="html chat">
+                                                    <div class="user user-khadkamhn clearfix">
+                                                        <span class="text-msg pull-right">I'm so unhappy :(</span>
+                                                    </div>
+                                                    <div class="user user-khadkamhn clearfix">
+                                                        <span class="text-msg pull-right">I have no invitation in dribbble yet. why?</span>
+                                                    </div>
+                                                    <div class="user user-dribble clearfix">
+                                                        <span class="photo pull-left" data-username="dribbble"><i class="fa fa-dribbble"></i></span>
+                                                        <span class="text-msg">Don't worry dude!</span>
+                                                    </div>
+                                                    <div class="user user-dribble clearfix">
+                                                        <span class="photo pull-left" data-username="dribbble"><i class="fa fa-dribbble"></i></span>
+                                                        <span class="text-msg">Some awesome people may find you and invite you soon.... :)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#"><i class="fa fa-envelope"></i> CLIENTS <span class="pull-right alert-numb">21</span></a>
+                                            <div class="sub-nav">
+                                                <a href="#">Inbox <span class="pull-right alert-numb">11</span></a>
+                                                <a href="#">Important <span class="pull-right alert-numb">10</span></a>
+                                                <a href="#">Sent</a>
+                                                <a href="#">Draft</a>
+                                                <a href="#">Trash</a>
+                                                <a href="#">All messages</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab7">
+                                    <p>Tab 2 content goes here...</p>
+                                </div>
+                            </div>
+                        </div>
                         <div class="tab-pane" id="club-vr">
                             club
 </div>
@@ -547,5 +621,7 @@
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

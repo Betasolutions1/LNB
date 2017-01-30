@@ -271,10 +271,12 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab8">
+                                        <!--club sheet-->
                                            <?php include 'club_files/club_sheet.php';?>
                                         </div>
                                         <div class="tab-pane" id="tab9">
-                                            <p>Tab 2 content goes here...</p>
+                                        <!--networking-->
+                                           <?php include 'club_files/networking.php';?>
                                         </div>
                                         <div class="tab-pane" id="tab10">
                                             <p>Tab 3 content goes here...</p>
@@ -350,171 +352,7 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                         
                                         <?php include 'Dairy_files/news_feed.php';?>
                                         
-                                        <?php /*?><div class="bg_pst">
-                                            <div class="pst_box" style="background-color:#fff;">
-                                                <div class="pst_head">
-                                                    <div class="row pst_row_fill" style="">
-                                                        <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/6.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-8 pst_head_txt">
-                                                            <a href="#" class="text_wht">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos text_wht">CEO-Beta Solutions</span>
-                                                            <br>
-                                                            <span class="text_wht">IT-Industry</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="pst_body">
-                                                    <p style="margin-top:10px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, pariatur!</p> 
-                                                    <span style="font-size:10px;"> - on 15th January, 2014</span>
-                                                </div>
-                                                <div class="pst_cmt">
-                                                    <div class="pst_cmt_tog pst_cmt_pad">
-                                                        <!--comment toggle-->
-                                                        <i></i>
-                                                        <a href="#"><span style="margin-left:10px;">View Comments</span></a>
-                                                        <span class="pst_cmt_muted">+2 writes</span>
-                                                    </div>
-                                                    <div class="row  pst_cmt_body">
-                                                        <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/1.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
-                                                            <br>
-                                                            <div style="margin-left:10px;">CONGRATS STEVE</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pst_cmt_row"> 
-                                                        <div class="col-lg-10 pst_cmt_pad pst_cmt_wid" style="width:550px;">
-                                                            <input type="text" class="form-control" style="width:100%;  " placeholder="Write..."> 
-                                                        </div>
-                                                        <div class="col-lg-2 pst_cmt_c1">
-                                                            <button type="button" class="btn btn-primary" href="#" style="background:#afdf7c; ">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>                                                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pst_box" style="background-color:#fff;">
-                                                <div class="pst_head">
-                                                    <div class="row pst_row_fill" style="">
-                                                        <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/6.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-8 pst_head_txt">
-                                                            <a href="#" class="text_wht">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos text_wht">CEO-Beta Solutions</span>
-                                                            <br>
-                                                            <span class="text_wht">IT-Industry</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="pst_body">
-                                                    <span><img src="images/post/pst_1.jpg" class="img-responsive" style=""></span>
-                                                    <br>
-                                                    <span style="font-size:10px;"> - on 15th January, 2014</span>
-                                                </div>
-                                                <div class="pst_cmt">
-                                                    <div class="pst_cmt_tog pst_cmt_pad">
-                                                        <!--comment toggle-->
-                                                        <i></i>
-                                                        <a href="#"><span style="margin-left:10px;">View Comments</span></a>
-                                                        <span class="pst_cmt_muted">+2 writes</span>
-                                                    </div>
-                                                    <div class="row  pst_cmt_body">
-                                                        <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/1.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
-                                                            <br>
-                                                            <div style="margin-left:10px;">CONGRATS STEVE</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pst_cmt_row"> 
-                                                        <div class="col-lg-10 pst_cmt_pad">
-                                                            <input type="text" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write..."> 
-                                                        </div>
-                                                        <div class="col-lg-2 pst_cmt_c1">
-                                                            <button type="button" class="btn btn-primary" href="#" style="background:#afdf7c; ">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>                                                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pst_box" style="background-color:#fff;">
-                                                <div class="pst_head">
-                                                    <div class="row pst_row_fill" style="">
-                                                        <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/6.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-8 pst_head_txt">
-                                                            <a href="#" class="text_wht">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos text_wht">CEO-Beta Solutions</span>
-                                                            <br>
-                                                            <span class="text_wht">IT-Industry</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="pst_body">
-                                                    <p style="margin-top:10px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, pariatur!</p> 
-                                                    <span style="font-size:10px;"> - on 15th January, 2014</span>
-                                                </div>
-                                                <div class="pst_cmt">
-                                                    <div class="pst_cmt_tog pst_cmt_pad">
-                                                        <!--comment toggle-->
-                                                        <i></i>
-                                                        <a href="#"><span style="margin-left:10px;">View Comments</span></a>
-                                                        <span class="pst_cmt_muted">+2 writes</span>
-                                                    </div>
-                                                    <div class="row  pst_cmt_body">
-                                                        <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/1.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
-                                                            <br>
-                                                            <div style="margin-left:10px;">CONGRATS STEVE</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pst_cmt_row"> 
-                                                        <div class="col-lg-10 pst_cmt_pad">
-                                                            <input type="text" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write..."> 
-                                                        </div>
-                                                        <div class="col-lg-2 pst_cmt_c1">
-                                                            <button type="button" class="btn btn-primary" href="#" style="background:#afdf7c; ">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>                                                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><?php */?>
+                                        
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab2">
@@ -701,6 +539,33 @@ function disconnect_suggest(diswhos_sugg,dissugg_id)
 					
 		return false;
 }
+
+//----Networking-----
+
+function inse_msg() {
+	//alert("hello" );
+    var chat_txt  = document.getElementById("chat_txt").value;
+    var msg_time_date = document.getElementById("msg_time_date").value;
+	 var msg_user_id = document.getElementById("msg_user_id").value;
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'chat_txt=' + chat_txt + '&msg_time_date=' + msg_time_date + '&msg_user_id=' +msg_user_id;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("chat_txt").value='';
+                    }
+                    });
+               
+        return false;
+}
+
 </script>
 
 

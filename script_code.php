@@ -145,7 +145,7 @@ if(isset($_POST['whos_sugg']))
 		$update_sugg=mysqli_query($conn,"update tbl_suggest_topic set count_connects='$sugg_count_inc+1' where suggest_topic_id='$_POST[sugg_id]'");
 	}
 }
-
+//----Disconnect Suggestions---
 if(isset($_POST['diswhos_sugg']))
 {
 	$dis_connect=mysqli_query($conn,"delete from `tbl_suggestions` where suggest_topic_id='$_POST[dissugg_id]' AND whos_suggest='$_POST[diswhos_sugg]' AND to_whom_accept='$_SESSION[id]'");
@@ -158,6 +158,14 @@ if(isset($_POST['diswhos_sugg']))
 	}
 }
 
+//------Networking---
+if(isset($_POST['msg_user_id']))
+{
+	if($_POST['chat_txt']!='')
+	{
+		$ins_grp_msg=mysqli_query($conn,"INSERT INTO `group_chat`( `user_id`, `chat_txt`, `time`) VALUES ('$_POST[msg_user_id]','$_POST[chat_txt]','$_POST[msg_time_date]')");
+	}
+}
 
 ?>
 

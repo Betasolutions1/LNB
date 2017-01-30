@@ -577,13 +577,23 @@ ul
 .club_sugg_scroll
 {
     overflow-y: scroll;
-    height: 200px;
+    height: 250px;
     background-color: #d3d3d3;
 }
 
+
 .c_sugg_row
 {
-    display:flex;
+    display: flex;
 }
 
+.c_suggest_row
+{
+}
+
+.club_sug_row_bg
+{
+    background-color: #fff;
+    border: 1px dotted #afdf7c;
+}
 

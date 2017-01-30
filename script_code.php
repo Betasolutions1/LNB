@@ -141,9 +141,23 @@ if(isset($_POST['whos_sugg']))
 	{
 		$upda_sugg_coun=mysqli_query($conn,"select * from tbl_suggest_topic where suggest_topic_id='$_POST[sugg_id]'");
 		$get_counts=mysqli_fetch_array($upda_sugg_coun);
-		$sugg_count_
+		$sugg_count_inc=$get_counts['count_connects'];
+		$update_sugg=mysqli_query($conn,"update tbl_suggest_topic set count_connects='$sugg_count_inc+1' where suggest_topic_id='$_POST[sugg_id]'");
 	}
 }
+
+if(isset($_POST['diswhos_sugg']))
+{
+	$dis_connect=mysqli_query($conn,"delete from `tbl_suggestions` where suggest_topic_id='$_POST[dissugg_id]' AND whos_suggest='$_POST[diswhos_sugg]' AND to_whom_accept='$_SESSION[id]'");
+	if($dis_connect)
+	{
+		$res1_exe=mysqli_query($conn,"select * from tbl_suggest_topic where suggest_topic_id='$_POST[dissugg_id]'");
+		$res2=mysqli_fetch_array($res1_exe);
+		$n1=$res2['count_connects'];
+		$res3_up_is_exe=mysqli_query($conn,"update tbl_suggest_topic set count_connects=$n1-1 where suggest_topic_id='$_POST[dissugg_id]' ");
+	}
+}
+
 
 ?>
 

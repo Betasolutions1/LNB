@@ -664,10 +664,10 @@ function ins_suggest() {
 
 //---connect Suggestion--
 
-function connect_suggest()
+function connect_suggest(whos_sugg,sugg_id)
 {
-	var whos_sugg = document.getElementById("whos_sugg").value;
-	var sugg_id = document.getElementById("sugg_id").value;
+	//var whos_sugg = document.getElementById("whos_sugg").value;
+	//var sugg_id = document.getElementById("sugg_id").value;
 	var dataString= 'whos_sugg='+whos_sugg+ '&sugg_id=' +sugg_id;
 	 $.ajax({
                     type: "POST",
@@ -679,8 +679,31 @@ function connect_suggest()
 					//document.getElementById("suggest_me_to").value='';
                     }
                     });
+					
+		return false;
+}
+
+//---Disconnect suggest---
+
+function disconnect_suggest(diswhos_sugg,dissugg_id)
+{
+	var dataString= 'diswhos_sugg='+diswhos_sugg+ '&dissugg_id=' +dissugg_id;
+	 $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					//document.getElementById("suggest_me_to").value='';
+                    }
+                    });
+					
+		return false;
 }
 </script>
+
+
         <!--Bookmark End-->
         
     </body>

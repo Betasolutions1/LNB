@@ -31,8 +31,7 @@
 											 $get_club_menem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]'");
 											 while($club_members=mysqli_fetch_array($get_club_menem))
 											 {
-												 $get_club_name_exe=mysqli_query($conn,"select * from tbl_club where CLUB_ID='$_SESSION[club_id]'");
-												 $clb_name=mysqli_fetch_array($get_club_name_exe);
+												 
 												 
 												 $get_user_sugg_exe=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$club_members[user_id]'");
 												 $get_ur_sugg=mysqli_fetch_array($get_user_sugg_exe);
@@ -54,14 +53,35 @@
                                                     <br>
                                                     <span><?php echo $fet_mem_de['industry'];?></span>
                                                     <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
+                                                    <?php
+													if($get_ur_sugg['suggest_topic']!='')
+													{
+													
+                                                    $check_connect=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$get_ur_sugg[suggest_topic_id]' AND whos_suggest='$fet_mem_de[user_id]' AND to_whom_accept='$_SESSION[id]' AND status='1'");
+													$get_count_sug=mysqli_num_rows($check_connect);
+													if($get_count_sug!=0)
+													{
+													?>	
                                                     <form method="post" action="">
-                                                    <input type="hidden" name="whos_sugg" id="whos_sugg" value="<?php echo $fet_mem_de['user_id'];?>">
-                                                    <input type="hidden" name="whom_acc" id="whom_acc" value="<?php echo $_SESSION['id'];?>">
-                                                    <input type="hidden" name="sugg_id" id="sugg_id" value="<?php echo $get_ur_sugg['suggest_topic_id'];?>">
-                                                    <span><input type="submit" class="btn btn_grn" onClick="connect_suggest();" value="Connect"></span>
+                                                    <input type="hidden" name="diswhos_sugg" id="diswhos_sugg" value="<?php echo $fet_mem_de['user_id'];?>">
+                                                    <input type="hidden" name="diswhom_acc" id="diswhom_acc" value="<?php echo $_SESSION['id'];?>">
+                                                    <input type="hidden" name="dissugg_id" id="dissugg_id" value="<?php echo $get_ur_sugg['suggest_topic_id'];?>">
+                                                    <span><a href="" class="btn btn_grn" onClick="disconnect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connected</a></span>
                                                     
                                                     </form>
+													<?php		
+													}else
+													{
+													
+													?>
                                                     
+                                                    <span><a href="" class="btn btn_grn" onClick="connect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connect</a></span>
+                                                    
+                                                    
+                                                    <?php
+													}
+													}
+													?>
                                                     <p><?php echo $fet_mem_de['description'];?></p>
                                                 </div>
                                                 <?php

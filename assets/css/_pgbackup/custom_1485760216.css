@@ -525,8 +525,8 @@ ul
 
 .club_network
 {
-    height:900px;
-    background-color: #d3d3d3;
+    height: 100%;
+    background-color:#d3d3d3;
     overflow-y: scroll;
 }
 
@@ -534,9 +534,5 @@ ul
 .club_network_row
 {
     border: 1px solid #fff;
-}
-
-.club_msg_shape
-{
 }
 

@@ -462,8 +462,9 @@ ul
 {
     min-height: 900px;
     height: 100%;
-    overflow: auto;
+    overflow: none;
 }
+
 
 .club_txtbox
 {
@@ -521,22 +522,5 @@ ul
     -ms-transform: scale(1.2);
     transform: scale(1.2);
     overflow-y: scroll;
-}
-
-.club_network
-{
-    height:900px;
-    background-color: #d3d3d3;
-    overflow-y: scroll;
-}
-
-
-.club_network_row
-{
-    border: 1px solid #fff;
-}
-
-.club_msg_shape
-{
 }
 

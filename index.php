@@ -3,7 +3,7 @@ include 'config.php';
 session_start();
 if(!$_SESSION['Email'])
 {
-	header("location:login.php");
+	header("location:signup.php");
 }
 
 ?>
@@ -61,6 +61,104 @@ if(!$_SESSION['Email'])
       }
     </style>
         
+        
+        
+        <!--TODO SCRIPT-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+
+<script>
+x=false;
+function Check(){
+    if(x){    
+document.getElementById("screen").style.display='inline';
+document.getElementById("screen1").style.display='none';
+x=false;
+    }
+    else{
+ document.getElementById("screen").style.display='none'; 
+     document.getElementById("screen1").style.display='inline';   
+x=true;    
+    }
+    
+}
+
+
+function change_to(str)
+{
+	alert("hello"+str );
+	var dataString = 'todo_status=' + str ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("firstname").select();
+                    }
+                    });
+               
+        return false;
+	
+}
+
+function ledger_insert() {
+	alert("hello" );
+	var led_cur_date  = document.getElementById("led_cur_date").value;
+	var led_details  = document.getElementById("led_details").value;
+    var led_credit  = document.getElementById("led_credit").value;
+    var led_debit = document.getElementById("led_debit").value;
+	//alert("hello" + todo_title );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'led_cur_date=' + led_cur_date + '&led_details=' + led_details + '&led_credit=' + led_credit + '&led_debit=' +led_debit;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					
+					document.getElementById("led_details").value='';
+					document.getElementById("led_credit").value='';
+					document.getElementById("led_debit").value='';
+                    }
+                    });
+               
+        return false;
+}
+
+function todo_insert() {
+	alert("hello" );
+	var todo_title  = document.getElementById("todo_title").value;
+    var todo_contacts  = document.getElementById("todo_contacts").value;
+    var todo_type = document.getElementById("todo_type").value;
+	//alert("hello" + todo_title );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'todo_title=' + todo_title + '&todo_contacts=' + todo_contacts + '&todo_type=' + todo_type;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("todo_contacts").value='';
+					document.getElementById("todo_contacts").value='';
+					document.getElementById("todo_type").value='';
+                    }
+                    });
+               
+        return false;
+}
+</script>
+        <!--End todo Script-->
         
         <!--End Remodel-->
         

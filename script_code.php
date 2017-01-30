@@ -52,14 +52,53 @@ if(isset($_POST['cmt_ins']))
 
 //---TODO Insertion----
 
-if(isset($_POST['to_insert']))
+/*if(isset($_POST['to_insert']))
 {
 	$todo_ins=mysqli_query($conn,"INSERT INTO `user_todolist`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`, `todo_datetime`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]','$_POST[todo_date]')");
 	if($todo_ins)
 	{
 		header("location:index.php");
 	}
+}*/
+
+if(isset($_POST['todo_title']))
+{
+	echo "<script>alert('server connected')</script>";
+
+	$quer=mysqli_query($conn,"insert into user_todolist (`todo_type`,`todo_user_id`,`todo_contact`,`todo_label`,`todo_status`) VALUES ('".$_POST['todo_type']."','".$_SESSION['id']."','".$_POST['todo_contacts']."','".$_POST['todo_title']."','0')");
+	if($quer)
+	{
+		echo "<script>alert('Todo data inserted')</script>";
+	}
+	else
+	{
+		echo "<script>alert('Data insertion Fail')</script>";
+	}
+	
 }
+
+if(isset($_POST['todo_status']))
+{
+	$upd_td=mysqli_query($conn,"update user_todolist set todo_status='1' where todo_id='".$_POST['todo_status']."'");
+}
+
+
+//----Ledger Insertion--
+
+if(isset($_POST['led_cur_date']))
+{
+	$led_inst=mysqli_query($conn,"INSERT INTO `user_ledger`( `user_id`, `date`, `credit`, `debit`, `led_reason`) VALUES ('".$_SESSION['id']."','".$_POST['led_cur_date']."','".$_POST['led_credit']."','".$_POST['led_debit']."','".$_POST['led_details']."')");
+	if($led_inst)
+	{
+		echo "<script>alert('Ledger data inserted')</script>";
+	}
+	else
+	{
+		echo "<script>alert('ledger insertion Fail')</script>";
+	}
+}
+
+
 ?>
 
 

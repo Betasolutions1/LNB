@@ -157,206 +157,15 @@ function todo_insert() {
                
         return false;
 }
+
+
+
 </script>
         <!--End todo Script-->
         
         <!--End Remodel-->
         
-             <style>
-            /*#parallelogram {
-            width: 150px;
-            height: 100px;
-            -webkit-transform: skew(20deg);
-            -moz-transform: skew(20deg);
-            -o-transform: skew(20deg);
-            background:#afdf7c;
-            }*/
-            .tabs-left, .tabs-right
-            {
-            border-bottom: none;
-            padding-top: 25px;
-            }
-            .tabs-left
-            {
-            border-right: 3px solid #ddd;
-            }
-            .tabs-right
-            {
-            border-left: 3px solid #ddd;
-            }
-            .tabs-left>li, .tabs-right>li
-            {
-            float: none;
-            margin-bottom: 2px;
-            }
-            .tabs-left>li
-            {
-            margin-right: -1px;
-            }
-            .tabs-right>li
-            {
-            margin-left: -1px;
-            color: #fff;
-            }
-            .tabs-left>li.active>a,
-            .tabs-left>li.active>a:hover,
-            .tabs-left>li.active>a:focus
-            {
-            border-bottom-color: #ddd;
-            border-right-color: transparent;
-            }
-            .tabs-right>li.active>a,
-            .tabs-right>li.active>a:hover,
-            .tabs-right>li.active>a:focus
-            {
-            background: #afdf7c;
-            color: #fff;
-            -webkit-clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
-            clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
-            }
-            .tabs-left>li>a
-            {
-            border-radius: 4px 0 0 4px;
-            margin-right: 0;
-            display: block;
-            }
-            .tabs-right>li>a
-            {
-            border-radius: 0 4px 4px 0;
-            margin-right: 0;
-            }
-            .vertical-text
-            {
-            margin-top: 40px;
-            border: none;
-            position: relative;
-            }
-            .vertical-text>li
-            {
-            height: 16px;
-            width: 170px;
-            margin-bottom: 100px;
-            }
-            .vertical-text>li>a
-            {
-            border-bottom: 1px solid #ddd;
-            border-right-color: transparent;
-            text-align: center;
-            border-radius: 4px 4px 0px 0px;
-            -webkit-clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
-            clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
-            }
-            .vertical-text>li.active>a,
-            .vertical-text>li.active>a:hover,
-            .vertical-text>li.active>a:focus
-            {
-            border-bottom-color: transparent;
-            border-right-color: #FFF;
-            border-left-color: #ddd;
-            color: #fff;
-            }
-            .vertical-text.tabs-left
-            {
-            }
-            .vertical-text.tabs-right
-            {
-            }
-            .vertical-text.tabs-right>li
-            {
-            -webkit-transform: rotate(90deg);
-            -moz-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-            -o-transform: rotate(90deg);
-            transform: rotate(90deg);
-            }
-            .vertical-text.tabs-left>li
-            {
-            -webkit-transform: rotate(-90deg);
-            -moz-transform: rotate(-90deg);
-            -ms-transform: rotate(-90deg);
-            -o-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-            }
-            .pst_box
-            {
-            border: 1px dotted #afdf7c;
-            margin-bottom: 20px;
-            }
-            .pst_head
-            {
-            background-color: #ffffff;
-            text-align: left;
-            }
-            .pst_head_left
-            {
-            }
-            .text_wht
-            {
-            color: #fff;
-            font-size: 15px;
-            font-weight: bold;
-            }
-            .pst_row_fill
-            {
-            background-color: #afdf7c;
-            margin-left: 0px;
-            }
-            .pst_head_txt
-            {
-            position: relative;
-            padding-top: 3px;
-            }
-            .pst_body
-            {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin-left: 10px;
-            margin-right: 10px;
-            text-align: left;
-            }
-            .pst_cmt
-            {
-            position: relative;
-            }
-            .pst_cmt_body
-            {
-            background-color: rgba(251, 251, 251, 0.97);
-            border-top: 1px dotted #afdf7c;
-            }
-            .pst_cmt_muted
-            {
-            font-size: 10px;
-            color: #5c5c5c;
-            }
-            .pst_cmt_tog
-            {
-            background-color: #ededed;
-            height: 30px;
-            }
-            .pst_cmt_pad
-            {
-            padding-left: 0px;
-            padding-right: 0px;
-            width: 100%;
-            }
-            .pst_cmt_c1
-            {
-            padding-left: 0px;
-            padding-right: 0px;
-            width: 37px;
-            }
-            .pst_cmt_row
-            {
-            }
-	.img-size
-	{
-		min-width: 50px;max-width: 50px;max-height: 50px;min-height: 50px;
-	}
-	.cmt-img
-	{
-		min-width: 35px;max-width: 35px;max-height: 35px;min-height: 35px;
-	}
-</style>
+             
     </head>
     <body>
     <?php
@@ -364,6 +173,8 @@ $user_det=mysqli_query($conn,"select * from users where user_id='$_SESSION[id]'"
 $usr_dis=mysqli_fetch_array($user_det);
 $get_user_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
 $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
+$user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
+$fet_pes=mysqli_fetch_array($user_personal_dets_exe);
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -432,7 +243,54 @@ $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
                             </div>
                         </div>
                         <div class="tab-pane" id="club-vr">
-                            club
+                            <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;">
+                            <?php
+							if(!$_SESSION['club_id'])
+							{
+                            include 'club_files/club_login.php';
+							}else
+							{
+							?>
+                            <div class="club_sub_div_height">
+                                    <ul class="nav nav-tabs"> 
+                                        <li class="active">
+                                            <a href="#tab8" data-toggle="tab"><i class="fa fa-pencil"></i> Club Sheet</a>
+                                        </li>                                         
+                                        <li>
+                                            <a href="#tab9" data-toggle="tab"><i class="fa fa-pencil"></i> Networking</a>
+                                        </li>                                         
+                                        <li>
+                                            <a href="#tab10" data-toggle="tab"><i class="fa fa-pencil"></i> Suggestions</a>
+                                        </li>                                         
+                                        <li>
+                                            <a href="#tab11" data-toggle="tab"><i class="fa fa-pencil"></i> Tag</a>
+                                        </li>                                         
+                                        <li>
+                                            <a href="#tab12" data-toggle="tab"><i class="fa fa-pencil"></i> Settings</a>
+                                        </li>                                         
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab8">
+                                           <?php include 'club_files/club_sheet.php';?>
+                                        </div>
+                                        <div class="tab-pane" id="tab9">
+                                            <p>Tab 2 content goes here...</p>
+                                        </div>
+                                        <div class="tab-pane" id="tab10">
+                                            <p>Tab 3 content goes here...</p>
+                                        </div>
+                                        <div class="tab-pane" id="tab11">
+                                            <p>Tab 4 content goes here...</p>
+                                        </div>
+                                        <div class="tab-pane" id="tab12">
+                                            <p>Tab 5 content goes here...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+							}
+							?>
+                            </div>
 						</div>
                         <div class="tab-pane " id="dairy-vr">
                             <ul class="nav nav-tabs"> 
@@ -774,6 +632,53 @@ function unlike(ulpost_id,uluser_id) {
                     });
                
         return false;
+}
+
+//-- sug_ins
+
+function ins_suggest() {
+	alert("hello" );
+    var sugg_info  = document.getElementById("suggest_me_to").value;
+	var sug_usrt_id  = document.getElementById("sug_usrt_id").value;
+	var sug_date = document.getElementById("sug_date").value;
+    //sug_usrt_id
+	//alert("hello" + bpost_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'sugg_info=' + sugg_info + '&sug_usrt_id=' +sug_usrt_id + '&sug_date=' +sug_date;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("suggest_me_to").value='';
+                    }
+                    });
+               
+        return false;
+}
+
+
+//---connect Suggestion--
+
+function connect_suggest()
+{
+	var whos_sugg = document.getElementById("whos_sugg").value;
+	var sugg_id = document.getElementById("sugg_id").value;
+	var dataString= 'whos_sugg='+whos_sugg+ '&sugg_id=' +sugg_id;
+	 $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					//document.getElementById("suggest_me_to").value='';
+                    }
+                    });
 }
 </script>
         <!--Bookmark End-->

@@ -100,7 +100,7 @@ if(isset($_POST['led_cur_date']))
 
 //-----club login ---
 
-if(isset($_POST['club_user_name']))
+if(isset($_POST['club_login']))
 {
 	echo "<script>alert('hello')</script>";
 	$club_log_crede=mysqli_query($conn,"select * from club_signup where club_user_name='$_POST[club_user_name]' AND club_pwd='$_POST[club_pwd]' AND user_id='$_SESSION[id]'");
@@ -109,7 +109,9 @@ if(isset($_POST['club_user_name']))
 	{
 		echo "<script>alert('Login Success')</script>";
 		$ret_clb_cred=mysqli_fetch_array($club_log_crede);
+		$_SESSION['club_id']=$ret_clb_cred['club_id'];
 		$_SESSION['club_user']=$ret_clb_cred['club_user_name'];
+		header("location:index.php");
 		
 	}else
 	{
@@ -117,16 +119,30 @@ if(isset($_POST['club_user_name']))
 	}
 }
 
+//---insert_ suggestion---
 if(isset($_POST['sug_usrt_id']))
 {
 	if($_POST['sugg_info']!='')
 	{
-	$add_sudd=mysqli_query($conn,"insert into tbl_suggest_topic (user_id,suggest_topic)Values('$_POST[sug_usrt_id]','$_POST[sugg_info]')");
-	$get_sug_top_id=mysqli_query($conn,"select * from tbl_suggest_topic order by suggest_topic_id desc limit 1");
+	$add_sudd=mysqli_query($conn,"insert into tbl_suggest_topic (user_id,suggest_topic,sug_date)Values('$_POST[sug_usrt_id]','$_POST[sugg_info]','$_POST[sug_date]')");
+	/*$get_sug_top_id=mysqli_query($conn,"select * from tbl_suggest_topic order by suggest_topic_id desc limit 1");
 	$get_sugid=mysqli_fetch_array($get_sug_top_id);
-	$ad_su_id=mysqli_query($conn,"insert into tbl_suggestions (suggest_topic_id,whos_suggest)values('$get_sugid[suggest_topic_id]','$_POST[sug_usrt_id]')");
+	$ad_su_id=mysqli_query($conn,"insert into tbl_suggestions (suggest_topic_id,whos_suggest)values('$get_sugid[suggest_topic_id]','$_POST[sug_usrt_id]')");*/
 	}
 	
+}
+
+//-----connect suggestion---
+
+if(isset($_POST['whos_sugg']))
+{
+	$connect=mysqli_query($conn,"INSERT INTO `tbl_suggestions`( `suggest_topic_id`, `whos_suggest`, `to_whom_accept`, `status`) VALUES ('$_POST[sugg_id]','$_POST[whos_sugg]','$_SESSION[id]','1')");
+	if($connect)
+	{
+		$upda_sugg_coun=mysqli_query($conn,"select * from tbl_suggest_topic where suggest_topic_id='$_POST[sugg_id]'");
+		$get_counts=mysqli_fetch_array($upda_sugg_coun);
+		$sugg_count_
+	}
 }
 
 ?>

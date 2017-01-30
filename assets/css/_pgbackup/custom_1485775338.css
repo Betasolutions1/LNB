@@ -570,20 +570,8 @@ ul
 
 .club_suggest_top_div
 {
-    background-color: #afdf7c;
-    color: #fff;
-}
-
-.club_sugg_scroll
-{
-    overflow-y: scroll;
-    height: 200px;
     background-color: #d3d3d3;
-}
-
-.c_sugg_row
-{
-    display:flex;
+    height:20px;
 }
 
 

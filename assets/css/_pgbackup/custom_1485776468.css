@@ -583,7 +583,7 @@ ul
 
 .c_sugg_row
 {
-    display:flex;
+    width: 100%;
+    max-width: 100%;
 }
-
 

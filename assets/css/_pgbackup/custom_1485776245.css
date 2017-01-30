@@ -574,16 +574,11 @@ ul
     color: #fff;
 }
 
+
 .club_sugg_scroll
 {
     overflow-y: scroll;
     height: 200px;
     background-color: #d3d3d3;
 }
-
-.c_sugg_row
-{
-    display:flex;
-}
-
 

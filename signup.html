@@ -34,6 +34,30 @@
         <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
         <script src="js/modernizr.min.js"></script>
+        <link rel="stylesheet" href="assets/css/remodal.css">
+        <link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+        <style>
+            .remodal-bg.with-red-theme.remodal-is-opening,
+            .remodal-bg.with-red-theme.remodal-is-opened {
+            filter: none;
+            }
+            .remodal-overlay.with-red-theme {
+            background-color: #f44336;
+            }
+            .remodal.with-red-theme {
+            background: #fff;
+            }
+
+</style>
         <style type="text/css">
             .photostack-perspective
             {
@@ -106,6 +130,7 @@
             border: 3px #000 !important;
             border-bottom: 3px #000;
             }
+
 </style>
         <!--<script>
 	  $(document).ready( function() {
@@ -1375,8 +1400,9 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
               Business</h2> 
                     </div>
                 </div>
-                <div align="center" style="padding-top:5px;">
-                    <input type="button" class="btn btn_grn " value="Start" style="width:100px; padding-top:3px;" />
+                <div align="center" style="padding-top:5px;" class="remodal-bg">
+                    <!--<input type="button" class="btn btn_grn " value="Start" style="width:100px; padding-top:3px;" />-->
+                    <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Submit</a>
                 </div>
             </div>
             <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
@@ -1396,6 +1422,23 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+            <div>
+                <h2 class="club_headers" style="text-align:center;">Sign up</h2>
+                <form role="form" style="font-size:14px;"> 
+                    <input type="text" class="club_txt" placeholder="Name" />
+                    <input type="text" class="club_txt" placeholder="Gender" />
+                    <input type="text" d="datepicker" placeholder="Date of Birth">
+                    <input type="email" class="club_txt" placeholder="Email" />
+                    <input type="password" class="club_txt" placeholder="Password" />
+                    <input type="password" class="club_txt" placeholder="Verify" />
+                </form>
+            </div>
+            <br>
+            <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
+            <button data-remodal-action="confirm" class="btn btn_grn" style="width:67px;">Submit</button>
         </div>
         <footer class="footer">
 </footer>
@@ -1443,6 +1486,60 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
     }
 }); 
 		</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>
+        <script src="assets/js/remodal.js"></script>
+        <!-- Events -->
+        <script>
+  $(document).on('opening', '.remodal', function () {
+    console.log('opening');
+  });
+
+  $(document).on('opened', '.remodal', function () {
+    console.log('opened');
+  });
+
+  $(document).on('closing', '.remodal', function (e) {
+    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('closed', '.remodal', function (e) {
+    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('confirmation', '.remodal', function () {
+    console.log('confirmation');
+  });
+
+  $(document).on('cancellation', '.remodal', function () {
+    console.log('cancellation');
+  });
+
+//  Usage:
+//  $(function() {
+//
+//    // In this case the initialization function returns the already created instance
+//    var inst = $('[data-remodal-id=modal]').remodal();
+//
+//    inst.open();
+//    inst.close();
+//    inst.getState();
+//    inst.destroy();
+//  });
+
+  //  The second way to initialize:
+  $('[data-remodal-id=modal2]').remodal({
+    modifier: 'with-red-theme'
+  });
+</script>
+        <script>
+        flatpickr(".selector", {}); // [Flatpickr, Flatpickr, ...]
+document.getElementById("myID").flatpickr(config); // Flatpickr
+let calendar = new Flatpickr(element, config); // Flatpickr
+
+// jQuery
+$(".selector").flatpickr({});
+        </script>
         <!-- <script type="text/javascript">
 
   var _gaq = _gaq || [];

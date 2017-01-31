@@ -596,4 +596,24 @@ ul
     border: 1px dotted #afdf7c;
 }
 
+.parallax_folio
+{
+    height: 250px;
+    background-image: url("../../images/post/f_c.jpg");
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.folio_wrk
+{
+    height: 100px;
+    background-image: url("../../images/post/folio_cover_2.jpg");
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 

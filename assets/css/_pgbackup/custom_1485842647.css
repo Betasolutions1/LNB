@@ -596,4 +596,22 @@ ul
     border: 1px dotted #afdf7c;
 }
 
+.parallax_folio
+{
+    height: 250px;
+   
+    /* The image used */
+    background-image: url("file:///Applications/Pinegrow%20Web%20Designer.app/Contents/Resources/app.nw/placeholders/img3.jpg");
+
+    /* Set a specific height */
+   
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 

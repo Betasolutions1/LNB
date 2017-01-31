@@ -581,6 +581,7 @@ ul
     background-color: #d3d3d3;
 }
 
+
 .c_sugg_row
 {
     display: flex;
@@ -595,5 +596,4 @@ ul
     background-color: #fff;
     border: 1px dotted #afdf7c;
 }
-
 

@@ -596,4 +596,28 @@ ul
     border: 1px dotted #afdf7c;
 }
 
+.parallax_folio
+{
+    height: 250px;
+    background-image: url("../../images/post/f_c.jpg");
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.folio_wrk
+{
+    height: 100px;
+    /* The image used */
+    background-image: url("../../images/post/folio_cover.jpg");
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 

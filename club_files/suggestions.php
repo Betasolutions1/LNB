@@ -1,7 +1,7 @@
 <h4 class="club_headers">
        Suggestions</h4>
                                             <br>
-                                            <div class="row">
+                                            <div class="row" id="txtHint">
                                                 <div class="club_suggest_top_div row">
                                                     <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
@@ -89,7 +89,7 @@
                                                     <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                         <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                             <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50">
+                                                              <a href="" onClick="Get_clb_user_sugg(<?php echo $result_club_mem['user_id']?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
                                                             </div>                                                             
                                                             <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                 <span><?php echo $kiloo['suggest_topic'];?> </span>

@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include 'config.php';
 session_start();
 if(!$_SESSION['Email'])
@@ -279,7 +280,7 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                            <?php include 'club_files/networking.php';?>
                                         </div>
                                         <div class="tab-pane" id="tab10">
-                                            <p>Tab 3 content goes here...</p>
+                                           <?php include 'club_files/suggestions.php';?>
                                         </div>
                                         <div class="tab-pane" id="tab11">
                                             <p>Tab 4 content goes here...</p>

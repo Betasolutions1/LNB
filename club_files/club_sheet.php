@@ -5,7 +5,7 @@
         CLUB ID # 1234</h4>
                                                     <div class="col-lg-12 club_txtbox" style="padding-left:0px; padding-right:10px;paddin-top:0px;margin-top:0px;">
                  									<?php
-                                                    $sug_date=date('Y-m-d h:i');
+                                                    $sug_date=date('Y-m-d');
 													?>   
                                                     <form method="post" action="">                                   
                                                    <input type="text" placeholder="Suggest Me To" class="club_txt" id="suggest_me_to">
@@ -28,12 +28,12 @@
                                             </div>
                                             <div style="margin:10px;"> 
                                             <?php
-											 $get_club_menem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]'");
+											 $get_club_menem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' and user_id!='$_SESSION[id]'");
 											 while($club_members=mysqli_fetch_array($get_club_menem))
 											 {
 												 
 												 
-												 $get_user_sugg_exe=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$club_members[user_id]'");
+												 $get_user_sugg_exe=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$club_members[user_id]' order by sug_date desc");
 												 $get_ur_sugg=mysqli_fetch_array($get_user_sugg_exe);
 												 
 												 $get_club_user_deta_exe=mysqli_query($conn,"select * from users where user_id='$club_members[user_id]'");

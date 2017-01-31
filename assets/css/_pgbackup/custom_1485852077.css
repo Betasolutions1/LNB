@@ -602,9 +602,10 @@ ul
     height: 150px;
     padding-left: 0px;
     padding-right: 0px;
-    border: 1px dashed #afdf7c;
+    border: 1px solid #afdf7c;
     margin: 3px;
 }
+
 
 .cf_card:hover
 {
@@ -612,12 +613,4 @@ ul
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
-
-.cf_block_height
-{
-    height: 800px;
-    width:599px;
-    overflow-y: scroll;
-}
-
 

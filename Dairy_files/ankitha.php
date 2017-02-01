@@ -9,7 +9,8 @@
                                                 <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
                                                     <div class="row">
                                                         <div class="col-lg-4" style="height:150px;width:170px; background-color:#fff;border-bottom:1px dashed #afdf7c;">
-</div>
+                                                        
+													</div>
                                                         <div class="col-lg-8" style="height:150px;width:420px; background-color:#fff; border-bottom:1px dashed #afdf7c;">
                                                             <div class="col-lg-12" style="padding-right: 5px;">
                                                                 <h3 class="club_headers" style="text-align:right;font-family:lato-hairline; margin-right:0px;">
@@ -146,15 +147,23 @@
                                                                 <div class="col-lg-12 p_r_box" style="border-bottom:none;">
                                                                     <h3 class="club_headers" style="text-align:left;margin-left:0px;">
         SKILLS</h3>
-                                                                    <input type="button" class="btn btn_grn" value="UI" style="height:30px; margin:5px;">
-                                                                    <input type="button" class="btn btn_grn" value="PHOTOSHOP" style=" margin:1px; height:30px;">
+        <?php
+        $us_sli_exe=mysqli_query($conn,"select * from user_skills where user_id='$_SESSION[id]'");
+		while($uskil=mysqli_fetch_array($us_sli_exe))
+		{
+		?>
+                                                                    <button type="button" class="btn btn_grn" value="" style="height:30px; margin:5px;text-transform:uppercase;"><?php echo $uskil['skill'];?></button>
+                                                                    <?php
+		}
+																	?>
+                                                                   <!-- <input type="button" class="btn btn_grn" value="PHOTOSHOP" style=" margin:1px; height:30px;">
                                                                     <input type="button" class="btn btn_grn" value="WEB DESIGN" style=" margin:1px; height:30px;"> 
                                                                     <input type="button" class="btn btn_grn" value="PHP" style=" margin:1px; height:30px;"> 
                                                                     <input type="button" class="btn btn_grn" value="3D MODELING" style=" margin:1px;height:30px;">
                                                                     <input type="button" class="btn btn_grn" value="C#" style=" margin:1px;height:30px;"> 
                                                                     <input type="button" class="btn btn_grn" value="DOT.NET" style=" margin:1px;height:30px;"> 
                                                                     <input type="button" class="btn btn_grn" value="CINEMA4D" style=" margin:1px;height:30px;">
-                                                                    <input type="button" class="btn btn_grn" value="ANIMATION" style=" margin:1px;height:30px;">
+                                                                    <input type="button" class="btn btn_grn" value="ANIMATION" style=" margin:1px;height:30px;">-->
                                                                 </div>
                                                             </div>
                                                         </div>

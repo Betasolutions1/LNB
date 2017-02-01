@@ -695,27 +695,5 @@ ul
     height: 137px;
 }
 
-#gallerycontainer {
-  position: relative;
-  height: 210px;
-  width: 95%;
-  margin: 0 auto;
-  overflow: auto;
-}
-
-#gallery {
-  width: 4520px;
-  position: absolute;
-  z-index: 1;
-}
-	#c_hs {
-	  float: left;
-	  width: 219px;
-	  height: 165px;
-	  margin-right: 5px;
-  	  border:1px dotted #afdf7c;
-	}
-
-
 
 

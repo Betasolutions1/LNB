@@ -676,10 +676,10 @@ ul
 
 .select_color
 {
-    background: url("assets/css/118738.png") no-repeat left center;
+    background: url("assets/css/118738.png") no-repeat left;
     height: 35px;
     border:0px;
-    border-bottom: 1px solid #afdf7c;
+    border-bottom: 2px solid #afdf7c;
     width: 250px;
     -moz-appearance: none;
     -webkit-appearance: none;

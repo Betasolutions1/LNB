@@ -116,6 +116,7 @@ if(isset($_POST['club_login']))
 	}else
 	{
 		echo "<script>alert('Please Enter valid details')</script>";
+		header("location:index.php");
 	}
 }
 

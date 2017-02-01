@@ -71,11 +71,15 @@
   <div>
   
   <h2><span><?php echo $_SESSION['Name'];?></span></h2>
-  <div class="col-lg-6">
-    <h4 id="modal1Title"></h4>
+  <div class="col-lg-12">
+    <h4 id="modal1Title">WHO AM I</h4>
+    <?php 
+	$foloi_exe=mysqli_query($conn,"select * from folio where user_id='$_SESSION[id]'");
+	$folio=mysqli_fetch_array($foloi_exe);
+	?>
+    <textarea><?php echo $folio['description'];?></textarea>
   </div>
-   <div class="col-lg-6">
-   </div>
+   
    
   </div>
   <br>

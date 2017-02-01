@@ -443,6 +443,7 @@ ul
 {
     background-color: #afdf7c;
     color: #fff;
+    border-radius: 0px;
 }
 
 .btn_grn:hover
@@ -603,5 +604,73 @@ ul
 }
 .icon:hover
 {
+<<<<<<< HEAD
 	color:#d3d3d3;
 }
+=======
+    border-radius: 7px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.su_shadow
+{
+}
+
+.txt_font
+{
+    font-family: lato;
+    font-size: 14px;
+}
+
+/*-------------------------------scotch tape---------------------------------*/
+
+#tape:before, #tape:after
+{
+    content: '';
+    display: block;
+    position: relative;
+    background-color: #afdf7c;
+    opacity: 0.4;
+    height: 25px;
+}
+
+#tape:before
+{
+    left: -39px;
+    top: -15px;
+    width: 80px;
+    -webkit-transform: rotate(-12deg);
+    -moz-transform: rotate(-12deg);
+    -o-transform: rotate(-12deg);
+    -ms-transform: rotate(-12deg);
+}
+
+#tape:after
+{
+    left: 420px;
+    top: -20px;
+    width: 99px;
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+}
+
+/*-------------------------------scotch tape end---------------------------------*/
+
+.select_color
+{
+    background: url("assets/css/118738.png") no-repeat left center;
+    height: 35px;
+    border:0px;
+    border-bottom: 1px solid #afdf7c;
+    width: 250px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0px;
+    
+}
+
+
+>>>>>>> d65a6b45e45431062d14ddde809a7c9fbe59e23b

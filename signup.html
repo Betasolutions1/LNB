@@ -34,6 +34,30 @@
         <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
         <script src="js/modernizr.min.js"></script>
+        <link rel="stylesheet" href="assets/css/remodal.css">
+        <link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+        <style>
+            .remodal-bg.with-red-theme.remodal-is-opening,
+            .remodal-bg.with-red-theme.remodal-is-opened {
+            filter: none;
+            }
+            .remodal-overlay.with-red-theme {
+            background-color: #f44336;
+            }
+            .remodal.with-red-theme {
+            background: #fff;
+            }
+
+</style>
         <style type="text/css">
             .photostack-perspective
             {
@@ -92,25 +116,20 @@
             {
             margin-top: 30px;
             width: 40%;
-            height: 200px;
+            height: 210px;
             margin-left: 60px;
             margin-right: 60px;
             position: relative;
+            color:#fff;
             }
             .txt
             {
             }
             .txt_
             {
-            border:3px #000 !important;
+            border: 3px #000 !important;
             border-bottom: 3px #000;
             }
-
-
-
-
-
-
 
 </style>
         <!--<script>
@@ -1359,22 +1378,115 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                 </figure>
             </div>
         </section>
-        <div class="container-fluid  hgt_signup " align="center" style=" text-align:center;">
-            <div class="col-lg-6 jumbotron su_div_pad">
-</div>
-            <div class="col-lg-6 jumbotron su_div_pad">
+        <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
+            <div class="col-lg-6  su_div_pad col-md-6 " id="tape" style="background-color:#d8d8d8; margin-bottom:50px;  color: #fff;">
+                <h3 style="margin-top: 0px !important;margin-bottom:0px !important; padding-top:0px;">
+        NEW TO LNB</h3>
+                <h5 style="margin-top:5px !important; margin-bottom:5px !important;">
+        Create account and write your dairy</h5>
+                <h5 style="font-weight:bold; margin-top:5px !important;margin-bottom:5px !important;" style="height:50px;">
+        LNB helps you to record your Business journey every moment and connecting business</h5>
+                <div class="row">
+                    <div class="col-lg-6" align="right;">
+                        <h4 style="margin-top:0px;margin-bottom:0px; text-align:right">
+                Network  </h4>
+                        <h4 style="margin-top:0px;margin-bottom:0px;text-align:right">
+                Share  </h4>
+                        <h4 style="margin-top:0px;margin-bottom:0px;text-align:right">
+                Read  </h4>
+                    </div>
+                    <div class="col-lg-6" style="border-left:2px solid #fff; height:50px;" align="left">
+                        <h2 style="padding:0px;margin:0px; margin-top:5px;">
+              Business</h2> 
+                    </div>
+                </div>
+                <div align="center" style="padding-top:5px;" class="remodal-bg">
+                    <!--<input type="button" class="btn btn_grn " value="Start" style="width:100px; padding-top:3px;" />-->
+                    <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Submit</a>
+                </div>
+            </div>
+            <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
                 <form role="form"> 
                     <div class="form-group"> 
-                        <input type="email" class="form-control  txt_" id="exampleInputEmail1" placeholder="Entrepreneur"> 
+                        <input type="email" class=" club_txt txt_font" id="exampleInputEmail1" placeholder="Entrepreneur"> 
                     </div>                     
                     <div class="form-group"> 
-                        <input type="password" class="form-control txt_" id="exampleInputPassword1" placeholder="Password"> 
+                        <input type="password" class=" club_txt txt_font" id="exampleInputPassword1" placeholder="Password"> 
                     </div>                     
-                    <button type="submit" class="btn">OPEN DAIRY</button>                     
+                    <div align="right" style="padding-right:5px;">
+                        <button type="submit" class="btn btn_grn" style="float:right;">OPEN DAIRY</button>                         
+                        <br>
+                        <br>
+                        <br>
+                        <a href="#"><span>Unable to login</span></a>
+                    </div>
                 </form>
             </div>
         </div>
-        <footer class="footer">
+        <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+            <div>
+                <h2 class="club_headers" style="text-align:center;">Sign up</h2>
+                <form role="form" style="font-size:14px;"> 
+                    <input type="text" class="club_txt" placeholder="Name" />
+                    <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <div style="margin-left:10px;margin-top:20px;">
+                        <span><select class="select_color" style="width:197px">
+                                <option>
+                                    <p style="color:#d8d8dd8;">Date</p>
+                                </option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select></span>
+                        <span><select class="select_color" style="width:197px">
+                                <option>
+                                    <small style="color:#d8d8dd8;">Month</small>
+                                </option>
+                                <option>Jan</option>
+                                <option>Feb</option>
+                                <option>Mar</option>
+                                <option>Apr</option>
+                                <option>May</option>
+                                <option>Jun</option>
+                                <option>Jul</option>
+                                <option>Aug</option>
+                                <option>Sep</option>
+                                <option>Oct</option>
+                                <option>Nov</option>
+                                <option>Dec</option>
+                            </select></span>
+                        <span><select class="select_color" style="width:197px">
+                                <option>
+                                    <small style="color:#d8d8dd8;">Year</small>
+                                </option>
+                                <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option>
+                                <option>2010</option>
+                                <option>2009</option>
+                                <option>2008</option>
+                                <option>2007</option>
+                                <option>2006</option>
+                            </select></span>
+                    </div>
+                    <input type="email" class="club_txt" placeholder="Email" />
+                    <input type="password" class="club_txt" placeholder="Password" />
+                    <input type="password" class="club_txt" placeholder="Verify" />
+                </form>
+            </div>
+            <br>
+            <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
+            <button data-remodal-action="confirm" class="btn btn_grn" style="width:67px;">Submit</button>
+        </div>
+        <footer class="footer" style="background-color:#afdf7c">
 </footer>
         <!-- /.container -->
         <!-- Bootstrap core JavaScript
@@ -1411,15 +1523,69 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
     afterInit: function(ps) {
         setTimeout(function() {
             ps._open(true);
-        }, 2000);
+        }, 2500);
     },
     afterShowPhoto: function(ps) {
         setTimeout(function() {
             ps._navigate('next');
-        }, 2000);
+        }, 2500);
     }
 }); 
 		</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>
+        <script src="assets/js/remodal.js"></script>
+        <!-- Events -->
+        <script>
+  $(document).on('opening', '.remodal', function () {
+    console.log('opening');
+  });
+
+  $(document).on('opened', '.remodal', function () {
+    console.log('opened');
+  });
+
+  $(document).on('closing', '.remodal', function (e) {
+    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('closed', '.remodal', function (e) {
+    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('confirmation', '.remodal', function () {
+    console.log('confirmation');
+  });
+
+  $(document).on('cancellation', '.remodal', function () {
+    console.log('cancellation');
+  });
+
+//  Usage:
+//  $(function() {
+//
+//    // In this case the initialization function returns the already created instance
+//    var inst = $('[data-remodal-id=modal]').remodal();
+//
+//    inst.open();
+//    inst.close();
+//    inst.getState();
+//    inst.destroy();
+//  });
+
+  //  The second way to initialize:
+  $('[data-remodal-id=modal2]').remodal({
+    modifier: 'with-red-theme'
+  });
+</script>
+        <script>
+        flatpickr(".selector", {}); // [Flatpickr, Flatpickr, ...]
+document.getElementById("myID").flatpickr(config); // Flatpickr
+let calendar = new Flatpickr(element, config); // Flatpickr
+
+// jQuery
+$(".selector").flatpickr({});
+        </script>
         <!-- <script type="text/javascript">
 
   var _gaq = _gaq || [];

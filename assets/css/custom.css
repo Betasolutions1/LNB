@@ -663,13 +663,36 @@ ul
 {
     background: url("assets/css/118738.png") no-repeat left center;
     height: 35px;
-    border:0px;
+    border: 0px;
     border-bottom: 1px solid #afdf7c;
     width: 250px;
     -moz-appearance: none;
     -webkit-appearance: none;
     border-radius: 0px;
-    
+}
+
+.profile_left_navbar
+{
+}
+
+.profile_l_n_personal
+{
+    text-align: right;
+    font-family: lato-regular;
+    color: #a9a9a9;
+    padding: 0px;
+    border-bottom: 1px dashed #afdf7c;
+}
+
+.p_r_box
+{
+    text-align: left;
+    font-family: lato-regular;
+    color: #a9a9a9;
+    padding: 0px;
+    border-bottom: 1px dashed #afdf7c;
+    overflow-y:scroll;
+    height: 137px;
 }
 
 

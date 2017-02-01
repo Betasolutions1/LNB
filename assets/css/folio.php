@@ -22,7 +22,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
 .folio_wrk
 {
     height: 100px;
-    background-image: url("../../images/post/folio_cover_2.jpg");
+    
     background-attachment: fixed;
     background-position: top;
     background-repeat: no-repeat;

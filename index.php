@@ -177,7 +177,7 @@ $usr_dis=mysqli_fetch_array($user_det);
 $get_user_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
 $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
 $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
-$fet_pes=mysqli_fetch_array($user_personal_dets_exe);
+$fet_info=mysqli_fetch_array($user_personal_dets_exe);
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -341,7 +341,7 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                      <?php include 'Dairy_files/noted.php';?>
                                 </div>
                                 <div class="tab-pane" id="tab5">
-                                    <p>Tab 5 content goes here...</p>
+                                   <?php include 'Dairy_files/ankitha.php';?>
                                 </div>
                             </div>
                         </div>
@@ -660,13 +660,45 @@ function remove_club(club_rm_id)
 		return false;
 }
 
+//Add Projects--
+
+function add_work_projects()
+{
+	alert('hello');
+	 var project_name  = document.getElementById("project_name").value;
+    var project_desc = document.getElementById("project_desc").value;
+	var project_image = document.getElementById("project_image").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'project_name=' + project_name + '&project_desc=' + project_desc + '&project_image=' +project_image ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("project_name").value='';
+					document.getElementById("project_desc").value='';
+					document.getElementById("project_image").value='';
+					
+                    }
+                    });
+               
+        return false;
+	
+}
+
 </script>
 
 
         <!--Bookmark End-->
         <!--Get club member Suggestions-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
-</script>
+       <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>-->
 <script type="text/javascript">
 function Get_clb_user_sugg(str)
 {

@@ -240,6 +240,32 @@ if(isset($_POST['club_rm_id']))
 	}
 }
 
+//Add user projects---
+
+if(isset($_POST['project_name']))
+{
+	
+	if(isset($_POST['project_image']))
+	{
+		$get_cu_pjs=mysqli_query($conn,"select * from work_projects where user_id='$_SESSION[id]'");
+		$pj_cu=mysqli_num_rows($get_cu_pjs);
+		$pj=$pj_cu+1;
+		
+		
+		$img_name_.$pj=$_FILES['project_image']['name'];
+    	$img_tmp_name=$_FILES['project_image']['tmp_name'];
+    	$prod_img_path=$img_name_.$pj;
+    	move_uploaded_file($img_tmp_name,"fb_users/".$_SESSION['Gender']."/".$_SESSION['Email']."/Projects/".$prod_img_path);
+		
+		$ins_prjs=mysqli_query($conn,"INSERT INTO `work_projects`( `user_id`, `work_title`, `work_description`, `work_image`) VALUES ('$_SESSION[id]','$_POST[project_name]','$_POST[project_desc]','$prod_img_path')");
+	} 
+	
+	
+	
+	
+	//$ins_prjs=mysqli_query($conn,"INSERT INTO `work_projects`( `user_id`, `work_title`, `work_description`, `work_image`) VALUES ('$_SESSION[id]','$_POST[project_name]','$_POST[project_desc]','$prod_img_path')");
+}
+
 ?>
 
 

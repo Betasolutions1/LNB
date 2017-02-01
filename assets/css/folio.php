@@ -12,7 +12,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
 .parallax_folio
 {
     height: 250px;
-    background-image: url("../../fb_users/<?php echo $_SESSION['Gender'];?>/<?php echo $_SESSION['Email'];?>/Cover/<?php echo $cvpic['image'];?>");
+   
     background-attachment: fixed;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -66,4 +66,5 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
 }
 
 
-
+ <?php /*?>background-image: url("../../fb_users/<?php echo $_SESSION['Gender'];?>/<?php echo $_SESSION['Email'];?>/Cover/<?php echo $cvpic['image'];?>");
+<?php */?>

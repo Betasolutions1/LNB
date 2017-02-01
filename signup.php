@@ -54,7 +54,33 @@ if(isset($_POST['login']))
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+        <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
         <script src="js/modernizr.min.js"></script>
+        <link rel="stylesheet" href="assets/css/remodal.css">
+        <link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+        <style>
+            .remodal-bg.with-red-theme.remodal-is-opening,
+            .remodal-bg.with-red-theme.remodal-is-opened {
+            filter: none;
+            }
+            .remodal-overlay.with-red-theme {
+            background-color: #f44336;
+            }
+            .remodal.with-red-theme {
+            background: #fff;
+            }
+
+</style>
         <style type="text/css">
             .photostack-perspective
             {
@@ -113,19 +139,21 @@ if(isset($_POST['login']))
             {
             margin-top: 30px;
             width: 40%;
-            height: 200px;
+            height: 210px;
             margin-left: 60px;
             margin-right: 60px;
             position: relative;
+            color:#fff;
             }
             .txt
             {
             }
             .txt_
             {
-            border:3px #000 !important;
+            border: 3px #000 !important;
             border-bottom: 3px #000;
             }
+
 </style>
         <!--<script>
 	  $(document).ready( function() {
@@ -441,170 +469,1055 @@ if(isset($_POST['login']))
         </section>
         <section id="photostack-3" class="photostack paper">
             <div>
-                <figure>
-                    <a href="http://goo.gl/NJ1Dhf" class="photostack-img">
-                        <img src="img/5.jpg" alt="img05" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Speed Racer</h2>
-                        <div class="photostack-back">
-                            <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Wouldn't you like to get away? Sometimes you want to go where everybody knows <span>the</span> your name. And they're always glad you came! </p>
+            <?php
+            $sinyy_exe=mysqli_query($conn,"select * from users");
+			while($sunny=mysqli_fetch_array($sinyy_exe))
+			{
+			?>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> <?php echo $sunny['industry'];?></span>
+                                <br>
+                                <span style="color:#d3d3d3;"><?php echo $sunny['Name'];?></span>
+                                <br>
+                                <span style="color:#d3d3d3;"><?php echo $sunny['designation'];?></span>
+                                <br>
+                                <span style="color:#d3d3d3;"><?php echo $sunny['company'];?></span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/fhwlSP" class="photostack-img">
-                        <img src="img/2.jpg" alt="img02" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Happy Days</h2>
-                        <div class="photostack-back">
-                            <p>These Happy Days are yours and mine Happy Days. It's a beautiful day in this neighborhood a beautiful day for a neighbor. Would you be mine?</p>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
                         </div>
-                    </figcaption>
+                    </div>
                 </figure>
-                <figure>
-                    <a href="http://goo.gl/Jmvr4u" class="photostack-img">
-                        <img src="img/3.jpg" alt="img03" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Beautywood</h2>
-                        <div class="photostack-back">
-                            <p>It's a neighborly day in this beautywood a neighborly day for a beauty. Would you be mine? Could you be mine. Now the world don't move to the beat of just one drum.</p>
+                <?php
+			}
+				?>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/Qw3ND4" class="photostack-img">
-                        <img src="img/1.jpg" alt="img01" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Serenity Beach</h2>
-                        <div class="photostack-back">
-                            <p>I have never been to a place so serene in my entire life before. Swimming in clear waters opened my mind to nature and reminded me of my and <span>eveybody</span> everybody else's mortality.</p>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
                         </div>
-                    </figcaption>
+                    </div>
                 </figure>
-                <figure>
-                    <a href="http://goo.gl/49lN3k" class="photostack-img">
-                        <img src="img/4.jpg" alt="img04" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Heaven of time</h2>
-                        <div class="photostack-back">
-                            <p>What might be right for you may not be right for some. And we know Flipper lives in a world full of wonder flying there-under under the sea.</p>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/Ms7VDl" class="photostack-img">
-                        <img src="img/6.jpg" alt="img06" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Forever this</h2>
-                        <div class="photostack-back">
-                            <p>Fish don't fry in the kitchen and beans don't burn on the grill. Took a whole lotta tryin' just to get up that hill. Baby if you've ever wondered - wondered whatever became of me. </p>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
                         </div>
-                    </figcaption>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/7.jpg" alt="img07" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Lovely Green</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/8.jpg" alt="img08" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Wonderful</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/9.jpg" alt="img09" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Love Addict</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/10.jpg" alt="img10" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Friendship</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/11.jpg" alt="img11" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">White Nights</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/12.jpg" alt="img12" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Serendipity</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/13.jpg" alt="img13" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Pure Soul</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/14.jpg" alt="img14" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Winds of Peace</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/15.jpg" alt="img15" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Shades of blue</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/16.jpg" alt="img16" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Lightness</h2>
-                    </figcaption>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
                 </figure>
             </div>
         </section>
-        <div class="container-fluid  hgt_signup" align="center" style=" text-align:center;">
-            <div class="col-lg-6 jumbotron su_div_pad">
-</div>
-            <div class="col-lg-6 jumbotron su_div_pad">
+        <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
+            <div class="col-lg-6  su_div_pad col-md-6 " id="tape" style="background-color:#d8d8d8; margin-bottom:50px;  color: #fff;">
+                <h3 style="margin-top: 0px !important;margin-bottom:0px !important; padding-top:0px;">
+        NEW TO LNB</h3>
+                <h5 style="margin-top:5px !important; margin-bottom:5px !important;">
+        Create account and write your dairy</h5>
+                <h5 style="font-weight:bold; margin-top:5px !important;margin-bottom:5px !important;" style="height:50px;">
+        LNB helps you to record your Business journey every moment and connecting business</h5>
+                <div class="row">
+                    <div class="col-lg-6" align="right;">
+                        <h4 style="margin-top:0px;margin-bottom:0px; text-align:right">
+                Network  </h4>
+                        <h4 style="margin-top:0px;margin-bottom:0px;text-align:right">
+                Share  </h4>
+                        <h4 style="margin-top:0px;margin-bottom:0px;text-align:right">
+                Read  </h4>
+                    </div>
+                    <div class="col-lg-6" style="border-left:2px solid #fff; height:50px;" align="left">
+                        <h2 style="padding:0px;margin:0px; margin-top:5px;">
+              Business</h2> 
+                    </div>
+                </div>
+                <div align="center" style="padding-top:5px;" class="remodal-bg">
+                    <!--<input type="button" class="btn btn_grn " value="Start" style="width:100px; padding-top:3px;" />-->
+                    <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Submit</a>
+                </div>
+            </div>
+            <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
                 <form role="form" method="post" action=""> 
                     <div class="form-group"> 
-                        <input type="email" class="form-control  txt_" name="email" id="exampleInputEmail1" placeholder="Entrepreneur"> 
+                        <input type="email" class=" club_txt txt_font" name="email" id="exampleInputEmail1" placeholder="Entrepreneur"> 
                     </div>                     
                     <div class="form-group"> 
-                        <input type="password" class="form-control txt_" name="pwd" id="exampleInputPassword1" placeholder="Password"> 
+                        <input type="password" class=" club_txt txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password"> 
                     </div>                     
-                    <button type="submit" name="login" class="btn">OPEN DAIRY</button>                     
+                    <div align="right" style="padding-right:5px;">
+                        <button type="submit" name="login" class="btn btn_grn" style="float:right;">OPEN DAIRY</button>                         
+                        <br>
+                        <br>
+                        <br>
+                        <a href="#"><span>Unable to login</span></a>
+                    </div>
                 </form>
             </div>
         </div>
-        <footer class="footer">
+        <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+            <div>
+                <h2 class="club_headers" style="text-align:center;">Sign up</h2>
+                <form role="form" style="font-size:14px;"> 
+                    <input type="text" class="club_txt" placeholder="Name" />
+                    <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <div style="margin-left:10px;margin-top:20px;">
+                        <span><select class="select_color" style="width:197px">
+                                <option>
+                                    <p style="color:#d8d8dd8;">Date</p>
+                                </option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select></span>
+                        <span><select class="select_color" style="width:197px">
+                                <option>
+                                    <small style="color:#d8d8dd8;">Month</small>
+                                </option>
+                                <option>Jan</option>
+                                <option>Feb</option>
+                                <option>Mar</option>
+                                <option>Apr</option>
+                                <option>May</option>
+                                <option>Jun</option>
+                                <option>Jul</option>
+                                <option>Aug</option>
+                                <option>Sep</option>
+                                <option>Oct</option>
+                                <option>Nov</option>
+                                <option>Dec</option>
+                            </select></span>
+                        <span><select class="select_color" style="width:197px">
+                                <option>
+                                    <small style="color:#d8d8dd8;">Year</small>
+                                </option>
+                                <option>2017</option>
+                                <option>2016</option>
+                                <option>2015</option>
+                                <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option>
+                                <option>2010</option>
+                                <option>2009</option>
+                                <option>2008</option>
+                                <option>2007</option>
+                                <option>2006</option>
+                            </select></span>
+                    </div>
+                    <input type="email" class="club_txt" placeholder="Email" />
+                    <input type="password" class="club_txt" placeholder="Password" />
+                    <input type="password" class="club_txt" placeholder="Verify" />
+                </form>
+            </div>
+            <br>
+            <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
+            <button data-remodal-action="confirm" class="btn btn_grn" style="width:67px;">Submit</button>
+        </div>
+        <footer class="footer" style="background-color:#afdf7c">
 </footer>
         <!-- /.container -->
         <!-- Bootstrap core JavaScript
@@ -634,6 +1547,75 @@ if(isset($_POST['login']))
                     //console.log(item)
                 }
             } );
+        </script>
+        <script>
+			new Photostack( document.getElementById( 'photostack-3' ), {
+  // any other options here,
+    afterInit: function(ps) {
+        setTimeout(function() {
+            ps._open(true);
+        }, 2500);
+    },
+    afterShowPhoto: function(ps) {
+        setTimeout(function() {
+            ps._navigate('next');
+        }, 2500);
+    }
+}); 
+		</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>
+        <script src="assets/js/remodal.js"></script>
+        <!-- Events -->
+        <script>
+  $(document).on('opening', '.remodal', function () {
+    console.log('opening');
+  });
+
+  $(document).on('opened', '.remodal', function () {
+    console.log('opened');
+  });
+
+  $(document).on('closing', '.remodal', function (e) {
+    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('closed', '.remodal', function (e) {
+    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('confirmation', '.remodal', function () {
+    console.log('confirmation');
+  });
+
+  $(document).on('cancellation', '.remodal', function () {
+    console.log('cancellation');
+  });
+
+//  Usage:
+//  $(function() {
+//
+//    // In this case the initialization function returns the already created instance
+//    var inst = $('[data-remodal-id=modal]').remodal();
+//
+//    inst.open();
+//    inst.close();
+//    inst.getState();
+//    inst.destroy();
+//  });
+
+  //  The second way to initialize:
+  $('[data-remodal-id=modal2]').remodal({
+    modifier: 'with-red-theme'
+  });
+</script>
+        <script>
+        flatpickr(".selector", {}); // [Flatpickr, Flatpickr, ...]
+document.getElementById("myID").flatpickr(config); // Flatpickr
+let calendar = new Flatpickr(element, config); // Flatpickr
+
+// jQuery
+$(".selector").flatpickr({});
         </script>
         <!-- <script type="text/javascript">
 

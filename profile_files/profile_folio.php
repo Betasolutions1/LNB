@@ -1,10 +1,10 @@
  <div class="pst_main_background" style="background-color:#fff;">
  <?php
- $cover_pic_exe=mysqli_query($conn,"select * from user_cover_pic where user_id='$_SESSION[id]'");
-$cvpic=mysqli_fetch_array($cover_pic_exe);
+ $candy_cv_pic_exe=mysqli_query($conn,"select * from user_cover_pic where user_id='$_GET[id]'");
+ $candy_cvpic=mysqli_fetch_array($candy_cv_pic_exe);
  ?>
                                 <div class="pst_box">
-                                    <div class="parallax_folio" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Cover/<?php echo $cvpic['image'];?>');">
+                                    <div class="parallax_folio" style="background-image: url('fb_users/<?php echo $candy['Gender'];?>/<?php echo $candy['Email'];?>/Cover/<?php echo $candy_cvpic['image'];?>');">
                                    
                                     </div>
                                     <br>
@@ -15,7 +15,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                       <h4 style="color:#afdf7c;">
     WHO I AM <span class="icon" ><a href="#folio" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
     <?php
-	$folio_desc=mysqli_query($conn,"select * from folio where user_id='$_SESSION[id]'");
+	$folio_desc=mysqli_query($conn,"select * from folio where user_id='$_GET[id]'");
 	$fo_des=mysqli_fetch_array($folio_desc);
 	?>
                                         <P style="color:#d3d3d3">
@@ -41,12 +41,12 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                     </div>
                                     <div> 
                                     <?php 
-									$get_wpjs=mysqli_query($conn,"select * from work_projects where user_id='$_SESSION[id]'");
+									$get_wpjs=mysqli_query($conn,"select * from work_projects where user_id='$_GET[id]'");
 									while($fol_wrks=mysqli_fetch_array($get_wpjs))
 									{
 									?>
                                      <a href="#popup_work_<?php echo $fol_wrks['work_id'];?>">
-                                        <div class="folio_wrk" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>');">
+                                        <div class="folio_wrk" style="background-image: url('fb_users/<?php echo $candy['Gender'];?>/<?php echo $candy['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>');">
                                             <div align="center" style="color:#fff; height:100px; padding-top:20px;">
                                                 <h3> <?php echo $fol_wrks['work_title'];?></h3>
                                             </div>
@@ -69,7 +69,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
   
   </div>
   <div class="col-lg-6">
-  <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>" style="min-height:250px;max-height:250px;min-width:250px;max-width:250px;"/>
+  <img src="fb_users/<?php echo $candy['Gender'];?>/<?php echo $candy['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>" style="min-height:250px;max-height:250px;min-width:250px;max-width:250px;"/>
   </div>
    
   </div>

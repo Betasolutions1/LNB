@@ -241,7 +241,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tab7">
-                                    <p>Tab 2 content goes here...</p>
+                                    <p><?php include 'workspace/space.php';?></p>
                                 </div>
                             </div>
                         </div>
@@ -684,6 +684,37 @@ function add_work_projects()
 					document.getElementById("project_name").value='';
 					document.getElementById("project_desc").value='';
 					document.getElementById("project_image").value='';
+					
+                    }
+                    });
+               
+        return false;
+	
+}
+
+//---space discussions-----
+
+function space_disscussion()
+{
+	//alert('hello');
+	 var dis_company  = document.getElementById("dis_company").value;
+    var disscussion_topic = document.getElementById("disscussion_topic").value;
+	
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'disscussion_topic=' + disscussion_topic +'&dis_company=' +dis_company;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("disscussion_topic").value='';
+					
 					
                     }
                     });

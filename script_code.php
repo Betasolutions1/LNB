@@ -266,6 +266,13 @@ if(isset($_POST['project_name']))
 	//$ins_prjs=mysqli_query($conn,"INSERT INTO `work_projects`( `user_id`, `work_title`, `work_description`, `work_image`) VALUES ('$_SESSION[id]','$_POST[project_name]','$_POST[project_desc]','$prod_img_path')");
 }
 
+//---Company Discussion---
+
+if(isset($_POST['disscussion_topic']))
+{
+	$ins_dissc=mysqli_query($conn,"INSERT INTO `company_discussions`( `user_id`,`company`, `discussion_txt`) VALUES ('$_SESSION[id]','$_POST[dis_company]','$_POST[disscussion_topic]')");
+}
+
 ?>
 
 

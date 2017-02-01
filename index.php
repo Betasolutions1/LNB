@@ -24,6 +24,8 @@ if(!$_SESSION['Email'])
         <link href="starter-template.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/custom.css">
+        <?php //include 'assets/css/folio.php';?>
+         <link rel="stylesheet" href="assets/css/folio.php">
         <link href="//db.onlinewebfonts.com/c/93c4327f0457b01d13b376849536395d?family=Stencil+Std" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -270,7 +272,7 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                             <a href="#tab12" data-toggle="tab"><i class="fa fa-pencil"></i> Settings</a>
                                         </li>   
                                         
-                                         <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out"></i></a>
+                                         <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
                                         
                                                                               
                                     </ul>
@@ -344,8 +346,8 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                             </div>
                         </div>
                         <div class="tab-pane" id="folio-vr">
-                            folio
-</div>
+                            <?php include 'folio_files/folio.php';?>
+						</div>
                         <div class="tab-pane" id="hub-vr">
                             hub
 </div>

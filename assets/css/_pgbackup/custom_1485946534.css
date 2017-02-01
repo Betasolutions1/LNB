@@ -604,35 +604,10 @@ ul
 }
 .icon:hover
 {
-
+<<<<<<< HEAD
 	color:#d3d3d3;
 }
-.cf_card
-{
-    width: 289px;
-    height: 150px;
-    padding-left: 0px;
-    padding-right: 0px;
-    border: 1px dashed #afdf7c;
-    margin: 3px;
-}
-
-.cf_card:hover
-{
-    border-radius: 7px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: opacity 0.3s ease-in-out;
-}
-
-.cf_block_height
-{
-    height: 800px;
-    width: 599px;
-    overflow-y: scroll;
-}
-
-.su_card_shadow
-{
+=======
     border-radius: 7px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
@@ -647,6 +622,7 @@ ul
     font-family: lato;
     font-size: 14px;
 }
+
 /*-------------------------------scotch tape---------------------------------*/
 
 #tape:before, #tape:after

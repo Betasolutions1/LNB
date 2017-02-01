@@ -24,6 +24,8 @@ if(!$_SESSION['Email'])
         <link href="starter-template.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/custom.css">
+        <?php //include 'assets/css/folio.php';?>
+         <link rel="stylesheet" href="assets/css/folio.php">
         <link href="//db.onlinewebfonts.com/c/93c4327f0457b01d13b376849536395d?family=Stencil+Std" rel="stylesheet" type="text/css" />
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -268,8 +270,13 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                         </li>                                         
                                         <li>
                                             <a href="#tab12" data-toggle="tab"><i class="fa fa-pencil"></i> Settings</a>
-                                        </li>                                         
+                                        </li>   
+                                        
+                                         <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
+                                        
+                                                                              
                                     </ul>
+                                   
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab8">
                                         <!--club sheet-->
@@ -283,10 +290,10 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                            <?php include 'club_files/suggestions.php';?>
                                         </div>
                                         <div class="tab-pane" id="tab11">
-                                            <p>Tab 4 content goes here...</p>
+                                           <?php include 'club_files/tags.php';?>
                                         </div>
                                         <div class="tab-pane" id="tab12">
-                                            <p>Tab 5 content goes here...</p>
+                                            <?php include 'club_files/club_settings.php';?>
                                         </div>
                                     </div>
                                 </div>
@@ -317,39 +324,7 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                                 <div class="tab-pane active" id="tab1">
                                     <div class="pst_main_background">
                                         <br>
-                                        <div style="background-color:#fff" class="shdw">
-                                            <div class="media  bg" style="background:#afdf7c"> 
-                                                <a href="" class="pull-left">
-                                                    <img src="../assets/images/people/50/15.jpg" width="50" class="media-object">
-                                                </a>                                                 
-                                                <div class="media-body innerTB half bg" style="padding-top:4px;"> 
-                                                    <a href="#" class="pull-right innerT innerR text-white"> </a> 
-                                                    <a href="" class="text-white strong display-block">RAJESH</a> 
-                                                    <br>
-                                                    <span style="color:#fff;">CEO</span> 
-                                                    <span style="color:#fff;">-</span>
-                                                    <span style="color:#fff;">Beta Solutions</span>
-                                                </div>                                                 
-                                            </div>
-                                            <br style="height:2px;">
-                                            <div class="input-group comment"> 
-                                                <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                <textarea class="span12 form-control" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
-                                            </div>
-                                            <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; ">
-                                                <button type="button" class="btn btn-success navbar-btn">
-                                                    WRITE
-</button>
-                                                <button type="button" class="btn btn-success navbar-btn">
-                                                    SCHEDULE
-</button>
-                                                <button type="button" class="btn btn-success navbar-btn">
-                                                    DUST
-</button>
-                                            </div>
-                                        </div>
-                                        <!--<hr class="style5">-->
-                                        <br /> 
+                                       
                                         
                                         <?php include 'Dairy_files/news_feed.php';?>
                                         
@@ -371,8 +346,8 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
                             </div>
                         </div>
                         <div class="tab-pane" id="folio-vr">
-                            folio
-</div>
+                            <?php include 'folio_files/folio.php';?>
+						</div>
                         <div class="tab-pane" id="hub-vr">
                             hub
 </div>
@@ -424,7 +399,7 @@ $fet_pes=mysqli_fetch_array($user_personal_dets_exe);
          
         <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
         <script src="js/index.js"></script>
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!--Bookmark Begin-->
          <script>
 function like(lpost_id,luser_id) {
@@ -567,10 +542,158 @@ function inse_msg() {
         return false;
 }
 
+//-----Tags begin
+
+function add_refrals()
+{
+	var club_memb  = document.getElementById("club_memb").value;
+    var tag_title = document.getElementById("tag_title").value;
+	var vendor_name = document.getElementById("vendor_name").value;
+	var vendor_phone = document.getElementById("vendor_phone").value;
+    var vendor_email = document.getElementById("vendor_email").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'club_memb=' + club_memb + '&tag_title=' + tag_title + '&vendor_name=' +vendor_name+ '&vendor_phone=' +vendor_phone+ '&vendor_email=' +vendor_email;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("tag_title").value='';
+					document.getElementById("vendor_name").value='';
+					document.getElementById("vendor_phone").value='';
+					document.getElementById("vendor_email").value='';
+                    }
+                    });
+               
+        return false;
+}
+
+//--accept tags
+
+function acc_tags(accref_id,accwhom_id)
+{
+	var dataString= 'accref_id='+accref_id+ '&accwhom_id=' +accwhom_id;
+	 $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					//document.getElementById("suggest_me_to").value='';
+                    }
+                    });
+					
+		return false;
+}
+
+function reje_tags(rejref_id,rejwhom_id)
+{
+	var dataString= 'rejref_id='+rejref_id+ '&rejwhom_id=' +rejwhom_id;
+	 $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					//document.getElementById("suggest_me_to").value='';
+                    }
+                    });
+					
+		return false;
+}
+
+//---Change pwd form Club--
+function change_pwd()
+{
+	//alert('hello');
+	 var old_pwd  = document.getElementById("old_pwd").value;
+    var new_password = document.getElementById("new_password").value;
+	var re_password = document.getElementById("re_password").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'old_pwd=' + old_pwd + '&new_password=' + new_password + '&re_password=' +re_password ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("new_password").value='';
+					document.getElementById("old_pwd").value='';
+					document.getElementById("re_password").value='';
+					
+                    }
+                    });
+               
+        return false;
+	
+}
+
+//--remove Club--
+
+function remove_club(club_rm_id)
+{
+	var dataString= 'club_rm_id='+club_rm_id;
+	 $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					//document.getElementById("suggest_me_to").value='';
+                    }
+                    });
+					
+		return false;
+}
+
 </script>
 
 
         <!--Bookmark End-->
+        <!--Get club member Suggestions-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+function Get_clb_user_sugg(str)
+{
+	
+if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+xmlhttp.open("GET","club_user_sugg.php?q="+str,true);
+xmlhttp.send();
+}
+</script>
+        
+        <!--End Suggestions-->
+        
+        
         
     </body>
 </html>

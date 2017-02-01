@@ -1,3 +1,39 @@
+  <div style="background-color:#fff" class="shdw">
+                                            <div class="media  bg" style="background:#afdf7c"> 
+                                                <a href="" class="pull-left">
+                                                    <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" class="media-object">
+                                                </a>                                                 
+                                                <div class="media-body innerTB half bg" style="padding-top:4px;"> 
+                                                    <a href="#" class="pull-right innerT innerR text-white"> </a> 
+                                                    <a href="" class="text-white strong display-block"><?php echo $usr_dis['Name']?></a> 
+                                                    <br>
+                                                    <span style="color:#fff;"><?php echo $usr_dis['designation'];?></span> 
+                                                    <span style="color:#fff;">-</span>
+                                                    <span style="color:#fff;"><?php echo $usr_dis['company'];?></span>
+                                                </div>                                                 
+                                            </div>
+                                            <br style="height:2px;">
+                                            <form method="post" action="script_code.php">
+                                            <div class="input-group comment"> 
+                                                <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
+                                                <textarea style="resize:none" class="span12 form-control" name="post_data" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
+                                            </div>
+                                            <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; ">
+                                                <button type="submit" name="sub_post" class="btn btn-success navbar-btn">
+                                                    WRITE
+</button>
+                                                <button type="button" class="btn btn-success navbar-btn">
+                                                    SCHEDULE
+</button>
+                                                <button type="button" class="btn btn-success navbar-btn">
+                                                    DUST
+</button>
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <!--<hr class="style5">-->
+                                        <br />
+
 <div class="bg_pst">
 
                                             <?php /*?><div class="pst_box" style="background-color:#fff;">
@@ -55,7 +91,7 @@
                                                 </div>
                                             </div><?php */?>
                                             <?php
-				$retpe=mysqli_query($conn,"select * from user_post");
+				$retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 				while($resp=mysqli_fetch_array($retpe))
 				{
 					$pue=mysqli_query($conn,"select * from users where user_id='$resp[user_id]'");
@@ -181,58 +217,5 @@
 				}
 											?>
                                             
-                                            <div class="pst_box" style="background-color:#fff;">
-                                                <div class="pst_head">
-                                                    <div class="row pst_row_fill" style="">
-                                                        <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/6.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-8 pst_head_txt">
-                                                            <a href="#" class="text_wht">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos text_wht">CEO-Beta Solutions</span>
-                                                            <br>
-                                                            <span class="text_wht">IT-Industry</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="pst_body">
-                                                    <p style="margin-top:10px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, pariatur!</p> 
-                                                    <span style="font-size:10px;"> - on 15th January, 2014</span>
-                                                </div>
-                                                <div class="pst_cmt">
-                                                    <div class="pst_cmt_tog pst_cmt_pad">
-                                                        <!--comment toggle-->
-                                                        <i></i>
-                                                        <a href="#"><span style="margin-left:10px;">View Comments</span></a>
-                                                        <span class="pst_cmt_muted">+2 writes</span>
-                                                    </div>
-                                                    <div class="row  pst_cmt_body">
-                                                        <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/1.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
-                                                            <br>
-                                                            <div style="margin-left:10px;">CONGRATS STEVE</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pst_cmt_row"> 
-                                                        <div class="col-lg-10 pst_cmt_pad">
-                                                            <input type="text" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write..."> 
-                                                        </div>
-                                                        <div class="col-lg-2 pst_cmt_c1">
-                                                            <button type="button" class="btn btn-primary" href="#" style="background:#afdf7c; ">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>                                                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
                                         </div>

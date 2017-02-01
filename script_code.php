@@ -4,7 +4,7 @@ session_start();
 if(isset($_POST['sub_post']))
 {
 	echo "<script>alert('insertion Fail')<script>";
-	$ins_post=mysqli_query($conn,"insert into user_post(`user_id`,`post_txt`,`priority`)values('".$_SESSION['id']."','".$_POST['post_data']."','".$_POST['post_priority']."')");
+	$ins_post=mysqli_query($conn,"insert into user_post(`user_id`,`post_txt`)values('".$_SESSION['id']."','".$_POST['post_data']."')");
 	if($ins_post)
 	{
 		header("location:index.php");
@@ -116,6 +116,7 @@ if(isset($_POST['club_login']))
 	}else
 	{
 		echo "<script>alert('Please Enter valid details')</script>";
+		header("location:index.php");
 	}
 }
 
@@ -164,6 +165,78 @@ if(isset($_POST['msg_user_id']))
 	if($_POST['chat_txt']!='')
 	{
 		$ins_grp_msg=mysqli_query($conn,"INSERT INTO `group_chat`( `user_id`, `chat_txt`, `time`) VALUES ('$_POST[msg_user_id]','$_POST[chat_txt]','$_POST[msg_time_date]')");
+	}
+}
+
+//------add tags-------
+if(isset($_POST['add_refrals']))
+{
+	$ins_tags=mysqli_query($conn,"INSERT INTO `tbl_reference`( `club_id`, `who_user_id`, `to_whom_user_id`, `for_what`, `vendor_name`, `vendor_phone`, `vendor_email`) VALUES ('$_SESSION[club_id]','$_SESSION[id]','$_POST[club_memb]','$_POST[tag_title]','$_POST[vendor_name]','$_POST[vendor_phone]','$_POST[vendor_email]')");
+	if($ins_tags)
+	{
+		header("location:index.php");
+	}
+}
+
+//accept tags--
+
+if(isset($_POST['accref_id']))
+{
+	$acc_tag=mysqli_query($conn,"update tbl_reference set status='1' where  refrence_id='".$_POST['accref_id']."'");
+	
+}
+//reject Refrel
+if(isset($_POST['rejref_id']))
+{
+	$acc_tag=mysqli_query($conn,"update tbl_reference set status='0' where  refrence_id='".$_POST['rejref_id']."'");
+	
+}
+
+//------------Change password from club-----
+
+
+if(isset($_POST['old_pwd']))
+{
+	if($_POST['new_password']==$_POST['re_password'])
+	{
+		//$cur_pwd=$_POST['cur_password'];
+		//$enc_pwd=base64_encode($cur_pwd);
+		$change_pwd=mysqli_query($conn,"select * from club_signup where user_id='$_SESSION[id]'");
+		$fet_pwd=mysqli_fetch_array($change_pwd);
+		if($_POST['old_pwd']==$fet_pwd['club_pwd'])
+		{
+			//$enc_new_pwd=base64_encode($_POST['new_password']);
+			$upda_pwd=mysqli_query($conn,"update club_signup set club_pwd='$_POST[new_password]' where user_id='$_SESSION[id]'");
+			if($upda_pwd)
+			{
+				echo "<script>alert('Password successfully  Updated ')</script>";
+				$_SESSION['club_user']='';
+				header("location:index.php");
+			}
+			else
+			{
+				echo "<script>alert('Password updation fail ')</script>";
+			}
+			
+		}
+		else
+		{
+			echo "<script>alert('Enter Password is wrong')</script>";
+		}
+	}
+	else
+	{
+		echo "<script>alert('Password doesnt match')</script>";
+	}
+}
+
+//---Remove from Club---
+if(isset($_POST['club_rm_id']))
+{
+	$remove_club=mysqli_query($conn,"delete from club_signup where user_id='$_POST[club_rm_id]'");
+	if($remove_club)
+	{
+		$_SESSION['club_id']='';
 	}
 }
 

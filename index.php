@@ -177,7 +177,7 @@ $usr_dis=mysqli_fetch_array($user_det);
 $get_user_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
 $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
 $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
-$fet_pes=mysqli_fetch_array($user_personal_dets_exe);
+$fet_info=mysqli_fetch_array($user_personal_dets_exe);
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">

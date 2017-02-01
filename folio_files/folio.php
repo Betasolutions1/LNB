@@ -41,7 +41,8 @@
 									while($fol_wrks=mysqli_fetch_array($get_wpjs))
 									{
 									?>
-                                     <a href="#popup_work_<?php echo $fol_wrks['work_id'];?>">   <div class="folio_wrk" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>');">
+                                     <a href="#popup_work_<?php echo $fol_wrks['work_id'];?>">
+                                        <div class="folio_wrk" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>');">
                                             <div align="center" style="color:#fff; height:100px; padding-top:20px;">
                                                 <h3> <?php echo $fol_wrks['work_title'];?></h3>
                                             </div>

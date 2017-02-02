@@ -103,7 +103,10 @@
                                                 <div class="pst_head">
                                                     <div class="row pst_row_fill" style="">
                                                         <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
+                                                        	<?php 
+															$ency=base64_encode('id=$resp[user_id]');
+															?>
+                                                            <a href="profile.php?<?php echo $ency ?>" class="pst_head_left">
                                                                 <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="70" style="margin-left:-15px;">
                                                             </a>
                                                         </div>

@@ -1,10 +1,10 @@
  <div class="pst_main_background" style="background-color:#fff;">
  <?php
- $cover_pic_exe=mysqli_query($conn,"select * from user_cover_pic where user_id='$_SESSION[id]'");
-$cvpic=mysqli_fetch_array($cover_pic_exe);
+ $candy_cv_pic_exe=mysqli_query($conn,"select * from user_cover_pic where user_id='$_GET[id]'");
+ $candy_cvpic=mysqli_fetch_array($candy_cv_pic_exe);
  ?>
                                 <div class="pst_box">
-                                    <div class="parallax_folio" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Cover/<?php echo $cvpic['image'];?>');">
+                                    <div class="parallax_folio" style="background-image: url('fb_users/<?php echo $candy['Gender'];?>/<?php echo $candy['Email'];?>/Cover/<?php echo $candy_cvpic['image'];?>');">
                                    
                                     </div>
                                     <br>
@@ -15,7 +15,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                       <h4 style="color:#afdf7c;">
     WHO I AM <span class="icon" ><a href="#folio" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
     <?php
-	$folio_desc=mysqli_query($conn,"select * from folio where user_id='$_SESSION[id]'");
+	$folio_desc=mysqli_query($conn,"select * from folio where user_id='$_GET[id]'");
 	$fo_des=mysqli_fetch_array($folio_desc);
 	?>
                                         <P style="color:#d3d3d3">
@@ -29,18 +29,8 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                     
                                     <br>
                                     <div style="border-bottom:1px solid #afdf7c; width:570px; margin-left:10px; margin-right:10px;">
-                                        <h4 style="color:#afdf7c;">SKILLS <span class="icon" ><a href="#skill" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
-                                        <br>
-    								 <?php
-        $us_sli_exe11=mysqli_query($conn,"select * from user_skills where user_id='$_SESSION[id]'");
-		while($uskil11=mysqli_fetch_array($us_sli_exe11))
-		{
-		?>
-                                                                    <button type="button" class="btn btn_grn" value="" style="height:30px; margin:5px;text-transform:uppercase;"><?php echo $uskil11['skill'];?></button>
-                                                                    <?php
-		}
-																	?>
-    
+                                        <h4 style="color:#afdf7c;">
+    SKILLS <span class="icon" ><a href="#skill" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
                                         <br>
                                     </div>
                                     <br>
@@ -51,12 +41,12 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                     </div>
                                     <div> 
                                     <?php 
-									$get_wpjs=mysqli_query($conn,"select * from work_projects where user_id='$_SESSION[id]'");
+									$get_wpjs=mysqli_query($conn,"select * from work_projects where user_id='$_GET[id]'");
 									while($fol_wrks=mysqli_fetch_array($get_wpjs))
 									{
 									?>
                                      <a href="#popup_work_<?php echo $fol_wrks['work_id'];?>">
-                                        <div class="folio_wrk" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>');">
+                                        <div class="folio_wrk" style="background-image: url('fb_users/<?php echo $candy['Gender'];?>/<?php echo $candy['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>');">
                                             <div align="center" style="color:#fff; height:100px; padding-top:20px;">
                                                 <h3> <?php echo $fol_wrks['work_title'];?></h3>
                                             </div>
@@ -79,7 +69,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
   
   </div>
   <div class="col-lg-6">
-  <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>" style="min-height:250px;max-height:250px;min-width:250px;max-width:250px;"/>
+  <img src="fb_users/<?php echo $candy['Gender'];?>/<?php echo $candy['Email'];?>/Projects/<?php echo $fol_wrks['work_image'];?>" style="min-height:250px;max-height:250px;min-width:250px;max-width:250px;"/>
   </div>
    
   </div>
@@ -128,7 +118,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
 	$foloi_exe=mysqli_query($conn,"select * from folio where user_id='$_SESSION[id]'");
 	$folio=mysqli_fetch_array($foloi_exe);
 	?>
-    <textarea cols="80" rows="3" style="resize:none" name="folio_desc" id="folio_desc"><?php echo $folio['description'];?></textarea>
+    <textarea cols="80" rows="3" style="resize:none"><?php echo $folio['description'];?></textarea>
   </div>
    
    
@@ -137,7 +127,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
   
   <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
   
-  <button type="submit"  onClick="add_folio_desc();"  class="remodal-confirm">ADD</button>
+  <button type="submit"  onClick="add_folio_desc();" data-remodal-action="confirm" class="remodal-confirm">ADD</button>
  
   </form>
  
@@ -196,7 +186,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                                         <textarea  class="form-control" rows="3" cols="80" name="project_desc" id="project_desc" placeholder="Project Description"> </textarea>
                                                     </div> 
                                                     <div class="form-group"> 
-                                                        <input type="file" class="form-control" name="file" id="file" placeholder="Give Ur Own Rating "> 
+                                                        <input type="file" class="form-control" name="project_image" id="project_image" placeholder="Give Ur Own Rating "> 
                                                     </div>                                                     
                                                                                                          
                                                    
@@ -209,7 +199,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
   
   <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
   
-  <button type="submit" name="add_work_projects"  class="remodal-confirm">ADD Projects</button>
+  <button type="submit" name="add_work_projects" onClick="add_work_projects();"  data-remodal-action="confirm" class="remodal-confirm">ADD Projects</button>
  
   </form>
  

@@ -1,15 +1,10 @@
 <?php
 error_reporting(0);
-include 'config.php';
-session_start();
-if(!$_SESSION['Email'])
-{
-	header("location:signup.php");
-}
-
-?>
-
-<!DOCTYPE html>
+include('config.php'); 
+        ?>
+        
+        
+ <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -254,7 +249,88 @@ function add_folio_desc()
         
              
     </head>
-    <body>
+<?php
+$user_info=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
+$get_phone=mysqli_fetch_array($user_info);
+if($get_phone['school']=='')
+{
+?>
+<!--popup body-->
+<body>
+<div>
+<link rel="stylesheet" href="popup/main.css">
+<?php /*?><div class="maintext">
+  <h2> jQuery Popup Plugin Basic Demo</h2>
+<div class="jquery-script-ads">
+<script type="text/javascript">
+<!--
+//google_ad_client = "ca-pub-2783044520727903";
+ //jQuery_demo 
+//google_ad_slot = "2780937993";
+//google_ad_width = 728;
+//google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+</div><?php */?>
+<div id="boxes">
+  <div style="top: 199.5px; left: 551.5px; display: none;" id="dialog" class="window"> 
+    <div id="lorem">
+      <form role="form" style="font-size:14px;" method="post" action="script_code.php"> 
+            <div>
+                <h2 class="club_headers" style="text-align:center;">About u</h2>
+                <input type="text" class="club_txt" name="about" placeholder="About You" />
+                    <input type="text" class="club_txt" placeholder="Schooling" name="school" />
+                   <!-- <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>-->
+                   
+                    <input type="text" class="club_txt" name="collage" placeholder="College" />
+                    <input type="text" class="club_txt" name="hometown" placeholder="Home Town" />
+                    <input type="text" class="club_txt" name="presentown" placeholder="Present Town" />
+                    
+                    
+                
+            </div>
+            <br>
+            <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
+            <button type="submit"  class="btn btn_grn" onClick="submit_stage1();" name="sub_stage2" style="width:67px;">Submit</button>
+            </form>
+    </div>
+    <!--<div id="popupfoot"> <a href="#" class="close agree">I agree</a> | <a class="agree"style="color:red;" href="http://www.cartoonnetwork.com/">I do not agree</a> </div>-->
+  </div>
+  <div style="width: 1478px; font-size: 32pt; color:white; height: 602px; display: none; opacity: 0.8;" id="mask"></div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> 
+<script src="popup/main.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</div>
+</body>
+<!--End popup body-->
+
+<?php
+}
+else{
+	
+?>
+
+<body>
     <?php
 $user_det=mysqli_query($conn,"select * from users where user_id='$_SESSION[id]'");
 $usr_dis=mysqli_fetch_array($user_det);
@@ -463,6 +539,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         </div>
                         <div class="col-lg-6">
                             <img class="b_s" src="../assets//images/Banner_1.jpg" style="width:200px; height:900px;" />
+
                         </div>
                     </div>
                     <!-- Widget -->
@@ -816,4 +893,7 @@ function space_disscussion()
         
         
     </body>
-</html>
+
+<?php
+}
+?>

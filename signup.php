@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+date_default_timezone_set('Asia/Kolkata');
 if(isset($_POST['login']))
 {
 	$log_sts=mysqli_query($conn,"select * from users where Email='$_POST[email]' AND Password='$_POST[pwd]'");
@@ -19,6 +20,56 @@ if(isset($_POST['login']))
 		echo "<script>alert('Invalid Credentials')</script>";
 	}
 }
+
+//signin stage 1
+
+if(isset($_POST['sub_stage1']))
+{
+	$check_email=mysqli_query($conn,"select * from users where Email='".$_POST['email']."'");
+	$chek_cou=mysqli_num_rows($check_email);
+	if($chek_cou==0)
+	{
+	if($_POST['pwd']==$_POST['con_pwd'])
+	{
+	$ins_s1=mysqli_query($conn,"INSERT INTO `users`(`Name`, `Email`, `Password`, `Gender`, `Birthday_Date`, `designation`, `company`, `industry`,`phone`) VALUES ('".$_POST['username']."','".$_POST['email']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['day'].$_POST['month'].$_POST['year']."','".$_POST['designation']."','".$_POST['company']."','".$_POST['industry']."','".$_POST['phone']."')");
+	
+	if($ins_s1)
+	{
+		
+		$path = "fb_users/".$_POST['gender']."/".$_POST['email']."/Profile/";
+		$path2 ="fb_users/".$_POST['gender']."/".$_POST['email']."/Post/";
+		$path3 ="fb_users/".$_POST['gender']."/".$_POST['email']."/Cover/";
+		$path4="fb_users/".$_POST['gender']."/".$_POST['email']."/Projects/";
+		mkdir($path, 0, true);
+		mkdir($path2, 0, true);
+		mkdir($path3, 0, true);
+		mkdir($path4, 0, true);
+		
+	$last_user=mysqli_insert_id($conn);
+	$ins_use_info=mysqli_query($conn,"insert into user_info (user_id,mobile_no,Email)values('$last_user','$_POST[phone]','$_POST[email]')");
+	$in_se_q=mysqli_query($conn,"insert into user_secret_quotes (user_id) values('$last_user')");
+	$ins_folio=mysqli_query($conn,"insert into folio (user_id)values('$last_user')");
+	
+	
+	echo "<script>alert('Successfully Registered Please Be login')</script>";
+	}
+	else
+	{
+		echo "<script>alert(' Registration Fail')</script>";
+	}
+	
+	
+	//header("location:signup2.php?id=$id");
+	}else
+	{
+		echo "<script>alert('Chech Ur verify Password')</script>";
+	}
+	}else
+	{
+		echo "<script>alert('Existed Email')</script>";
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +105,33 @@ if(isset($_POST['login']))
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+        <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
         <script src="js/modernizr.min.js"></script>
+        <link rel="stylesheet" href="assets/css/remodal.css">
+        <link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!-- <link rel="stylesheet" href="/resources/demos/style.css">-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+        <style>
+            .remodal-bg.with-red-theme.remodal-is-opening,
+            .remodal-bg.with-red-theme.remodal-is-opened {
+            filter: none;
+            }
+            .remodal-overlay.with-red-theme {
+            background-color: #f44336;
+            }
+            .remodal.with-red-theme {
+            background: #fff;
+            }
+
+</style>
         <style type="text/css">
             .photostack-perspective
             {
@@ -113,19 +190,21 @@ if(isset($_POST['login']))
             {
             margin-top: 30px;
             width: 40%;
-            height: 200px;
+            height: 210px;
             margin-left: 60px;
             margin-right: 60px;
             position: relative;
+            color:#fff;
             }
             .txt
             {
             }
             .txt_
             {
-            border:3px #000 !important;
+            border: 3px #000 !important;
             border-bottom: 3px #000;
             }
+
 </style>
         <!--<script>
 	  $(document).ready( function() {
@@ -441,170 +520,805 @@ if(isset($_POST['login']))
         </section>
         <section id="photostack-3" class="photostack paper">
             <div>
-                <figure>
-                    <a href="http://goo.gl/NJ1Dhf" class="photostack-img">
-                        <img src="img/5.jpg" alt="img05" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Speed Racer</h2>
-                        <div class="photostack-back">
-                            <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Wouldn't you like to get away? Sometimes you want to go where everybody knows <span>the</span> your name. And they're always glad you came! </p>
+            <?php
+            $sinyy_exe=mysqli_query($conn,"select * from users order by RAND()");
+			while($sunny=mysqli_fetch_array($sinyy_exe))
+			{
+			?>
+                <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> <?php echo $sunny['industry'];?></span>
+                                <br>
+                                <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['Name'];?></span>
+                                <br>
+                                <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['designation'];?></span>
+                                <br>
+                                <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['company'];?></span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/fhwlSP" class="photostack-img">
-                        <img src="img/2.jpg" alt="img02" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Happy Days</h2>
-                        <div class="photostack-back">
-                            <p>These Happy Days are yours and mine Happy Days. It's a beautiful day in this neighborhood a beautiful day for a neighbor. Would you be mine?</p>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
                         </div>
-                    </figcaption>
+                    </div>
                 </figure>
-                <figure>
-                    <a href="http://goo.gl/Jmvr4u" class="photostack-img">
-                        <img src="img/3.jpg" alt="img03" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Beautywood</h2>
-                        <div class="photostack-back">
-                            <p>It's a neighborly day in this beautywood a neighborly day for a beauty. Would you be mine? Could you be mine. Now the world don't move to the beat of just one drum.</p>
+                <?php
+			}
+				?>
+             <!--   <figure style="width: 297px;
+text-align: left;
+margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/Qw3ND4" class="photostack-img">
-                        <img src="img/1.jpg" alt="img01" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Serenity Beach</h2>
-                        <div class="photostack-back">
-                            <p>I have never been to a place so serene in my entire life before. Swimming in clear waters opened my mind to nature and reminded me of my and <span>eveybody</span> everybody else's mortality.</p>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/49lN3k" class="photostack-img">
-                        <img src="img/4.jpg" alt="img04" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Heaven of time</h2>
-                        <div class="photostack-back">
-                            <p>What might be right for you may not be right for some. And we know Flipper lives in a world full of wonder flying there-under under the sea.</p>
+                    </div>
+                </figure>-->
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure>
-                    <a href="http://goo.gl/Ms7VDl" class="photostack-img">
-                        <img src="img/6.jpg" alt="img06" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Forever this</h2>
-                        <div class="photostack-back">
-                            <p>Fish don't fry in the kitchen and beans don't burn on the grill. Took a whole lotta tryin' just to get up that hill. Baby if you've ever wondered - wondered whatever became of me. </p>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
                         </div>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/7.jpg" alt="img07" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Lovely Green</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/8.jpg" alt="img08" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Wonderful</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/9.jpg" alt="img09" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Love Addict</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/10.jpg" alt="img10" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Friendship</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/11.jpg" alt="img11" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">White Nights</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/12.jpg" alt="img12" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Serendipity</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/13.jpg" alt="img13" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Pure Soul</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/14.jpg" alt="img14" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Winds of Peace</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/15.jpg" alt="img15" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Shades of blue</h2>
-                    </figcaption>
-                </figure>
-                <figure data-dummy>
-                    <a href="#" class="photostack-img">
-                        <img src="img/16.jpg" alt="img16" />
-                    </a>
-                    <figcaption>
-                        <h2 class="photostack-title">Lightness</h2>
-                    </figcaption>
-                </figure>
+                    </div>
+                </figure><?php */?>
+             <?php /*?>   <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+             <?php /*?>   <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+            <?php /*?>    <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+             <?php /*?>   <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
+                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
+                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
+                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Rajesh</span>
+                                <br>
+                                <span style="color:#d3d3d3;">CEO-founder</span>
+                                <br>
+                                <span style="color:#d3d3d3;">Beta Solutions</span>
+                            </div>
+                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
+                                <img src="images/profile/logo.jpg" width="25px;" />
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                            </div>
+                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
+                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </figure><?php */?>
+               
             </div>
         </section>
-        <div class="container-fluid  hgt_signup" align="center" style=" text-align:center;">
-            <div class="col-lg-6 jumbotron su_div_pad">
-</div>
-            <div class="col-lg-6 jumbotron su_div_pad">
+        <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
+            <div class="col-lg-6  su_div_pad col-md-6 " id="tape" style="background-color:#d8d8d8; margin-bottom:50px;  color: #fff;">
+                <h3 style="margin-top: 0px !important;margin-bottom:0px !important; padding-top:0px;">
+        NEW TO LNB</h3>
+                <h5 style="margin-top:5px !important; margin-bottom:5px !important;">
+        Create account and write your dairy</h5>
+                <h5 style="font-weight:bold; margin-top:5px !important;margin-bottom:5px !important;" style="height:50px;">
+        LNB helps you to record your Business journey every moment and connecting business</h5>
+                <div class="row">
+                    <div class="col-lg-6" align="right;">
+                        <h4 style="margin-top:0px;margin-bottom:0px; text-align:right">
+                Network  </h4>
+                        <h4 style="margin-top:0px;margin-bottom:0px;text-align:right">
+                Share  </h4>
+                        <h4 style="margin-top:0px;margin-bottom:0px;text-align:right">
+                Read  </h4>
+                    </div>
+                    <div class="col-lg-6" style="border-left:2px solid #fff; height:50px;" align="left">
+                        <h2 style="padding:0px;margin:0px; margin-top:5px;">
+              Business</h2> 
+                    </div>
+                </div>
+                <div align="center" style="padding-top:5px;" class="remodal-bg">
+                    <!--<input type="button" class="btn btn_grn " value="Start" style="width:100px; padding-top:3px;" />-->
+                    <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Submit</a>
+                </div>
+            </div>
+            <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
                 <form role="form" method="post" action=""> 
                     <div class="form-group"> 
-                        <input type="email" class="form-control  txt_" name="email" id="exampleInputEmail1" placeholder="Entrepreneur"> 
+                        <input type="email" class=" club_txt txt_font" name="email" id="exampleInputEmail1" placeholder="Entrepreneur"> 
                     </div>                     
                     <div class="form-group"> 
-                        <input type="password" class="form-control txt_" name="pwd" id="exampleInputPassword1" placeholder="Password"> 
+                        <input type="password" class=" club_txt txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password"> 
                     </div>                     
-                    <button type="submit" name="login" class="btn">OPEN DAIRY</button>                     
+                    <div align="right" style="padding-right:5px;">
+                        <button type="submit" name="login" class="btn btn_grn" style="float:right;">OPEN DAIRY</button>                         
+                        <br>
+                        <br>
+                        <br>
+                        <a href="#"><span>Unable to login</span></a>
+                    </div>
                 </form>
             </div>
         </div>
-        <footer class="footer">
+        <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+             <form role="form" style="font-size:14px;" method="post" action=""> 
+            <div>
+                <h2 class="club_headers" style="text-align:center;">Sign up</h2>
+               
+                    <input type="text" class="club_txt" placeholder="Name" name="username" />
+                    <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                    <div style="margin-left:10px;margin-top:20px;">
+                        <span><select class="select_color" style="width:197px" name="day">
+                                <option>
+                                    <p style="color:#d8d8dd8;">Date</p>
+                                </option>
+                                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                                <option value="16">16</option><option value="17">17</option><option value="18">18</option>
+                                <option value="19">19</option><option value="20">20</option><option value="21">21</option>
+                                <option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                <option value="25">25</option><option value="26">26</option><option value="27">27</option>
+                                <option value="28">28</option><option value="29">29</option><option value="30">30</option>
+                            </select></span>
+                        <span><select class="select_color" style="width:197px" name="month">
+                                <option>
+                                    <small style="color:#d8d8dd8;">Month</small>
+                                </option>
+                                <option value="Jan">Jan</option>
+                                <option value="Feb">Feb</option>
+                                <option value="Mar">Mar</option>
+                                <option value="Apr">Apr</option>
+                                <option value="May">May</option>
+                                <option value="Jun">Jun</option>
+                                <option value="Jul">Jul</option>
+                                <option value="Aug">Aug</option>
+                                <option value="Sep">Sep</option>
+                                <option value="Oct">Oct</option>
+                                <option value="Nov">Nov</option>
+                                <option value="Dec">Dec</option>
+                            </select></span>
+                        <span><select class="select_color" style="width:197px" name="year">
+                                <option>
+                                    <small style="color:#d8d8dd8;">Year</small>
+                                </option>
+                                <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option>
+                                <option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option>
+                                <option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option>
+                                <option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
+                                <option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option>
+                                <option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
+                                <option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option>
+                            </select></span>
+                    </div>
+                    <input type="text" class="club_txt" name="industry" placeholder="Industry" />
+                    <input type="text" class="club_txt" name="company" placeholder="Company Name" />
+                    <input type="text" class="club_txt" name="designation" placeholder="Designation" />
+                     <input type="text" class="club_txt" name="phone" placeholder="Phone Number" />
+                    <input type="email" class="club_txt" name="email" placeholder="Email" />
+                    <input type="password" class="club_txt" name="pwd" placeholder="Password" />
+                    <input type="password" class="club_txt" name="con_pwd" placeholder="Verify" />
+                
+            </div>
+            <br>
+            <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
+            <button type="submit"  class="btn btn_grn" onClick="submit_stage1();" name="sub_stage1" style="width:67px;">Submit</button>
+            </form>
+        </div>
+        <footer class="footer" style="background-color:#afdf7c">
 </footer>
         <!-- /.container -->
         <!-- Bootstrap core JavaScript
@@ -634,6 +1348,75 @@ if(isset($_POST['login']))
                     //console.log(item)
                 }
             } );
+        </script>
+        <script>
+			new Photostack( document.getElementById( 'photostack-3' ), {
+  // any other options here,
+    afterInit: function(ps) {
+        setTimeout(function() {
+            ps._open(true);
+        }, 2500);
+    },
+    afterShowPhoto: function(ps) {
+        setTimeout(function() {
+            ps._navigate('next');
+        }, 2500);
+    }
+}); 
+		</script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>
+        <script src="assets/js/remodal.js"></script>
+        <!-- Events -->
+        <script>
+  $(document).on('opening', '.remodal', function () {
+    console.log('opening');
+  });
+
+  $(document).on('opened', '.remodal', function () {
+    console.log('opened');
+  });
+
+  $(document).on('closing', '.remodal', function (e) {
+    console.log('closing' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('closed', '.remodal', function (e) {
+    console.log('closed' + (e.reason ? ', reason: ' + e.reason : ''));
+  });
+
+  $(document).on('confirmation', '.remodal', function () {
+    console.log('confirmation');
+  });
+
+  $(document).on('cancellation', '.remodal', function () {
+    console.log('cancellation');
+  });
+
+//  Usage:
+//  $(function() {
+//
+//    // In this case the initialization function returns the already created instance
+//    var inst = $('[data-remodal-id=modal]').remodal();
+//
+//    inst.open();
+//    inst.close();
+//    inst.getState();
+//    inst.destroy();
+//  });
+
+  //  The second way to initialize:
+  $('[data-remodal-id=modal2]').remodal({
+    modifier: 'with-red-theme'
+  });
+</script>
+        <script>
+        flatpickr(".selector", {}); // [Flatpickr, Flatpickr, ...]
+document.getElementById("myID").flatpickr(config); // Flatpickr
+let calendar = new Flatpickr(element, config); // Flatpickr
+
+// jQuery
+$(".selector").flatpickr({});
         </script>
         <!-- <script type="text/javascript">
 

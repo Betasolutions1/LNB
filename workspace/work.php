@@ -145,7 +145,7 @@
 </table>
                                                 </div>
                                             </div>
-                                            <a href="#"><i class="fa fa-envelope"></i> CLIENTS <span class="pull-right alert-numb">21</span></a>
+                                            <a href="#"><i class="fa fa-envelope"></i> CLIENTS <!--<span class="pull-right alert-numb"></span>--></a>
                                             <div class="sub-nav">
                                                    <div class="html chat">
                                                      <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">

@@ -104,14 +104,14 @@
                                                     <div class="row pst_row_fill" style="">
                                                         <div class="col-lg-2 " align="left" style="width:70px;">
                                                         	<?php 
-															$ency=base64_encode('id=$resp[user_id]');
+															//$ency=base64_encode('id=$resp[user_id]');
 															?>
-                                                            <a href="profile.php?<?php echo $ency ?>" class="pst_head_left">
+                                                            <a href="profile.php?id=<?php echo $resp['user_id'] ?>" class="pst_head_left">
                                                                 <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="70" style="margin-left:-15px;">
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-8 pst_head_txt">
-                                                            <a href="#" class="text_wht"><?php echo $pud['Name'];?></a>
+                                                            <a href="profile.php?id=<?php echo $resp['user_id'] ?>" class="text_wht"><?php echo $pud['Name'];?></a>
                                                             <br>
                                                             <span class="pst_head_pos text_wht">CEO-Beta Solutions</span>
                                                             <br>
@@ -178,12 +178,12 @@
 													?>
                                                     <div class="row  pst_cmt_body">
                                                         <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
+                                                            <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" class="pst_head_left">
                                                                 <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="70" style="margin-left:-15px;">
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;"><?php echo $use_cm['Name']; ?></a>
+                                                            <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" style="color:#000;"><?php echo $use_cm['Name']; ?></a>
                                                             <br>
                                                             <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
                                                             <br>

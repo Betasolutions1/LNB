@@ -21,12 +21,12 @@
                                                 <div class="pst_head">
                                                     <div class="row pst_row_fill" style="">
                                                         <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="about.php?id=<?php echo $industry_post_rety['user_id']?>" class="pst_head_left">
+                                                            <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>" class="pst_head_left">
                                                                 <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" width="70" style="margin-left:-15px;">
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-8 pst_head_txt">
-                                                            <a href="about.php?id=<?php echo $users_id?>" class="text_wht"><?php echo $industry_post_user_data_retry['Name'];?></a>
+                                                            <a href="profile.php?id=<?php echo $users_id?>" class="text_wht"><?php echo $industry_post_user_data_retry['Name'];?></a>
                                                             <br>
                                                             <span class="pst_head_pos text_wht"><?php echo $industry_post_user_data_retry['designation'];?>-<?php echo $industry_post_user_data_retry['company'];?></span>
                                                             <br>
@@ -93,12 +93,12 @@
                                                  ?>
                                                     <div class="row  pst_cmt_body">
                                                         <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
+                                                            <a href="profile.php?id=<?php echo $industry_post_comment_user_retry['user_id'] ?>" class="pst_head_left">
                                                                 <img src="fb_users/<?php echo $industry_post_comment_user_retry['Gender']?>/<?php echo $industry_post_comment_user_retry['Email']?>/Profile/<?php echo$industry_post_comment_user_pic_retry['image'];?>"  width="70" style="margin-left:-15px;">
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;"><?php echo $industry_post_comment_user_retry['Name']; ?></a>
+                                                            <a href="profile.php?id=<?php echo $industry_post_comment_user_retry['user_id'] ?>" style="color:#000;"><?php echo $industry_post_comment_user_retry['Name']; ?></a>
                                                             <br>
                                                             <span class="pst_head_pos  pst_cmt_muted">-wrote on <?php echo $industry_post_comment_retry['comment_time'];?></span>
                                                             <br>

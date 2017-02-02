@@ -49,9 +49,7 @@ if(isset($_POST['sub_stage1']))
 	$ins_use_info=mysqli_query($conn,"insert into user_info (user_id,mobile_no,Email)values('$last_user','$_POST[phone]','$_POST[email]')");
 	$in_se_q=mysqli_query($conn,"insert into user_secret_quotes (user_id) values('$last_user')");
 	$ins_folio=mysqli_query($conn,"insert into folio (user_id)values('$last_user')");
-	
-	
-	echo "<script>alert('Successfully Registered Please Be login')</script>";
+	header("location:signup2.php?id=$last_user");
 	}
 	else
 	{

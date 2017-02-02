@@ -29,8 +29,18 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                     
                                     <br>
                                     <div style="border-bottom:1px solid #afdf7c; width:570px; margin-left:10px; margin-right:10px;">
-                                        <h4 style="color:#afdf7c;">
-    SKILLS <span class="icon" ><a href="#skill" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
+                                        <h4 style="color:#afdf7c;">SKILLS <span class="icon" ><a href="#skill" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
+                                        <br>
+    								 <?php
+        $us_sli_exe11=mysqli_query($conn,"select * from user_skills where user_id='$_SESSION[id]'");
+		while($uskil11=mysqli_fetch_array($us_sli_exe11))
+		{
+		?>
+                                                                    <button type="button" class="btn btn_grn" value="" style="height:30px; margin:5px;text-transform:uppercase;"><?php echo $uskil11['skill'];?></button>
+                                                                    <?php
+		}
+																	?>
+    
                                         <br>
                                     </div>
                                     <br>
@@ -118,7 +128,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
 	$foloi_exe=mysqli_query($conn,"select * from folio where user_id='$_SESSION[id]'");
 	$folio=mysqli_fetch_array($foloi_exe);
 	?>
-    <textarea cols="80" rows="3" style="resize:none"><?php echo $folio['description'];?></textarea>
+    <textarea cols="80" rows="3" style="resize:none" name="folio_desc" id="folio_desc"><?php echo $folio['description'];?></textarea>
   </div>
    
    
@@ -127,7 +137,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
   
   <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
   
-  <button type="submit"  onClick="add_folio_desc();" data-remodal-action="confirm" class="remodal-confirm">ADD</button>
+  <button type="submit"  onClick="add_folio_desc();"  class="remodal-confirm">ADD</button>
  
   </form>
  
@@ -186,7 +196,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
                                                         <textarea  class="form-control" rows="3" cols="80" name="project_desc" id="project_desc" placeholder="Project Description"> </textarea>
                                                     </div> 
                                                     <div class="form-group"> 
-                                                        <input type="file" class="form-control" name="project_image" id="project_image" placeholder="Give Ur Own Rating "> 
+                                                        <input type="file" class="form-control" name="file" id="file" placeholder="Give Ur Own Rating "> 
                                                     </div>                                                     
                                                                                                          
                                                    
@@ -199,7 +209,7 @@ $cvpic=mysqli_fetch_array($cover_pic_exe);
   
   <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
   
-  <button type="submit" name="add_work_projects" onClick="add_work_projects();"  data-remodal-action="confirm" class="remodal-confirm">ADD Projects</button>
+  <button type="submit" name="add_work_projects"  class="remodal-confirm">ADD Projects</button>
  
   </form>
  

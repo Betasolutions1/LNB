@@ -242,23 +242,25 @@ if(isset($_POST['club_rm_id']))
 
 //Add user projects---
 
-if(isset($_POST['project_name']))
+if(isset($_POST['add_work_projects']))
 {
+	echo "<script>alert('pjs')</script>";
 	
-	if(isset($_POST['project_image']))
-	{
+	
+		
 		$get_cu_pjs=mysqli_query($conn,"select * from work_projects where user_id='$_SESSION[id]'");
 		$pj_cu=mysqli_num_rows($get_cu_pjs);
 		$pj=$pj_cu+1;
 		
 		
-		$img_name_.$pj=$_FILES['project_image']['name'];
-    	$img_tmp_name=$_FILES['project_image']['tmp_name'];
-    	$prod_img_path=$img_name_.$pj;
+		$img_name=$_FILES['file']['name'];
+    	$img_tmp_name=$_FILES['file']['tmp_name'];
+    	$prod_img_path=$img_name;
     	move_uploaded_file($img_tmp_name,"fb_users/".$_SESSION['Gender']."/".$_SESSION['Email']."/Projects/".$prod_img_path);
 		
 		$ins_prjs=mysqli_query($conn,"INSERT INTO `work_projects`( `user_id`, `work_title`, `work_description`, `work_image`) VALUES ('$_SESSION[id]','$_POST[project_name]','$_POST[project_desc]','$prod_img_path')");
-	} 
+		header("location:index.php");
+	
 	
 	
 	
@@ -272,6 +274,37 @@ if(isset($_POST['disscussion_topic']))
 {
 	$ins_dissc=mysqli_query($conn,"INSERT INTO `company_discussions`( `user_id`,`company`, `discussion_txt`) VALUES ('$_SESSION[id]','$_POST[dis_company]','$_POST[disscussion_topic]')");
 }
+
+//--insert skills--
+
+if(isset($_POST['skill_name']))
+{
+	$ins_skills=mysqli_query($conn,"INSERT INTO `user_skills`(`user_id`, `skill`, `skill_rating`) VALUES ('$_SESSION[id]','$_POST[skill_name]','$_POST[skill_rate]')");
+}
+
+// ---Folio Description---
+
+if(isset($_POST['folio_desc']))
+{
+	$ins_folio_desc=mysqli_query($conn,"update folio set description='$_POST[folio_desc]' where user_id='$_SESSION[id]'");
+}
+
+
+//--stage2 signin---
+
+if(isset($_POST['sub_stage2']))
+{
+	$ins_stage2=mysqli_query($conn,"update user_info set school='$_POST[school]',collage='$_POST[college]',hometown='$_POST[hometown]',current_city='$_POST[presentown]' where user_id='$_SESSION[id]'");
+	$up_user=mysqli_query($conn,"update users set description='$_POST[about]' where user_id='$_SESSION[id]'");
+	
+	header("location:index.php");
+}
+
+
+
+
+
+
 
 ?>
 

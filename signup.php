@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+date_default_timezone_set('Asia/Kolkata');
 if(isset($_POST['login']))
 {
 	$log_sts=mysqli_query($conn,"select * from users where Email='$_POST[email]' AND Password='$_POST[pwd]'");
@@ -19,6 +20,56 @@ if(isset($_POST['login']))
 		echo "<script>alert('Invalid Credentials')</script>";
 	}
 }
+
+//signin stage 1
+
+if(isset($_POST['sub_stage1']))
+{
+	$check_email=mysqli_query($conn,"select * from users where Email='".$_POST['email']."'");
+	$chek_cou=mysqli_num_rows($check_email);
+	if($chek_cou==0)
+	{
+	if($_POST['pwd']==$_POST['con_pwd'])
+	{
+	$ins_s1=mysqli_query($conn,"INSERT INTO `users`(`Name`, `Email`, `Password`, `Gender`, `Birthday_Date`, `designation`, `company`, `industry`,`phone`) VALUES ('".$_POST['username']."','".$_POST['email']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['day'].$_POST['month'].$_POST['year']."','".$_POST['designation']."','".$_POST['company']."','".$_POST['industry']."','".$_POST['phone']."')");
+	
+	if($ins_s1)
+	{
+		
+		$path = "fb_users/".$_POST['gender']."/".$_POST['email']."/Profile/";
+		$path2 ="fb_users/".$_POST['gender']."/".$_POST['email']."/Post/";
+		$path3 ="fb_users/".$_POST['gender']."/".$_POST['email']."/Cover/";
+		$path4="fb_users/".$_POST['gender']."/".$_POST['email']."/Projects/";
+		mkdir($path, 0, true);
+		mkdir($path2, 0, true);
+		mkdir($path3, 0, true);
+		mkdir($path4, 0, true);
+		
+	$last_user=mysqli_insert_id($conn);
+	$ins_use_info=mysqli_query($conn,"insert into user_info (user_id,mobile_no,Email)values('$last_user','$_POST[phone]','$_POST[email]')");
+	$in_se_q=mysqli_query($conn,"insert into user_secret_quotes (user_id) values('$last_user')");
+	$ins_folio=mysqli_query($conn,"insert into folio (user_id)values('$last_user')");
+	
+	
+	echo "<script>alert('Successfully Registered Please Be login')</script>";
+	}
+	else
+	{
+		echo "<script>alert(' Registration Fail')</script>";
+	}
+	
+	
+	//header("location:signup2.php?id=$id");
+	}else
+	{
+		echo "<script>alert('Chech Ur verify Password')</script>";
+	}
+	}else
+	{
+		echo "<script>alert('Existed Email')</script>";
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -470,7 +521,7 @@ if(isset($_POST['login']))
         <section id="photostack-3" class="photostack paper">
             <div>
             <?php
-            $sinyy_exe=mysqli_query($conn,"select * from users");
+            $sinyy_exe=mysqli_query($conn,"select * from users order by RAND()");
 			while($sunny=mysqli_fetch_array($sinyy_exe))
 			{
 			?>
@@ -482,11 +533,11 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
                                 <span style="text-align:center; color:#afdf7c; font-family:lato"> <?php echo $sunny['industry'];?></span>
                                 <br>
-                                <span style="color:#d3d3d3;"><?php echo $sunny['Name'];?></span>
+                                <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['Name'];?></span>
                                 <br>
-                                <span style="color:#d3d3d3;"><?php echo $sunny['designation'];?></span>
+                                <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['designation'];?></span>
                                 <br>
-                                <span style="color:#d3d3d3;"><?php echo $sunny['company'];?></span>
+                                <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['company'];?></span>
                             </div>
                             <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
                                 <img src="images/profile/logo.jpg" width="25px;" />
@@ -508,7 +559,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                 <?php
 			}
 				?>
-                <figure style="width: 297px;
+             <!--   <figure style="width: 297px;
 text-align: left;
 margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
@@ -538,10 +589,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure>-->
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -569,10 +618,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+             <?php /*?>   <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -600,10 +647,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -631,10 +676,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+             <?php /*?>   <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -662,10 +705,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -693,10 +734,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -724,10 +763,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -755,10 +792,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -786,10 +821,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -817,10 +850,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -848,10 +879,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -879,10 +908,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+            <?php /*?>    <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -910,10 +937,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+             <?php /*?>   <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -941,10 +966,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -972,10 +995,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1003,10 +1024,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1034,10 +1053,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1065,10 +1082,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1096,10 +1111,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+              <?php /*?>  <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1127,10 +1140,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1158,10 +1169,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+                </figure><?php */?>
+               <?php /*?> <figure style="width: 297px;text-align: left;margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
@@ -1189,224 +1198,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                             </div>
                         </div>
                     </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
-                <figure style="width: 297px;
-text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
-                    <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
-                        <div class="col-lg-12" style="height:120px;padding-top:10px;">
-                            <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> IT - SOFTWARE</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Rajesh</span>
-                                <br>
-                                <span style="color:#d3d3d3;">CEO-founder</span>
-                                <br>
-                                <span style="color:#d3d3d3;">Beta Solutions</span>
-                            </div>
-                            <div align="right" style="margin:0px; width:40px; padding:0px;" class="col-lg-2">
-                                <img src="images/profile/logo.jpg" width="25px;" />
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
-                            </div>
-                            <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                <i class="fa fa-1x fa-search" style="color:#fff;"></i>
-                            </div>
-                        </div>
-                    </div>
-                </figure>
+                </figure><?php */?>
+               
             </div>
         </section>
         <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
@@ -1456,66 +1249,74 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
         </div>
         <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+             <form role="form" style="font-size:14px;" method="post" action=""> 
             <div>
                 <h2 class="club_headers" style="text-align:center;">Sign up</h2>
-                <form role="form" style="font-size:14px;"> 
-                    <input type="text" class="club_txt" placeholder="Name" />
-                    <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;">
+               
+                    <input type="text" class="club_txt" placeholder="Name" name="username" />
+                    <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="gender">
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                     <div style="margin-left:10px;margin-top:20px;">
-                        <span><select class="select_color" style="width:197px">
+                        <span><select class="select_color" style="width:197px" name="day">
                                 <option>
                                     <p style="color:#d8d8dd8;">Date</p>
                                 </option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                                <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                                <option value="16">16</option><option value="17">17</option><option value="18">18</option>
+                                <option value="19">19</option><option value="20">20</option><option value="21">21</option>
+                                <option value="22">22</option><option value="23">23</option><option value="24">24</option>
+                                <option value="25">25</option><option value="26">26</option><option value="27">27</option>
+                                <option value="28">28</option><option value="29">29</option><option value="30">30</option>
                             </select></span>
-                        <span><select class="select_color" style="width:197px">
+                        <span><select class="select_color" style="width:197px" name="month">
                                 <option>
                                     <small style="color:#d8d8dd8;">Month</small>
                                 </option>
-                                <option>Jan</option>
-                                <option>Feb</option>
-                                <option>Mar</option>
-                                <option>Apr</option>
-                                <option>May</option>
-                                <option>Jun</option>
-                                <option>Jul</option>
-                                <option>Aug</option>
-                                <option>Sep</option>
-                                <option>Oct</option>
-                                <option>Nov</option>
-                                <option>Dec</option>
+                                <option value="Jan">Jan</option>
+                                <option value="Feb">Feb</option>
+                                <option value="Mar">Mar</option>
+                                <option value="Apr">Apr</option>
+                                <option value="May">May</option>
+                                <option value="Jun">Jun</option>
+                                <option value="Jul">Jul</option>
+                                <option value="Aug">Aug</option>
+                                <option value="Sep">Sep</option>
+                                <option value="Oct">Oct</option>
+                                <option value="Nov">Nov</option>
+                                <option value="Dec">Dec</option>
                             </select></span>
-                        <span><select class="select_color" style="width:197px">
+                        <span><select class="select_color" style="width:197px" name="year">
                                 <option>
                                     <small style="color:#d8d8dd8;">Year</small>
                                 </option>
-                                <option>2017</option>
-                                <option>2016</option>
-                                <option>2015</option>
-                                <option>2014</option>
-                                <option>2013</option>
-                                <option>2012</option>
-                                <option>2011</option>
-                                <option>2010</option>
-                                <option>2009</option>
-                                <option>2008</option>
-                                <option>2007</option>
-                                <option>2006</option>
+                                <option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option>
+                                <option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option>
+                                <option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option>
+                                <option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option>
+                                <option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option>
+                                <option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option>
+                                <option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option>
                             </select></span>
                     </div>
-                    <input type="email" class="club_txt" placeholder="Email" />
-                    <input type="password" class="club_txt" placeholder="Password" />
-                    <input type="password" class="club_txt" placeholder="Verify" />
-                </form>
+                    <input type="text" class="club_txt" name="industry" placeholder="Industry" />
+                    <input type="text" class="club_txt" name="company" placeholder="Company Name" />
+                    <input type="text" class="club_txt" name="designation" placeholder="Designation" />
+                     <input type="text" class="club_txt" name="phone" placeholder="Phone Number" />
+                    <input type="email" class="club_txt" name="email" placeholder="Email" />
+                    <input type="password" class="club_txt" name="pwd" placeholder="Password" />
+                    <input type="password" class="club_txt" name="con_pwd" placeholder="Verify" />
+                
             </div>
             <br>
             <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
-            <button data-remodal-action="confirm" class="btn btn_grn" style="width:67px;">Submit</button>
+            <button type="submit"  class="btn btn_grn" onClick="submit_stage1();" name="sub_stage1" style="width:67px;">Submit</button>
+            </form>
         </div>
         <footer class="footer" style="background-color:#afdf7c">
 </footer>

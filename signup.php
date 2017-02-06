@@ -1302,7 +1302,19 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                                 <option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option>
                             </select></span>
                     </div>
-                    <input type="text" class="club_txt" name="industry" placeholder="Industry" />
+                     <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="industry">
+                        <option>Select Industry</option>
+                        <?php 
+						$ress_exe=mysqli_query($conn,"select * from add_industry");
+						while($re_in=mysqli_fetch_array($ress_exe))
+						{
+						?>
+                        <option value="<?php echo $re_in['INDUSTRY_NAME']?>"><?php echo $re_in['INDUSTRY_NAME']?></option>
+                        <?php 
+						}
+						?>
+                    </select>
+                   <!-- <input type="text" class="club_txt" name="industry" placeholder="Industry" />-->
                     <input type="text" class="club_txt" name="company" placeholder="Company Name" />
                     <input type="text" class="club_txt" name="designation" placeholder="Designation" />
                      <input type="text" class="club_txt" name="phone" placeholder="Phone Number" />

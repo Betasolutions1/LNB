@@ -43,7 +43,7 @@ if(isset($_POST['ulpost_id']))
 
 if(isset($_POST['cmt_ins']))
 {
-	$ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `user_id`, `comment`, `comment_time`) VALUES ('$_POST[cmt_post_id]','$_POST[cmt_ins_id]','$_POST[cmt_txt]','$_POST[cmt_ins_date]')");
+$ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `user_id`, `comment`, `comment_time`) VALUES('$_POST[cmt_post_id]','$_POST[cmt_ins_id]','$_POST[cmt_txt]','$_POST[cmt_ins_date]')");
 	if($ins_comment)
 	{
 		header("location:index.php");
@@ -54,19 +54,19 @@ if(isset($_POST['cmt_ins']))
 
 /*if(isset($_POST['to_insert']))
 {
+	
 	$todo_ins=mysqli_query($conn,"INSERT INTO `user_todolist`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`, `todo_datetime`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]','$_POST[todo_date]')");
 	if($todo_ins)
 	{
 		header("location:index.php");
 	}
-}*/
-
-if(isset($_POST['todo_title']))
+}
+*/
+if(isset($_POST['todo_inserttttttt']))
 {
-	echo "<script>alert('server connected')</script>";
-
-	$quer=mysqli_query($conn,"insert into user_todolist (`todo_type`,`todo_user_id`,`todo_contact`,`todo_label`,`todo_status`) VALUES ('".$_POST['todo_type']."','".$_SESSION['id']."','".$_POST['todo_contacts']."','".$_POST['todo_title']."','0')");
-	if($quer)
+	echo "<script>alert('resfgbdzf')</script>";
+$todoins=mysqli_query($conn,"INSERT INTO `user_todolist`(`todo_user_id`,`todo_type`,`todo_contact`,`todo_label`,`todo_status`) VALUES('".$_SESSION['id']."','".$_POST['todo_type']."','".$_POST['todo_contacts']."','".$_POST['todo_title']."')");
+	if($todoins)
 	{
 		echo "<script>alert('Todo data inserted')</script>";
 	}
@@ -100,7 +100,7 @@ if(isset($_POST['led_cur_date']))
 
 //-----club login ---
 
-if(isset($_POST['club_login']))
+if(isset($_POST['club_user_name']))
 {
 	echo "<script>alert('hello')</script>";
 	$club_log_crede=mysqli_query($conn,"select * from club_signup where club_user_name='$_POST[club_user_name]' AND club_pwd='$_POST[club_pwd]' AND user_id='$_SESSION[id]'");
@@ -111,12 +111,12 @@ if(isset($_POST['club_login']))
 		$ret_clb_cred=mysqli_fetch_array($club_log_crede);
 		$_SESSION['club_id']=$ret_clb_cred['club_id'];
 		$_SESSION['club_user']=$ret_clb_cred['club_user_name'];
-		header("location:index.php");
+	//	header("location:index.php");
 		
 	}else
 	{
 		echo "<script>alert('Please Enter valid details')</script>";
-		header("location:index.php");
+		//header("location:index.php");
 	}
 }
 

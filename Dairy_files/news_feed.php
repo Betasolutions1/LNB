@@ -36,60 +36,6 @@
 
 <div class="bg_pst">
 
-                                            <?php /*?><div class="pst_box" style="background-color:#fff;">
-                                                <div class="pst_head">
-                                                    <div class="row pst_row_fill" style="">
-                                                        <div class="col-lg-2 " align="left" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="" class="img-size" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-8 pst_head_txt">
-                                                            <a href="#" class="text_wht">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos text_wht">CEO-Beta Solutions</span>
-                                                            <br>
-                                                            <span class="text_wht">IT-Industry</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="pst_body">
-                                                    <p style="margin-top:10px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, pariatur!</p> 
-                                                    <span style="font-size:10px;"> - on 15th January, 2014</span>
-                                                </div>
-                                                <div class="pst_cmt">
-                                                    <div class="pst_cmt_tog pst_cmt_pad">
-                                                        <!--comment toggle-->
-                                                        <i></i>
-                                                        <a href="#"><span style="margin-left:10px;">View Comments</span></a>
-                                                        <span class="pst_cmt_muted">+2 writes</span>
-                                                    </div>
-                                                    <div class="row  pst_cmt_body">
-                                                        <div class="col-lg-2" style="width:70px;">
-                                                            <a href="#" class="pst_head_left">
-                                                                <img src="images/profile/1.jpg" width="70" style="margin-left:-15px;">
-                                                            </a>
-                                                        </div>
-                                                        <div class="col-lg-10" style="padding-top:5px;">
-                                                            <a href="#" style="color:#000;">Steve</a>
-                                                            <br>
-                                                            <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
-                                                            <br>
-                                                            <div style="margin-left:10px;">CONGRATS STEVE</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pst_cmt_row"> 
-                                                        <div class="col-lg-10 pst_cmt_pad pst_cmt_wid" style="width:550px;">
-                                                            <input type="text" class="form-control" style="width:100%;  " placeholder="Write..."> 
-                                                        </div>
-                                                        <div class="col-lg-2 pst_cmt_c1">
-                                                            <button type="button" class="btn btn-primary" href="#" style="background:#afdf7c; ">
-                                                                <i class="fa fa-pencil"></i>
-                                                            </button>                                                             
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><?php */?>
                                             <?php
 				$retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 				while($resp=mysqli_fetch_array($retpe))

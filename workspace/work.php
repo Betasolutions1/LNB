@@ -1,4 +1,14 @@
-
+<script type="text/javascript">
+//Div Refresh--ledger_tbl
+/*$(document).ready(function(){
+	setInterval(function(){
+		$("#ledger_tbl").load('#ledger_tbl', function ()
+		{
+            /// can add another function here
+        });
+    }, 2000);
+});*/
+</script>
 <div class="accordion">
                                             <a href="#" class="active"><i class="fa fa-user"></i> TODO</a>
                                             <div class="sub-nav active">
@@ -106,7 +116,7 @@
                                                            
                                                         </div>
                                                 <div class="html chat">
-                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
+                                                     <table id="ledger_tbl" class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
     <!-- Table heading -->
     <thead style="background:#8BBF61;">
         <tr style="background:#8BBF61;">
@@ -196,22 +206,22 @@
       <div class="remodal" data-remodal-id="modal">
   <a data-remodal-action="close" class="remodal-close"></a>
 
-<form class="form-horizontal" role="form" method="post" action="script_code.php">
+<form class="form-horizontal"  method="post" action="script_code.php">
   <div>
      
                                                                                         <div class="form-group">
                                                                                             <label class="col-sm-2 control-label">TITLE</label>
                                                                                             <div class="col-sm-10">
-                                                                                                <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" name="todo_title">
+                                                                                                <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" >
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="form-group">
+                                                                                       <!-- <div class="form-group">
                                                                                             <label class="col-sm-2 control-label">Date</label>
                                                                                             <div class="col-sm-10">
                                                                                          
-                                                                                                <input type="text" class="form-control" id="todo_date" name="todo_date" placeholder="Date" name="todo_date">
+                                                                                                <input type="text" class="form-control" id="todo_date" name="todo_date" placeholder="Date">
                                                                                             </div>
-                                                                                        </div>
+                                                                                        </div>-->
                                                                                         
                                                                                         <div class="form-group">
                                                                                             <label for="type" class="col-sm-2 control-label">TYPE</label>
@@ -246,9 +256,9 @@
                                                                                     
   </div>
   <br>
- 
+ <!--data-remodal-action="confirm"-->
   <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-  <button type="submit" data-remodal-action="confirm" name="to_insert" onClick="todo_insert();" class="remodal-confirm">INK</button>
+  <button type="submit" name="todo_inserttttttt"  class="remodal-confirm">INK</button>
   
    </form>
 		

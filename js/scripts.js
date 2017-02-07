@@ -228,6 +228,13 @@ function like(lpost_id,luser_id) {
                     //alert(html);
 					//document.getElementById("firstname").select();
 					$('#news_feed_like').load('index2.php #news_feed_like');
+					$('#my_industry').load('index2.php #my_industry');
+					$('#my_inked').load('index2.php #my_inked');
+					//$('#industry_likes').load('index2.php #industry_likes');
+					//$('#inked_likes').load('index2.php #inked_likes');
+					$('#noted_likes').load('index2.php #noted_likes');
+					
+					
                     }
                     });
                
@@ -250,8 +257,15 @@ function unlike(ulpost_id,uluser_id) {
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					//document.getElementById("firstname").select();
+					//document.getElementById("firstname").select();,
 					$('#news_feed_like').load('index2.php #news_feed_like');
+					$('#my_industry').load('index2.php #my_industry');
+					$('#my_inked').load('index2.php #my_inked');
+				  // $('#industry_likes').load('index2.php #industry_likes');
+					//$('#inked_likes').load('index2.php #inked_likes');
+					$('#noted_likes').load('index2.php #noted_likes');
+					
+					
                     }
                     });
                
@@ -505,6 +519,7 @@ function ins_posts()
 					$('#news_feed').load('index2.php #news_feed');
 					$('#my_industry').load('index2.php #my_industry');
 					$('#my_inked').load('index2.php #my_inked');
+					//$('#noted_likes').load('index2.php #noted_likes');
                     }
                     });
                
@@ -536,7 +551,7 @@ function add_work_projects()
 					document.getElementById("project_name").value='';
 					document.getElementById("project_desc").value='';
 					document.getElementById("project_image").value='';
-					
+					$('#project_works').load('index2.php #project_works');
                     }
                     });
                
@@ -544,5 +559,36 @@ function add_work_projects()
 	
 }
 
+function comment_insertion()
+{
+	alert('hello');
+	var cmt_txt  = document.getElementById("cmt_txt").value;
+    var cmt_post_id = document.getElementById("cmt_post_id").value;
+	var cmt_ins_date = document.getElementById("cmt_ins_date").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'cmt_txt=' + cmt_txt + '&cmt_post_id=' + cmt_post_id + '&cmt_ins_date=' +cmt_ins_date ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("cmt_txt").value='';
+					
+					$('#news_feed').load('index2.php #news_feed');
+                    }
+                    });
+               
+        return false;
+	
+}
 
-
+function add_work_projects()
+{
+	
+}

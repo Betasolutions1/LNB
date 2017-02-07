@@ -35,9 +35,9 @@ if(isset($_POST['ulpost_id']))
 
 //---Comment Insertion---
 
-if(isset($_POST['cmt_ins']))
+if(isset($_POST['cmt_txt']))
 {
-$ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `user_id`, `comment`, `comment_time`) VALUES('$_POST[cmt_post_id]','$_POST[cmt_ins_id]','$_POST[cmt_txt]','$_POST[cmt_ins_date]')");
+$ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `user_id`, `comment`, `comment_time`) VALUES('$_POST[cmt_post_id]','$_SESSION[id]','$_POST[cmt_txt]','$_POST[cmt_ins_date]')");
 	if($ins_comment)
 	{
 		header("location:index.php");

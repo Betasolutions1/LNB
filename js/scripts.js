@@ -1,31 +1,15 @@
-//--- Begin Div Refresh----
+//Space company discussion
 
-/*$(document).ready(function(){
-	setInterval(function(){
-		$("#skill5").load('#skill5', function ()
-		{
-            /// can add another function here
-        });
-    }, 2000);
-});*/
-//-- End div refresh
-
-/*var auto_refresh = setInterval(
-function ()
+function space_disscussion()
 {
-$('#skill5').load('#skill5').fadeIn("slow");
-}, 100000);*/ // refresh every 10000 milliseconds
-
-//---club log in---
-
-function club_login()
-{
-	alert("hello" );
-    var club_user_name  = document.getElementById("club_user_name").value;
-    var club_pwd = document.getElementById("club_pwd").value;
+	//alert('hello');
+	 var dis_company  = document.getElementById("dis_company").value;
+     var disscussion_topic = document.getElementById("disscussion_topic").value;
+	
+	
 	
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'club_user_name=' + club_user_name + '&club_pwd=' + club_pwd;
+    var dataString = 'dis_company=' + dis_company + '&disscussion_topic=' + disscussion_topic ;
       
                     // AJAX code to submit form.
                     $.ajax({
@@ -35,14 +19,19 @@ function club_login()
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					document.getElementById("club_user_name").value='';
-					document.getElementById("club_pwd").value='';
+					document.getElementById("disscussion_topic").value='';
+					$('#club_discuss').load('index2.php #club_discuss');
 					
                     }
                     });
                
         return false;
+	
 }
+
+//---club log in---
+
+//get suggestions--
 
 function Get_clb_user_sugg(str)
 {
@@ -238,7 +227,7 @@ function like(lpost_id,luser_id) {
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("firstname").select();
-					$('#skill5').load('index2.php #skill5');
+					$('#news_feed_like').load('index2.php #news_feed_like');
                     }
                     });
                
@@ -262,6 +251,7 @@ function unlike(ulpost_id,uluser_id) {
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("firstname").select();
+					$('#news_feed_like').load('index2.php #news_feed_like');
                     }
                     });
                
@@ -289,6 +279,7 @@ function ins_suggest() {
                     success: function(html) {
                     //alert(html);
 					document.getElementById("suggest_me_to").value='';
+					$('#user_suggestions').load('index2.php #user_suggestions');
                     }
                     });
                
@@ -311,6 +302,8 @@ function connect_suggest(whos_sugg,sugg_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
+					$('#connect_suggestion').load('index2.php #connect_suggestion');
+					$('#connect_suggestion2').load('index2.php #connect_suggestion2');
                     }
                     });
 					
@@ -330,6 +323,8 @@ function disconnect_suggest(diswhos_sugg,dissugg_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
+					$('#connect_suggestion').load('index2.php #connect_suggestion');
+					$('#connect_suggestion2').load('index2.php #connect_suggestion2');
                     }
                     });
 					
@@ -356,6 +351,7 @@ function inse_msg() {
                     success: function(html) {
                     //alert(html);
 					document.getElementById("chat_txt").value='';
+					$('#club_networks').load('index2.php #club_networks');
                     }
                     });
                
@@ -366,6 +362,7 @@ function inse_msg() {
 
 function add_refrals()
 {
+	alert("hello"  );
 	var club_memb  = document.getElementById("club_memb").value;
     var tag_title = document.getElementById("tag_title").value;
 	var vendor_name = document.getElementById("vendor_name").value;
@@ -388,6 +385,7 @@ function add_refrals()
 					document.getElementById("vendor_name").value='';
 					document.getElementById("vendor_phone").value='';
 					document.getElementById("vendor_email").value='';
+					$('#add_tags').load('index2.php #add_tags');
                     }
                     });
                
@@ -407,6 +405,7 @@ function acc_tags(accref_id,accwhom_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
+					$('#accept_tag_confirmation').load('index2.php #accept_tag_confirmation');
                     }
                     });
 					
@@ -424,6 +423,7 @@ function reje_tags(rejref_id,rejwhom_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
+					$('#accept_tag_confirmation').load('index2.php #accept_tag_confirmation');
                     }
                     });
 					
@@ -454,7 +454,7 @@ function change_pwd()
 					document.getElementById("new_password").value='';
 					document.getElementById("old_pwd").value='';
 					document.getElementById("re_password").value='';
-					
+					$('#club_login').load('index2.php #club_login');
                     }
                     });
                
@@ -479,6 +479,37 @@ function remove_club(club_rm_id)
                     });
 					
 		return false;
+}
+
+//insert posts--
+function ins_posts()
+{
+	//alert('hello');
+	 var post_data  = document.getElementById("post_data").value;
+    
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'post_data=' + post_data  ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("post_data").value='';
+					
+					$('#news_feed').load('index2.php #news_feed');
+					$('#my_industry').load('index2.php #my_industry');
+					$('#my_inked').load('index2.php #my_inked');
+                    }
+                    });
+               
+        return false;
+	
 }
 
 //Add Projects--
@@ -513,33 +544,5 @@ function add_work_projects()
 	
 }
 
-//---space discussions-----
 
-function space_disscussion()
-{
-	//alert('hello');
-	 var dis_company  = document.getElementById("dis_company").value;
-    var disscussion_topic = document.getElementById("disscussion_topic").value;
-	
-	
-	//alert("hello" + user_id );
-    // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'disscussion_topic=' + disscussion_topic +'&dis_company=' +dis_company;
-      
-                    // AJAX code to submit form.
-                    $.ajax({
-                    type: "POST",
-                    url: "script_code.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(html) {
-                    //alert(html);
-					document.getElementById("disscussion_topic").value='';
-					
-					
-                    }
-                    });
-               
-        return false;
-	
-}
+

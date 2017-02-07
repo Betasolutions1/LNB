@@ -69,6 +69,8 @@ if(!$_SESSION['Email'])
 </script>
 
 <script type="text/javascript">
+
+
 function club_login()
 {
 	alert("hello" );
@@ -88,7 +90,7 @@ function club_login()
                     //alert(html);
 					document.getElementById("club_user_name").value='';
 					document.getElementById("club_pwd").value='';
-					
+					$('#club_login_acce').load('index2.php #club_login_acce');
                     }
                     });
                
@@ -368,7 +370,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <div class="remodal" data-remodal-id="modal">
                                             <a data-remodal-action="close" class="remodal-close"></a>
 
-                                            <form class="form-horizontal" role="form" method="post" action="script_code.php">
+                                            <form class="form-horizontal"  method="post" action="script_code.php">
                                                 <div>
 
                                                     <div class="form-group">
@@ -420,8 +422,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <br>
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--onClick="todo_insert();"-->
-                                                <button type="submit" data-remodal-action="confirm" name="todo_inserttttttt"  class="remodal-confirm">INK</button>
+                                                <!--onClick="todo_insert();" data-remodal-action="confirm"-->
+                                                <button type="submit"  name="todo_inserttttttt"  class="remodal-confirm">INK</button>
 
                                             </form>
 
@@ -561,15 +563,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <div class="col-lg-12">
                                             <br>
                                             <h4 class="club_headers">DISSCUSSIONS </h4>
-                                            <form method="post" action="">
+                                            <form method="post" action="" id="form_dis_sub">
                                                 <input type="hidden" name="dis_company" id="dis_company" value="<?php echo $usr_dis['company']?>">
-                                                <input type="text" placeholder="INK..." class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;">
-                                                <input type="submit" name="dis_sub" onClick="space_disscussion();" style="display:none;">
+                                          <input type="text" placeholder="INK..." class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;"><!--  -->
+                                                <input type="submit" name="dis_sub"  id="dis_sub" onClick="return space_disscussion();" style="display:none;">
                                             </form>
                                             <br>
                                             <div class="club_network" style="height:300px; background-color:#eee;">
+                                            <div id="club_discuss">
                                                 <?php
-                                                $twity_exe=mysqli_query($conn,"select * from company_discussions where company='$usr_dis[company]'");
+                                                $twity_exe=mysqli_query($conn,"select * from company_discussions where company='$usr_dis[company]' order by dscussion_id desc");
                                                 while($twity=mysqli_fetch_array($twity_exe))
                                                 {
                                                     $twity_details_exe=mysqli_query($conn,"select * from users where user_id='$twity[user_id]'");
@@ -611,7 +614,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
 
 
-
+											</div>
                                             </div>
                                         </div>
                                     </div>
@@ -622,36 +625,39 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         </div>
                         <div class="tab-pane" id="club-vr">
                             <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;">
+                            <div id="club_login">
                             <?php
 							if(!$_SESSION['club_id'])
 							{
                                 ?>
                                 <!----------------------------------CLUB LOGIN BEGIN---------------------------------->
+                                
                                 <div class="pst_main_background pst_box " align="center" style="background-color:#fff;">
                                     <br>
                                     <h3 style="color:#afdf7c; text-align:center;">Club Login</h3>
                                     <br>
                                     <div class="club_login_wid">
-                                        <form method="post" action="">
+                                        <form method="post" action="script_code.php">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder="Enter Club Name">
                                             </div>
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password">
                                             </div>
-                                          <?php /*?>  <input type="hidden" name="club_user_id" id="club_user_id" value="<?php echo $_SESSION['id']; ?>"><?php */?>
-                                            <button type="submit" name="club_login" onClick="club_login();"  class="btn btn_grn">Submit</button>
+                                          <!-- -->
+                                            <button type="submit" name="club_login" onClick="return club_login();"  class="btn btn_grn">Submit</button>
                                         </form>
                                     </div>
                                     <br>
                                     <br>
-                                </div>
-
+                               
+								</div>
                                 <!----------------------------------------END CLUB LOGIN------------------------------->
                                 <?php
 							}else
 							{
 							?>
+                            <div id="club_login_acce">
                             <div class="club_sub_div_height">
                                     <ul class="nav nav-tabs"> 
                                         <li class="active">
@@ -691,7 +697,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             <input type="text" placeholder="Suggest Me To" class="club_txt" id="suggest_me_to">
                                                             <input type="hidden" name="sug_usrt_id" id="sug_usrt_id" value="<?php echo $_SESSION['id'];?>"/>
                                                             <input type="hidden" name="sug_date" id="sug_date" value="<?php echo $sug_date;?>">
-                                                            <input type="submit" name="sug_sub" style="display:none;" onClick="ins_suggest();" />
+                                                            <input type="submit" name="sug_sub" style="display:none;" onClick="return ins_suggest();" />
                                                         </form>
                                                     </div>
                                                 </div>
@@ -706,6 +712,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div id="connect_suggestion">
                                             <div style="margin:10px;">
                                                 <?php
                                                 $get_club_menem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' and user_id!='$_SESSION[id]'");
@@ -733,6 +740,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <br>
                                                         <span><?php echo $fet_mem_de['industry'];?></span>
                                                         <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
+                                                        
                                                         <?php
                                                         if($get_ur_sugg['suggest_topic']!='')
                                                         {
@@ -746,7 +754,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     <input type="hidden" name="diswhos_sugg" id="diswhos_sugg" value="<?php echo $fet_mem_de['user_id'];?>">
                                                                     <input type="hidden" name="diswhom_acc" id="diswhom_acc" value="<?php echo $_SESSION['id'];?>">
                                                                     <input type="hidden" name="dissugg_id" id="dissugg_id" value="<?php echo $get_ur_sugg['suggest_topic_id'];?>">
-                                                                    <span><a href="" class="btn btn_grn" onClick="disconnect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connected</a></span>
+                                                                    <span><a href="#" class="btn btn_grn" onClick="return disconnect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connected</a></span>
 
                                                                 </form>
                                                                 <?php
@@ -755,18 +763,20 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                                 ?>
 
-                                                                <span><a href="" class="btn btn_grn" onClick="connect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connect</a></span>
+                                                                <span><a href="#" class="btn btn_grn" onClick="return connect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connect</a></span>
 
 
                                                                 <?php
                                                             }
                                                         }
                                                         ?>
+                                                       
                                                         <p><?php echo $fet_mem_de['description'];?></p>
                                                     </div>
                                                     <?php
                                                 }
                                                 ?>
+                                                </div>
                                                 <!-- <div class="col-lg-4 grow" align="center">
                                                      <h4>
          IT-SOFTWARE</h4>
@@ -842,10 +852,11 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 ?>
                                                 <input type="hidden" name="msg_time_date" id="msg_time_date" value="<?php echo $msg_date;?>"/>
                                                 <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php echo $_SESSION['id']?>">
-                                                <input type="submit" style="display:none;" name="Message_send" onClick="inse_msg();"/>
+                                                <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
                                             </form>
                                             <br>
                                             <br>
+                                            <div id="club_networks">
                                             <div class="club_network">
                                                 <?php
                                                 $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
@@ -896,7 +907,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     </div>
                                                 </div><?php */?>
 
-
+												</div>
                                             </div>
                        <!--------------------------------------END NETWORKING----------------------------------------------------->
 
@@ -922,6 +933,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <span style="font-size:16px;"> <?php echo $usr_dis['industry'];?>  </span>
                                                     </div>
                                                 </div>
+                                               
                                                 <div class="club_sugg_scroll">
                                                     <?php
                                                     $gu_sugg=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
@@ -954,7 +966,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
 
 
-
+												
 
 
                                                 </div>
@@ -977,6 +989,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
     </div>-->
                                                     <span>Club Member Suggestions</span>
                                                 </div>
+                                                <div id="connect_suggestion2">
                                                 <div class="club_sugg_scroll">
                                                     <?php
                                                     $result_exe_club_mem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' AND user_id!='$_SESSION[id]'");
@@ -988,6 +1001,10 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         $clb_pic=mysqli_fetch_array($cib_ppic_exe);
                                                         $get_clb_sugg=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$result_club_mem[user_id]'  ORDER BY sug_date DESC");
                                                         $kiloo=mysqli_fetch_array($get_clb_sugg);
+														?>
+                                                         
+                                                        <?php
+														
                                                         if($kiloo['suggest_topic']!='')
                                                         {
                                                             ?>
@@ -995,7 +1012,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                                 <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                     <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                        <a href="" onClick="Get_clb_user_sugg(<?php echo $result_club_mem['user_id']?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
+                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id']?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
                                                                     </div>
                                                                     <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                         <span><?php echo $kiloo['suggest_topic'];?> </span>
@@ -1010,12 +1027,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     if($cn1!=0)
                                                                     {
                                                                         ?>
-                                                                        <span><a href="" class="btn btn_grn" onClick="disconnect_suggest(<?php echo $clb_mde['user_id'];?>,<?php echo $kiloo['suggest_topic_id'];?>);" style="margin-left:-15px; height:20px;padding-top:0px;padding-bottom:0px;">Connected</a></span>
+                                                                        <span><a href="#" class="btn btn_grn" onClick="return disconnect_suggest(<?php echo $clb_mde['user_id'];?>,<?php echo $kiloo['suggest_topic_id'];?>);" style="margin-left:-15px; height:20px;padding-top:0px;padding-bottom:0px;">Connected</a></span>
                                                                         <?php
                                                                     }else
                                                                     {
                                                                         ?>
-                                                                        <span><a href="" class="btn btn_grn" onClick="connect_suggest(<?php echo $clb_mde['user_id'];?>,<?php echo $kiloo['suggest_topic_id'];?>);" style="margin-left:-15px; height:20px;padding-top:0px;padding-bottom:0px;">Connect</a></span>
+                                                                        <span><a href="#" class="btn btn_grn" onClick="return connect_suggest(<?php echo $clb_mde['user_id'];?>,<?php echo $kiloo['suggest_topic_id'];?>);" style="margin-left:-15px; height:20px;padding-top:0px;padding-bottom:0px;">Connect</a></span>
                                                                         <?php
                                                                     }
                                                                     ?>
@@ -1023,9 +1040,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             </div>
                                                             <?php
                                                         }
+														?>
+                                                      
+                                                        <?php
                                                     }
                                                     ?>
-
+														</div>
                                                     <!-- <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                          <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                              <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
@@ -1056,7 +1076,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <div class="row" style="width:400px">
                                                 <h4 class="club_headers">
                                                     Add Tags</h4>
-                                                <form role="form" method="post" action="script_code.php">
+                                                <form role="form" method="post" action="">
                                                     <div class="form-group">
                                                         <select id="formInput139" name="club_memb" id="club_memb" class="form-control">
                                                             <option>Select Club Member</option>                                                             <?php
@@ -1087,7 +1107,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <input type="email" class="form-control" name="vendor_email" id="vendor_email" placeholder="Vendor email">
                                                     </div>
 
-                                                    <button type="submit" onClick="add_refrals();" name="add_refrals" class="btn btn_grn">Submit</button>
+                                                    <button type="submit" onClick="return add_refrals();" name="add_refrals" class="btn btn_grn">Submit</button>
                                                     <button type="button" class="btn btn_grn">Clear</button>
                                                 </form>
                                             </div>
@@ -1108,6 +1128,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
     </div>-->
                                                     <span>Tagged to you</span>
                                                 </div>
+                                                <div id="accept_tag_confirmation">
                                                 <div class="club_sugg_scroll">
                                                     <?php
                                                     $find_refer=mysqli_query($conn,"select * from tbl_reference where to_whom_user_id='$_SESSION[id]'  order by date desc");
@@ -1154,12 +1175,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             if($gred['status']!=0)
                                                             {
                                                                 ?>
-                                                                <a href="" onClick="reje_tags(<?php echo $gred['refrence_id']?>,<?php echo $gred['who_user_id'];?>);" data-remodal-action="confirm" class="remodal-confirm">Confirm</a>
+                                                                <a href="#" onClick="return reje_tags(<?php echo $gred['refrence_id']?>,<?php echo $gred['who_user_id'];?>);" data-remodal-action="confirm" class="remodal-confirm">Confirm</a>
                                                                 <?php
                                                             }else
                                                             {
                                                                 ?>
-                                                                <a href="" onClick="acc_tags(<?php echo $gred['refrence_id']?>,<?php echo $gred['who_user_id'];?>);" data-remodal-action="confirm" class="remodal-confirm">Accept</a>
+                                                                <a href="#" onClick="return acc_tags(<?php echo $gred['refrence_id']?>,<?php echo $gred['who_user_id'];?>);" data-remodal-action="confirm" class="remodal-confirm">Accept</a>
                                                                 <?php
                                                             }
                                                             ?>
@@ -1173,6 +1194,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <?php
                                                     }
                                                     ?>
+                                                    </div>
                                                     <?php /*?>  <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                         <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                             <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
@@ -1209,6 +1231,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
     </div>-->
                                                     <span>Tagged others</span>
                                                 </div>
+                                                <div id="add_tags">
                                                 <div class="club_sugg_scroll">
                                                     <?php
                                                     $add_fre=mysqli_query($conn,"select * from tbl_reference where who_user_id='$_SESSION[id]'");
@@ -1272,6 +1295,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <?php
                                                     }
                                                     ?>
+                                                    </div>
                                                     <?php /*?> <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                         <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                             <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
@@ -1340,9 +1364,11 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                             <?php
 							}
 							?>
+                             </div>
                             </div>
 						</div>
                         <div class="tab-pane " id="dairy-vr">
@@ -1386,10 +1412,10 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <form method="post" action="script_code.php">
                                                 <div class="input-group comment">
                                                     <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                    <textarea style="resize:none" class="span12 form-control" name="post_data" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
+                                                    <textarea style="resize:none" class="span12 form-control" name="post_data" id="post_data" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
                                                 </div>
                                                 <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; ">
-                                                    <button type="submit" name="sub_post" class="btn btn-success navbar-btn">
+                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn-success navbar-btn">
                                                         WRITE
                                                     </button>
                                                     <button type="button" class="btn btn-success navbar-btn">
@@ -1403,9 +1429,10 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         </div>
                                         <!--<hr class="style5">-->
                                         <br />
-
+										<div id="news_feed">
                                         <div class="bg_pst">
-
+										<div id="news_feed_like">
+                                        <div id="news_feed_comment">	
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
                                             while($resp=mysqli_fetch_array($retpe))
@@ -1445,7 +1472,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 {
 
                                                                     ?>
-                                                                    <span><a href=""   onClick="unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">unlike</a></span>
+                                                                    <span><a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">unlike</a></span>
                                                                     <?php
                                                                 }else
                                                                 {
@@ -1453,7 +1480,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     //echo $_SESSION['id'];
                                                                     ?>
 
-                                                                    <span><a href=""  onClick="like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
+                                                                    <span><a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -1537,8 +1564,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <?php
                                             }
                                             ?>
-
-
+											</div></div>
+											</div>
                                         </div>
 
                                      <!-----------------------------------------END NEWS FEED------------------------------------>
@@ -1547,6 +1574,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                 </div>
                                 <div class="tab-pane" id="tab2">
                                  <!------------------------------------BEGIN INDUSTRY--------------------------------------------------->
+                                 <div id="my_industry">
                                     <div class="bg_pst">
 
                                         <?php
@@ -1555,7 +1583,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         while($industry_users_ret=mysqli_fetch_array($industry_users_exe))
                                         {
 
-                                            $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]'");
+                                            $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]' order by post_id desc");
                                             while ($industry_post_rety = mysqli_fetch_array($industry_post_users_execu))
                                             {
                                                 $industry_user_profile_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$industry_post_rety[user_id]'");
@@ -1685,12 +1713,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         }
                                         ?>
                                     </div>
-
+									</div>
                                   <!----------------------------------END INDUSTRY---------------------------------------------------->
                                 </div>
                                 <div class="tab-pane" id="tab3">
                                  <!------------------------------------------BEGIN INKED--------------------------------->
-
+									<div id="my_inked">
                                     <div class="bg_pst">
 
                                         <?php
@@ -1700,7 +1728,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <?php
 
                                         $count=0;
-                                        $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."'");
+                                        $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."' order by post_id desc");
                                         while($user_profile_post=mysqli_fetch_array($user_profile_post_exet))
                                         {
                                             $count++;
@@ -1823,7 +1851,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <?php
                                         }
                                         ?>
-
+										</div>
                                     </div>
                                  <!---------------------------------------------END INKED---------------------------------------->
                                 </div>
@@ -2450,3 +2478,4 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
         
     </body>
 </html>
+ 

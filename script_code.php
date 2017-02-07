@@ -1,17 +1,11 @@
 <?php
 include 'config.php';
 session_start();
-if(isset($_POST['sub_post']))
+if(isset($_POST['post_data']))
 {
-	echo "<script>alert('insertion Fail')<script>";
+	
 	$ins_post=mysqli_query($conn,"insert into user_post(`user_id`,`post_txt`)values('".$_SESSION['id']."','".$_POST['post_data']."')");
-	if($ins_post)
-	{
-		header("location:index.php");
-	}
-	else{
-		echo "<script>alert('insertion Fail')<script>";
-	}
+	
 }
 
 if(isset($_POST['luser_id']))
@@ -52,17 +46,20 @@ $ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `us
 
 //---TODO Insertion----
 
-/*if(isset($_POST['to_insert']))
+if(isset($_POST['todo_inserttttttt']))
 {
-	
-	$todo_ins=mysqli_query($conn,"INSERT INTO `user_todolist`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`, `todo_datetime`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]','$_POST[todo_date]')");
+	echo "<script>alert('resfgbdzf')</script>";
+	$todo_ins=mysqli_query($conn,"INSERT INTO `user_todolist`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]')");
 	if($todo_ins)
 	{
-		header("location:index.php");
+		header("location:index2.php");
+	}else
+	{
+		echo "<script>alert('Data insertion Fail')</script>";
 	}
 }
-*/
-if(isset($_POST['todo_inserttttttt']))
+
+/*if(isset($_POST['todo_inserttttttt']))
 {
 	echo "<script>alert('resfgbdzf')</script>";
 $todoins=mysqli_query($conn,"INSERT INTO `user_todolist`(`todo_user_id`,`todo_type`,`todo_contact`,`todo_label`,`todo_status`) VALUES('".$_SESSION['id']."','".$_POST['todo_type']."','".$_POST['todo_contacts']."','".$_POST['todo_title']."')");
@@ -75,7 +72,7 @@ $todoins=mysqli_query($conn,"INSERT INTO `user_todolist`(`todo_user_id`,`todo_ty
 		echo "<script>alert('Data insertion Fail')</script>";
 	}
 	
-}
+}*/
 
 if(isset($_POST['todo_status']))
 {
@@ -169,13 +166,10 @@ if(isset($_POST['msg_user_id']))
 }
 
 //------add tags-------
-if(isset($_POST['add_refrals']))
+if(isset($_POST['club_memb']))
 {
 	$ins_tags=mysqli_query($conn,"INSERT INTO `tbl_reference`( `club_id`, `who_user_id`, `to_whom_user_id`, `for_what`, `vendor_name`, `vendor_phone`, `vendor_email`) VALUES ('$_SESSION[club_id]','$_SESSION[id]','$_POST[club_memb]','$_POST[tag_title]','$_POST[vendor_name]','$_POST[vendor_phone]','$_POST[vendor_email]')");
-	if($ins_tags)
-	{
-		header("location:index.php");
-	}
+	
 }
 
 //accept tags--
@@ -211,7 +205,8 @@ if(isset($_POST['old_pwd']))
 			{
 				echo "<script>alert('Password successfully  Updated ')</script>";
 				$_SESSION['club_user']='';
-				header("location:index.php");
+				$_SESSION['club_id']='';
+				//header("location:index.php");
 			}
 			else
 			{

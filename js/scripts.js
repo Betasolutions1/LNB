@@ -275,12 +275,16 @@ function unlike(ulpost_id,uluser_id) {
 //-- sug_ins
 
 function ins_suggest() {
-	alert("hello" );
+	
     var sugg_info  = document.getElementById("suggest_me_to").value;
 	var sug_usrt_id  = document.getElementById("sug_usrt_id").value;
 	var sug_date = document.getElementById("sug_date").value;
-    //sug_usrt_id
-	//alert("hello" + bpost_id );
+    if(sugg_info.length > 10) //i got a problem with this one i think
+    {
+     alert("Suggest info must be less than 160 characters");
+     return false;
+    }else
+	{
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'sugg_info=' + sugg_info + '&sug_usrt_id=' +sug_usrt_id + '&sug_date=' +sug_date;
       
@@ -298,6 +302,7 @@ function ins_suggest() {
                     });
                
         return false;
+	}
 }
 
 

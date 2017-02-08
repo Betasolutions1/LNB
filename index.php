@@ -688,7 +688,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <div>
 
                                                     <h4 class="club_headers">
-                                                        CLUB ID # 1234</h4>
+                                                        CLUB ID # <?php echo $_SESSION['club_id']?></h4>
                                                     <div class="col-lg-12 club_txtbox" style="padding-left:0px; padding-right:10px;paddin-top:0px;margin-top:0px;">
                                                         <?php
                                                         $sug_date=date('Y-m-d');

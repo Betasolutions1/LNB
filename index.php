@@ -565,7 +565,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <h4 class="club_headers">DISSCUSSIONS </h4>
                                             <form method="post" action="" id="form_dis_sub">
                                                 <input type="hidden" name="dis_company" id="dis_company" value="<?php echo $usr_dis['company']?>">
-                                          <input type="text" placeholder="INK..." class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;"><!--  -->
+                                          <input type="text" maxlength="160" placeholder="INK... (160 characters only..)" class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;"><!--  -->
                                                 <input type="submit" name="dis_sub"  id="dis_sub" onClick="return space_disscussion();" style="display:none;">
                                             </form>
                                             <br>
@@ -694,7 +694,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         $sug_date=date('Y-m-d');
                                                         ?>
                                                         <form method="post" action="">
-                                                            <input type="text" placeholder="Suggest Me To" class="club_txt" id="suggest_me_to">
+                                                            <input type="text" placeholder="Suggest Me To (160 Characters only..)" maxlength="160" class="club_txt" id="suggest_me_to">
                                                             <input type="hidden" name="sug_usrt_id" id="sug_usrt_id" value="<?php echo $_SESSION['id'];?>"/>
                                                             <input type="hidden" name="sug_date" id="sug_date" value="<?php echo $sug_date;?>">
                                                             <input type="submit" name="sug_sub" style="display:none;" onClick="return ins_suggest();" />
@@ -792,51 +792,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                      <p>
              Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer</p>
                                                  </div>-->
-                                                <!--<div class="col-lg-4 grow" align="center">
-                                                    <h4>
-        IT-SOFTWARE</h4>
-                                                    <img src="images/profile/6.jpg" width="70" style="margin-top:5px;">
-                                                    <br>
-                                                    <span>Rajesh</span>
-                                                    <br>
-                                                    <span>CEO-Beta Solutions</span>
-                                                    <br>
-                                                    <span>IT-Softwarre</span>
-                                                    <h4>gayatri hospital</h4>
-                                                    <span><input type="submit" class="btn btn_grn" value="Connect"></span>
-                                                    <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer</p>
-                                                </div>-->
-                                                <!--<div class="col-lg-4 grow" align="center">
-                                                    <h4>
-        IT-SOFTWARE</h4>
-                                                    <img src="images/profile/6.jpg" width="70" style="margin-top:5px;">
-                                                    <br>
-                                                    <span>Rajesh</span>
-                                                    <br>
-                                                    <span>CEO-Beta Solutions</span>
-                                                    <br>
-                                                    <span>IT-Softwarre</span>
-                                                    <h4>gayatri hospital</h4>
-     												<span><input type="submit" class="btn btn_grn" value="Connect"></span>
-                                                    <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer</p>
-                                                </div>-->
-                                                <!--<div class="col-lg-4 grow" align="center">
-                                                    <h4>
-        IT-SOFTWARE</h4>
-                                                    <img src="images/profile/6.jpg" width="70" style="margin-top:5px;">
-                                                    <br>
-                                                    <span>Rajesh</span>
-                                                    <br>
-                                                    <span>CEO-Beta Solutions</span>
-                                                    <br>
-                                                    <span>IT-Softwarre</span>
-                                                    <h4>gayatri hospital</h4>
-                                                    <span><input type="submit" class="btn btn_grn" value="Connect"></span>
-                                                    <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer</p>
-                                                </div>-->
+                                               
+                                               
+                                               
                                             </div>
 
                                <!------------------------------------------END CLUB SHEET-------------------------------------------->
@@ -846,7 +804,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <h4 class="club_headers">
                                                 Networking </h4>
                                             <form method="post"  action="">
-                                                <input type="text" placeholder="Let's Network" class="club_txt" name="chat_txt" id="chat_txt">
+                                                <input type="text" placeholder="Let's Network (160 characters only..)" maxlength="160" class="club_txt" name="chat_txt" id="chat_txt">
                                                 <?php
                                                 $msg_date=date("Y-m-d h:i");
                                                 ?>

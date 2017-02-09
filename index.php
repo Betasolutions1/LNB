@@ -71,31 +71,6 @@ if(!$_SESSION['Email'])
 <script type="text/javascript">
 
 
-function club_login()
-{
-	alert("hello" );
-    var club_user_name  = document.getElementById("club_user_name").value;
-    var club_pwd = document.getElementById("club_pwd").value;
-	
-    // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'club_user_name=' + club_user_name + '&club_pwd=' + club_pwd;
-      
-                    // AJAX code to submit form.
-                    $.ajax({
-                    type: "POST",
-                    url: "script_code.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(html) {
-                    //alert(html);
-					document.getElementById("club_user_name").value='';
-					document.getElementById("club_pwd").value='';
-					$('#club_login_acce').load('index2.php #club_login_acce');
-                    }
-                    });
-               
-        return false;
-}
 </script>
         
         <!--End Remodel-->
@@ -182,15 +157,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <span class=" todo_right"><a href="#" data-remodal-target="modal"> <i class="fa fa-plus "></i></a></span>
                                                         <!-- <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>-->
                                                         <span class="todo_right " id="datepicker2"><a href="#" data-toggle=""><i class="fa fa-calendar "></i></a></span>
-                                                        <span id="test" class="todo_right "><a href="#" id="check" onclick="Check()"><i class="fa fa-check-square-o "></i></a></span>
+                                                        <span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()"><i class="fa fa-check-square-o "></i></a></span>
                                                     </div>
+                                                    <div id="todo_tasks">
                                                     <div class="panel-content" id="screen">
                                                         <form>
                                                             <fieldset>
                                                                 <ul class="tasks">
                                                                     <?php
                                                                     $td_cu=0;
-                                                                    $tdl=mysqli_query($conn,"select * from user_todolist where todo_status='0' AND todo_user_id='".$_SESSION['id']."'");
+                                                                    $tdl=mysqli_query($conn,"select * from todo_isertion where todo_status='0' AND todo_user_id='".$_SESSION['id']."'");
                                                                     while($ret_td=mysqli_fetch_array($tdl))
                                                                     {
                                                                         ++$td_cu;
@@ -233,7 +209,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 <ul class="tasks">
                                                                     <?php
                                                                     $td_cu=0;
-                                                                    $tdl=mysqli_query($conn,"select * from user_todolist where todo_status='1' AND todo_user_id='".$_SESSION['id']."'");
+                                                                    $tdl=mysqli_query($conn,"select * from todo_isertion where todo_status='1' AND todo_user_id='".$_SESSION['id']."'");
                                                                     while($ret_td=mysqli_fetch_array($tdl))
                                                                     {
                                                                         ++$td_cu;
@@ -267,7 +243,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             </fieldset>
                                                         </form>
                                                     </div>
-
+												</div>
                                                 </div>
                                             </div>
                                             <a href="#" class="ws_ta_tab_a"><i class="fa fa-comments"></i> LEDGER</a>
@@ -369,8 +345,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <!--Todo Model Code-->
                                         <div class="remodal" data-remodal-id="modal">
                                             <a data-remodal-action="close" class="remodal-close"></a>
-
-                                            <form class="form-horizontal"  method="post" action="script_code.php">
+												<!--script_code.php-->
+                                            <form class="form-horizontal"  method="post" action="">
                                                 <div>
 
                                                     <div class="form-group">
@@ -405,12 +381,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <div class="col-sm-10">
                                                             <div class="row">
                                                                 <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts">
-                                                                    <option>Mustard</option>
-                                                                    <option>Ketchup</option>
-                                                                    <option>Relish</option>
-                                                                    <option>Tent</option>
-                                                                    <option>Flashlight</option>
-                                                                    <option>Toilet Paper</option>
+                                                                    <option value="Mustard">Mustard</option>
+                                                                    <option value="Ketchup">Ketchup</option>
+                                                                    <option value="Relish">Relish</option>
+                                                                    <option value="Tent">Tent</option>
+                                                                    <option value="Flashlight">Flashlight</option>
+                                                                    <option value="Toilet Paper">Toilet Paper</option>
                                                                 </select>
                                                             </div>
 
@@ -422,8 +398,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <br>
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--onClick="todo_insert();" data-remodal-action="confirm"-->
-                                                <button type="submit"  name="todo_inserttttttt"  class="remodal-confirm">INK</button>
+                                                <!-- data-remodal-action="confirm"-->
+                                                <button type="submit"  name="todo_insert" onClick="return todo_insert();"  class="remodal-confirm">INK</button>
 
                                             </form>
 
@@ -637,7 +613,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <h3 style="color:#afdf7c; text-align:center;">Club Login</h3>
                                     <br>
                                     <div class="club_login_wid">
-                                        <form method="post" action="script_code.php">
+                                    <!--script_code.php-->
+                                        <form method="post" action="">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder="Enter Club Name">
                                             </div>
@@ -645,7 +622,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password">
                                             </div>
                                           <!-- -->
-                                            <button type="submit" name="club_login" onClick="return club_login();"  class="btn btn_grn">Submit</button>
+                                            <button type="submit" name="club_login" onSubmit="return club_loginmmm()"  class="btn btn_grn">Submit</button>
                                         </form>
                                     </div>
                                     <br>

@@ -107,9 +107,39 @@ session_start();
         </nav>
         <div class="container-fluid paper" style=" padding-top: 30px;margin-top:50px">
             <div class="row"> 
-                <div class="col-lg-3 col-md-4" align="center">
-                    <div class="jumbotron" style="padding-bottom:150px;">
-</div>
+                <div class="col-lg-3 col-md-4" align="left">
+                     <!--class="jumbotron"-->
+                    <div  >
+                     <!--class="tasks"-->
+                     <ul >
+                                                                    
+                       <li class="active" style="margin-left:-40px;">
+                        <a href="index.php">About LNB</a>
+                       </li>
+                       <li style="margin-left:-40px;">
+                        <a href="careers.php">Careers</a>
+                       </li>
+                       <li  style="margin-left:-40px;">
+                        <a href="add_advertise.php">Add Ads</a>
+                       </li>
+                       <li  style="margin-left:-40px;">
+                        <a href="help.php">Help</a>
+                       </li>
+                       <li  style="margin-left:-40px;">
+                        <a href="clubs.php">Add Clubs</a>
+                       </li>
+                       <li  style="margin-left:-40px;">
+                        <a href="add_clubmem.php">Add Clubs members</a>
+                       </li>
+                       <li  style="margin-left:-40px;">
+                        <a href="add_industry.php">Add Industry</a>
+                       </li>
+                       <li  style="margin-left:-40px;">
+                        <a href="terms_conditions.php">Terms & Conditions</a>
+                       </li>
+                     </ul>
+                                                           
+					</div>
                     <div class="jumbotron banner_1_sticky sticky">
                         <img src="../assets//images/b_2.jpg" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
                     </div>

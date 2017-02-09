@@ -46,11 +46,11 @@ $ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `us
 
 //---TODO Insertion----
 
-if(isset($_POST['todo_inserttttttt']))
+if(isset($_POST['todo_type']))
 {
 	echo "<script>alert('resfgbdzf')</script>";
-	$todo_ins=mysqli_query($conn,"INSERT INTO `user_todolist`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]')");
-	if($todo_ins)
+	$todo_ins11=mysqli_query($conn,"INSERT INTO `todo_isertion`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]')");
+	if($todo_ins11)
 	{
 		header("location:index2.php");
 	}else

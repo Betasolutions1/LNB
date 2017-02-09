@@ -1,3 +1,31 @@
+function club_loginmmm()
+{
+	alert("hello" );
+    var club_user_name  = document.getElementById("club_user_name").value;
+    var club_pwd = document.getElementById("club_pwd").value;
+	
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'club_user_name=' + club_user_name + '&club_pwd=' + club_pwd;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("club_user_name").value='';
+					document.getElementById("club_pwd").value='';
+					$('#club_login_acce').load('index2.php #club_login_acce');
+                    }
+                    });
+               
+        return false;
+}
+</script>
+
+
 //Space company discussion
 
 function space_disscussion()
@@ -141,6 +169,7 @@ function todo_insert() {
 					document.getElementById("todo_title").value='';
 					document.getElementById("todo_contacts").value='';
 					document.getElementById("todo_type").value='';
+					$('#todo_tasks').load('index.php #todo_tasks');
                     }
                     });
                

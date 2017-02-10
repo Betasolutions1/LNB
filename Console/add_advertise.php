@@ -166,6 +166,7 @@ session_start();
                                             </div><br>
                                             <div class="form-control">
                                             <input type="file" class="form-control" name="Advertise_img" id="Advertise_img" placeholder="Advertise Image">	
+                                            <label style="color:#F10004">* Image Size Less than 2MB</label><span>(Image resolution 600*900)</span>
                                             </div>
                                             <br>
                                             <div class="input-group comment"> 

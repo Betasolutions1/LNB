@@ -63,18 +63,29 @@ if(!$_SESSION['Email'])
         animation: none;
       }
     </style>
-       
-         <!--Get club member Suggestions-->
-      
-</script>
-
-<script type="text/javascript">
-
-
-</script>
-        
+     
         <!--End Remodel-->
         
+       <?php /*?> <!--Upload Profile Pic style-->
+        <style>
+		.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+		</style>
+        <!--End style--><?php */?>
       <script type="text/javascript" src="js/scripts.js"></script>       
     </head>
     <body>
@@ -123,10 +134,22 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
         <div class="container-fluid paper" style=" padding-top: 30px;">
             <div class="row"> 
                 <div class="col-lg-3 col-md-4" align="center">
-                    <div class="jumbotron" style="padding-bottom:150px;">
-</div>
+                <!--padding-bottom:150px;-->
+                    <div class="jumbotron" style="">
+                   
+                        <div style="margin-left:-60px;height:140px;width:280px;background:url()">
+                        <h2><?php echo $ads['ads_name'];?></h2>
+                        <p style="text-align:justify;width:250px;font-size:12px;color:#000;;"><?php echo $ads['ads_desc']?></p>
+                        </div>
+                    
+                    </div>
                     <div class="jumbotron banner_1_sticky sticky">
-                        <img src="../assets//images/b_2.jpg" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
+                     <?php
+                    $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
+					$ads=mysqli_fetch_array($get_ads_exe);
+					
+					?>
+                        <img src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 "> 
@@ -159,14 +182,14 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <span class="todo_right " id="datepicker2"><a href="#" data-toggle=""><i class="fa fa-calendar "></i></a></span>
                                                         <span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()"><i class="fa fa-check-square-o "></i></a></span>
                                                     </div>
-                                                    <div id="todo_tasks">
+                                                    <div id="todo_tasks_refresh">
                                                     <div class="panel-content" id="screen">
                                                         <form>
                                                             <fieldset>
                                                                 <ul class="tasks">
                                                                     <?php
                                                                     $td_cu=0;
-                                                                    $tdl=mysqli_query($conn,"select * from todo_isertion where todo_status='0' AND todo_user_id='".$_SESSION['id']."'");
+                                                                    $tdl=mysqli_query($conn,"select * from todo_insertions where todo_status='0' AND todo_user_id='".$_SESSION['id']."'");
                                                                     while($ret_td=mysqli_fetch_array($tdl))
                                                                     {
                                                                         ++$td_cu;
@@ -181,7 +204,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                             }else
                                                                             {
                                                                                 ?>
-                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="change_to(this.value);"/>
+                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="return change_to(this.value);"/>
                                                                                 <?php
                                                                             }
                                                                             ?>
@@ -209,7 +232,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 <ul class="tasks">
                                                                     <?php
                                                                     $td_cu=0;
-                                                                    $tdl=mysqli_query($conn,"select * from todo_isertion where todo_status='1' AND todo_user_id='".$_SESSION['id']."'");
+                                                                    $tdl=mysqli_query($conn,"select * from todo_insertions where todo_status='1' AND todo_user_id='".$_SESSION['id']."'");
                                                                     while($ret_td=mysqli_fetch_array($tdl))
                                                                     {
                                                                         ++$td_cu;
@@ -249,7 +272,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <a href="#" class="ws_ta_tab_a"><i class="fa fa-comments"></i> LEDGER</a>
                                             <div class="sub-nav">
                                                 <div class="w_todo td_div">
-                                                    <span class=" todo_right"><a href="#modal1" > <i class="fa fa-plus "></i></a></span>
+                                                    <span class="todo_right"><a href="#modal1" > <i class="fa fa-plus "></i></a></span>
                                                     <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
                                                 </div>
@@ -297,14 +320,19 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             </div>
                                             <a href="#"><i class="fa fa-envelope"></i> CLIENTS <!--<span class="pull-right alert-numb"></span>--></a>
                                             <div class="sub-nav">
-                                                <div class="html chat">
+                                             <div class="w_todo td_div">
+                                                    <span class="todo_right"><a href="#clientsmodel" > <i class="fa fa-plus "></i></a></span>
+                                                    <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
+
+                                                </div>
+                                                <div class="html chat" id="todo_clients">
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
                                                         <tr>
                                                             <th>Name</th>
                                                             <th>Company</th>
-                                                            <th>Phone_no</th>
+                                                            <th>Phone No</th>
                                                             <th>Details</th>
 
                                                         </tr>
@@ -355,13 +383,15 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" >
                                                         </div>
                                                     </div>
-                                                  <!--  <div class="form-group">
+                                                    <div class="form-group">
                                                         <label class="col-sm-2 control-label">Date</label>
                                                         <div class="col-sm-10">
-
-                                                            <input type="text" class="form-control" id="todo_date" name="todo_date" placeholder="Date" name="todo_date">
+															<?php
+                                                            $tododate=date('Y-m-d h:i');
+															?>
+                                                            <input type="text" class="form-control" id="todo_date" value="<?php echo $tododate;?>" name="todo_date" placeholder="Date" name="todo_date">
                                                         </div>
-                                                    </div>-->
+                                                    </div>
 
                                                     <div class="form-group">
                                                         <label for="type" class="col-sm-2 control-label">TYPE</label>
@@ -399,7 +429,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!-- data-remodal-action="confirm"-->
-                                                <button type="submit"  name="todo_insert" onClick="return todo_insert();"  class="remodal-confirm">INK</button>
+                                           <button type="submit"  data-remodal-action="confirm"  name="todo_insert" onClick="return todoinsertions();"  class="remodal-confirm">INK</button>
 
                                             </form>
 
@@ -422,7 +452,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Date</label>
                                                         <div class="col-sm-10">
-                                                            <?php $date=date('Y-m-d');?>
+                                                            
                                                             <input type="text" class="form-control" id="led_cur_date" placeholder="" value="<?php echo $date;?>" name="led_cur_date" readonly/>
                                                         </div>
                                                     </div>
@@ -462,6 +492,58 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
 
                                         <!--Ledger End MOdel-->
+                                        
+                                        
+                                        <!---------------------------Clients Normal insertion model--------------------------->
+                                        
+                                           <div class="remodal" data-remodal-id="clientsmodel" id="clientsmodel" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" method="post" action="">
+                                                <div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Name</label>
+                                                        <div class="col-sm-10">
+                                                           
+                                                            <input type="text" class="form-control" id="client_name" placeholder=""  name="client_name"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Company</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="client_company" placeholder="" name="client_company">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Phone No</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="client_phone_no" placeholder="" name="client_phone_no">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Details</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="client_details" placeholder="" name="client_details">
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+
+                                                </div>
+                                                <br>
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <button type="submit" data-remodal-action="confirm" onClick="return clientinsertions();" class="remodal-confirm">Client Data</button>
+
+                                            </form>
+                                        </div>
+                                        
+                                        <!--------------------------------END clients Model------------------------------------>
+                                        
 
                                         <!-----------------------------END WORK-------------------------------------------------->
                                     </div>
@@ -614,15 +696,15 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <br>
                                     <div class="club_login_wid">
                                     <!--script_code.php-->
-                                        <form method="post" action="">
+                                        <form class="form-horizontal" method="post" action="" >
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder="Enter Club Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password">
+                                                <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password" >
                                             </div>
-                                          <!-- -->
-                                            <button type="submit" name="club_login" onSubmit="return club_loginmmm()"  class="btn btn_grn">Submit</button>
+                                          <!--return lnb_club() --> 
+                                            <input type="button" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
                                         </form>
                                     </div>
                                     <br>
@@ -853,6 +935,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <h4 class="club_headers">
                                                 Suggestions</h4>
                                             <br>
+                                            <!--<div id="txtHint"></div>-->
+                                            <div id="user_suggestions">
                                             <div class="row" id="txtHint">
                                                 <div class="club_suggest_top_div row">
                                                     <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
@@ -869,7 +953,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     </div>
                                                 </div>
                                                
-                                                <div class="club_sugg_scroll">
+                                                <div class="club_sugg_scroll" >
                                                     <?php
                                                     $gu_sugg=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
                                                     while($dis_usr_sugg=mysqli_fetch_array($gu_sugg))
@@ -903,7 +987,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
 												
 
-
+													</div>
                                                 </div>
                                             </div>
                                             <br>
@@ -947,7 +1031,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                                 <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                     <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id']?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
+                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id'];?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
                                                                     </div>
                                                                     <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                         <span><?php echo $kiloo['suggest_topic'];?> </span>
@@ -1013,7 +1097,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     Add Tags</h4>
                                                 <form role="form" method="post" action="">
                                                     <div class="form-group">
-                                                        <select id="formInput139" name="club_memb" id="club_memb" class="form-control">
+                                                        <select  name="club_memb" id="club_memb" class="form-control">
                                                             <option>Select Club Member</option>                                                             <?php
                                                             $sel_tg_mem_exe=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' AND user_id!='$_SESSION[id]'");
                                                             $model_count=0;
@@ -1041,8 +1125,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" name="vendor_email" id="vendor_email" placeholder="Vendor email">
                                                     </div>
+                                                    <!---->
 
-                                                    <button type="submit" onClick="return add_refrals();" name="add_refrals" class="btn btn_grn">Submit</button>
+                                                    <button type="button"  name="add_refrals" onClick="return refrals_insertins();" class="btn btn_grn">Submit</button>
                                                     <button type="button" class="btn btn_grn">Clear</button>
                                                 </form>
                                             </div>
@@ -1956,7 +2041,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             </div>
                                             <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
                                                 <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" style="border-radius:50%" />
+                                               <input type="file" size="60">
                                             </div>
+                                            
                                             <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
                                                 <div class="row">
                                                     <div class="col-lg-4" style="height:150px;width:170px; background-color:#fff;border-bottom:1px dashed #afdf7c;">
@@ -2143,11 +2230,13 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     </div>
                                     <br>
                                     <br>
-                                    <div style="border-top:1px solid #afdf7c;border-bottom:1px solid #afdf7c; width:570px; margin-left:10px; margin-right:10px;">
+                                   <!--id="folio_desc"-->
+                                    <div  style="border-top:1px solid #afdf7c;border-bottom:1px solid #afdf7c; width:570px; margin-left:10px; margin-right:10px;">
 
                                         <br>
                                         <h4 style="color:#afdf7c;">
                                             WHO I AM <span class="icon" ><a href="#folio" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
+                                            <div id="folio_dynmic_refer">
                                         <?php
                                         $folio_desc=mysqli_query($conn,"select * from folio where user_id='$_SESSION[id]'");
                                         $fo_des=mysqli_fetch_array($folio_desc);
@@ -2155,7 +2244,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <P style="color:#d3d3d3">
                                             <?php echo $fo_des['description'];?></P>
                                         <br>
+                                        </div>
                                     </div>
+                                   
 
 
 
@@ -2274,8 +2365,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <br>
 
                                     <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-
-                                    <button type="submit"  onClick="add_folio_desc();"  class="remodal-confirm">ADD</button>
+										<!---->
+                                    <button type="button" data-remodal-action="confirm"  onClick="return folio_ins_desc();"  class="remodal-confirm">ADD</button>
 
                                 </form>
 
@@ -2389,7 +2480,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                             </ul>
                         </div>
                         <div class="col-lg-6">
-                            <img class="b_s" src="../assets//images/Banner_1.jpg" style="width:200px; height:900px;" />
+                         <?php
+                    $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
+					$ads=mysqli_fetch_array($get_ads_exe);
+					
+					?>
+                            <img class="b_s" src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:200px; height:900px;" />
                         </div>
                     </div>
                     <!-- Widget -->

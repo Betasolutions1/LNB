@@ -46,13 +46,13 @@ $ins_comment=mysqli_query($conn,"INSERT INTO `user_post_comment`( `post_id`, `us
 
 //---TODO Insertion----
 
-if(isset($_POST['todo_type']))
+if(isset($_POST['todo_title']))
 {
 	echo "<script>alert('resfgbdzf')</script>";
-	$todo_ins11=mysqli_query($conn,"INSERT INTO `todo_isertion`( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]')");
+	$todo_ins11=mysqli_query($conn,"INSERT INTO `todo_insertions` ( `todo_user_id`, `todo_type`, `todo_contact`, `todo_label`,`todo_datetime`) VALUES ('$_SESSION[id]','$_POST[todo_type]','$_POST[todo_contacts]','$_POST[todo_title]','$_POST[todo_date]')");
 	if($todo_ins11)
 	{
-		header("location:index2.php");
+		header("location:index.php");
 	}else
 	{
 		echo "<script>alert('Data insertion Fail')</script>";
@@ -76,7 +76,7 @@ $todoins=mysqli_query($conn,"INSERT INTO `user_todolist`(`todo_user_id`,`todo_ty
 
 if(isset($_POST['todo_status']))
 {
-	$upd_td=mysqli_query($conn,"update user_todolist set todo_status='1' where todo_id='".$_POST['todo_status']."'");
+	$upd_td=mysqli_query($conn,"update todo_insertions set todo_status='1' where todo_id='".$_POST['todo_status']."'");
 }
 
 
@@ -166,9 +166,9 @@ if(isset($_POST['msg_user_id']))
 }
 
 //------add tags-------
-if(isset($_POST['club_memb']))
+if(isset($_POST['tag_title']))
 {
-	$ins_tags=mysqli_query($conn,"INSERT INTO `tbl_reference`( `club_id`, `who_user_id`, `to_whom_user_id`, `for_what`, `vendor_name`, `vendor_phone`, `vendor_email`) VALUES ('$_SESSION[club_id]','$_SESSION[id]','$_POST[club_memb]','$_POST[tag_title]','$_POST[vendor_name]','$_POST[vendor_phone]','$_POST[vendor_email]')");
+	$ins_tags=mysqli_query($conn,"INSERT INTO `tbl_reference`( `club_id`, `who_user_id`, `to_whom_user_id`, `for_what`, `vendor_name`, `vendor_phone`, `vendor_email`) VALUES('$_SESSION[club_id]','$_SESSION[id]','$_POST[club_memb]','$_POST[tag_title]','$_POST[vendor_name]','$_POST[vendor_phone]','$_POST[vendor_email]')");
 	
 }
 
@@ -295,7 +295,10 @@ if(isset($_POST['sub_stage2']))
 	header("location:index.php");
 }
 
-
+if(isset($_POST['client_name']))
+{
+	$ins_todo_clients=mysqli_query($conn,"INSERT INTO `user_clients`( `user_id`, `client_name`, `client_company`, `client_phone`, `clients_details`) VALUES ('$_SESSION[id]','$_POST[client_name]','$_POST[client_company]','$_POST[client_phone_no]','$_POST[client_details]')");
+}
 
 
 

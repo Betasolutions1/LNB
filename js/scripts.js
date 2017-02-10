@@ -1,4 +1,11 @@
-function club_loginmmm()
+
+
+/*function lnb_club()
+{
+	alert("club");
+}*/
+
+function lnb_club()
 {
 	alert("hello" );
     var club_user_name  = document.getElementById("club_user_name").value;
@@ -17,13 +24,12 @@ function club_loginmmm()
                     //alert(html);
 					document.getElementById("club_user_name").value='';
 					document.getElementById("club_pwd").value='';
-					$('#club_login_acce').load('index2.php #club_login_acce');
+					$('#club_login').load('index.php #club_login');
                     }
                     });
                
         return false;
 }
-</script>
 
 
 //Space company discussion
@@ -48,7 +54,7 @@ function space_disscussion()
                     success: function(html) {
                     //alert(html);
 					document.getElementById("disscussion_topic").value='';
-					$('#club_discuss').load('index2.php #club_discuss');
+					$('#club_discuss').load('index.php #club_discuss');
 					
                     }
                     });
@@ -101,7 +107,7 @@ x=true;
 
 function change_to(str)
 {
-	alert("hello"+str );
+	//alert("hello"+str );
 	var dataString = 'todo_status=' + str ;
       
                     // AJAX code to submit form.
@@ -112,7 +118,8 @@ function change_to(str)
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					document.getElementById("firstname").select();
+					
+					$('#todo_tasks_refresh').load('index.php #todo_tasks_refresh');
                     }
                     });
                
@@ -142,21 +149,22 @@ function ledger_insert() {
 					document.getElementById("led_details").value='';
 					document.getElementById("led_credit").value='';
 					document.getElementById("led_debit").value='';
-					$('#ledger_tbl').load('index2.php #ledger_tbl');
+					$('#ledger_tbl').load('index.php #ledger_tbl');
                     }
                     });
                
         return false;
 }
 
-function todo_insert() {
+function todoinsertions() {
 	alert("hello" );
+	var todo_date  = document.getElementById("todo_date").value;
 	var todo_title  = document.getElementById("todo_title").value;
     var todo_contacts  = document.getElementById("todo_contacts").value;
     var todo_type = document.getElementById("todo_type").value;
 	//alert("hello" + todo_title );
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'todo_title=' + todo_title + '&todo_contacts=' + todo_contacts + '&todo_type=' + todo_type;
+    var dataString = 'todo_title=' + todo_title + '&todo_contacts=' + todo_contacts + '&todo_type=' + todo_type + '&todo_date=' + todo_date;
       
                     // AJAX code to submit form.
                     $.ajax({
@@ -169,7 +177,7 @@ function todo_insert() {
 					document.getElementById("todo_title").value='';
 					document.getElementById("todo_contacts").value='';
 					document.getElementById("todo_type").value='';
-					$('#todo_tasks').load('index.php #todo_tasks');
+					$('#todo_tasks_refresh').load('index.php #todo_tasks_refresh');
                     }
                     });
                
@@ -202,7 +210,7 @@ function add_user_skill()
 					document.getElementById("skill5").innerHTML=result;
 					 //$("#skill5").show(skill_name);
 					//$("#skill5").html($("#skill5"));
-					$('#skill5').load('index2.php #skill5');
+					$('#skill5').load('index.php #skill5');
 					// evt.preventDefault();
 					// return false;
                     }
@@ -212,13 +220,11 @@ function add_user_skill()
 }
 
 //---ADD folio--
-function add_folio_desc()
+function folio_ins_desc()
 {
-	
+	alert("folio");
 	var folio_desc  = document.getElementById("folio_desc").value;
-    //var folio_desc  = document.getElementById("folio_desc").value;
-   
-	
+  
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'folio_desc=' + folio_desc ;
       
@@ -229,7 +235,7 @@ function add_folio_desc()
                     data: dataString,
                     cache: false,
                     success: function(html) {
-                   
+                   $('#folio_dynmic_refer').load('index.php #folio_dynmic_refer');
 				   
                     }
                     });
@@ -261,7 +267,7 @@ function like(lpost_id,luser_id) {
 					$('#my_inked').load('index2.php #my_inked');
 					//$('#industry_likes').load('index2.php #industry_likes');
 					//$('#inked_likes').load('index2.php #inked_likes');
-					$('#noted_likes').load('index2.php #noted_likes');
+					$('#noted_likes').load('index.php #noted_likes');
 					
 					
                     }
@@ -287,12 +293,12 @@ function unlike(ulpost_id,uluser_id) {
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("firstname").select();,
-					$('#news_feed_like').load('index2.php #news_feed_like');
-					$('#my_industry').load('index2.php #my_industry');
-					$('#my_inked').load('index2.php #my_inked');
-				  // $('#industry_likes').load('index2.php #industry_likes');
-					//$('#inked_likes').load('index2.php #inked_likes');
-					$('#noted_likes').load('index2.php #noted_likes');
+					$('#news_feed_like').load('index.php #news_feed_like');
+					$('#my_industry').load('index.php #my_industry');
+					$('#my_inked').load('index.php #my_inked');
+				  // $('#industry_likes').load('index.php #industry_likes');
+					//$('#inked_likes').load('index.php #inked_likes');
+					$('#noted_likes').load('index.php #noted_likes');
 					
 					
                     }
@@ -308,7 +314,7 @@ function ins_suggest() {
     var sugg_info  = document.getElementById("suggest_me_to").value;
 	var sug_usrt_id  = document.getElementById("sug_usrt_id").value;
 	var sug_date = document.getElementById("sug_date").value;
-    if(sugg_info.length > 10) //i got a problem with this one i think
+    if(sugg_info.length > 160) //i got a problem with this one i think
     {
      alert("Suggest info must be less than 160 characters");
      return false;
@@ -326,7 +332,7 @@ function ins_suggest() {
                     success: function(html) {
                     //alert(html);
 					document.getElementById("suggest_me_to").value='';
-					$('#user_suggestions').load('index2.php #user_suggestions');
+					$('#user_suggestions').load('index.php #user_suggestions');
                     }
                     });
                
@@ -350,8 +356,8 @@ function connect_suggest(whos_sugg,sugg_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
-					$('#connect_suggestion').load('index2.php #connect_suggestion');
-					$('#connect_suggestion2').load('index2.php #connect_suggestion2');
+					$('#connect_suggestion').load('index.php #connect_suggestion');
+					$('#connect_suggestion2').load('index.php #connect_suggestion2');
                     }
                     });
 					
@@ -371,8 +377,8 @@ function disconnect_suggest(diswhos_sugg,dissugg_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
-					$('#connect_suggestion').load('index2.php #connect_suggestion');
-					$('#connect_suggestion2').load('index2.php #connect_suggestion2');
+					$('#connect_suggestion').load('index.php #connect_suggestion');
+					$('#connect_suggestion2').load('index.php #connect_suggestion2');
                     }
                     });
 					
@@ -399,7 +405,7 @@ function inse_msg() {
                     success: function(html) {
                     //alert(html);
 					document.getElementById("chat_txt").value='';
-					$('#club_networks').load('index2.php #club_networks');
+					$('#club_networks').load('index.php #club_networks');
                     }
                     });
                
@@ -408,9 +414,9 @@ function inse_msg() {
 
 //-----Tags begin
 
-function add_refrals()
+function refrals_insertins()
 {
-	alert("hello"  );
+	alert("hello");
 	var club_memb  = document.getElementById("club_memb").value;
     var tag_title = document.getElementById("tag_title").value;
 	var vendor_name = document.getElementById("vendor_name").value;
@@ -433,7 +439,7 @@ function add_refrals()
 					document.getElementById("vendor_name").value='';
 					document.getElementById("vendor_phone").value='';
 					document.getElementById("vendor_email").value='';
-					$('#add_tags').load('index2.php #add_tags');
+					$('#add_tags').load('index.php #add_tags');
                     }
                     });
                
@@ -453,7 +459,7 @@ function acc_tags(accref_id,accwhom_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
-					$('#accept_tag_confirmation').load('index2.php #accept_tag_confirmation');
+					$('#accept_tag_confirmation').load('index.php #accept_tag_confirmation');
                     }
                     });
 					
@@ -471,7 +477,7 @@ function reje_tags(rejref_id,rejwhom_id)
                     success: function(html) {
                     //alert(html);
 					//document.getElementById("suggest_me_to").value='';
-					$('#accept_tag_confirmation').load('index2.php #accept_tag_confirmation');
+					$('#accept_tag_confirmation').load('index.php #accept_tag_confirmation');
                     }
                     });
 					
@@ -502,7 +508,7 @@ function change_pwd()
 					document.getElementById("new_password").value='';
 					document.getElementById("old_pwd").value='';
 					document.getElementById("re_password").value='';
-					$('#club_login').load('index2.php #club_login');
+					$('#club_login').load('index.php #club_login');
                     }
                     });
                
@@ -550,10 +556,10 @@ function ins_posts()
                     //alert(html);
 					document.getElementById("post_data").value='';
 					
-					$('#news_feed').load('index2.php #news_feed');
-					$('#my_industry').load('index2.php #my_industry');
-					$('#my_inked').load('index2.php #my_inked');
-					//$('#noted_likes').load('index2.php #noted_likes');
+					$('#news_feed').load('index.php #news_feed');
+					$('#my_industry').load('index.php #my_industry');
+					$('#my_inked').load('index.php #my_inked');
+					//$('#noted_likes').load('index.php #noted_likes');
                     }
                     });
                
@@ -585,7 +591,7 @@ function add_work_projects()
 					document.getElementById("project_name").value='';
 					document.getElementById("project_desc").value='';
 					document.getElementById("project_image").value='';
-					$('#project_works').load('index2.php #project_works');
+					$('#project_works').load('index.php #project_works');
                     }
                     });
                
@@ -614,13 +620,45 @@ function comment_insertion()
                     //alert(html);
 					document.getElementById("cmt_txt").value='';
 					
-					$('#news_feed').load('index2.php #news_feed');
+					$('#news_feed').load('index.php #news_feed');
                     }
                     });
                
         return false;
 	
 }
+
+function clientinsertions()
+{
+	alert('hello');
+	var client_name  = document.getElementById("client_name").value;
+    var client_company = document.getElementById("client_company").value;
+	var client_phone_no = document.getElementById("client_phone_no").value;
+	var client_details = document.getElementById("client_details").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'client_name=' + client_name + '&client_company=' + client_company + '&client_phone_no=' +client_phone_no + '&client_details=' + client_details;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("client_name").value='';
+					document.getElementById("client_company").value='';
+					document.getElementById("client_phone_no").value='';
+					document.getElementById("client_details").value='';
+					$('#todo_clients').load('index.php #todo_clients');
+                    }
+                    });
+               
+        return false;
+}
+
 
 function add_work_projects()
 {

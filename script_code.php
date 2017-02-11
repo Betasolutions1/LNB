@@ -300,7 +300,35 @@ if(isset($_POST['client_name']))
 	$ins_todo_clients=mysqli_query($conn,"INSERT INTO `user_clients`( `user_id`, `client_name`, `client_company`, `client_phone`, `clients_details`) VALUES ('$_SESSION[id]','$_POST[client_name]','$_POST[client_company]','$_POST[client_phone_no]','$_POST[client_details]')");
 }
 
-
+if(isset($_POST['sub_edit_ppic']))
+{
+	echo "<script>alert('Image')</script>";
+	if(($_FILES['profile_pic']['type']=='image/gif') || ($_FILES['profile_pic']['type']=='image/jpeg')
+	|| ($_FILES['profile_pic']['type']=='image/png') || ($_FILES['profile_pic']['type']=='image/pjpeg')
+	&& ($_FILES['profile_pic']['size']<200000))
+	{
+		if($_FILES['profile_pic']['error']>0)
+		{
+			echo "return code:" ,$_FILES['profile_pic']['error'];
+		}
+		/*else if(file_exists('advertises/'.$_FILES['Advertise_img']['name']))
+		{
+			echo $_FILES['Advertise_img']['name']."Already Exits";
+		}
+*/		
+		else if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],'fb_users/'.$_SESSION['Gender'].'/'.$_SESSION['Email'].'/Profile/'.$_FILES['profile_pic']['name']))
+		{
+			$user_profile_pic=$_FILES['profile_pic']['name'];
+			
+			$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`='$user_profile_pic' WHERE `user_id`='$_SESSION[id]'");
+			header("location:index.php");
+		}
+	}else{
+		echo "<script>alert('Image Size Lessthan 2mb')</script>";
+		header("location:index.php");
+	}
+	//$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`=[value-3] WHERE `user_id`='$_SESSION[id]'");
+}
 
 
 

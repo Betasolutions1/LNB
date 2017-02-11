@@ -6,7 +6,35 @@ if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
 }
-
+if(isset($_POST['sub_edit_ppic']))
+{
+	echo "<script>alert('Image')</script>";
+	if(($_FILES['profile_pic']['type']=='image/gif') || ($_FILES['profile_pic']['type']=='image/jpeg')
+	|| ($_FILES['profile_pic']['type']=='image/png') || ($_FILES['profile_pic']['type']=='image/pjpeg')
+	&& ($_FILES['profile_pic']['size']<200000))
+	{
+		if($_FILES['profile_pic']['error']>0)
+		{
+			echo "return code:" ,$_FILES['profile_pic']['error'];
+		}
+		/*else if(file_exists('advertises/'.$_FILES['Advertise_img']['name']))
+		{
+			echo $_FILES['Advertise_img']['name']."Already Exits";
+		}
+*/		
+		else if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],'fb_users/'.$_SESSION['Gender'].'/'.$_SESSION['Email'].'/Profile/'.$_FILES['profile_pic']['name']))
+		{
+			$user_profile_pic=$_FILES['profile_pic']['name'];
+			
+			$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`='$user_profile_pic' WHERE `user_id`='$_SESSION[id]'");
+			header("location:index.php");
+		}
+	}else{
+		echo "<script>alert('Image Size Lessthan 2mb')</script>";
+		header("location:index.php");
+	}
+	//$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`=[value-3] WHERE `user_id`='$_SESSION[id]'");
+}
 ?>
 
 <!DOCTYPE html>
@@ -86,6 +114,18 @@ if(!$_SESSION['Email'])
 }
 		</style>
         <!--End style--><?php */?>
+<script type="text/javascript">
+function on_profile_hover()
+{
+	document.getElementById("change_user_ppic").style.display='block';
+}
+
+function out_profile_hover()
+{
+	document.getElementById("change_user_ppic").style.display='none';
+}
+</script>
+        
       <script type="text/javascript" src="js/scripts.js"></script>       
     </head>
     <body>
@@ -2040,10 +2080,11 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <h1 style="padding-top:25px; padding-right:20px;color:#fff; font-size:40px; font-family:lato-regular;"><?php echo $_SESSION['Name'];?></h1>
                                             </div>
                                             <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
-                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" style="border-radius:50%" />
-                                               <input type="file" size="60">
+                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <div style="display:none;position:absolute; left:17.4%; top:52%; z-index:1;" id="change_user_ppic" >
+                                              <a href="#profilepic" class="icon" onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();" > <i class="btn btn-success" >Edit Pic</i></a></div>
                                             </div>
-                                            
+                                           
                                             <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
                                                 <div class="row">
                                                     <div class="col-lg-4" style="height:150px;width:170px; background-color:#fff;border-bottom:1px dashed #afdf7c;">
@@ -2211,6 +2252,37 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    
+                                    <!--Edit Profile Model Begin-->
+                                      <div class="remodal" data-remodal-id="profilepic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Edit Profile Pic</h4>
+                                            
+                                            <input type="file"  name="profile_pic" id="profile_pic"/>
+                                        </div>
+
+
+                                    </div>
+                                    <br>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit"  name="sub_edit_ppic"   class="remodal-confirm">Edit Pic</button>
+
+                                </form>
+
+                            </div>
+                                    
+                                    <!------END Edit Profile Model------------->
+                                    
+                                    
+                                    
                                  <!--------------------------------END ANKITHA FILE--------------------------------------->
                                 </div>
                             </div>

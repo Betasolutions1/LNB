@@ -74,14 +74,17 @@
         <div class="container-fluid paper" style=" padding-top: 30px;">
             <div class="row" style="overflow-x:none;"> 
                 <div class="col-lg-3 col-md-4" align="center">
-                    <div class="row pst_box" style="background-color:#fff; padding-bottom:250px; margin-bottom:30px; height:280px;">
+                    <div class="row" style="background-color:#fff; padding-bottom:250px; margin-bottom:30px; height:280px;">
                         <div class="col-lg-12" style="padding:0px;">
-</div>
-                        <div class="col-lg-12" style="background-color:#afdf7c; padding:0px;">
-                            <h3 class="club_headers" style="text-align:center; padding:0px; color:#fff">
+                            <button class="btn btn_grn" style="width:280px;height:50px; ">
+                                ASK QUESTION
+</button>
+                        </div>
+                        <div class="col-lg-12" style="background-color:#fff; padding:0px; border:1px solid #afdf7c">
+                            <h3 class="club_headers" style="text-align:center; padding:0px;">
            Category</h3>
                         </div>
-                        <div class="col-lg-12" style="padding:0px; overflow-y:scroll; height:230px">
+                        <div class="col-lg-12" style="padding:0px; overflow-y:scroll; height:190px">
                             <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;">
                                 <span> <h5>IT-Software</h5></span> 
                             </button>
@@ -112,16 +115,267 @@
                             <div class="pst_main_background pst_box " style="background-color:#fff;">
                                 <br>
                                 <div class="club_sub_div_height">
-                                    <div class="row">
-                                        <br>
-                                        <div class="col-lg-12" align="center">
-                                            <button class="btn btn_grn" style="width:280px;height:50px; ">
-                                                ASK QUESTION
-</button>
+                                    <ul class="nav nav-tabs"> 
+                                        <li class="active">
+                                            <a href="#tab6" data-toggle="tab"><i class="fa fa-pencil"></i> Work</a>
+                                        </li>                                         
+                                        <li>
+                                            <a href="#tab7" data-toggle="tab"><i class="fa fa-pencil"></i> Space</a>
+                                        </li>                                         
+                                        <!-- <li>
+        <a href="#tab8" data-toggle="tab">Messages</a>
+    </li>     
+    <li>
+        <a href="#tab9" data-toggle="tab">Settings</a>
+    </li>     -->
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab6">
+                                            <div class="accordion-wrap">
+                                                <div class="accordion">
+                                                    <a href="#" class="active"><i class="fa fa-user"></i> TODO</a>
+                                                    <div class="sub-nav active">
+                                                        <!--  <div class="html about-me">
+        <div class="photo">
+            <div class="photo-overlay">
+                <span class="plus">+</span>
+            </div>
+        </div>
+        <h4>@khadkamhn</h4>
+        <p data-pg-id="702">Hi, It's me Mohan. I'm a web and graphics designer. Designing is my passion and I have been working on various designing projects.</p>
+        <div class="social-link" data-pg-id="703">
+            <a class="link link-twitter" href="http://twitter.com/khadkamhn/" target="_blank" data-pg-id="704"><i class="fa fa-twitter" data-pg-id="705"></i></a>
+            <a class="link link-codepen" href="http://codepen.io/khadkamhn/" target="_blank" data-pg-id="706"><i class="fa fa-codepen" data-pg-id="707"></i></a>
+            <a class="link link-facebook" href="http://facebook.com/khadkamhn/" target="_blank" data-pg-id="708"><i class="fa fa-facebook" data-pg-id="709"></i></a>
+            <a class="link link-dribbble" href="http://dribbble.com/khadkamhn" target="_blank" data-pg-id="710"><i class="fa fa-dribbble" data-pg-id="711"></i></a>
+        </div>
+    </div>-->
+                                                        <div id="todo" class="panel">
+                                                            <h2 class="panel-title">Tasks</h2>
+                                                            <!--<h2 class="panel-title">Tasks </h2>-->
+                                                            <div class="w_todo td_div">
+                                                                <span class=" todo_right"><a href="#modal"> <i class="fa fa-plus "></i></a></span>
+                                                                <!-- <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>-->
+                                                                <span class="todo_right " id="datepicker2"><a href="#" data-toggle=""><i class="fa fa-calendar "></i></a></span>
+                                                                <span id="test" class="todo_right "><a href="#" id="check" onclick="Check()"><i class="fa fa-check-square-o "></i></a></span>
+                                                            </div>
+                                                            <div class="panel-content">
+                                                                <form>
+                                                                    <fieldset>
+                                                                        <ul class="tasks">
+                                                                            <li class="task">
+                                                                                <input type="checkbox" name="todo-tasks" id="task1" checked="checked" />
+                                                                                <label for="task1">Prepare for Session
+                                                                                    <span class="line-through"></span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li class="task">
+                                                                                <input type="checkbox" name="todo-tasks" id="task2" checked="checked" />
+                                                                                <label for="task2">Assign Tasks
+                                                                                    <span class="line-through"></span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li class="task">
+                                                                                <input type="checkbox" name="todo-tasks" id="task3" />
+                                                                                <label for="task3">Be there on time
+                                                                                    <span class="line-through"></span>
+                                                                                </label>
+                                                                            </li>
+                                                                            <li class="task">
+                                                                                <input type="checkbox" name="todo-tasks" id="task4" />
+                                                                                <label for="task4">Start Session
+                                                                                    <span class="line-through"></span>
+                                                                                </label>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </fieldset>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#" class="ws_ta_tab_a"><i class="fa fa-comments"></i> LEDGER</a>
+                                                    <div class="sub-nav">
+                                                        <div class="html chat">
+                                                            <div class="user user-khadkamhn clearfix">
+                                                                <span class="text-msg pull-right">I'm so unhappy :(</span>
+                                                            </div>
+                                                            <div class="user user-khadkamhn clearfix">
+                                                                <span class="text-msg pull-right">I have no invitation in dribbble yet. why?</span>
+                                                            </div>
+                                                            <div class="user user-dribble clearfix">
+                                                                <span class="photo pull-left" data-username="dribbble"><i class="fa fa-dribbble"></i></span>
+                                                                <span class="text-msg">Don't worry dude!</span>
+                                                            </div>
+                                                            <div class="user user-dribble clearfix">
+                                                                <span class="photo pull-left" data-username="dribbble"><i class="fa fa-dribbble"></i></span>
+                                                                <span class="text-msg">Some awesome people may find you and invite you soon.... :)</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#"><i class="fa fa-envelope"></i> CLIENTS <span class="pull-right alert-numb">21</span></a>
+                                                    <div class="sub-nav">
+                                                        <a href="#">Inbox <span class="pull-right alert-numb">11</span></a>
+                                                        <a href="#">Important <span class="pull-right alert-numb">10</span></a>
+                                                        <a href="#">Sent</a>
+                                                        <a href="#">Draft</a>
+                                                        <a href="#">Trash</a>
+                                                        <a href="#">All messages</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <br>
-                                        <hr class="style3">
-                                        <br>
+                                        <div class="tab-pane" id="tab7">
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
+                                                    <div class="col-lg-10" tyle="padding:0px;">
+                                                        <h4 class="club_headers" style="margin:0px;">
+               COMPANY INFO </h4>
+                                                        <br>
+                                                        <p style="font-family:lato-light; color:#a9a9a9;">
+                    Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adoLorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale ado</p>
+                                                    </div>
+                                                    <div class="col-lg-2" style="padding:0px;">
+                                                        <img src="images/profile/logo.jpg" width="100" />
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
+                                                    <br>
+                                                    <h4 class="club_headers" style="margin:0px;">
+               COLLEAGUES </h4>
+                                                    <br>
+                                                    <div id="gallerycontainer">
+                                                        <div id="gallery">
+                                                            <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                                <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                                <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                            </div>
+                                                            <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                                <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                                <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                            </div>
+                                                            <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                                <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                                <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                            </div>
+                                                            <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                                <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                                <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                            </div>
+                                                            <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                                <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                                <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                            <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                            <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                            <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                        </div>
+                                                        <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                            <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                            <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                            <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <br>
+                                                    <h4 class="club_headers">
+        DISSCUSSIONS </h4>
+                                                    <input type="text" placeholder="INK..." class="club_txt" style="margin-top:5px;margin-bottom:5px;">
+                                                    <br>
+                                                    <div class="club_network" style="height:300px; background-color:#eee;">
+                                                        <div class="row club_network_row" style="width:100%;">
+                                                            <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+                                                                <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+                                                                    <img src="images/profile/6.jpg" width="70">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
+                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
+    Rajesh - Beta Solutions - IT - Software  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30-jan-2017 12:22am </span>
+                                                                <p> 
+        Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row club_network_row" style="width:100%;">
+                                                            <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+                                                                <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+                                                                    <img src="images/profile/6.jpg" width="70">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
+                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
+    Rajesh - Beta Solutions - IT - Software  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30-jan-2017 12:22am </span>
+                                                                <p> 
+        Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row club_network_row" style="width:100%;">
+                                                            <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+                                                                <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+                                                                    <img src="images/profile/6.jpg" width="70">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
+                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
+    Rajesh - Beta Solutions - IT - Software  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30-jan-2017 12:22am </span>
+                                                                <p> 
+        Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row club_network_row" style="width:100%;">
+                                                            <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+                                                                <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+                                                                    <img src="images/profile/6.jpg" width="70">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
+                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
+    Rajesh - Beta Solutions - IT - Software  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30-jan-2017 12:22am </span>
+                                                                <p> 
+        Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row club_network_row" style="width:100%;">
+                                                            <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+                                                                <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+                                                                    <img src="images/profile/6.jpg" width="70">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
+                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
+    Rajesh - Beta Solutions - IT - Software  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30-jan-2017 12:22am </span>
+                                                                <p> 
+        Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

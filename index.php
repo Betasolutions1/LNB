@@ -6,35 +6,7 @@ if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
 }
-if(isset($_POST['sub_edit_ppic']))
-{
-	echo "<script>alert('Image')</script>";
-	if(($_FILES['profile_pic']['type']=='image/gif') || ($_FILES['profile_pic']['type']=='image/jpeg')
-	|| ($_FILES['profile_pic']['type']=='image/png') || ($_FILES['profile_pic']['type']=='image/pjpeg')
-	&& ($_FILES['profile_pic']['size']<200000))
-	{
-		if($_FILES['profile_pic']['error']>0)
-		{
-			echo "return code:" ,$_FILES['profile_pic']['error'];
-		}
-		/*else if(file_exists('advertises/'.$_FILES['Advertise_img']['name']))
-		{
-			echo $_FILES['Advertise_img']['name']."Already Exits";
-		}
-*/		
-		else if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],'fb_users/'.$_SESSION['Gender'].'/'.$_SESSION['Email'].'/Profile/'.$_FILES['profile_pic']['name']))
-		{
-			$user_profile_pic=$_FILES['profile_pic']['name'];
-			
-			$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`='$user_profile_pic' WHERE `user_id`='$_SESSION[id]'");
-			header("location:index.php");
-		}
-	}else{
-		echo "<script>alert('Image Size Lessthan 2mb')</script>";
-		header("location:index.php");
-	}
-	//$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`=[value-3] WHERE `user_id`='$_SESSION[id]'");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +65,29 @@ if(isset($_POST['sub_edit_ppic']))
     </style>
      
         <!--End Remodel-->
-        
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Stencil+Std" />
+     <style>
+	 @import url(//db.onlinewebfonts.com/c/93c4327f0457b01d13b376849536395d?family=Stencil+Std);#3 Use font-face declaration Fonts.(http | https)@font-face {font-family: "Stencil Std";
+    src: url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.eot");
+    src: url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.svg#Stencil Std") format("svg");
+}
+
+ 
+font-face {
+        font-family: "Lato Black";
+        src: url('698242188-Lato-Bla.eot');
+        src: url('698242188-Lato-Bla.eot?#iefix') format('embedded-opentype'),
+        url('698242188-Lato-Bla.svg#Lato Black') format('svg'),
+        url('698242188-Lato-Bla.woff') format('woff'),
+        url('698242188-Lato-Bla.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+}
+	 </style>   
       
 <script type="text/javascript">
 function on_profile_hover()
@@ -136,7 +130,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="#" style="font-family:Stencil Std;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -145,16 +139,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                             <input type="text" laceholder="search" style="width:350px; height:30px">
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
-                            <a href="#about" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
+                            <a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                         <li>
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
+                            <a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
                         </li>
                     </ul>
                 </div>
@@ -2247,7 +2241,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <!--Edit Profile Model Begin-->
                                       <div class="remodal" data-remodal-id="profilepic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                 <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                <form method="post" action="">
+                                <form method="post" action="" enctype="multipart/form-data">
                                     <div>
 
                                         <h2><span><?php echo $_SESSION['Name'];?></span></h2>

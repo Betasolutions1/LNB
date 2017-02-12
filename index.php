@@ -94,26 +94,7 @@ if(isset($_POST['sub_edit_ppic']))
      
         <!--End Remodel-->
         
-       <?php /*?> <!--Upload Profile Pic style-->
-        <style>
-		.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
-}
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-		</style>
-        <!--End style--><?php */?>
+      
 <script type="text/javascript">
 function on_profile_hover()
 {
@@ -126,9 +107,18 @@ function out_profile_hover()
 }
 </script>
         
-      <script type="text/javascript" src="js/scripts.js"></script>       
+      <script type="text/javascript" src="js/scripts.js"></script> 
+      <link rel="stylesheet" href="../preloaders/css3-preloader-transition-finish/css/main.css">
+	<script src="../preloaders/css3-preloader-transition-finish/js/vendor/modernizr-2.6.2.min.js"></script>      
     </head>
     <body>
+    <div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
     <?php
 $user_det=mysqli_query($conn,"select * from users where user_id='$_SESSION[id]'");
 $usr_dis=mysqli_fetch_array($user_det);
@@ -2571,7 +2561,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
      
 
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../preloaders/css3-preloader-transition-finish/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	<script src="../preloaders/css3-preloader-transition-finish/js/main.js"></script>
 
         <!--Bookmark End-->
         <!--End todo Script-->

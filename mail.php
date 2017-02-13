@@ -37,6 +37,33 @@ if(!$_SESSION['Email'])
         <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/style.css">
+        
+        <!--REmodel Begin-->
+        
+        <!-- Load local jQuery -->
+    <script src="Remodal-1.1.0/libs/jquery-loader.js"></script>
+
+    <!-- Load local QUnit -->
+    <link rel="stylesheet" href="Remodal-1.1.0/libs/qunit/qunit/qunit.css" media="screen">
+    <script src="Remodal-1.1.0/libs/qunit/qunit/qunit.js"></script>
+
+    <!-- Load local lib and tests -->
+    <link rel="stylesheet" href="Remodal-1.1.0/src/remodal.css">
+    <link rel="stylesheet" href="Remodal-1.1.0/src/remodal-default-theme.css">
+    <script src="Remodal-1.1.0/src/remodal.js"></script>
+    <script src="Remodal-1.1.0/remodal_test.js"></script>
+    <style>
+      .remodal-overlay.without-animation.remodal-is-opening,
+      .remodal-overlay.without-animation.remodal-is-closing,
+      .remodal.without-animation.remodal-is-opening,
+      .remodal.without-animation.remodal-is-closing,
+      .remodal-bg.without-animation.remodal-is-opening,
+      .remodal-bg.without-animation.remodal-is-closing {
+        animation: none;
+      }
+    </style>
+     
+        <!--End Remodel-->
         <style>
             /* hola bonita */
             /*#parallelogram {
@@ -88,9 +115,9 @@ if(!$_SESSION['Email'])
             <div class="row" style="overflow-x:none;"> 
                 <div class="col-lg-4 col-md-4 pad_0 pst_box row" style="height:1100px; background-color:#fff;">
                  <div class="col-lg-12 pad_0" align="center">
-                                            <button class="btn btn_grn" style="width:280px;height:50px;margin-top:50px; ">
+                                            <a href="#sendmail" class="btn btn_grn" style="width:280px;height:50px;margin-top:50px; ">
                                                 COMPOSE
-                                            </button>
+                                            </a>
                                         </div>
                     <div class="col-lg-12 pad_0" style="border-bottom:2px solid #afdf7c; padding-bottom:20px;">
                         <input type="text" class="club_txt" placeholder="Search" />
@@ -465,6 +492,68 @@ if(!$_SESSION['Email'])
             <div>
 </div>
         </div>
+        
+          <!---------------------------Mail insertion model--------------------------->
+                                        
+                                           <div class="remodal" data-remodal-id="sendmail" id="sendmail" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" method="post" action="">
+                                                <div>
+                                                <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Select User</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="row">
+                                                                <select class="selectpicker col-md-12 form-control" name="set_indus" id="set_indus">
+                                                                <option>Select Industry</option>
+																<?php 
+																$get_urd=mysqli_query($conn,"select * from users");
+																while($urde=mysqli_fetch_array($get_urd))
+																{
+																?>
+                                                                    <option value="<?php echo $urde['user_id'];?>"><?php echo $urde['Name'];?></option>
+                                                                   <?php
+																}
+																   ?>
+                                                                    
+                                                                  
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Subject</label>
+                                                        <div class="col-sm-9">
+                                                           
+                                                            <input type="text" class="form-control" id="forum_question"  name="forum_question"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Description</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="quest_desc"  name="quest_desc">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  
+                                                 
+
+                                                </div>
+                                                <br>
+                                                
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!--onClick="return gourmquestions();"-->
+                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return Fourmquestions();" class="remodal-confirm">Add Question</button>
+
+                                            </form>
+                                        </div>
+                                        
+                                        <!--------------------------------END Mail Model------------------------------------>
+                                        
+                                        
+                                        
+        <script type="text/javascript" src="js/space_discussion.js"></script>
         <!-- /.container -->
         <!-- Bootstrap core JavaScript
     ================================================== -->

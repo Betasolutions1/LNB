@@ -6,35 +6,7 @@ if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
 }
-if(isset($_POST['sub_edit_ppic']))
-{
-	echo "<script>alert('Image')</script>";
-	if(($_FILES['profile_pic']['type']=='image/gif') || ($_FILES['profile_pic']['type']=='image/jpeg')
-	|| ($_FILES['profile_pic']['type']=='image/png') || ($_FILES['profile_pic']['type']=='image/pjpeg')
-	&& ($_FILES['profile_pic']['size']<200000))
-	{
-		if($_FILES['profile_pic']['error']>0)
-		{
-			echo "return code:" ,$_FILES['profile_pic']['error'];
-		}
-		/*else if(file_exists('advertises/'.$_FILES['Advertise_img']['name']))
-		{
-			echo $_FILES['Advertise_img']['name']."Already Exits";
-		}
-*/		
-		else if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],'fb_users/'.$_SESSION['Gender'].'/'.$_SESSION['Email'].'/Profile/'.$_FILES['profile_pic']['name']))
-		{
-			$user_profile_pic=$_FILES['profile_pic']['name'];
-			
-			$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`='$user_profile_pic' WHERE `user_id`='$_SESSION[id]'");
-			header("location:index.php");
-		}
-	}else{
-		echo "<script>alert('Image Size Lessthan 2mb')</script>";
-		header("location:index.php");
-	}
-	//$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`=[value-3] WHERE `user_id`='$_SESSION[id]'");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -93,27 +65,30 @@ if(isset($_POST['sub_edit_ppic']))
     </style>
      
         <!--End Remodel-->
-        
-       <?php /*?> <!--Upload Profile Pic style-->
-        <style>
-		.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Stencil+Std" />
+     <style>
+	 @import url(//db.onlinewebfonts.com/c/93c4327f0457b01d13b376849536395d?family=Stencil+Std);#3 Use font-face declaration Fonts.(http | https)@font-face {font-family: "Stencil Std";
+    src: url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.eot");
+    src: url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.eot?#iefix") format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.ttf") format("truetype"),
+    url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.svg#Stencil Std") format("svg");
 }
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
+
+ 
+font-face {
+        font-family: "Lato Black";
+        src: url('698242188-Lato-Bla.eot');
+        src: url('698242188-Lato-Bla.eot?#iefix') format('embedded-opentype'),
+        url('698242188-Lato-Bla.svg#Lato Black') format('svg'),
+        url('698242188-Lato-Bla.woff') format('woff'),
+        url('698242188-Lato-Bla.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
 }
-		</style>
-        <!--End style--><?php */?>
+	 </style>   
+      
 <script type="text/javascript">
 function on_profile_hover()
 {
@@ -126,9 +101,18 @@ function out_profile_hover()
 }
 </script>
         
-      <script type="text/javascript" src="js/scripts.js"></script>       
+      <script type="text/javascript" src="js/scripts.js"></script> 
+      <link rel="stylesheet" href="../preloaders/css3-preloader-transition-finish/css/main.css">
+	<script src="../preloaders/css3-preloader-transition-finish/js/vendor/modernizr-2.6.2.min.js"></script>      
     </head>
     <body>
+    <div id="loader-wrapper">
+			<div id="loader"></div>
+
+			<div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+		</div>
     <?php
 $user_det=mysqli_query($conn,"select * from users where user_id='$_SESSION[id]'");
 $usr_dis=mysqli_fetch_array($user_det);
@@ -146,25 +130,28 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li style=" padding-left:30px; padding-top:10px; padding-right:100px;">
-                            <input type="text" laceholder="search" style="width:350px; height:30px">
+                       <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
+                            <input type="text" placeholder=" Search" class="club_tx" style="width:350px; height:30px;padding:0px;margin:0px; color:#fff;">
+                        </li>
+                        <li style=" padding-top:11px; padding-right:30px; padding-left:30px">
+                            <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="forum.php" style="font-family:Stencil Std; color:#808080;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
-                            <a href="#about" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
+                            <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                         <li>
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
+                            <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
                         </li>
                     </ul>
                 </div>
@@ -317,8 +304,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                 </div>
                                                 <div class="html chat">
-                                                <div id="ledger_tbl">
-                                                    <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
+                                                <div id="ledger_tbl" style="height:250px; overflow-y:scroll;">
+                                                    <table class="dynamicTable scrollVertical table table-primary " >
                                                         <!-- Table heading -->
                                                         <thead style="background:#8BBF61;">
                                                         <tr style="background:#8BBF61;">
@@ -365,7 +352,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
                                                 </div>
-                                                <div class="html chat" id="todo_clients">
+                                                <div class="html chat" id="todo_clients" style="height:20px; overflow-y:scroll;">
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
@@ -2257,7 +2244,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <!--Edit Profile Model Begin-->
                                       <div class="remodal" data-remodal-id="profilepic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                 <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                <form method="post" action="">
+                                <form method="post" action="" enctype="multipart/form-data">
                                     <div>
 
                                         <h2><span><?php echo $_SESSION['Name'];?></span></h2>
@@ -2571,7 +2558,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
      
 
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../preloaders/css3-preloader-transition-finish/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+	<script src="../preloaders/css3-preloader-transition-finish/js/main.js"></script>
 
         <!--Bookmark End-->
         <!--End todo Script-->

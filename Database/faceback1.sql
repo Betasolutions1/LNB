@@ -19,8 +19,13 @@ SET time_zone = "+00:00";
 --
 -- Database: `faceback`
 --
+<<<<<<< HEAD
 CREATE DATABASE IF NOT EXISTS `faceback` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `faceback`;
+=======
+-- CREATE DATABASE IF NOT EXISTS `faceback` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+-- USE `faceback`;
+>>>>>>> 41b10a48028911d05cd8f08a96fb725fe117a1b3
 
 -- --------------------------------------------------------
 

@@ -91,7 +91,7 @@ if(!$_SESSION['Email'])
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="#" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -100,16 +100,16 @@ if(!$_SESSION['Email'])
                             <input type="text" laceholder="search" style="width:350px; height:30px">
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="#" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
-                            <a href="#about" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
+                            <a href="#about" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                         <li>
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
+                            <a href="#" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
                         </li>
                     </ul>
                 </div>

@@ -130,25 +130,28 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" style="font-family:Stencil Std;">
+                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li style=" padding-left:30px; padding-top:10px; padding-right:100px;">
-                            <input type="text" laceholder="search" style="width:350px; height:30px">
+                       <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
+                            <input type="text" placeholder=" Search" class="club_tx" style="width:350px; height:30px;padding:0px;margin:0px; color:#fff;">
+                        </li>
+                        <li style=" padding-top:11px; padding-right:30px; padding-left:30px">
+                            <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="forum.php" style="font-family:Stencil Std; color:#808080;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
-                            <a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
+                            <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                         <li>
-                            <a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
+                            <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
                         </li>
                     </ul>
                 </div>
@@ -301,8 +304,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                 </div>
                                                 <div class="html chat">
-                                                <div id="ledger_tbl">
-                                                    <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
+                                                <div id="ledger_tbl" style="height:250px; overflow-y:scroll;">
+                                                    <table class="dynamicTable scrollVertical table table-primary " >
                                                         <!-- Table heading -->
                                                         <thead style="background:#8BBF61;">
                                                         <tr style="background:#8BBF61;">
@@ -349,7 +352,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
                                                 </div>
-                                                <div class="html chat" id="todo_clients">
+                                                <div class="html chat" id="todo_clients" style="height:20px; overflow-y:scroll;">
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>

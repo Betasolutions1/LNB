@@ -360,6 +360,13 @@ if(isset($_POST['sub_edit_ppic']))
 	//$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`=[value-3] WHERE `user_id`='$_SESSION[id]'");
 }
 
+//insert forum questions
+
+if(isset($_POST['sub_forms']))
+{
+	$ins_forms=mysqli_query($conn,"INSERT INTO `question`( `user_id`, `question`, `que_desc`, `INDUSTRY_ID`) VALUES ('$_SESSION[id]','$_POST[forum_question]','$_POST[quest_desc]','$_POST[set_indus]')");
+}
+
 ?>
 
 

@@ -115,7 +115,7 @@ if(!$_SESSION['Email'])
             <div class="row" style="overflow-x:none;"> 
                 <div class="col-lg-4 col-md-4 pad_0 pst_box row" style="height:1100px; background-color:#fff;">
                  <div class="col-lg-12 pad_0" align="center">
-                                            <a href="#sendmail" class="btn btn_grn" style="width:280px;height:50px;margin-top:50px; ">
+                                            <a href="#sendmail" class="btn btn_grn" style="width:280px;height:50px;margin-top:50px;padding:15px; ">
                                                 COMPOSE
                                             </a>
                                         </div>
@@ -312,6 +312,9 @@ if(!$_SESSION['Email'])
                                 <br>
                                 <div class="club_sub_div_height" style="height:1120px; overflow-y:scroll;">
                                     <div class="row" style="padding:0px;">
+                                    <?php 
+									$mails_exe=mysqli_query($conn,"select * from send_mails where sender_user_id=''")
+									?>
                                         <div class="col-lg-12" style="border-bottom:2px solid #afdf7c; margin-bottom:10px; padding-top:10px;">
                                             <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;margin-bottom:10px;">
                                                 <div class="col-lg-3 pad_0" align="left" style="width:80px;">
@@ -503,10 +506,10 @@ if(!$_SESSION['Email'])
                                                         <label class="col-sm-3 control-label">Select User</label>
                                                         <div class="col-sm-9">
                                                             <div class="row">
-                                                                <select class="selectpicker col-md-12 form-control" name="set_indus" id="set_indus">
-                                                                <option>Select Industry</option>
+                                                                <select class="selectpicker col-md-12 form-control" name="recer_user_id" id="recer_user_id">
+                                                                <option>Select User</option>
 																<?php 
-																$get_urd=mysqli_query($conn,"select * from users");
+																$get_urd=mysqli_query($conn,"select * from users where user_id!='$_SESSION[id]'");
 																while($urde=mysqli_fetch_array($get_urd))
 																{
 																?>
@@ -525,33 +528,33 @@ if(!$_SESSION['Email'])
                                                         <label class="col-sm-3 control-label">Subject</label>
                                                         <div class="col-sm-9">
                                                            
-                                                            <input type="text" class="form-control" id="forum_question"  name="forum_question"/>
+                                                            <input type="text" class="form-control" id="mail_subject"  name="mail_subject"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Description</label>
                                                         <div class="col-sm-9">
-                                                            <input type="text" class="form-control" id="quest_desc"  name="quest_desc">
+                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
                                                         </div>
                                                     </div>
                                                     
                                                   
-                                                 
-
                                                 </div>
                                                 <br>
                                                 
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--onClick="return gourmquestions();"-->
-                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return Fourmquestions();" class="remodal-confirm">Add Question</button>
+                                                <!---->
+                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails();" class="remodal-confirm">Send Mail</button>
 
                                             </form>
                                         </div>
                                         
                                         <!--------------------------------END Mail Model------------------------------------>
                                         
-                                        
+          <script  type="text/javascript">
+         
+</script>                              
                                         
         <script type="text/javascript" src="js/space_discussion.js"></script>
         <!-- /.container -->

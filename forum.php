@@ -148,24 +148,13 @@ if(!$_SESSION['Email'])
 							$qt_cou_exe=mysqli_query($conn,"select * from question where INDUSTRY_ID='$ddii[INDUSTRY_ID]'");
 							$di_cou=mysqli_num_rows($qt_cou_exe);
 						?>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
+                            <button onClick="get_industryquestions(<?php echo $ddii['INDUSTRY_ID']?>)" style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
                                 <span> <h5><?php echo $ddii['INDUSTRY_NAME'];?> &nbsp <span class="badge"><?php echo $di_cou;?></span></h5> </span> 
                             </button>
                             <?php
 						}
 							?>
-                          <!--  <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>IT-Hardware &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Iot &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>-->
-                           <!-- <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Textiles &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Gold &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>-->
+                          
                            <!-- <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
                                 <span> <h5>Furniture &nbsp <span class="badge">43</span></h5> </span> 
                             </button>-->
@@ -207,8 +196,9 @@ if(!$_SESSION['Email'])
        Forums</h3> </span>
                                             </div>
                                             <div class="col-lg-12" style="height:800px; overflow-y:scroll; padding:0px;">
+                                            <div id="txtQuest">
                                             <?php
-                                            $dis_geet_qut=mysqli_query($conn,"select * from question");
+                                            $dis_geet_qut=mysqli_query($conn,"select * from question order by  q_id desc");
 											while($qust_d=mysqli_fetch_array($dis_geet_qut))
 											{
 												$qusr_exe=mysqli_query($conn,"select * from users where user_id='$qust_d[user_id]'");
@@ -219,19 +209,19 @@ if(!$_SESSION['Email'])
                                             
                                                 <div class="col-lg-12 pad_0" style="height:80px; border-bottom:1px solid #afdf7c;">
                                                     <div class="col-lg-3 pad_0" style="width:80px;">
-                                                        <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:-28px;" />
+                                                        <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;" />
                                                     </div>    
                                                     <!--width:810px;-->                                                 
                                                     <div class="col-lg-9 pad_0" style="height:80px;padding-left:15px;">
                                                         <div class="col-lg-10"> 
-                                                            <span><h4 class="club_headers" style="width:500px;">
-           <?php echo $qust_d['question'];?> &nbsp <span class="badge">unread</span></h4></span>
+                                                           <a href="forum_ans.php?Qid=<?php echo $qust_d['q_id'];?>"> <span><h4 class="club_headers" style="width:500px;">
+           <?php echo $qust_d['question'];?> &nbsp <span class="badge">unread</span></h4></span></a>
                                                         </div>
                                                         <div class="col-lg-2" align="right">
                                                             <h4><i class="fa fa-comment" style="color:#afdf7c;"> 3</i></h4>
                                                         </div>
                                                         <div class="col-lg-12">
-                                                            <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#afdf7c;"><?php echo $quser['name']?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $qust_d['datetime'];?></i> </span>
+                                                            <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#afdf7c;"><?php echo $quser['Name']?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $qust_d['datetime'];?></i> </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -239,7 +229,7 @@ if(!$_SESSION['Email'])
 											}
 											  ?>
                                               
-                                           
+                                           </div>
                                          
                                             
                                               
@@ -322,9 +312,7 @@ if(!$_SESSION['Email'])
 
                                                 </div>
                                                 <br>
-                                                <?php
-                                                echo $_SESSION['id'];
-												?>
+                                                
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!--onClick="return gourmquestions();"-->

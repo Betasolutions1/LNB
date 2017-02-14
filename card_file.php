@@ -129,6 +129,7 @@ if(!$_SESSION['Email'])
                         <div class="row cf_block_height">
                         <?php
                         $usr_frnd_list_exe=mysqli_query($conn,"select * from friend_request where who_sent_user_id='".$_SESSION['id']."' AND status='1'");
+						
  while($usr_frnd_list=mysqli_fetch_array($usr_frnd_list_exe))
  {
 	 $usr_frnds_deta=mysqli_query($conn,"select * from users where  user_id='$usr_frnd_list[to_whom_user_id]'");
@@ -202,7 +203,7 @@ if(!$_SESSION['Email'])
                                         <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                       <a href="profile.php?id=<?php echo $usr_frnd_details['user_id'];?>"> <i class="fa fa-1x fa-book" style="color:#fff;"></i></a>
+                                       <a href="profile.php?id=<?php echo $urr_frnd_details['user_id'];?>"> <i class="fa fa-1x fa-book" style="color:#fff;"></i></a>
                                     </div>
                                 </div>
                             </div>

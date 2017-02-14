@@ -352,7 +352,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
                                                 </div>
-                                                <div class="html chat" id="todo_clients" style="height:20px; overflow-y:scroll;">
+                                                <div class="html chat" id="todo_clients" style="height:250px; overflow-y:scroll;">
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>

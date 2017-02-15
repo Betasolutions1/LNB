@@ -99,3 +99,31 @@ function insert_answer()
                
         return false;
 }
+
+ function sendmails()
+{
+	alert('hello');
+	var recer_user_id = document.getElementById("recer_user_id").value;
+    var mail_subject = document.getElementById("mail_subject").value;
+	var mail_desc = document.getElementById("mail_desc").value;
+	
+	//alert("hello" + que_id);
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'recer_user_id=' + recer_user_id + '&mail_subject=' + mail_subject + '&mail_desc=' + mail_desc ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script2.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("mail_desc").value='';
+					document.getElementById("mail_subject").value='';
+					//$('#txtAnswe').load('forum_ans.php #txtAnswe');
+                    }
+                    });
+               
+        return false;
+}

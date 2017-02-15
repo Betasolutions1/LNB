@@ -136,7 +136,10 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                        <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
-                            <input type="text" placeholder=" Search" class="club_tx" style="width:350px; height:30px;padding:0px;margin:0px; color:#fff;">
+                             <form method="get" action="search.php">
+                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;" placeholder="Search">
+                            <input type="submit" name="sub_search" style="display:none;">
+                            </form>
                         </li>
                         <li style=" padding-top:11px; padding-right:30px; padding-left:30px">
                             <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>

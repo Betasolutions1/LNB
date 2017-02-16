@@ -153,9 +153,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         <li>
                             <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
-                        <li>
+                    <!--    <li>
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -581,7 +581,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                 <div class="tab-pane" id="tab7">
                                     <!-----------------------------------------SPACE BEGIN----------------------------------------->
 
-                                    <div class="row">
+                                    <div class="row pst_box club_sub_div_height" style="background-color:#fff;">
+                                    <br>
+                                    
                                         <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
                                             <div class="col-lg-10" tyle="padding:0px;">
                                                 <h4 class="club_headers" style="margin:0px;">
@@ -2517,7 +2519,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 </div>
                     </div>
                 </div>                 
-                <div class="col-md-3 col-lg-3 b_s">
+                <div class="col-md-3 col-lg-3 b_s " style="background-color:#fff;">
                     <div class="row">
                         <div class="col-lg-3" align="left">
                             <ul class="nav nav-tabs tabs-right vertical-text right" style="right:40px;  top:15px">

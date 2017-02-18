@@ -93,7 +93,7 @@ function insert_answer()
                     success: function(html) {
                     //alert(html);
 					document.getElementById("ans_frms").value='';
-					$('#txtAnswe').load('forum_ans.php #txtAnswe');
+					$('#workspace-vr').load('forum_ans.php #workspace-vr');
                     }
                     });
                

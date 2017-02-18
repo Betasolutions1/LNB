@@ -34,7 +34,7 @@ if(!$_SESSION['Email'])
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-                <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
         <link rel="stylesheet" href="css/style.css">
         <style>
@@ -47,6 +47,33 @@ if(!$_SESSION['Email'])
             background:#afdf7c;
             }*/
 </style>
+ <!--REmodel Begin-->
+        
+        <!-- Load local jQuery -->
+    <script src="Remodal-1.1.0/libs/jquery-loader.js"></script>
+
+    <!-- Load local QUnit -->
+    <link rel="stylesheet" href="Remodal-1.1.0/libs/qunit/qunit/qunit.css" media="screen">
+    <script src="Remodal-1.1.0/libs/qunit/qunit/qunit.js"></script>
+
+    <!-- Load local lib and tests -->
+    <link rel="stylesheet" href="Remodal-1.1.0/src/remodal.css">
+    <link rel="stylesheet" href="Remodal-1.1.0/src/remodal-default-theme.css">
+    <script src="Remodal-1.1.0/src/remodal.js"></script>
+    <script src="Remodal-1.1.0/remodal_test.js"></script>
+    <style>
+      .remodal-overlay.without-animation.remodal-is-opening,
+      .remodal-overlay.without-animation.remodal-is-closing,
+      .remodal.without-animation.remodal-is-opening,
+      .remodal.without-animation.remodal-is-closing,
+      .remodal-bg.without-animation.remodal-is-opening,
+      .remodal-bg.without-animation.remodal-is-closing {
+        animation: none;
+      }
+    </style>
+     
+        <!--End Remodel-->
+
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -157,13 +184,56 @@ if(!$_SESSION['Email'])
                                         <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                        <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                                       <a href="#sendmail"> <i class="fa fa-1x fa-envelope" style="color:#fff;"></i></a>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
                                        <a href="profile.php?id=<?php echo $usr_frnd_details['user_id'];?>"> <i class="fa fa-1x fa-book" style="color:#fff;"></i></a>
                                     </div>
                                 </div>
                             </div>
+                            
+                               <!---------------------------Mail insertion model--------------------------->
+                                        
+                                           <div class="remodal" data-remodal-id="sendmail" id="sendmail" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" method="post" action="">
+                                                <div>
+                                                <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Select User</label>
+                                                        <div class="col-sm-9">
+                                                        <input type="hidden" name="recer_user_id" id="recer_user_id" value="<?php echo $usr_frnd_details['user_id'];?>">
+                                                           <input type="text" class="form-control" id="recer_user_id"  name="recer_user_id" value="<?php echo $usr_frnd_details['Name'];?>" readonly/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Subject</label>
+                                                        <div class="col-sm-9">
+                                                           
+                                                            <input type="text" class="form-control" id="mail_subject"  name="mail_subject"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Description</label>
+                                                        <div class="col-sm-9">
+                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  
+                                                </div>
+                                                <br>
+                                                
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!---->
+                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails();" class="remodal-confirm">Send Mail</button>
+
+                                            </form>
+                                        </div>
+                                        
+                                        <!--------------------------------END Mail Model------------------------------------>
+                            
                             <?php
  }
 							?>
@@ -200,13 +270,55 @@ if(!$_SESSION['Email'])
                                         <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                        <i class="fa fa-1x fa-envelope" style="color:#fff;"></i>
+                                       <a href="#compose_mail_<?php echo $urr_frnd_details['user_id'];?>">  <i class="fa fa-1x fa-envelope" style="color:#fff;"></i></a>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
                                        <a href="profile.php?id=<?php echo $urr_frnd_details['user_id'];?>"> <i class="fa fa-1x fa-book" style="color:#fff;"></i></a>
                                     </div>
                                 </div>
                             </div>
+                           
+                             <!---------------------------Mail insertion model--------------------------->
+                                        
+                                           <div class="remodal" data-remodal-id="compose_mail_<?php echo $urr_frnd_details['user_id'];?>" id="compose_mail_<?php echo $urr_frnd_details['user_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" method="post" action="" id="compose_mail_form_<?php echo $urr_frnd_details['user_id'];?>">
+                                                <div>
+                                                <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Select User</label>
+                                                        <div class="col-sm-9">
+                                                        <input type="hidden" name="recer_user_id" id="recer_user_id" value="<?php echo $urr_frnd_details['user_id'];?>">
+                                                           <input type="text" class="form-control" id="recer_user_id"  name="recer_user_id" value="<?php echo $urr_frnd_details['Name'];?>" readonly/>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Subject</label>
+                                                        <div class="col-sm-9">
+                                                           
+                                                            <input type="text" class="form-control" id="mail_subject"  name="mail_subject"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Description</label>
+                                                        <div class="col-sm-9">
+                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  
+                                                </div>
+                                                <br>
+                                                
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!---->
+                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails();" class="remodal-confirm">Send Mail</button>
+
+                                            </form>
+                                        </div>
+                                        
+                                        <!--------------------------------END Mail Model------------------------------------>
                            
                             <?php
  }
@@ -230,6 +342,7 @@ if(!$_SESSION['Email'])
 </div>
         </div>
         <!-- /.container -->
+        <script type="text/javascript" src="js/space_discussion.js"></script>
         <!-- Bootstrap core JavaScript
     ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

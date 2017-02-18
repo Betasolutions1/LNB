@@ -80,7 +80,7 @@ session_start();
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="#" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -89,16 +89,16 @@ session_start();
                             <input type="text" laceholder="search" style="width:350px; height:30px">
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="#" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
-                            <a href="#about" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
+                            <a href="#about" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                         <li>
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
+                            <a href="#" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">N</a>
                         </li>
                     </ul>
                 </div>
@@ -166,7 +166,7 @@ session_start();
                                             </div><br>
                                             <div class="form-control">
                                             <input type="file" class="form-control" name="Advertise_img" id="Advertise_img" placeholder="Advertise Image">	
-                                            <label style="color:#F10004">* Image Size Less than 2MB</label><span>(Image resolution 600*900)</span>
+                                            <label style="color:#F10004">* Image Size Less than 2MB</label><span>(Image resolution 450*600)</span>
                                             </div>
                                             <br>
                                             <div class="input-group comment"> 
@@ -176,7 +176,50 @@ session_start();
                                             <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; float:right;">
                                             <!--onClick="return ins_advertisements();"-->
                                                 <button type="submit" name="add_advertise"  class="btn btn-success navbar-btn" style="">
-                                                    ADS
+                                                    ADS1
+</button>
+                                              <!--  <button type="button" class="btn btn-success navbar-btn">
+                                                    SCHEDULE
+</button>
+                                                <button type="button" class="btn btn-success navbar-btn">
+                                                    DUST
+</button>-->
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <br/>
+                                          <div style="background-color:#fff" class="shdw">
+                                            <div class="media  bg" style="background:#afdf7c"> 
+                                                <a href="" class="pull-left">
+                                                    <img src="../images/profile/logo.jpg" width="50" class="media-object">
+                                                </a>                                                 
+                                                <div class="media-body innerTB half bg" style="padding-top:4px;"> 
+                                                    <a href="#" class="pull-right innerT innerR text-white"> </a> 
+                                                    <a href="" class="text-white strong display-block">Admin Name</a> 
+                                                    <br>
+                                                    <span style="color:#fff;">Advertisements</span> 
+                                                    <?php /*?><span style="color:#fff;">-</span>
+                                                    <span style="color:#fff;"><?php echo $usr_dis['company'];?></span><?php */?>
+                                                </div>                                                 
+                                            </div>
+                                            <br style="height:2px;">
+                                            <form method="post" action="admin_script.php" enctype="multipart/form-data">
+                                            <div class="form-control">
+                                            <input type="text" class="form-control" name="Advertise_name" id="Advertise_name" placeholder="Advertise name">	
+                                            </div><br>
+                                            <div class="form-control">
+                                            <input type="file" class="form-control" name="Advertise_img" id="Advertise_img" placeholder="Advertise Image">	
+                                            <label style="color:#F10004">* Image Size Less than 2MB</label><span>(Image resolution 300*900)</span>
+                                            </div>
+                                            <br>
+                                            <div class="input-group comment"> 
+                                                <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
+                                                <textarea style="resize:none" class="span12 form-control" name="advertise_desc" id="advertise_desc" cols="90" rows="10" placeholder="ITS LNB ADVERTISMENT DESCRIPTION..."></textarea>
+                                            </div>
+                                            <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; float:right;">
+                                            <!--onClick="return ins_advertisements();"-->
+                                                <button type="submit" name="add_advertise"  class="btn btn-success navbar-btn" style="">
+                                                    ADS1
 </button>
                                               <!--  <button type="button" class="btn btn-success navbar-btn">
                                                     SCHEDULE

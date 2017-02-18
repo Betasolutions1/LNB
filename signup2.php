@@ -560,7 +560,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
             </div>
         </section><?php */?>
         <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
-        <form role="form" style="font-size:14px;" method="post" action="">
+        <form role="form" style="font-size:14px;" method="post" action="script_code.php">
            <h2 class="club_headers" style="text-align:center;">About u</h2>
             <div class="col-lg-6  su_div_pad col-md-6 "  style=" margin-bottom:50px;  color: #000;">
                  
@@ -568,8 +568,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
              
                 <input type="text" class="club_txt" name="about" placeholder="About You" />
                     <input type="text" class="club_txt" placeholder="Schooling" name="school" />
-                   <!-- <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="gender">
-                        <option>Male</option>
+                   <!-- <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="school_year">
+                        <option>20</option>
                         <option>Female</option>
                     </select>-->
                    
@@ -581,7 +581,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
             </div>
             
             <div class="col-lg-6  su_div_pad col-md-6 "  style=" margin-bottom:50px;  color: #000;">
-                <form role="form" style="font-size:14px;" method="post" action="script_code.php"> 
+                <!--<form role="form" style="font-size:14px;" method="post" action="script_code.php"> -->
             <div>
                 
                    

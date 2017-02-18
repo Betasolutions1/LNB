@@ -246,14 +246,21 @@ if(isset($_POST['add_work_projects']))
 		$get_cu_pjs=mysqli_query($conn,"select * from work_projects where user_id='$_SESSION[id]'");
 		$pj_cu=mysqli_num_rows($get_cu_pjs);
 		$pj=$pj_cu+1;
-		
+		$post_date=date('d-m-Y h:i');
 		
 		$img_name=$_FILES['file']['name'];
     	$img_tmp_name=$_FILES['file']['tmp_name'];
     	$prod_img_path=$img_name;
-    	move_uploaded_file($img_tmp_name,"fb_users/".$_SESSION['Gender']."/".$_SESSION['Email']."/Projects/".$prod_img_path);
+		$proj_path="fb_users/".$_SESSION['Gender']."/".$_SESSION['Email']."/Projects/".$prod_img_path;
+		$post_path="fb_users/".$_SESSION['Gender']."/".$_SESSION['Email']."/Post/".$prod_img_path;
+    	move_uploaded_file($img_tmp_name,$proj_path);
+		
 		
 		$ins_prjs=mysqli_query($conn,"INSERT INTO `work_projects`( `user_id`, `work_title`, `work_description`, `work_image`) VALUES ('$_SESSION[id]','$_POST[project_name]','$_POST[project_desc]','$prod_img_path')");
+		if(copy($proj_path,$post_path))
+		{
+		$ins_prj_post=mysqli_query($conn,"INSERT INTO `user_post`( `user_id`, `post_txt`, `post_pic`, `post_time`, `priority`) VALUES ('$_SESSION[id]','$_POST[project_desc]','$prod_img_path','$post_date','$_POST[foli_pri]')");
+		}
 		header("location:index.php");
 	
 	
@@ -299,7 +306,7 @@ if(isset($_POST['client_name']))
 {
 	$ins_todo_clients=mysqli_query($conn,"INSERT INTO `user_clients`( `user_id`, `client_name`, `client_company`, `client_phone`, `clients_details`) VALUES ('$_SESSION[id]','$_POST[client_name]','$_POST[client_company]','$_POST[client_phone_no]','$_POST[client_details]')");
 }
-
+// update profile pic
 if(isset($_POST['sub_edit_ppic']))
 {
 	echo "<script>alert('Image')</script>";
@@ -330,27 +337,28 @@ if(isset($_POST['sub_edit_ppic']))
 	//$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`=[value-3] WHERE `user_id`='$_SESSION[id]'");
 }
 
-if(isset($_POST['sub_edit_ppic']))
+//update cover pic
+if(isset($_POST['sub_edit_coverpic']))
 {
 	echo "<script>alert('Image')</script>";
-	if(($_FILES['profile_pic']['type']=='image/gif') || ($_FILES['profile_pic']['type']=='image/jpeg')
-	|| ($_FILES['profile_pic']['type']=='image/png') || ($_FILES['profile_pic']['type']=='image/pjpeg')
-	&& ($_FILES['profile_pic']['size']<200000))
+	if(($_FILES['cover_pic']['type']=='image/gif') || ($_FILES['cover_pic']['type']=='image/jpeg')
+	|| ($_FILES['cover_pic']['type']=='image/png') || ($_FILES['cover_pic']['type']=='image/pjpeg')
+	&& ($_FILES['cover_pic']['size']<200000))
 	{
-		if($_FILES['profile_pic']['error']>0)
+		if($_FILES['cover_pic']['error']>0)
 		{
-			echo "return code:" ,$_FILES['profile_pic']['error'];
+			echo "return code:" ,$_FILES['cover_pic']['error'];
 		}
 		/*else if(file_exists('advertises/'.$_FILES['Advertise_img']['name']))
 		{
 			echo $_FILES['Advertise_img']['name']."Already Exits";
 		}
 */		
-		else if(move_uploaded_file($_FILES['profile_pic']['tmp_name'],'fb_users/'.$_SESSION['Gender'].'/'.$_SESSION['Email'].'/Profile/'.$_FILES['profile_pic']['name']))
+		else if(move_uploaded_file($_FILES['cover_pic']['tmp_name'],'fb_users/'.$_SESSION['Gender'].'/'.$_SESSION['Email'].'/Cover/'.$_FILES['cover_pic']['name']))
 		{
-			$user_profile_pic=$_FILES['profile_pic']['name'];
+			$user_cover_pic=$_FILES['cover_pic']['name'];
 			
-			$ins_ppic=mysqli_query($conn,"UPDATE `user_profile_pic` SET `image`='$user_profile_pic' WHERE `user_id`='$_SESSION[id]'");
+			$ins_ppic=mysqli_query($conn,"UPDATE `user_cover_pic` SET `image`='$user_cover_pic' WHERE `user_id`='$_SESSION[id]'");
 			header("location:index.php");
 		}
 	}else{
@@ -367,6 +375,26 @@ if(isset($_POST['sub_forms']))
 	$ins_forms=mysqli_query($conn,"INSERT INTO `question`( `user_id`, `question`, `que_desc`, `INDUSTRY_ID`) VALUES ('$_SESSION[id]','$_POST[forum_question]','$_POST[quest_desc]','$_POST[set_indus]')");
 }
 
+//insert user quotes
+
+if(isset($_POST['user_quote']))
+{
+	if($_POST['user_quote']!='')
+	{
+		$ins_us_qu=mysqli_query($conn,"INSERT INTO `users_quotes`( `user_id`, `quote_txt`) VALUES ('$_SESSION[id]','$_POST[user_quote]') ");
+	}
+}
+
+
+// add acomplishments
+
+if(isset($_POST['acomp_title']))
+{
+	if($_POST['acomp_title']!='')
+	{
+		$ins_acomp=mysqli_query($conn,"INSERT INTO `user_accomplishments`( `user_id`, `start_year`, `end_year`, `acomp_title`, `acomp_desc`) VALUES ('$_SESSION[id]','$_POST[from_year]','$_POST[to_year]','$_POST[acomp_title]','$_POST[acomp_desc]')");
+	}
+}
 ?>
 
 

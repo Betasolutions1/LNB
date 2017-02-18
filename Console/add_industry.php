@@ -198,7 +198,7 @@ if(isset($_POST['industry']))
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" style="padding-left: 500px;" href="#">LN.BUSINESS</a>
+                    <a class="navbar-brand" style="padding-left: 500px;font-family:Stencil Std;color:#808080;" href="#">LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <!--<ul class="nav navbar-nav">

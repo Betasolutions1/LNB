@@ -33,14 +33,34 @@ if(!$_SESSION['Email'])
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   
-    
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
         <link rel="stylesheet" href="css/style.css">
         
         <!--REmodel Begin-->
-        
+        <!-- editor-->
+         <!--   <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>-->
+          <!--<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>-->
+         <!-- <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk	"></script>
+  <script>tinymce.init({
+  selector: 'textarea',
+  height: 200,
+  menubar: false,
+  plugins: [
+    'advlist autolink lists link image charmap  preview anchor',
+    'searchreplace',
+    'insertdatetime media '
+  ],
+  toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+  content_css: '//www.tinymce.com/css/codepen.min.css'
+});</script>-->
+<!-- include libraries(jQuery, bootstrap) -->
+<!-- include summernote css/js-->
+<!--<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>-->
+
+<!----------------------------------EDITOR------------------------------>
         <!-- Load local jQuery -->
     <script src="Remodal-1.1.0/libs/jquery-loader.js"></script>
 
@@ -166,6 +186,18 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                     <!--    <li>
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
                         </li>-->
+                        
+                       <li style="height:50px;line-height:13px;padding-top:3px;">
+                            <p class="diary" style="padding-top:0px; padding-left:50px;color:#808080; line-height:13px;"><span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:10px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:10px;">2016</span></p>
+                        </li>
+                        <li style="height:50px;">
+                            <!--<hr style="width:0px; height:10px;" class="vertical" />-->
+                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
+</div>
+                        </li>
+                        <li style="height:50px;">
+                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080">26</span>
+                        </li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -1474,15 +1506,18 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <form method="post" action="script_code.php">
                                                 <div class="input-group comment">
                                                     <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                    <textarea style="resize:none" class="span12 form-control" name="post_data" id="post_data" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
+                                                    <textarea style="resize:none" class=" span12 form-control" name="post_data" id="post_data" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
+                                                    
+                                                   
+                                                   
                                                 </div>
                                                 <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; ">
                                                     <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn-success navbar-btn">
-                                                        WRITE
+                                                        INK
                                                     </button>
-                                                    <button type="button" class="btn btn-success navbar-btn">
+                                                    <?php /*?><button type="button" class="btn btn-success navbar-btn">
                                                         SCHEDULE
-                                                    </button>
+                                                    </button><?php */?>
                                                     <button type="button" class="btn btn-success navbar-btn">
                                                         DUST
                                                     </button>
@@ -2713,7 +2748,11 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
          
         <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
         
-        
+         <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
         
     </body>
 </html>

@@ -3,9 +3,10 @@ include 'config.php';
 session_start();
 if(isset($_POST['post_data']))
 {
+	/*$txt= $_POST['post_data'];*/
 	
 	$ins_post=mysqli_query($conn,"insert into user_post(`user_id`,`post_txt`)values('".$_SESSION['id']."','".$_POST['post_data']."')");
-	
+	/* ".$_POST['post_data']." */
 }
 
 if(isset($_POST['luser_id']))

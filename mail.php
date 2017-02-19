@@ -107,7 +107,7 @@ if(!$_SESSION['Email'])
                             <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px; color:#808080">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;color:#808080">S</a>
+                            <a href="logout.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;color:#808080">S</a>
                         </li>
                     </ul>
                 </div>
@@ -127,15 +127,17 @@ if(!$_SESSION['Email'])
                     </div>
                     <div class="col-lg-12 pad_0" style="overflow-y:scroll;height:1010px; ">
                     <?php
-                    $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]'");
+                    $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' or recive_user_id='$_SESSION[id]");
 					while($maly_de=mysqli_fetch_array($maily_exe))
 					{
+                        if($maly_de['recive_user_id']!= $_SESSION['id'])
+                        {
 						$maily_user_exe=mysqli_query($conn,"select * from users where user_id='$maly_de[recive_user_id]'");
 						$maily_usr=mysqli_fetch_array($maily_user_exe);
 						$maily_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$maly_de[recive_user_id]'");
 						$maily_pic=mysqli_fetch_array($maily_ppicexe);
 						//where recive_user_id='$maily_de[user_id]'
-						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$maly_de[recive_user_id]' AND recive_user_id='$_SESSION[id]'");
+						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$_SESSION[id]' AND recive_user_id='$_maily_de[recive_user_id]'");
 						$maies=mysqli_fetch_array($get_maily);
 						
 					?>
@@ -145,24 +147,25 @@ if(!$_SESSION['Email'])
                                 <img src="fb_users/<?php echo $maily_usr['Gender'];?>/<?php echo $maily_usr['Email'];?>/Profile/<?php echo $maily_pic['image'];?>" width="80px" />
                             </div> 
                             <?php
-                            if($maly_de['datetime']>$maies['datetime'] );
-							{
+                            //if($maly_de['datetime']>$maies['datetime'] );
+							//{
 							?>                            
                             <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#afdf7c;font-size:18px;"><?php echo $maily_usr['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $maly_de['datetime'];?></i> </span>
+                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#afdf7c;font-size:18px;"><?php echo $maily_usr['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $mails['datetime'];?></i> </span>
                                 <br>
                                 <h4 style="padding-left:10px;color:808080;">
-            <?php echo $maly_de['subject']?></h4>
+            <?php echo $mails['subject']?></h4>
                             </div>
                             <div class="col-lg-12">
                                 <p style="color:#808080">
-            <?php echo $maly_de['matter_desc']?></p>
+            <?php echo $mails['matter_desc']?></p>
                             </div>
                             <?php
-							}
+							//}
 							?>
                         </div>
                         <?php
+                        }
 					}
 						?>
                         <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;">

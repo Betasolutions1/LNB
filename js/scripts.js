@@ -659,6 +659,66 @@ function clientinsertions()
         return false;
 }
 
+//add user quotes
+
+function inseruserquote()
+{
+	alert('hello');
+	var user_quote  = document.getElementById("user_quote").value;
+    
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'user_quote=' + user_quote ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("user_quote").value='';
+					
+					$('#disp_user_quote').load('index.php #disp_user_quote');
+                    }
+                    });
+               
+        return false;
+
+}
+
+function insertaccomplishments()
+{
+	alert('hello');
+	var from_year  = document.getElementById("from_year").value;
+    var to_year = document.getElementById("to_year").value;
+	var acomp_title = document.getElementById("acomp_title").value;
+	var acomp_desc = document.getElementById("acomp_desc").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'from_year=' + from_year + '&to_year=' + to_year + '&acomp_title=' +acomp_title + '&acomp_desc=' + acomp_desc;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("acomp_desc").value='';
+					document.getElementById("acomp_title").value='';
+					
+					$('#user_acomplis').load('index.php #user_acomplis');
+                    }
+                    });
+               
+        return false;
+}
+
 
 function add_work_projects()
 {

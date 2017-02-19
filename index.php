@@ -99,6 +99,16 @@ function out_profile_hover()
 {
 	document.getElementById("change_user_ppic").style.display='none';
 }
+
+function dis_cover_pic_edit()
+{
+	document.getElementById("edit_cover_button").style.display='block';
+}
+
+function out_cover_pic_edit()
+{
+	document.getElementById("edit_cover_button").style.display='none';
+}
 </script>
         
       <script type="text/javascript" src="js/scripts.js"></script> 
@@ -1438,7 +1448,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <a href="#tab4" data-toggle="tab">Noted</a>
                                 </li> 
                                 <li>
-                                    <a href="#tab5" data-toggle="tab">Ankita</a>
+                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize"><?php echo $_SESSION['Name'];?></a>
                                 </li>                                
                             </ul>
                             <div class="tab-content">
@@ -2090,8 +2100,13 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <div style="height:30px; ">
                                                             <img src="images/others/d_quote1.png" width="40px" style="opacity:.1" />
                                                         </div>
-                                                        <div class="col-lg-12" style="padding-right:0px;">
-                                                            <blockquote style="color:#afdf7c; font-family:lato-light; border-left:5px solid #afdf7c;"><?php echo $fet_info['quote'];?></blockquote>
+                                                        <div class="col-lg-12" style="padding-right:0px;" id="disp_user_quote">
+                                                        <?php
+                                                        $get_user_quotes=mysqli_query($conn,"select * from users_quotes where user_id='$_SESSION[id]' order by quote_id desc limit 1");
+														$quote_desc=mysqli_fetch_array($get_user_quotes);
+														?>
+                                                        <a href="#user_quote" class="icon" > <i class="fa fa-pencil icon"></i></a>
+                                                            <blockquote style="color:#afdf7c; font-family:lato-light; border-left:5px solid #afdf7c;"><?php echo $quote_desc['quote_txt'];?></blockquote>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2160,10 +2175,31 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 <p>
                                                                     <?php echo $usr_dis['description'];?></p>
                                                             </div>
-                                                            <div class="col-lg-12 p_r_box" style="overflow-y:none;">
+                                                            <div id="user_acomplis" class="col-lg-12 p_r_box" style="overflow-y:none;">
                                                                 <h3 class="club_headers" style="text-align:left;margin-left:0px;">
                                                                     ACCOMPLISHMENTS</h3>
+                                                                    <a href="#ACCOMPLISHMENTS" class="icon" style="margin-top:-32px;"> <i class="fa fa-pencil icon"></i></a>
+                                                                    <?php
+                                                                    $ret_acopmi_exe=mysqli_query($conn,"select * from user_accomplishments where user_id='$_SESSION[id]' order by accomp_id desc");
+																	while($ret_acompy=mysqli_fetch_array($ret_acopmi_exe))
+																	{
+																	?>
                                                                 <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
+                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
+                                                                        <h5>
+                                                                            <?php echo $ret_acompy['start_year'];?>-<?php echo $ret_acompy['end_year'];?></h5>
+                                                                    </div>
+                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
+                                                                        <h5 style="margin:0px;color:#afdf7c">
+                                                                            <?php echo $ret_acompy['acomp_title'];?></h5>
+                                                                        <p style="text-align:;">
+                                                                            <?php echo $ret_acompy['acomp_desc'];?></p>
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+																	}
+																?>
+                                                               <!-- <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
                                                                     <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
                                                                         <h5>
                                                                             2015-2016</h5>
@@ -2174,33 +2210,10 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                         <p style="text-align:;">
                                                                             electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale a</p>
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
-                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
-                                                                        <h5>
-                                                                            2015-2016</h5>
-                                                                    </div>
-                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
-                                                                        <h5 style="margin:0px;color:#afdf7c">
-                                                                            BIG PROJECT</h5>
-                                                                        <p style="text-align:;">
-                                                                            electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale a</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
-                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
-                                                                        <h5>
-                                                                            2015-2016</h5>
-                                                                    </div>
-                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
-                                                                        <h5 style="margin:0px;color:#afdf7c">
-                                                                            BIG PROJECT</h5>
-                                                                        <p style="text-align:;">
-                                                                            electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale a</p>
-                                                                    </div>
-                                                                </div>
+                                                                </div>-->
+                                                              
                                                             </div>
-                                                            <div class="col-lg-12 p_r_box">
+                                                         <!--   <div class="col-lg-12 p_r_box">
                                                                 <h3 class="club_headers" style="text-align:left;margin-left:0px;">
                                                                     EDUCATION</h3>
                                                                 <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
@@ -2214,7 +2227,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
                                                                 <br>
                                                                 <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                            </div>
+                                                            </div>-->
                                                             <div class="col-lg-12 p_r_box" style="border-bottom:none;">
                                                             <div id="skill6">
                                                                 <h3 class="club_headers" style="text-align:left;margin-left:0px;">
@@ -2249,7 +2262,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <!--Edit Profile Model Begin-->
                                       <div class="remodal" data-remodal-id="profilepic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                 <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                <form method="post" action="" enctype="multipart/form-data">
+                                <form method="post" action="script_code.php" enctype="multipart/form-data">
                                     <div>
 
                                         <h2><span><?php echo $_SESSION['Name'];?></span></h2>
@@ -2272,9 +2285,89 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                             </div>
                                     
                                     <!------END Edit Profile Model------------->
+                                    <!--ADD QUOTE OF THE DAY BEGIN-->
+                                     <div class="remodal" data-remodal-id="user_quote" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Today Quote</h4>
+                                            
+                                            <input type="text" class="form-control"  name="user_quote" id="user_quote"/>
+                                            <br/><br/>
+                                        </div>
+
+
+                                    </div>
+                                    <br><br/>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit" data-remodal-action="confirm"  onClick="return inseruserquote();"  class="remodal-confirm">Quote</button>
+
+                                </form>
+
+                            </div>
+                                    <!--END QUOTE OF THE DAY-->
                                     
-                                    
-                                    
+                              <!--add Acomplishments model begin-->      
+                                
+                                     <div class="remodal" data-remodal-id="ACCOMPLISHMENTS" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Add Accomplishments</h4>
+                                            <div class="col-lg-6">
+                                            <div class="form-group">
+                                            <select  name="from_year" id="from_year" class="club_txt" required>
+                                                            <option>From year</option>                                                           
+                                                            <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option> <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option> <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
+                                                           
+                                                        </select>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                        <div class="form-group">
+                                            <select  name="to_year" id="to_year" class="club_txt" required>
+                                                            <option>to year</option>                                                           
+                                                            <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option> <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option> <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
+                                                           
+                                                        </select>
+                                                        </div>
+                                                        </div>
+                                                        
+                                                        
+                                                      <div class="col-lg-12">
+                                            			<div class="form-group">
+                                                        <input type="text" class="club_txt" name="acomp_title" id="acomp_title" placeholder="Project Title" required>
+                                                   		 </div>
+                                                     </div>
+                                                      <div class="col-lg-12">
+                                            			<div class="form-group">
+                                                        <input type="text" class="club_txt" name="acomp_desc" id="acomp_desc" placeholder="Project Descriptions" required>
+                                                   		 </div>
+                                                     </div>
+                                           
+                                        </div>
+
+
+                                    </div>
+                                    <br><br/>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit" data-remodal-action="confirm"  onClick="return insertaccomplishments();"  class="remodal-confirm">ADD</button>
+
+                                </form>
+
+                            </div>
+                                  
+                               <!--end model accomplishments-->     
                                  <!--------------------------------END ANKITHA FILE--------------------------------------->
                                 </div>
                             </div>
@@ -2283,15 +2376,49 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         <div class="tab-pane" id="folio-vr">
                          <!-----------------------------------------BEGIN FOLIO---------------------------------------->
 
+
+						 <!--Edit Cover pic Model Begin-->
+                                      <div class="remodal" data-remodal-id="coverpic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="script_code.php" enctype="multipart/form-data">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Edit Profile Pic</h4>
+                                            
+                                            <input type="file"  name="cover_pic" id="cover_pic"/>
+                                        </div>
+
+
+                                    </div>
+                                    <br>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit"  name="sub_edit_coverpic"   class="remodal-confirm">Edit Pic</button>
+
+                                </form>
+
+                            </div>
+                                    
+                                    <!------END Edit Cover Model------------->
+
+	
                             <div class="pst_main_background" style="background-color:#fff;">
                                 <?php
                                 $cover_pic_exe=mysqli_query($conn,"select * from user_cover_pic where user_id='$_SESSION[id]'");
                                 $cvpic=mysqli_fetch_array($cover_pic_exe);
                                 ?>
                                 <div class="pst_box">
-                                    <div class="parallax_folio" style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Cover/<?php echo $cvpic['image'];?>');">
+                                    <div class="parallax_folio"  style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Cover/<?php echo $cvpic['image'];?>');" onMouseOver="dis_cover_pic_edit()" onMouseOut="out_cover_pic_edit()">
 
                                     </div>
+                                    <!--top:30%;-->
+                                    <div style="position:absolute; left:75%;margin-top:-100px;  z-index:1; display:none;" id="edit_cover_button" >
+                                    <a href="#coverpic" class="icon" onMouseOver="dis_cover_pic_edit();"onMouseOut="out_cover_pic_edit();" > <i class="btn btn-success" >Edit Cover Photo</i></a> 
+                                    <!--<input type="button" onMouseOver="dis_cover_pic_edit();" value="Change Cover" onMouseOut="out_cover_pic_edit();" onClick="Change_cover_pic()">-->
+                                     </div>
                                     <br>
                                     <br>
                                    <!--id="folio_desc"-->
@@ -2491,7 +2618,11 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <div class="form-group">
                                                 <input type="file" class="form-control" name="file" id="file" placeholder="Give Ur Own Rating ">
                                             </div>
-
+											 <select  name="foli_pri" id="foli_pri" class="form-control">
+                                              <option>Priority</option> 
+                                              <option value="public">Public</option> 
+                                              <option value="private">Private</option>                                                             
+                                             </select>
 
 
                                         </div>

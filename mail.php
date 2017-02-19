@@ -127,17 +127,29 @@ if(!$_SESSION['Email'])
                     </div>
                     <div class="col-lg-12 pad_0" style="overflow-y:scroll;height:1010px; ">
                     <?php
+<<<<<<< HEAD
                     $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' or recive_user_id='$_SESSION[id]");
 					while($maly_de=mysqli_fetch_array($maily_exe))
 					{
                         if($maly_de['recive_user_id']!= $_SESSION['id'])
                         {
+=======
+                    $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' or recive_user_id='$_SESSION[id]'");
+					while($maly_de=mysqli_fetch_array($maily_exe))
+					{
+						if($maly_de['recive_user_id']!=$_SESSION['id'])
+						{
+>>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
 						$maily_user_exe=mysqli_query($conn,"select * from users where user_id='$maly_de[recive_user_id]'");
 						$maily_usr=mysqli_fetch_array($maily_user_exe);
 						$maily_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$maly_de[recive_user_id]'");
 						$maily_pic=mysqli_fetch_array($maily_ppicexe);
 						//where recive_user_id='$maily_de[user_id]'
+<<<<<<< HEAD
 						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$_SESSION[id]' AND recive_user_id='$_maily_de[recive_user_id]'");
+=======
+						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$_SESSION[id]' AND recive_user_id='$maly_de[recive_user_id]'");
+>>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
 						$maies=mysqli_fetch_array($get_maily);
 						
 					?>
@@ -165,7 +177,52 @@ if(!$_SESSION['Email'])
 							?>
                         </div>
                         <?php
+<<<<<<< HEAD
                         }
+=======
+					}else
+					{
+						?>
+                        <?php
+                        if($maly_de['sender_user_id']!=$_SESSION['id'])
+						{
+						$maily_user_exe=mysqli_query($conn,"select * from users where user_id='$maly_de[sender_user_id]'");
+						$maily_usr=mysqli_fetch_array($maily_user_exe);
+						$maily_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$maly_de[sender_user_id]'");
+						$maily_pic=mysqli_fetch_array($maily_ppicexe);
+						//where recive_user_id='$maily_de[user_id]'
+						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$maly_de[sender_user_id]' AND recive_user_id='$_SESSION[id]'");
+						$maies=mysqli_fetch_array($get_maily);
+						
+					?>
+                        <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;">
+                        	
+                            <div class="col-lg-2 pad_0" style="width:80px;">
+                                <img src="fb_users/<?php echo $maily_usr['Gender'];?>/<?php echo $maily_usr['Email'];?>/Profile/<?php echo $maily_pic['image'];?>" width="80px" />
+                            </div> 
+                            <?php
+                            if($maly_de['datetime']>$maies['datetime'] );
+							{
+							?>                            
+                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
+                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#afdf7c;font-size:18px;"><?php echo $maily_usr['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $maly_de['datetime'];?></i> </span>
+                                <br>
+                                <h4 style="padding-left:10px;color:808080;">
+            <?php echo $maly_de['subject']?></h4>
+                            </div>
+                            <div class="col-lg-12">
+                                <p style="color:#808080">
+            <?php echo $maly_de['matter_desc']?></p>
+                            </div>
+                            <?php
+							}
+							?>
+                        </div>
+                        <?php
+					}
+                       
+					}
+>>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
 					}
 						?>
                         <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;">

@@ -2,6 +2,7 @@
 error_reporting(0);
 include 'config.php';
 session_start();
+
 if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
@@ -45,7 +46,7 @@ if(!$_SESSION['Email'])
           <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk	"></script>
   <script>tinymce.init({
 	  
-  selector: 'post_data',
+  selector: 'textarea',
   height: 200,
   menubar: false,
   plugins: [
@@ -137,13 +138,21 @@ function out_cover_pic_edit()
 	<script src="../preloaders/css3-preloader-transition-finish/js/vendor/modernizr-2.6.2.min.js"></script>      
     </head>
     <body>
+    <?php
+    if($_SESSION['sess_count']==0)
+	{
+		++$_SESSION['sess_count'];
+	?>
     <div id="loader-wrapper">
 			<div id="loader"></div>
 
 			<div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
 
-		</div>
+   </div>
+   <?php
+	}
+   ?>
     <?php
 $user_det=mysqli_query($conn,"select * from users where user_id='$_SESSION[id]'");
 $usr_dis=mysqli_fetch_array($user_det);
@@ -182,7 +191,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                             <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="logout.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                     <!--    <li>
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
@@ -270,6 +279,14 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <!-- <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>-->
                                                         <span class="todo_right " id="datepicker2"><a href="#" data-toggle=""><i class="fa fa-calendar "></i></a></span>
                                                         <span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()"><i class="fa fa-check-square-o "></i></a></span>
+                                                        
+                                                       <span class=" todo_right"> 
+                                                       <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type" onChange="return getodotype(this.value);">
+                                                       <option>Select Todo Type</option>
+                                                                    <option>CONSIGNMENTS</option>
+                                                                    <option>MEETINGS</option>
+                                                                    <option>CALL</option>
+                                                                </select></span>
                                                     </div>
                                                     <div id="todo_tasks_refresh">
                                                     <div class="panel-content" id="screen">
@@ -422,10 +439,32 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <div class="sub-nav">
                                              <div class="w_todo td_div">
                                                     <span class="todo_right"><a href="#clientsmodel" > <i class="fa fa-plus "></i></a></span>
+                                                    <span class="todo_right " ><a href="#csv_upload"><i class="fa fa-upload"></i></a></span>
                                                     <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
                                                 </div>
                                                 <div class="html chat" id="todo_clients" style="height:250px; overflow-y:scroll;">
+                                                <?php
+                                                if(!empty($_GET['status'])){
+    switch($_GET['status']){
+        case 'succ':
+            $statusMsgClass = 'alert-success';
+            $statusMsg = 'Members data has been inserted successfully.';
+            break;
+        case 'err':
+            $statusMsgClass = 'alert-danger';
+            $statusMsg = 'Some problem occurred, please try again.';
+            break;
+        case 'invalid_file':
+            $statusMsgClass = 'alert-danger';
+            $statusMsg = 'Please upload a valid CSV file.';
+            break;
+        default:
+            $statusMsgClass = '';
+            $statusMsg = '';
+    }
+}
+												?>
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
@@ -511,12 +550,18 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <div class="col-sm-10">
                                                             <div class="row">
                                                                 <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts" required>
-                                                                    <option value="Mustard">Mustard</option>
-                                                                    <option value="Ketchup">Ketchup</option>
-                                                                    <option value="Relish">Relish</option>
-                                                                    <option value="Tent">Tent</option>
-                                                                    <option value="Flashlight">Flashlight</option>
-                                                                    <option value="Toilet Paper">Toilet Paper</option>
+                                                                    <option value="">Select Contact</option>
+                                                                    <?php
+                                                                    $get_clients_data=mysqli_query($conn,"select * from user_clients where user_id='$_SESSION[id]'");
+																	while($client_ret=mysqli_fetch_array($get_clients_data))
+																	{
+ 
+																	?>
+                                                                    <option value="<?php echo $client_ret['client_name'];?>"><?php echo $client_ret['client_name'];?></option>
+                                                                   <?php
+																	}
+																   ?>
+                                                                   
                                                                 </select>
                                                             </div>
 
@@ -645,7 +690,34 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         </div>
                                         
                                         <!--------------------------------END clients Model------------------------------------>
+                                        <!-------BEGIn client csv upload--------------------->
                                         
+                                           <div class="remodal" data-remodal-id="csv_upload" id="csv_upload" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" action="script_code.php" method="post" enctype="multipart/form-data" id="importFrm">
+                                                <div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Upload CSV File</label>
+                                                        <div class="col-sm-9">
+                                                           
+                                                            <input type="file" class="form-control" id="client_csv" placeholder=""  name="client_csv"/>
+                                                        </div>
+                                                    </div>
+                                                 
+                                                  
+                                                </div>
+                                                <br>
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!--onClick="return clientcsvupload();" data-remodal-action="confirm"-->
+                                                <button type="submit"  name="csv_uploaddata" class="remodal-confirm">Client Data</button>
+
+                                            </form>
+                                        </div>
+                                        
+                                        
+                                        <!------------End csv upload clients------------------>
 
                                         <!-----------------------------END WORK-------------------------------------------------->
                                     </div>
@@ -1496,21 +1568,26 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                             </div>
 						</div>
                         <div class="tab-pane " id="dairy-vr">
-                            <ul class="nav nav-tabs"> 
+                            <ul class="nav nav-tabs" id="id_hover"> 
                                 <li class="active">
-                                    <a href="#tab1" data-toggle="tab">Card Files</a>
+                                    <a href="#tab1" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Cards</h5></a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab2" data-toggle="tab">Industry</a>
+                                    <a href="#tab2" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5></a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab3" data-toggle="tab">Inked</a>
+                                    <a href="#tab3" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5></a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab4" data-toggle="tab">Noted</a>
+                                    <a href="#tab4" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5></a>
                                 </li> 
                                 <li>
-                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize"><?php echo $_SESSION['Name'];?></a>
+                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize"><img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff"><?php echo $_SESSION['Name'];?></h5></a>
                                 </li>                                
                             </ul>
                             <div class="tab-content">
@@ -1609,7 +1686,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 {
 
                                                                     ?>
-                                                                    <span><a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                    <span>
+                                                                    <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
+                                                                    <a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "/></a></span>
                                                                     <!--unlike-->
                                                                     <?php
                                                                 }else
@@ -1618,7 +1697,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     //echo $_SESSION['id'];
                                                                     ?>
 
-                                                                    <span><a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                                    <span>
+                                                                    <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
+                                                                    <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                                                                                                         <!--like-->
 
                                                                     <?php
@@ -1762,14 +1843,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     ?>
 
 
-                                                                    <span><a href="#" onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" >unlike</a></span>
+                                                                    <span><a href="#" onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                                     <?php
                                                                 }
                                                                 else{
                                                                     ?>
 
 
-                                                                    <span><a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
+                                                                    <span>
+                                                                    <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
+                                                                    <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -1902,7 +1985,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 ?>
 
 
-                                                                <span><a href=""  onClick="unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >unlike</a></span>
+                                                                <span><a href="#"  onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                                 <?php
                                                             }else
                                                             {
@@ -1910,7 +1993,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 //echo $_SESSION['id'];
                                                                 ?>
 
-                                                                <span><a href=""  onClick="like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >like</a></span>
+                                                                <span><a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                                 <?php
                                                             }
                                                             ?>
@@ -2053,7 +2136,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         {
 
                                                             ?>
-                                                            <span><a href=""   onClick="unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">unlike</a></span>
+                                                            <span>
+                                                            <?php /*?>id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
+                                                            <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                             <?php
                                                         }else
                                                         {
@@ -2061,7 +2146,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             //echo $_SESSION['id'];
                                                             ?>
 
-                                                            <span><a href=""  onClick="like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
+                                                            <span>
+                                                            <?php /*?>id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
+                                                            <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                             <?php
                                                         }
                                                         ?>

@@ -198,7 +198,7 @@ function show_credit_debit()
 }
 
 function todoinsertions() {
-	alert("hello" );
+	//alert("hello" );
 	var todo_date  = document.getElementById("todo_date").value;
 	var todo_title  = document.getElementById("todo_title").value;
     var todo_contacts  = document.getElementById("todo_contacts").value;
@@ -225,12 +225,34 @@ function todoinsertions() {
         return false;
 }
 
+//todo change select
+
+function getodotype(vali)
+{
+	if (vali=="") {
+    document.getElementById("todo_tasks_refresh").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("todo_tasks_refresh").innerHTML=this.responseText;
+    }
+  }
+xmlhttp.open("GET","todotasks.php?q="+vali,true);
+xmlhttp.send();
+}
 
 //----add skills---
 
 function add_user_skill()
 {
-	alert("hello" );
+	//alert("hello" );
 	var skill_name  = document.getElementById("skill_name").value;
     var skill_rate  = document.getElementById("skill_rate").value;
    
@@ -263,7 +285,7 @@ function add_user_skill()
 //---ADD folio--
 function folio_ins_desc()
 {
-	alert("folio");
+	//alert("folio");
 	var folio_desc  = document.getElementById("folio_desc").value;
   
     // Returns successful data submission message when the entered information is stored in database.
@@ -333,7 +355,7 @@ function unlike(ulpost_id,uluser_id) {
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					//document.getElementById("firstname").select();,
+					
 					$('#news_feed_like').load('index.php #news_feed_like');
 					$('#my_industry').load('index.php #my_industry');
 					$('#my_inked').load('index.php #my_inked');
@@ -457,7 +479,7 @@ function inse_msg() {
 
 function refrals_insertins()
 {
-	alert("hello");
+	//alert("hello");
 	var club_memb  = document.getElementById("club_memb").value;
     var tag_title = document.getElementById("tag_title").value;
 	var vendor_name = document.getElementById("vendor_name").value;
@@ -579,7 +601,7 @@ function remove_club(club_rm_id)
 //insert posts--
 function ins_posts()
 {
-	alert('hello');
+	//alert('hello');
 	 //var post_data  = document.getElementById("post_data").value;
 	// var post_data= $('post_data').data('data-id');
 	//var post_data = tinymce.get('post_data'); //the id of your textarea
@@ -616,7 +638,7 @@ function ins_posts()
 
 function add_work_projects()
 {
-	alert('hello');
+	//alert('hello');
 	 var project_name  = document.getElementById("project_name").value;
     var project_desc = document.getElementById("project_desc").value;
 	var project_image = document.getElementById("project_image").value;
@@ -646,7 +668,7 @@ function add_work_projects()
 
 function comment_insertion()
 {
-	alert('hello');
+	//alert('hello');
 	var cmt_txt  = document.getElementById("cmt_txt").value;
     var cmt_post_id = document.getElementById("cmt_post_id").value;
 	var cmt_ins_date = document.getElementById("cmt_ins_date").value;
@@ -675,7 +697,7 @@ function comment_insertion()
 
 function clientinsertions()
 {
-	alert('hello');
+	//alert('hello');
 	var client_name  = document.getElementById("client_name").value;
     var client_company = document.getElementById("client_company").value;
 	var client_phone_no = document.getElementById("client_phone_no").value;

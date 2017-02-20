@@ -172,22 +172,18 @@ session_start();
                                             <div class="input-group comment"> 
                                                 <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
                                                 <textarea style="resize:none" class="span12 form-control" name="advertise_desc" id="advertise_desc" cols="90" rows="10" placeholder="ITS LNB ADVERTISMENT DESCRIPTION..."></textarea>
+                                                
                                             </div>
                                             <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; float:right;">
                                             <!--onClick="return ins_advertisements();"-->
                                                 <button type="submit" name="add_advertise"  class="btn btn-success navbar-btn" style="">
                                                     ADS1
-</button>
-                                              <!--  <button type="button" class="btn btn-success navbar-btn">
-                                                    SCHEDULE
-</button>
-                                                <button type="button" class="btn btn-success navbar-btn">
-                                                    DUST
-</button>-->
+</button><br><br>
+                                              
                                             </div>
                                             </form>
                                         </div>
-                                        <br/>
+                                        <br/><br><br>
                                           <div style="background-color:#fff" class="shdw">
                                             <div class="media  bg" style="background:#afdf7c"> 
                                                 <a href="" class="pull-left">
@@ -205,21 +201,21 @@ session_start();
                                             <br style="height:2px;">
                                             <form method="post" action="admin_script.php" enctype="multipart/form-data">
                                             <div class="form-control">
-                                            <input type="text" class="form-control" name="Advertise_name" id="Advertise_name" placeholder="Advertise name">	
+                                            <input type="text" class="form-control" name="Advertise_name2" id="Advertise_name2" placeholder="Second Advertise name">	
                                             </div><br>
                                             <div class="form-control">
-                                            <input type="file" class="form-control" name="Advertise_img" id="Advertise_img" placeholder="Advertise Image">	
-                                            <label style="color:#F10004">* Image Size Less than 2MB</label><span>(Image resolution 300*900)</span>
+                                            <input type="file" class="form-control" name="Advertise_img2" id="Advertise_img2" placeholder="Advertise Image">	
+                                            <label style="color:#F10004">* Image Size Less than 2MB</label><span>(Image resolution 200*900)</span>
                                             </div>
                                             <br>
                                             <div class="input-group comment"> 
                                                 <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                <textarea style="resize:none" class="span12 form-control" name="advertise_desc" id="advertise_desc" cols="90" rows="10" placeholder="ITS LNB ADVERTISMENT DESCRIPTION..."></textarea>
+                                                <textarea style="resize:none" class="span12 form-control" name="advertise_desc2" id="advertise_desc2" cols="90" rows="10" placeholder="ITS SECOND LNB ADVERTISMENT DESCRIPTION..."></textarea>
                                             </div>
                                             <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; float:right;">
                                             <!--onClick="return ins_advertisements();"-->
-                                                <button type="submit" name="add_advertise"  class="btn btn-success navbar-btn" style="">
-                                                    ADS1
+                                                <button type="submit" name="add_advertise2"  class="btn btn-success navbar-btn" style="">
+                                                    ADS2
 </button>
                                               <!--  <button type="button" class="btn btn-success navbar-btn">
                                                     SCHEDULE

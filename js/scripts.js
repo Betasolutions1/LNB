@@ -1,4 +1,9 @@
 
+$(document).ready(function(){
+	setInterval(function(){
+		$("#sensex_today").load('index.php #sensex_today');
+    }, 2000);
+});
 
 /*function lnb_club()
 {
@@ -127,6 +132,27 @@ function change_to(str)
 	
 }
 
+function changestatus(srt)
+{
+	//alert('trhtrfh');
+	var dataString = 'todo_status1=' + srt ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					
+					$('#todo_tasks_refresh').load('index.php #todo_tasks_refresh');
+                    }
+                    });
+               
+        return false;
+}
+//ledger insertion
 function ledger_insert() {
 	alert("hello" );
 	var led_cur_date  = document.getElementById("led_cur_date").value;
@@ -154,6 +180,21 @@ function ledger_insert() {
                     });
                
         return false;
+}
+//disable debit
+function disable_debit()
+{
+	document.getElementById('ledger_debit').style.display='none';
+}
+//disable credit
+function diable_credit()
+{
+	document.getElementById('ledger_credit').style.display='none';
+}
+function show_credit_debit()
+{
+	document.getElementById('ledger_debit').style.display='block';
+	document.getElementById('ledger_credit').style.display='block';
 }
 
 function todoinsertions() {
@@ -538,9 +579,13 @@ function remove_club(club_rm_id)
 //insert posts--
 function ins_posts()
 {
-	//alert('hello');
-	 var post_data  = document.getElementById("post_data").value;
-    
+	alert('hello');
+	 //var post_data  = document.getElementById("post_data").value;
+	// var post_data= $('post_data').data('data-id');
+	//var post_data = tinymce.get('post_data'); //the id of your textarea
+    //post_data.setContent(content);
+	$('#post_data').val(tinyMCE.get('post_data').getContent());
+   //post_data=tinymce.EditorManager.execCommand('mceAddControl',true, post_data);
 	
 	//alert("hello" + user_id );
     // Returns successful data submission message when the entered information is stored in database.

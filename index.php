@@ -41,10 +41,11 @@ if(!$_SESSION['Email'])
         <!--REmodel Begin-->
         <!-- editor-->
          <!--   <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>-->
-          <!--<script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>-->
-         <!-- <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk	"></script>
+          <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+          <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk	"></script>
   <script>tinymce.init({
-  selector: 'textarea',
+	  
+  selector: 'post_data',
   height: 200,
   menubar: false,
   plugins: [
@@ -54,7 +55,7 @@ if(!$_SESSION['Email'])
   ],
   toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
   content_css: '//www.tinymce.com/css/codepen.min.css'
-});</script>-->
+});</script>
 <!-- include libraries(jQuery, bootstrap) -->
 <!-- include summernote css/js-->
 <!--<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
@@ -209,10 +210,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                 <!--padding-bottom:150px;-->
                     <div class="jumbotron pst_box" style="padding-top:0px;border-radius:0px;">
                    
-                        <div style="margin-left:-60px;height:140px;width:280px;background:url()">
+                        <div  style="margin-left:-60px;height:140px;width:280px;background:url()">
                       <?php /*?>  <h2><?php echo $ads['ads_name'];?></h2>
                         <p style="text-align:justify;width:250px;font-size:12px;color:#000;;"><?php echo $ads['ads_desc']?></p><?php */?>
-                        <img src="https://chart.finance.yahoo.com/t?s=%5eBSESN&amp;lang=en-IN&amp;region=IN&amp;width=280&amp;height=180" alt="S&amp;P BSE SENSEX (^BSESN)" width="280" height="190">
+                        
+                        <img src="https://chart.finance.yahoo.com/t?s=%5eBSESN&amp;lang=en-IN&amp;region=IN&amp;width=280&amp;height=180" alt="S&amp;P BSE SENSEX (^BSESN)" width="280" height="190" id="sensex_today">
+                        
                         </div>
                     
                     </div>
@@ -268,14 +271,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                         ++$td_cu;
                                                                         ?>
                                                                         <li class="task">
-                                                                            <?php if($ret_td['todo_status']!=0)
+                                                                            <?php if($ret_td['todo_status']==0)
                                                                             {
 
-                                                                                ?>
-                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" checked="checked" />
-                                                                                <?php
-                                                                            }else
-                                                                            {
                                                                                 ?>
                                                                                 <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="return change_to(this.value);"/>
                                                                                 <?php
@@ -300,7 +298,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <!--Invisable Panel-->
 
                                                     <div class="panel-content" style="display:none" id="screen1">
-                                                        <form>
+                                                        <form method="post">
                                                             <fieldset>
                                                                 <ul class="tasks">
                                                                     <?php
@@ -315,12 +313,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                             {
 
                                                                                 ?>
-                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" checked="checked" />
-                                                                                <?php
-                                                                            }else
-                                                                            {
-                                                                                ?>
-                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="change_to(this.value);"/>
+                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" checked="checked"  value="<?php echo $ret_td['todo_id'];?>"  onClick="return changestatus(this.value);"/>
                                                                                 <?php
                                                                             }
                                                                             ?>
@@ -366,7 +359,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <!-- Table body -->
                                                         <tbody>
                                                         <?php
-                                                        $led_de=mysqli_query($conn,"select * from user_ledger where user_id='".$_SESSION['id']."'");
+                                                        $led_de=mysqli_query($conn,"select * from user_ledger where user_id='".$_SESSION['id']."' order by ledger_id desc");
                                                         while($led_ret=mysqli_fetch_array($led_de))
                                                         {
                                                             ?>
@@ -374,8 +367,29 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             <tr class="gradeX">
                                                                 <td><?php echo $led_ret['date'];?></td>
                                                                 <td><?php echo $led_ret['led_reason'];?></td>
-                                                                <td><?php echo $led_ret['debit'];?></td>
-                                                                <td class="center"><?php echo $led_ret['credit'];?></td>
+                                                                <td>
+																<?php
+																if($led_ret['debit']==0)
+																{
+																	echo "-";
+																}else
+																{
+																	echo $led_ret['debit'];
+																}
+																?>
+                                                                
+                                                                </td>
+                                                                <td class="center">
+																<?php
+																if($led_ret['credit']==0)
+																{
+																	echo "-";
+																}else
+																{
+																 echo $led_ret['credit'];
+																}
+																 ?>
+                                                                </td>
                                                                 <td class="center"><?php echo $led_ret['total_bal'];?></td>
                                                             </tr>
                                                             <!-- // Table row END -->
@@ -453,7 +467,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">TITLE</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" >
+                                                            <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -470,7 +484,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <label for="type" class="col-sm-2 control-label">TYPE</label>
                                                         <div class="col-sm-10">
                                                             <div class="row">
-                                                                <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type">
+                                                                <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type" required>
                                                                     <option>CONSIGNMENTS</option>
                                                                     <option>MEETINGS</option>
                                                                     <option>CALL</option>
@@ -483,7 +497,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <label for="contact" class="col-sm-2 control-label">CONTACT</label>
                                                         <div class="col-sm-10">
                                                             <div class="row">
-                                                                <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts">
+                                                                <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts" required>
                                                                     <option value="Mustard">Mustard</option>
                                                                     <option value="Ketchup">Ketchup</option>
                                                                     <option value="Relish">Relish</option>
@@ -525,26 +539,28 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Date</label>
                                                         <div class="col-sm-10">
-                                                            
-                                                            <input type="text" class="form-control" id="led_cur_date" placeholder="" value="<?php echo $date;?>" name="led_cur_date" readonly/>
+                                                            <?php
+                                                            $led_cur_date=date('Y-m-d');
+															?>
+                                                            <input type="text" class="form-control" id="led_cur_date" placeholder="" value="<?php echo $led_cur_date;?>" name="led_cur_date" readonly/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Details</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="led_details" placeholder="" name="led_details">
+                                                            <input type="text" class="form-control" id="led_details" onFocus="return show_credit_debit();" placeholder="" name="led_details" >
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="ledger_credit">
                                                         <label class="col-sm-2 control-label">Credit</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="led_credit" placeholder="" name="led_credit">
+                                                            <input type="text" class="form-control" id="led_credit" placeholder="" name="led_credit" onFocus="return disable_debit();" >
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="ledger_debit">
                                                         <label class="col-sm-2 control-label">Debit</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="led_debit" placeholder="" name="led_debit">
+                                                            <input type="text" class="form-control" id="led_debit" onFocus="return diable_credit();" placeholder="" name="led_debit" >
                                                         </div>
                                                     </div>
 
@@ -1507,19 +1523,20 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <form method="post" action="script_code.php">
                                                 <div class="input-group comment">
                                                     <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                    <textarea style="resize:none;border:1px solid #afdf7c;" class=" span12 form-control" name="post_data" id="post_data" cols="90" rows="2" placeholder=" Ink your reflections..."></textarea>
+                                                    <textarea style="resize:none;border:1px solid #afdf7c;" class=" span12 form-control" name="post_data" id="post_data" data-id="post_data" cols="90" rows="2" placeholder=" Ink your reflections..."></textarea>
                                                     
                                                    
                                                    
                                                 </div>
-                                                <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; ">
-                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn-grn ">
+                                                <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; margin-top:10px; ">
+                                                <!-- -->
+                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn_grn">
                                                         INK
                                                     </button>
                                                     <?php /*?><button type="button" class="btn btn-success navbar-btn">
                                                         SCHEDULE
                                                     </button><?php */?>
-                                                    <button type="button" class="btn btn-success navbar-btn">
+                                                    <button type="button" class="btn btn_grn">
                                                         DUST
                                                     </button>
                                                 </div>
@@ -2693,7 +2710,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 						</div>
                         <div class="tab-pane" id="hub-vr">
                             hub
-</div>
+						</div>
                     </div>
                 </div>                 
                 <div class="col-md-3 col-lg-3 b_s " style="background-color:#fff;">
@@ -2722,11 +2739,11 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                         </div>
                         <div class="col-lg-6">
                          <?php
-                    $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
-					$ads=mysqli_fetch_array($get_ads_exe);
+                    $get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");
+					$ads2=mysqli_fetch_array($get_ads_exe2);
 					
 					?>
-                            <img class="b_s" src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:200px; height:900px;" />
+                            <img class="b_s" src="Console/advertises2/<?php echo $ads2['advertise_image2'];?>" style="width:200px; height:900px;" />
                         </div>
                     </div>
                     <!-- Widget -->

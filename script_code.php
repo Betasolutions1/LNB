@@ -6,6 +6,7 @@ if(isset($_POST['post_data']))
 	/*$txt= $_POST['post_data'];*/
 	
 	$ins_post=mysqli_query($conn,"insert into user_post(`user_id`,`post_txt`)values('".$_SESSION['id']."','".$_POST['post_data']."')");
+	header("location:index.php");
 	/* ".$_POST['post_data']." */
 }
 
@@ -79,13 +80,27 @@ if(isset($_POST['todo_status']))
 {
 	$upd_td=mysqli_query($conn,"update todo_insertions set todo_status='1' where todo_id='".$_POST['todo_status']."'");
 }
-
+if(isset($_POST['todo_status1']))
+{
+	$upd_td=mysqli_query($conn,"update todo_insertions set todo_status='0' where todo_id='".$_POST['todo_status1']."'");
+}
 
 //----Ledger Insertion--
 
 if(isset($_POST['led_cur_date']))
 {
-	$led_inst=mysqli_query($conn,"INSERT INTO `user_ledger`( `user_id`, `date`, `credit`, `debit`, `led_reason`) VALUES ('".$_SESSION['id']."','".$_POST['led_cur_date']."','".$_POST['led_credit']."','".$_POST['led_debit']."','".$_POST['led_details']."')");
+	$ret_bale=mysqli_query($conn,"select * from user_ledger where user_id='$_SESSION[id]' order by ledger_id desc limit 1");
+	$get_bal_count=mysqli_num_rows($ret_bale);
+	$balence=mysqli_fetch_array($ret_bale);
+	if($_POST['led_credit']!='')
+	{
+		$cur_bal=$balence['total_bal']+$_POST['led_credit'];
+	$led_inst=mysqli_query($conn,"INSERT INTO `user_ledger`( `user_id`, `date`, `credit`, `debit`,`total_bal`, `led_reason`) VALUES ('".$_SESSION['id']."','".$_POST['led_cur_date']."','".$_POST['led_credit']."','-','".$cur_bal."','".$_POST['led_details']."')");
+	}else if($_POST['led_debit']!='')
+	{
+		$cur_bal=$balence['total_bal']-$_POST['led_debit'];
+	$led_inst=mysqli_query($conn,"INSERT INTO `user_ledger`( `user_id`, `date`, `credit`, `debit`,`total_bal`, `led_reason`) VALUES ('".$_SESSION['id']."','".$_POST['led_cur_date']."','-','".$_POST['led_debit']."','".$cur_bal."','".$_POST['led_details']."')");
+	}
 	if($led_inst)
 	{
 		echo "<script>alert('Ledger data inserted')</script>";

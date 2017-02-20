@@ -768,7 +768,7 @@ ul
     background-color:#eee;
 
 }
-#id_hover a:hover
+.hover_li > .li > a:hover
 {
 background-color:#eee;
 }

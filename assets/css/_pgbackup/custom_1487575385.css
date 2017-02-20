@@ -760,17 +760,3 @@ ul
 {
 }
 
-.hover_li
-{
-    /*background-color: #fff;*/
-}
-.hover_li:hover{
-    background-color:#eee;
-
-}
-#id_hover a:hover
-{
-background-color:#eee;
-}
-
-

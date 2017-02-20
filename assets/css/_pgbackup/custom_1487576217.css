@@ -762,13 +762,13 @@ ul
 
 .hover_li
 {
-    /*background-color: #fff;*/
+    background-color: #fff;
 }
 .hover_li:hover{
     background-color:#eee;
 
 }
-#id_hover a:hover
+#hover_li  a:hover
 {
 background-color:#eee;
 }

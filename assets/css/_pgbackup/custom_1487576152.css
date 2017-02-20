@@ -762,15 +762,11 @@ ul
 
 .hover_li
 {
-    /*background-color: #fff;*/
+    background-color: #fff;
 }
 .hover_li:hover{
-    background-color:#eee;
+    background-color:#
 
-}
-#id_hover a:hover
-{
-background-color:#eee;
 }
 
 

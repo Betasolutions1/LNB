@@ -13,6 +13,8 @@ if(isset($_POST['login']))
 		$_SESSION['Email']=$fet_da['Email'];
 		$_SESSION['Name']=$fet_da['Name'];
 		$_SESSION['Gender']=$fet_da['Gender'];
+		$sess_count=0;
+        $_SESSION['sess_count']=$sess_count;
 		header("location:index.php");
 
 	}else

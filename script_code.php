@@ -31,7 +31,7 @@ if(isset($_POST['ulpost_id']))
 	mysqli_query($conn,"delete from user_post_status where post_id='$ulpost_id' and user_id='$uluser_id'");
 	mysqli_query($conn,"update user_post set likes=$n-1 where post_id='$ulpost_id'");
 	
-	exit();
+	//exit();
 }
 
 
@@ -411,6 +411,52 @@ if(isset($_POST['acomp_title']))
 		$ins_acomp=mysqli_query($conn,"INSERT INTO `user_accomplishments`( `user_id`, `start_year`, `end_year`, `acomp_title`, `acomp_desc`) VALUES ('$_SESSION[id]','$_POST[from_year]','$_POST[to_year]','$_POST[acomp_title]','$_POST[acomp_desc]')");
 	}
 }
+
+
+//upload csv client file
+
+
+if(isset($_POST['csv_uploaddata'])){
+    
+    //validate whether uploaded file is a csv file
+    $csvMimes = array('application/vnd.ms-excel','text/plain','text/csv','text/tsv');
+    if(!empty($_FILES['client_csv']['name']) && in_array($_FILES['client_csv']['type'],$csvMimes)){
+        if(is_uploaded_file($_FILES['client_csv']['tmp_name'])){
+            
+            //open uploaded csv file with read only mode
+            $csvFile = fopen($_FILES['client_csv']['tmp_name'], 'r');
+            
+            //skip first line
+            fgetcsv($csvFile);
+            
+            //parse data from csv file line by line
+            while(($line = fgetcsv($csvFile)) !== FALSE){
+                //check whether member already exists in database with same email
+                $prevQuery = "SELECT * FROM user_clients WHERE client_phone = '".$line[2]."' AND user_id='".$_SESSION['id']."'";
+                $prevResult = $conn->query($prevQuery);
+                if($prevResult->num_rows > 0){
+                    //update member data
+                    $conn->query("UPDATE user_clients SET user_id='".$_SESSION['id']."', client_name = '".$line[0]."', client_company = '".$line[1]."', client_phone = '".$line[2]."', clients_details = '".$line[3]."' WHERE client_phone = '".$line[2]."' AND user_id='".$_SESSION['id']."'");
+                }else{
+                    //insert member data into database
+                    $conn->query("INSERT INTO user_clients (user_id,client_name, client_company, client_phone, clients_details) VALUES ('".$_SESSION['id']."','".$line[0]."','".$line[1]."','".$line[2]."','".$line[3]."')");
+                }
+            }
+            
+            //close opened csv file
+            fclose($csvFile);
+
+            $qstring = '?status=succ';
+        }else{
+            $qstring = '?status=err';
+        }
+    }else{
+        $qstring = '?status=invalid_file';
+    }
+	header("Location: index.php".$qstring);
+}
+
+
 ?>
 
 

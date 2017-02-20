@@ -208,7 +208,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
             <div class="row"> 
                 <div class="col-lg-3 col-md-4" align="center">
                 <!--padding-bottom:150px;-->
-                    <div class="jumbotron d_shdw" style="padding-top:0px;border-radius:0px;">
+                    <div class="jumbotron pst_box" style="padding-top:0px;border-radius:0px;">
                    
                         <div  style="margin-left:-60px;height:140px;width:280px;background:url()">
                       <?php /*?>  <h2><?php echo $ads['ads_name'];?></h2>

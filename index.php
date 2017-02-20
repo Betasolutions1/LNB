@@ -231,15 +231,28 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                 <div class="col-lg-6 col-md-6 "> 
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
-                            <ul class="nav nav-tabs"> 
-                                <li class="active">
-                                    <a href="#tab6" data-toggle="tab"><i class="fa fa-pencil"></i> Work</a>
-                                </li>                                 
-                                <li>
-                                    <a href="#tab7" data-toggle="tab"><i class="fa fa-pencil"></i> Space</a>
-                                </li>                                 
-                               
-                            </ul>
+                            <ul class="nav nav-tabs " id="id_hover"> 
+    <li class="active">
+        <a href="#tab6" data-toggle="tab">
+            <img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">
+            Work</h5>
+        </a>
+    </li>     
+    <li class="hover_li">
+        <a href="#tab7" data-toggle="tab">
+            <img src="images/others/folder.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">
+            Space</h5>
+        </a>
+    </li>     
+    <!-- <li>
+        <a href="#tab8" data-toggle="tab">Messages</a>
+    </li>     
+    <li>
+        <a href="#tab9" data-toggle="tab">Settings</a>
+    </li>     -->
+</ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab6">
                                     <div class="accordion-wrap">

@@ -448,7 +448,7 @@ ul
 
 .btn_grn:hover
 {
-    background-color: #89d03f;
+    background-color: #a2db67;
     color: #fff;
 }
 
@@ -762,13 +762,13 @@ ul
 
 .hover_li
 {
-    /*background-color: #fff;*/
+    background-color: #fff;
 }
 .hover_li:hover{
     background-color:#eee;
 
 }
-#id_hover a:hover
+#id_hover .li > a:hover
 {
 background-color:#eee;
 }

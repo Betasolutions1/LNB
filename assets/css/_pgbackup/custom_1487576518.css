@@ -448,7 +448,7 @@ ul
 
 .btn_grn:hover
 {
-    background-color: #89d03f;
+    background-color: #a2db67;
     color: #fff;
 }
 
@@ -768,7 +768,7 @@ ul
     background-color:#eee;
 
 }
-#id_hover a:hover
+.hover_li > .li > a:hover
 {
 background-color:#eee;
 }

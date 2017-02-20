@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2017 at 05:17 AM
+-- Generation Time: Feb 20, 2017 at 05:16 AM
 -- Server version: 5.6.11
 -- PHP Version: 5.5.3
 
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `answered` (
   `answer` text NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`ans_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `answered`
@@ -177,7 +177,13 @@ INSERT INTO `answered` (`ans_id`, `user_id`, `quest_id`, `answer`, `datetime`) V
 (10, 10, 2, 'Lorem ipsum dolor sit amet, inimicus electram convenire', '2017-02-13 11:38:12'),
 (11, 10, 1, 'Lorem ipsum dolor sit amet, inimicus electram convenire', '2017-02-13 11:38:23'),
 (12, 10, 3, 'Lorem ipsum dolor sit amet, inimicus electram convenire', '2017-02-13 11:38:32'),
-(13, 10, 10, 'dty7, 6o 7t8ol', '2017-02-13 12:31:48');
+(13, 10, 10, 'dty7, 6o 7t8ol', '2017-02-13 12:31:48'),
+(14, 9, 8, 'j,tfj vkuvby', '2017-02-18 05:32:09'),
+(15, 9, 9, 'Lorem ipsum dolor sit amet, inimicus electram convenire', '2017-02-18 10:35:57'),
+(16, 9, 9, 'Lorem ipsum dolor sit amet, inimicus electram convenire  lorium ipsum lorium ipsumlorium ipsumlorium ipsumlorium ipsum', '2017-02-18 10:36:30'),
+(17, 9, 9, 'cyt ujty ujty jytfg yu', '2017-02-18 10:40:19'),
+(18, 9, 9, 'workspace-vrworkspace-vrworkspace-vr', '2017-02-18 10:40:48'),
+(19, 10, 10, 'dncngf', '2017-02-19 15:06:34');
 
 -- --------------------------------------------------------
 
@@ -243,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `company_discussions` (
   `discussion_txt` varchar(255) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`dscussion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `company_discussions`
@@ -270,7 +276,8 @@ INSERT INTO `company_discussions` (`dscussion_id`, `user_id`, `company`, `discus
 (18, 10, 'Betasolutions', 'dghbrt er ', '2017-02-08 04:43:53'),
 (19, 10, 'Betasolutions', 'helloooooooooooo', '2017-02-12 04:42:35'),
 (20, 10, 'Betasolutions', 'hi', '2017-02-15 07:05:54'),
-(21, 10, 'Betasolutions', 'hola bonita', '2017-02-15 07:45:35');
+(21, 10, 'Betasolutions', 'hola bonita', '2017-02-15 07:45:35'),
+(22, 10, 'Betasolutions', 'ho', '2017-02-19 14:25:15');
 
 -- --------------------------------------------------------
 
@@ -387,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `group_chat` (
   `time` varchar(30) NOT NULL,
   PRIMARY KEY (`chat_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `group_chat`
@@ -419,7 +426,9 @@ INSERT INTO `group_chat` (`chat_id`, `user_id`, `chat_txt`, `time`) VALUES
 (24, 10, 'hello moto', '2017-02-07 07:58'),
 (25, 10, 'success', '2017-02-07 07:58'),
 (26, 10, 't7 m78 ', '2017-02-10 10:12'),
-(27, 10, 'wgrfg', '2017-02-15 08:06');
+(27, 10, 'wgrfg', '2017-02-15 08:06'),
+(28, 10, '2', '2017-02-19 03:25'),
+(29, 10, 'afgdf', '2017-02-19 03:32');
 
 -- --------------------------------------------------------
 
@@ -524,7 +533,7 @@ CREATE TABLE IF NOT EXISTS `send_mails` (
   `matter_desc` text NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`send_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `send_mails`
@@ -535,7 +544,9 @@ INSERT INTO `send_mails` (`send_id`, `recive_user_id`, `sender_user_id`, `subjec
 (2, 15, 10, 'EW Tger ', 'at6 uya5t4y u6t', '2017-02-14 11:56:40'),
 (3, 15, 10, 'gliy ouhn  ih khgvb kgb,vb kgbv ', 'ae y ,ue h uwg kq,wuh hjwn oljQW QWIWUQ BUIQH', '2017-02-14 09:15:45'),
 (4, 19, 10, 'rem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem', 'rem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudemrem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem', '2017-02-14 09:15:45'),
-(5, 8, 10, 'EW Tger ', 'wqrtgrt', '2017-02-15 07:08:28');
+(5, 8, 10, 'EW Tger ', 'wqrtgrt', '2017-02-15 07:08:28'),
+(6, 8, 9, 'EW Tger ', 'e t etery erf cgre ya4', '2017-02-18 09:11:38'),
+(8, 8, 9, '', '', '2017-02-18 10:15:39');
 
 -- --------------------------------------------------------
 
@@ -709,7 +720,7 @@ INSERT INTO `todo_insertions` (`todo_id`, `todo_user_id`, `todo_type`, `todo_con
 (3, 10, 'CONSIGNMENTS', 'Mustard', 'xghkx', '0000-00-00 00:00:00', 1),
 (4, 10, 'CONSIGNMENTS', 'Mustard', 'New task', '2017-02-10 12:03:00', 0),
 (5, 10, 'MEETINGS', 'Relish', 'hrtdz', '2017-02-10 12:05:00', 1),
-(6, 10, 'CALL', 'Mustard', 'New task6', '2017-02-15 08:05:00', 0),
+(6, 10, 'CALL', 'Mustard', 'New task6', '2017-02-15 08:05:00', 1),
 (7, 10, 'CONSIGNMENTS', 'Ketchup', 'Khemka', '2017-02-15 08:42:00', 1);
 
 -- --------------------------------------------------------
@@ -781,6 +792,54 @@ INSERT INTO `users_notice` (`notice_id`, `user_id`, `notice_txt`, `notice_time`)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `users_quotes`
+--
+
+CREATE TABLE IF NOT EXISTS `users_quotes` (
+  `quote_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `quote_txt` text NOT NULL,
+  PRIMARY KEY (`quote_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `users_quotes`
+--
+
+INSERT INTO `users_quotes` (`quote_id`, `user_id`, `quote_txt`) VALUES
+(1, 9, 'dgb h dbh'),
+(2, 9, 'hello this day is.. :P'),
+(3, 9, 'hello LNB'),
+(4, 10, 'The day the earth stood still');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_accomplishments`
+--
+
+CREATE TABLE IF NOT EXISTS `user_accomplishments` (
+  `accomp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `start_year` varchar(25) NOT NULL,
+  `end_year` varchar(25) NOT NULL,
+  `acomp_title` varchar(55) NOT NULL,
+  `acomp_desc` varchar(155) NOT NULL,
+  PRIMARY KEY (`accomp_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `user_accomplishments`
+--
+
+INSERT INTO `user_accomplishments` (`accomp_id`, `user_id`, `start_year`, `end_year`, `acomp_title`, `acomp_desc`) VALUES
+(1, 9, '2010', '2011', 'Whole sale trading System', 'wse fer   grtg yrt rt trtttt ttttyh rtttttt tt  rtgy    t y'),
+(2, 9, '2011', '2013', 'Web servers', ' lorium ipsum lorium ipsumlorium ipsumlorium ipsumlorium ipsum lorium ipsum lorium ipsum lorium ipsum'),
+(3, 10, '2011', '2017', 'Beta Solutions', 'Great Journey');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_clients`
 --
 
@@ -823,8 +882,8 @@ CREATE TABLE IF NOT EXISTS `user_cover_pic` (
 
 INSERT INTO `user_cover_pic` (`cover_id`, `user_id`, `image`) VALUES
 (7, 8, '999584_496501817111249_1587007043_n.jpg'),
-(8, 9, 'single_1.jpg'),
-(9, 10, 'img2.jpg');
+(8, 9, '1.jpg'),
+(9, 10, 'tumblr_m7fnc6Rdzh1r5urpdo1_500.jpg');
 
 -- --------------------------------------------------------
 
@@ -930,7 +989,7 @@ CREATE TABLE IF NOT EXISTS `user_post` (
   `likes` int(11) NOT NULL,
   PRIMARY KEY (`post_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=134 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=174 ;
 
 --
 -- Dumping data for table `user_post`
@@ -940,7 +999,7 @@ INSERT INTO `user_post` (`post_id`, `user_id`, `post_txt`, `post_pic`, `post_tim
 (48, 9, ',kjaysughciufhyv ', '', '5-11-2016 11:18', 'Public', 9),
 (49, 9, 'added a new photo.', 'person1.jpg', '5-11-2016 11:18', 'Public', 3),
 (50, 10, 'Join Faceback', '', '5-11-2016 11:43', 'Public', 0),
-(51, 9, 'added a new photo.', 'g7.jpg', '5-11-2016 11:46', 'Public', 1),
+(51, 9, 'added a new photo.', 'g7.jpg', '5-11-2016 11:46', 'Public', 0),
 (52, 11, 'Join Faceback', '', '7-11-2016 11:20', 'Public', 0),
 (53, 12, 'Join Faceback', '', '7-11-2016 12:38', 'Public', 0),
 (54, 10, 'mvklfdi poe9wiu ', '', '8-11-2016 12:4', 'Public', 1),
@@ -977,10 +1036,41 @@ INSERT INTO `user_post` (`post_id`, `user_id`, `post_txt`, `post_pic`, `post_tim
 (127, 10, 't htuj dtyuiy dyt', '', '', '', 1),
 (128, 10, 'dr hryrtyh', '', '', '', 1),
 (129, 10, 'trfhtr fyh', '', '', '', 1),
-(130, 10, 'f jyuik', '', '', '', 2),
+(130, 10, 'f jyuik', '', '', '', 1),
 (131, 10, 'ar trtuhsrtuh srtuh', '', '', '', 0),
 (132, 10, 'weur wkeb filue rhf', '', '', '', 0),
-(133, 10, 'dzhnxft htujhdty', '', '', '', 0);
+(133, 10, 'dzhnxft htujhdty', '', '', '', 1),
+(134, 9, ' er gw fouj pwee  nhf jhnds js  d dhn f nlej fijreij f', '3@2x.jpg', '18-02-2017 07:47', 'private', 0),
+(135, 9, ' k h ojh sdnferjh f;oeij feb frelm v,d hbfvbs dfkhfhb f uhse jfvb fkhnf snfjvbusf iuhf  s hed f bf bfh sdh fiuhsd b hn vfsndf', '1.jpg', '18-02-2017 07:51', 'public', 0),
+(136, 9, ' jgv j,yufg iy,gmujy ikygyifg ctufclif', '2.jpg', '18-02-2017 07:55', 'public', 1),
+(137, 9, ' rdt rt f hvcb nftg jfhcfg sre yhdcjnc hvbnjr mdgh xfdv bszedf bdzf gd ', '04.jpg', '18-02-2017 08:02', 'public', 0),
+(138, 9, ' hy trfuh drtujh tyx hjt uyrtsyh', '06.jpg', '18-02-2017 08:10', 'public', 1),
+(139, 10, '323\n', '', '', '', 0),
+(140, 10, '', '', '', '', 0),
+(141, 10, '', '', '', '', 0),
+(142, 10, '', '', '', '', 0),
+(143, 10, '', '', '', '', 0),
+(144, 10, '', '', '', '', 0),
+(154, 10, 'AFGASDFGSAD\n', '', '', '', 0),
+(155, 10, 'ADGFSADFG', '', '', '', 0),
+(156, 10, 'DHSGG', '', '', '', 0),
+(157, 10, 'DFHGSG', '', '', '', 0),
+(158, 10, 'ytkiyuikuklghjk', '', '', '', 1),
+(159, 10, '', '', '', '', 0),
+(160, 10, '', '', '', '', 0),
+(161, 10, '', '', '', '', 0),
+(162, 10, '', '', '', '', 0),
+(163, 10, '', '', '', '', 0),
+(164, 10, '', '', '', '', 1),
+(165, 10, '', '', '', '', 1),
+(166, 10, '', '', '', '', 0),
+(167, 10, '', '', '', '', 0),
+(168, 10, '', '', '', '', 0),
+(169, 10, 'undefined', '', '', '', 1),
+(170, 10, 'afadfD', '', '', '', 0),
+(171, 10, 'qwtrt', '', '', '', 0),
+(172, 10, 'wqerqw', '', '', '', 1),
+(173, 10, 'Hola bonita', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -997,7 +1087,7 @@ CREATE TABLE IF NOT EXISTS `user_post_comment` (
   PRIMARY KEY (`comment_id`),
   KEY `user_id` (`user_id`),
   KEY `post_id` (`post_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table `user_post_comment`
@@ -1032,7 +1122,13 @@ INSERT INTO `user_post_comment` (`comment_id`, `post_id`, `user_id`, `comment`, 
 (41, 133, 10, 'jyhg hv', '2017-02-07 12:42'),
 (42, 131, 10, ',jg .ug', '2017-02-07 12:44'),
 (43, 133, 10, '', '2017-02-07 12:44'),
-(44, 120, 10, '4123', '2017-02-07 12:44');
+(44, 120, 10, '4123', '2017-02-07 12:44'),
+(45, 48, 9, 'hjnfg', '2017-02-18 06:06'),
+(46, 133, 9, '', '2017-02-18 06:07'),
+(47, 48, 10, 'vXZ', '2017-02-19 03:31'),
+(48, 139, 10, 'vsadvgsdf', '2017-02-19 03:32'),
+(49, 139, 10, '', '2017-02-19 03:32'),
+(50, 108, 10, 'sgbvsfgvbasdf', '2017-02-19 03:32');
 
 -- --------------------------------------------------------
 
@@ -1047,7 +1143,7 @@ CREATE TABLE IF NOT EXISTS `user_post_status` (
   `status` varchar(7) NOT NULL,
   PRIMARY KEY (`status_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=99 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
 
 --
 -- Dumping data for table `user_post_status`
@@ -1056,7 +1152,6 @@ CREATE TABLE IF NOT EXISTS `user_post_status` (
 INSERT INTO `user_post_status` (`status_id`, `post_id`, `user_id`, `status`) VALUES
 (3, 108, 10, 'Like'),
 (11, 103, 10, 'Like'),
-(36, 51, 9, 'Like'),
 (38, 110, 9, 'Like'),
 (41, 48, 9, 'Like'),
 (42, 48, 10, 'Like'),
@@ -1070,12 +1165,19 @@ INSERT INTO `user_post_status` (`status_id`, `post_id`, `user_id`, `status`) VAL
 (77, 116, 10, 'Like'),
 (79, 49, 10, 'Like'),
 (83, 127, 10, 'Like'),
-(91, 130, 10, 'Like'),
 (93, 128, 10, 'Like'),
 (95, 111, 10, 'Like'),
 (96, 117, 10, 'Like'),
 (97, 129, 10, 'Like'),
-(98, 119, 10, 'Like');
+(98, 119, 10, 'Like'),
+(99, 133, 9, 'Like'),
+(100, 158, 10, 'Like'),
+(105, 164, 10, 'Like'),
+(121, 165, 10, 'Like'),
+(122, 172, 10, 'Like'),
+(123, 169, 10, 'Like'),
+(124, 138, 10, 'Like'),
+(125, 136, 10, 'Like');
 
 -- --------------------------------------------------------
 
@@ -1097,8 +1199,8 @@ CREATE TABLE IF NOT EXISTS `user_profile_pic` (
 
 INSERT INTO `user_profile_pic` (`profile_id`, `user_id`, `image`) VALUES
 (6, 8, 'my.jpg'),
-(7, 9, 'person1.jpg'),
-(8, 10, 'p14.jpg'),
+(7, 9, '2.jpg'),
+(8, 10, '3.jpg'),
 (9, 11, 'b22.jpg'),
 (10, 12, 't2.png');
 
@@ -1147,7 +1249,7 @@ CREATE TABLE IF NOT EXISTS `user_skills` (
   `skill` varchar(255) NOT NULL,
   `skill_rating` int(11) NOT NULL,
   PRIMARY KEY (`skill_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `user_skills`
@@ -1191,7 +1293,8 @@ INSERT INTO `user_skills` (`skill_id`, `user_id`, `skill`, `skill_rating`) VALUE
 (35, 10, 'r67i m6', 0),
 (36, 10, 'ioym l7ko 7', 0),
 (37, 10, 'yu m i7i', 0),
-(38, 10, 'dty dtyu', 0);
+(38, 10, 'dty dtyu', 0),
+(39, 9, 'image convertion', 85);
 
 -- --------------------------------------------------------
 
@@ -1241,7 +1344,7 @@ CREATE TABLE IF NOT EXISTS `work_projects` (
   `work_description` varchar(255) NOT NULL,
   `work_image` varchar(255) NOT NULL,
   PRIMARY KEY (`work_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `work_projects`
@@ -1254,7 +1357,14 @@ INSERT INTO `work_projects` (`work_id`, `user_id`, `work_title`, `work_descripti
 (4, 10, 'project 4', 'areg ERStggyg  aewrtgf ewfweart4 fEF rtg ERWTFGWE VERTG Asrt hrtyh xf d ghrthtry', 'folio_cover_3.jpg'),
 (5, 10, 'Project LNB', ' wreetg 5 54 ertgryh wt5 y54rtg yr5t4g teg r54t ', 'logo.png'),
 (6, 10, 'LNB ', ' Its like a social network to connect the people and their business relationships..', '11.png'),
-(7, 19, 'swaroopa first project', ' uh uoefyhJBHd jkh;oweuh hBASjkhilu', '7.jpg');
+(7, 19, 'swaroopa first project', ' uh uoefyhJBHd jkh;oweuh hBASjkhilu', '7.jpg'),
+(8, 9, 'Project LNB', 'lets network going good', 'bg.jpg'),
+(9, 9, 'Caliuhn jkn', ' er gw fouj pwee  nhf jhnds js  d dhn f nlej fijreij f', '3@2x.jpg'),
+(10, 9, ' owe  erj ', ' k h ojh sdnferjh f;oeij feb frelm v,d hbfvbs dfkhfhb f uhse jfvb fkhnf snfjvbusf iuhf  s hed f bf bfh sdh fiuhsd b hn vfsndf', '1.jpg'),
+(11, 9, 'Project LNBzste', ' jgv j,yufg iy,gmujy ikygyifg ctufclif', '2.jpg'),
+(12, 9, 'qwert', ' rdt rt f hvcb nftg jfhcfg sre yhdcjnc hvbnjr mdgh xfdv bszedf bdzf gd ', '04.jpg'),
+(13, 9, 'sdf vse ', ' Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu', '02.jpg'),
+(14, 9, 'rs gdr gtrf', ' hy trfuh drtujh tyx hjt uyrtsyh', '06.jpg');
 
 --
 -- Constraints for dumped tables

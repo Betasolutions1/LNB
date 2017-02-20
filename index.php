@@ -175,7 +175,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                             <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
                         </li>
                         <li class="active">
-                            <a href="forum.php" style="font-family:Stencil Std; color:#808080;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="forum.php" style="font-family:Stencil Std; color:#fff;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
                             <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
@@ -207,11 +207,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
             <div class="row"> 
                 <div class="col-lg-3 col-md-4" align="center">
                 <!--padding-bottom:150px;-->
-                    <div class="jumbotron" style="">
+                    <div class="jumbotron pst_box" style="padding-top:0px;border-radius:0px;">
                    
                         <div style="margin-left:-60px;height:140px;width:280px;background:url()">
-                        <h2><?php echo $ads['ads_name'];?></h2>
-                        <p style="text-align:justify;width:250px;font-size:12px;color:#000;;"><?php echo $ads['ads_desc']?></p>
+                      <?php /*?>  <h2><?php echo $ads['ads_name'];?></h2>
+                        <p style="text-align:justify;width:250px;font-size:12px;color:#000;;"><?php echo $ads['ads_desc']?></p><?php */?>
+                        <img src="https://chart.finance.yahoo.com/t?s=%5eBSESN&amp;lang=en-IN&amp;region=IN&amp;width=280&amp;height=180" alt="S&amp;P BSE SENSEX (^BSESN)" width="280" height="190">
                         </div>
                     
                     </div>
@@ -1488,7 +1489,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                     <div class="pst_main_background">
                                         <br>
                                      <!---------------------------------------NEWS FEED BEGIN---------------------------------------->
-                                        <div style="background-color:#fff" class="shdw">
+                                        <div style="background-color:#fff;padding:5px;"  >
                                             <div class="media  bg" style="background:#afdf7c">
                                                 <a href="" class="pull-left">
                                                     <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" class="media-object">
@@ -1506,13 +1507,13 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                             <form method="post" action="script_code.php">
                                                 <div class="input-group comment">
                                                     <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                    <textarea style="resize:none" class=" span12 form-control" name="post_data" id="post_data" cols="90" rows="2" placeholder="INK YOUR REFLECTIONS..."></textarea>
+                                                    <textarea style="resize:none;border:1px solid #afdf7c;" class=" span12 form-control" name="post_data" id="post_data" cols="90" rows="2" placeholder=" Ink your reflections..."></textarea>
                                                     
                                                    
                                                    
                                                 </div>
                                                 <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; ">
-                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn-success navbar-btn">
+                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn-grn ">
                                                         INK
                                                     </button>
                                                     <?php /*?><button type="button" class="btn btn-success navbar-btn">
@@ -1544,12 +1545,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <div class="pst_box" style="background-color:#fff;">
                                                     <div class="pst_head">
                                                         <div class="row pst_row_fill" style="">
-                                                            <div class="col-lg-2 " align="left" style="width:70px;">
+                                                            <div class="col-lg-2 " align="left" style="width:70px;height:70px;">
                                                                 <?php
                                                                 //$ency=base64_encode('id=$resp[user_id]');
                                                                 ?>
                                                                 <a href="profile.php?id=<?php echo $resp['user_id'] ?>" class="pst_head_left">
-                                                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="70" style="margin-left:-15px;">
+                                                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="70" height="70" style="margin-left:-15px;">
                                                                 </a>
                                                             </div>
                                                             <div class="col-lg-8 pst_head_txt">
@@ -1559,8 +1560,15 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 <br>
                                                                 <span class="text_wht">IT-Industry</span>
                                                             </div>
-                                                            <div class="col-lg-2">
-                                                            <div id="bookmarks">
+                                                            <div class="col-lg-2" style="
+    float: right;
+    background-color: #afdf7c;
+    width: 126px;
+    height: 70px;
+">
+                                                            <div id="bookmarks" style="
+    float: right;
+">
                                                                 <?php
                                                                 $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
                                                                 $ps=mysqli_fetch_array($pse);
@@ -1571,7 +1579,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 {
 
                                                                     ?>
-                                                                    <span><a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">unlike</a></span>
+                                                                    <span><a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                    <!--unlike-->
                                                                     <?php
                                                                 }else
                                                                 {
@@ -1579,7 +1588,9 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     //echo $_SESSION['id'];
                                                                     ?>
 
-                                                                    <span><a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
+                                                                    <span><a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                                                                                                        <!--like-->
+
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -1623,7 +1634,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             <div class="row  pst_cmt_body">
                                                                 <div class="col-lg-2" style="width:70px;">
                                                                     <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" class="pst_head_left">
-                                                                        <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="70" style="margin-left:-15px;">
+                                                                        <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="70" height="70" style="margin-left:-15px;">
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-top:5px;">

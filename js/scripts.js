@@ -249,7 +249,7 @@ function like(lpost_id,luser_id) {
 	//alert("hello" );
     //var lpost_id=$(this).attr('id');
 	//var luser_id=$(this).attr('data-src');
-	alert("hello" + luser_id );
+	
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'luser_id=' + luser_id + '&lpost_id=' + lpost_id;
       
@@ -280,7 +280,7 @@ function unlike(ulpost_id,uluser_id) {
 	//alert("hello" );
    // var ulpost_id=$(this).attr('id');
 	//var uluser_id=$(this).attr('data-src');
-	alert("hello" + ulpost_id );
+	//alert("hello" + ulpost_id );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'uluser_id=' + uluser_id + '&ulpost_id=' + ulpost_id;
       

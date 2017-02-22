@@ -2,6 +2,7 @@
 error_reporting(0);
 include 'config.php';
 session_start();
+$mails_count=0;
 if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
@@ -85,7 +86,7 @@ if(!$_SESSION['Email'])
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" style="font-family:Stencil Std;color:#808080;">
+                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -97,17 +98,17 @@ if(!$_SESSION['Email'])
                             <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:Stencil Std; color:#808080;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="fourms.php" style="font-family:Stencil Std; color:#808080;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
                             <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="logout.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
-                        <li>
+                       <!-- <li>
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -159,6 +160,7 @@ if(!$_SESSION['Email'])
 						
  while($usr_frnd_list=mysqli_fetch_array($usr_frnd_list_exe))
  {
+	 ++$mails_count;
 	 $usr_frnds_deta=mysqli_query($conn,"select * from users where  user_id='$usr_frnd_list[to_whom_user_id]'");
 	 $usr_frnd_details=mysqli_fetch_array($usr_frnds_deta);
 	
@@ -184,7 +186,7 @@ if(!$_SESSION['Email'])
                                         <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
-                                       <a href="#sendmail"> <i class="fa fa-1x fa-envelope" style="color:#fff;"></i></a>
+                                       <a href="#sendmail_<?php echo $usr_frnd_details['user_id'];?>"> <i class="fa fa-1x fa-envelope" style="color:#fff;"></i></a>
                                     </div>
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
                                        <a href="profile.php?id=<?php echo $usr_frnd_details['user_id'];?>"> <i class="fa fa-1x fa-book" style="color:#fff;"></i></a>
@@ -194,15 +196,15 @@ if(!$_SESSION['Email'])
                             
                                <!---------------------------Mail insertion model--------------------------->
                                         
-                                           <div class="remodal" data-remodal-id="sendmail" id="sendmail" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                           <div class="remodal" data-remodal-id="sendmail_<?php echo $usr_frnd_details['user_id'];?>" id="sendmail_<?php echo $usr_frnd_details['user_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" method="post" action="">
+                                            <form class="form-horizontal" role="form" method="post" action="" id="">
                                                 <div>
                                                 <div class="form-group">
                                                         <label class="col-sm-3 control-label">Select User</label>
                                                         <div class="col-sm-9">
-                                                        <input type="hidden" name="recer_user_id" id="recer_user_id" value="<?php echo $usr_frnd_details['user_id'];?>">
-                                                           <input type="text" class="form-control" id="recer_user_id"  name="recer_user_id" value="<?php echo $usr_frnd_details['Name'];?>" readonly/>
+                                                        <input type="hidden" name="recer_user_id" id="recer_user_id_<?php echo $mails_count;?>" value="<?php echo $usr_frnd_details['user_id'];?>">
+                                                           <input type="text" class="form-control" id="recer_user_id_<?php echo $mails_count;?>"  name="recer_user_id" value="<?php echo $usr_frnd_details['Name'];?>" readonly/>
                                                         </div>
                                                     </div>
 
@@ -210,13 +212,13 @@ if(!$_SESSION['Email'])
                                                         <label class="col-sm-3 control-label">Subject</label>
                                                         <div class="col-sm-9">
                                                            
-                                                            <input type="text" class="form-control" id="mail_subject"  name="mail_subject"/>
+                                                            <input type="text" class="form-control" id="mail_subject_<?php echo $mails_count?>"  name="mail_subject"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Description</label>
                                                         <div class="col-sm-9">
-                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
+                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc_<?php echo $mails_count;?>"  name="mail_desc"></textarea>
                                                         </div>
                                                     </div>
                                                     
@@ -227,7 +229,7 @@ if(!$_SESSION['Email'])
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!---->
-                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails();" class="remodal-confirm">Send Mail</button>
+                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails(<?php echo $mails_count; ?>);" class="remodal-confirm">Send Mail</button>
 
                                             </form>
                                         </div>
@@ -243,6 +245,7 @@ if(!$_SESSION['Email'])
  $urr_frnd_list_exe=mysqli_query($conn,"select * from friend_request where to_whom_user_id='$_SESSION[id]' AND status='1'");
  while($urr_frnd_list=mysqli_fetch_array($urr_frnd_list_exe))
  {
+	 ++$mails_count;
 	 $urr_frnds_deta=mysqli_query($conn,"select * from users where  user_id='$urr_frnd_list[who_sent_user_id]'");
 	 $urr_frnd_details=mysqli_fetch_array($urr_frnds_deta);
 	
@@ -282,13 +285,13 @@ if(!$_SESSION['Email'])
                                         
                                            <div class="remodal" data-remodal-id="compose_mail_<?php echo $urr_frnd_details['user_id'];?>" id="compose_mail_<?php echo $urr_frnd_details['user_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" method="post" action="" id="compose_mail_form_<?php echo $urr_frnd_details['user_id'];?>">
+                                            <form class="form-horizontal" role="form" method="post" action="" id="compose_mail_form_<?php echo $mails_count;?>">
                                                 <div>
                                                 <div class="form-group">
                                                         <label class="col-sm-3 control-label">Select User</label>
                                                         <div class="col-sm-9">
-                                                        <input type="hidden" name="recer_user_id" id="recer_user_id" value="<?php echo $urr_frnd_details['user_id'];?>">
-                                                           <input type="text" class="form-control" id="recer_user_id"  name="recer_user_id" value="<?php echo $urr_frnd_details['Name'];?>" readonly/>
+                                                        <input type="hidden" name="recer_user_id" id="recer_user_id_<?php echo $mails_count;?>" value="<?php echo $urr_frnd_details['user_id'];?>">
+                                                           <input type="text" class="form-control" id="recer_user_id_<?php echo $mails_count;?>"  name="recer_user_id" value="<?php echo $urr_frnd_details['Name'];?>" readonly/>
                                                         </div>
                                                     </div>
 
@@ -296,13 +299,13 @@ if(!$_SESSION['Email'])
                                                         <label class="col-sm-3 control-label">Subject</label>
                                                         <div class="col-sm-9">
                                                            
-                                                            <input type="text" class="form-control" id="mail_subject"  name="mail_subject"/>
+                                                            <input type="text" class="form-control" id="mail_subject_<?php echo $mails_count;?>"  name="mail_subject"/>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Description</label>
                                                         <div class="col-sm-9">
-                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
+                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc_<?php echo $mails_count;?>"  name="mail_desc"></textarea>
                                                         </div>
                                                     </div>
                                                     
@@ -313,7 +316,7 @@ if(!$_SESSION['Email'])
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!---->
-                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails();" class="remodal-confirm">Send Mail</button>
+                                                <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails(<?php echo $mails_count;?>);" class="remodal-confirm">Send Mail</button>
 
                                             </form>
                                         </div>

@@ -324,12 +324,11 @@ function like(lpost_id,luser_id) {
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					//document.getElementById("firstname").select();
-					$('#news_feed_like').load('index2.php #news_feed_like');
-					$('#my_industry').load('index2.php #my_industry');
-					$('#my_inked').load('index2.php #my_inked');
-					//$('#industry_likes').load('index2.php #industry_likes');
-					//$('#inked_likes').load('index2.php #inked_likes');
+					$('#news_feed_like').load('index.php #news_feed_like');
+					$('#my_industry').load('index.php #my_industry');
+					$('#my_inked').load('index.php #my_inked');
+				  // $('#industry_likes').load('index.php #industry_likes');
+					//$('#inked_likes').load('index.php #inked_likes');
 					$('#noted_likes').load('index.php #noted_likes');
 					
 					
@@ -666,14 +665,14 @@ function add_work_projects()
 	
 }
 
-function comment_insertion()
+function comment_insertion(ucid)
 {
 	//alert('hello');
-	var cmt_txt  = document.getElementById("cmt_txt").value;
-    var cmt_post_id = document.getElementById("cmt_post_id").value;
-	var cmt_ins_date = document.getElementById("cmt_ins_date").value;
+	var cmt_txt  = document.getElementById("cmt_txt_"+ucid).value;
+    var cmt_post_id = document.getElementById("cmt_post_id_"+ucid).value;
+	var cmt_ins_date = document.getElementById("cmt_ins_date_"+ucid).value;
 	
-	//alert("hello" + user_id );
+	//alert("hello" + ucid );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'cmt_txt=' + cmt_txt + '&cmt_post_id=' + cmt_post_id + '&cmt_ins_date=' +cmt_ins_date ;
       
@@ -685,9 +684,15 @@ function comment_insertion()
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					document.getElementById("cmt_txt").value='';
+					document.getElementById("cmt_txt_"+ucid).value='';
 					
 					$('#news_feed').load('index.php #news_feed');
+					//$('#news_feed_like').load('index.php #news_feed_like');
+					$('#my_industry').load('index.php #my_industry');
+					$('#my_inked').load('index.php #my_inked');
+				  // $('#industry_likes').load('index.php #industry_likes');
+					//$('#inked_likes').load('index.php #inked_likes');
+					$('#noted_likes').load('index.php #noted_likes');
                     }
                     });
                

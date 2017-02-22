@@ -160,6 +160,7 @@ $get_user_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user
 $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
 $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
+$from_count=0;
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -1640,7 +1641,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <div id="news_feed_comment">	
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
-											$from_count=0;
+											
                                             while($resp=mysqli_fetch_array($retpe))
                                             {
 												++$from_count;
@@ -1763,15 +1764,15 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                         <div class="row pst_cmt_row">
                                                             <div class="col-lg-10 pst_cmt_pad">
                                                                 <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id" id="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id" value="<?php echo $resp['post_id'];?>">
+                                                                    <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
+                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $resp['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
 
                                                                     ?>
-                                                                    <input type="hidden" name="cmt_ins_date" id="cmt_ins_date" value="<?php echo $date;?>">
-                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
-                                                                    <input type="submit" name="cmt_ins" onClick="return comment_insertion();" style="display:none;">
+                                                                    <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
+                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                    <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                                 </form>
                                                             </div>
                                                             <!--<div class="col-lg-2 pst_cmt_c1">
@@ -1806,10 +1807,12 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         $industry_users_exe=mysqli_query($conn,"select * from users where industry='$usr_dis[industry]'");
                                         while($industry_users_ret=mysqli_fetch_array($industry_users_exe))
                                         {
+											++$from_count;
 
                                             $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]' order by post_id desc");
                                             while ($industry_post_rety = mysqli_fetch_array($industry_post_users_execu))
                                             {
+												++$from_count;
                                                 $industry_user_profile_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$industry_post_rety[user_id]'");
                                                 $indus_usr_prof_pic=mysqli_fetch_array($industry_user_profile_exe);
                                                 $industry_post_usr_profi_pic=$indus_usr_prof_pic[2];
@@ -1843,7 +1846,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                     ?>
 
 
-                                                                    <span><a href="#" onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                    <span><a href="#" onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                                     <?php
                                                                 }
                                                                 else{
@@ -1852,7 +1855,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                                     <span>
                                                                     <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                                    <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                                    <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -1914,16 +1917,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                         <div class="row pst_cmt_row">
                                                             <div class="col-lg-10 pst_cmt_pad">
-                                                                <form method="post" action="script_code.php">
-                                                                    <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" value="<?php echo $industry_post_rety['post_id'];?>">
+                                                                <form method="post" action="" id="form_<?php echo $from_count;?>">
+                                                                    <input type="hidden" name="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
+                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $industry_post_rety['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
 
                                                                     ?>
-                                                                    <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
-                                                                    <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
-                                                                    <input type="submit" name="cmt_ins" style="display:none;">
+                                                                    <input type="hidden" name="cmt_ins_date_<?php echo $from_count;?>" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
+                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                    <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                                 </form>
                                                             </div>
                                                             <!--<div class="col-lg-2 pst_cmt_c1">
@@ -1958,7 +1961,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         $count=0;
                                         $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."' order by post_id desc");
                                         while($user_profile_post=mysqli_fetch_array($user_profile_post_exet))
-                                        {
+                                        { ++$from_count;
                                             $count++;
                                             ?>
                                             <div class="pst_box" style="background-color:#fff;">
@@ -1985,7 +1988,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 ?>
 
 
-                                                                <span><a href="#"  onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                <span><a href="#"  onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                                 <?php
                                                             }else
                                                             {
@@ -1993,7 +1996,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                                 //echo $_SESSION['id'];
                                                                 ?>
 
-                                                                <span><a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                                <span><a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                                 <?php
                                                             }
                                                             ?>
@@ -2029,7 +2032,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                     </div>
                                                     <?php
                                                     while($user_profile_post_comment=mysqli_fetch_array($user_profile_post_comment_execu))
-                                                    {
+                                                    { ++$from_count;
                                                         $profile_post_comment_user_exec=mysqli_query($conn,"select * from users where user_id='$user_profile_post_comment[user_id]'");
                                                         $profile_post_comment_user_de=mysqli_fetch_array($profile_post_comment_user_exec);
                                                         $profile_post_comment_user_pic_exect=mysqli_query($conn,"select * from user_profile_pic where user_id='$user_profile_post_comment[user_id]'");
@@ -2056,16 +2059,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                     <div class="row pst_cmt_row">
                                                         <div class="col-lg-10 pst_cmt_pad">
-                                                            <form method="post" action="script_code.php">
-                                                                <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
-                                                                <input type="hidden" name="cmt_post_id" value="<?php echo $user_profile_post['post_id'];?>">
+                                                            <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
+                                                                <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
+                                                                <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
                                                                 <?php
                                                                 $date=date('Y-m-d h:i');
 
                                                                 ?>
-                                                                <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
-                                                                <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
-                                                                <input type="submit" name="cmt_ins" style="display:none;">
+                                                                <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
+                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                             </form>
                                                         </div>
                                                         <!--<div class="col-lg-2 pst_cmt_c1">
@@ -2091,7 +2094,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                         <?php
                                         $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_SESSION[id]'");
                                         while($ret_user_noted=mysqli_fetch_array($user_noted_posts_exe))
-                                        {
+                                        { 
+										++$from_count;
                                             ?>
 
                                             <?php
@@ -2138,7 +2142,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                             ?>
                                                             <span>
                                                             <?php /*?>id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                            <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                            <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                             <?php
                                                         }else
                                                         {
@@ -2148,7 +2152,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                             <span>
                                                             <?php /*?>id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                            <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                            <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                             <?php
                                                         }
                                                         ?>
@@ -2185,6 +2189,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                                                 <?php
                                                 while($user_profile_post_comment=mysqli_fetch_array($user_noted_post_comment_execu))
                                                 {
+													++$from_count;
                                                     $profile_post_comment_user_exec=mysqli_query($conn,"select * from users where user_id='$user_profile_post_comment[user_id]'");
                                                     $profile_post_comment_user_de=mysqli_fetch_array($profile_post_comment_user_exec);
                                                     $profile_post_comment_user_pic_exect=mysqli_query($conn,"select * from user_profile_pic where user_id='$user_profile_post_comment[user_id]'");
@@ -2210,16 +2215,16 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 
                                                 <div class="row pst_cmt_row">
                                                     <div class="col-lg-10 pst_cmt_pad">
-                                                        <form method="post" action="script_code.php">
-                                                            <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
-                                                            <input type="hidden" name="cmt_post_id" value="<?php echo $user_noted_post['post_id'];?>">
+                                                        <form method="post" action="" id="form_<?php echo $from_count;?>" >
+                                                            <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
+                                                            <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_noted_post['post_id'];?>">
                                                             <?php
                                                             $date=date('Y-m-d h:i');
 
                                                             ?>
-                                                            <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
-                                                            <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
-                                                            <input type="submit" name="cmt_ins" style="display:none;">
+                                                            <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
+                                                            <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                            <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                         </form>
                                                     </div>
                                                     <!--<div class="col-lg-2 pst_cmt_c1">

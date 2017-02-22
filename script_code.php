@@ -457,6 +457,19 @@ if(isset($_POST['csv_uploaddata'])){
 }
 
 
+//---------------users role company info-----------
+
+if(isset($_POST['user_role']))
+{
+	$ins_rloi=mysqli_query($conn,"update user_info set company_role_info='$_POST[user_role]' where user_id='$_SESSION[id]'");
+}
+
+//------user club info--
+if(isset($_POST['user_pers_desc']))
+{
+	$ins_clino=mysqli_query($conn,"update users set description='$_POST[user_pers_desc]' where user_id='$_SESSION[id]'");
+}
+
 ?>
 
 

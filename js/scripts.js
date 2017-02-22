@@ -4,15 +4,63 @@ $(document).ready(function(){
 		$("#sensex_today").load('index.php #sensex_today');
     }, 2000);
 });
+$(document).ready(function(){
+	setInterval(function(){
+		$("#index_add1").load('index.php #index_add1');
+    }, 5000);
+});
+$(document).ready(function(){
+	setInterval(function(){
+		$("#inadex_ads2").load('index.php #inadex_ads2');
+    }, 2000);
+});
 
 /*function lnb_club()
 {
 	alert("club");
 }*/
 
+//------------users role in their company--
+
+function rlioncopmrole()
+{
+	//alert('hello');
+	var user_role=document.getElementById('user_role').value;
+	var dataString = 'user_role=' + user_role ;
+	$.ajax({
+		type: "POST",
+		url:"script_code.php",
+		data:dataString,
+		cache:false,
+		success: function(html){
+			$('#role').load('index.php #role');
+		}
+	});
+	return false;
+}
+
+//--------------------user club personal description---------
+
+function user_persdo_descbhg()
+{
+	//alert('hello');
+	var user_pers_desc=document.getElementById('user_pers_desc').value;
+	var dataString = 'user_pers_desc=' + user_pers_desc ;
+	$.ajax({
+		type: "POST",
+		url:"script_code.php",
+		data:dataString,
+		cache:false,
+		success: function(html){
+			$('#user_pinoo').load('index.php #user_pinoo');
+		}
+	});
+	return false;
+}
+
 function lnb_club()
 {
-	alert("hello" );
+	//alert("hello" );
     var club_user_name  = document.getElementById("club_user_name").value;
     var club_pwd = document.getElementById("club_pwd").value;
 	
@@ -45,7 +93,11 @@ function space_disscussion()
 	 var dis_company  = document.getElementById("dis_company").value;
      var disscussion_topic = document.getElementById("disscussion_topic").value;
 	
-	
+	if(disscussion_topic.length>160)
+	{
+		document.getElementById('discu_valid').style.display='block';
+		return false;
+	}
 	
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'dis_company=' + dis_company + '&disscussion_topic=' + disscussion_topic ;
@@ -378,7 +430,7 @@ function ins_suggest() {
 	var sug_date = document.getElementById("sug_date").value;
     if(sugg_info.length > 160) //i got a problem with this one i think
     {
-     alert("Suggest info must be less than 160 characters");
+     document.getElementById('sugg_valid').style.display='block';
      return false;
     }else
 	{
@@ -454,6 +506,11 @@ function inse_msg() {
     var chat_txt  = document.getElementById("chat_txt").value;
     var msg_time_date = document.getElementById("msg_time_date").value;
 	 var msg_user_id = document.getElementById("msg_user_id").value;
+	 if(chat_txt.length > 160)
+	 {
+		 document.getElementById('network_valid').style.display='block';
+		 return false;
+	 }
 	//alert("hello" + user_id );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'chat_txt=' + chat_txt + '&msg_time_date=' + msg_time_date + '&msg_user_id=' +msg_user_id;
@@ -601,13 +658,8 @@ function remove_club(club_rm_id)
 function ins_posts()
 {
 	//alert('hello');
-	 //var post_data  = document.getElementById("post_data").value;
-	// var post_data= $('post_data').data('data-id');
-	//var post_data = tinymce.get('post_data'); //the id of your textarea
-    //post_data.setContent(content);
-	$('#post_data').val(tinyMCE.get('post_data').getContent());
-   //post_data=tinymce.EditorManager.execCommand('mceAddControl',true, post_data);
-	
+	 tinyMCE.triggerSave();
+   post_data= $('#post_data').submit();
 	//alert("hello" + user_id );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'post_data=' + post_data  ;
@@ -616,10 +668,13 @@ function ins_posts()
                     $.ajax({
                     type: "POST",
                     url: "script_code.php",
-                    data: dataString,
+                    data:  post_data,
                     cache: false,
                     success: function(html) {
                     //alert(html);
+					if (typeof(tinyMCE) != 'undefined') {  
+                     $('#post_data').val(''); 
+                      }
 					document.getElementById("post_data").value='';
 					
 					$('#news_feed').load('index.php #news_feed');
@@ -763,7 +818,7 @@ function inseruserquote()
 
 function insertaccomplishments()
 {
-	alert('hello');
+	//alert('hello');
 	var from_year  = document.getElementById("from_year").value;
     var to_year = document.getElementById("to_year").value;
 	var acomp_title = document.getElementById("acomp_title").value;
@@ -790,6 +845,7 @@ function insertaccomplishments()
                
         return false;
 }
+
 
 
 function add_work_projects()

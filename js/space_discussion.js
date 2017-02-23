@@ -81,7 +81,7 @@ function insert_answer(faid)
     var ans_frms = document.getElementById("ans_frms_"+faid).value;
 	//var set_indus = document.getElementById("set_indus").value;
 	
-	alert("hello" + que_id);
+	//alert("hello" + que_id);
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'que_id=' + que_id + '&ans_frms=' + ans_frms ;
       
@@ -93,7 +93,7 @@ function insert_answer(faid)
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					document.getElementById("ans_frms").value='';
+					document.getElementById("ans_frms_"+faid).value='';
 					$('#workspace-vr').load('forum_ans.php #workspace-vr');
                     }
                     });

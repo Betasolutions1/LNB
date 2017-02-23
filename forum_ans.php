@@ -155,7 +155,16 @@ if(!$_SESSION['Email'])
                                         
                                             <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;margin-bottom:10px;">
                                                 <div class="col-lg-2 pad_0" align="left" style="width:80px;">
+                                                <?php
+                                                if($upiv['image']!='')
+												{
+												?>
                                                     <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="80" />
+												<?php
+												}else{
+													?>
+                                                    <img src="images/profile/sq.PNG" width="80">
+                                                    <?php }?>
                                                 </div>
                                                 <div class="col-lg-10">
                                                     <h3 class="club_headers" style="width:500px;">
@@ -198,7 +207,14 @@ if(!$_SESSION['Email'])
 											?>
                                                 <div class="col-lg-12 pad_0" style=" border-bottom:1px solid #afdf7c; ">
                                                     <div class="col-lg-2 pad_0" style="width:80px;">
+                                                    <?php
+                                                    if($ur_pic['image']!='')
+													{
+													?>
                                                         <img src="fb_users/<?php echo $watq['Gender'];?>/<?php echo $watq['Email'];?>/Profile/<?php echo $ur_pic['image'];?>" width="80px" />
+                                                        <?php }else {?>
+                                                        <img src="images/profile/sq.PNG" width="80">
+                                                        <?php }?>
                                                     </div>                                                     
                                                     <div class="col-lg-10 pad_0" style="width:810px;padding-left:15px;">
                                                         <div class="col-lg-12" style="padding:5px;padding-left:5px">

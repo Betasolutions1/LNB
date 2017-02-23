@@ -212,17 +212,4 @@ if(!$_SESSION['Email'])
    
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    <script type="text/javascript" src="js/space_discussion.js"></script>

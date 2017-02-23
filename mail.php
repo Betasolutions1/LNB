@@ -127,29 +127,29 @@ if(!$_SESSION['Email'])
                     </div>
                     <div class="col-lg-12 pad_0" style="overflow-y:scroll;height:1010px; ">
                     <?php
-<<<<<<< HEAD
+//<<<<<<< HEAD
                     $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' or recive_user_id='$_SESSION[id]");
 					while($maly_de=mysqli_fetch_array($maily_exe))
 					{
                         if($maly_de['recive_user_id']!= $_SESSION['id'])
                         {
-=======
+//=======
                     $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' or recive_user_id='$_SESSION[id]'");
 					while($maly_de=mysqli_fetch_array($maily_exe))
 					{
 						if($maly_de['recive_user_id']!=$_SESSION['id'])
 						{
->>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
+//>>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
 						$maily_user_exe=mysqli_query($conn,"select * from users where user_id='$maly_de[recive_user_id]'");
 						$maily_usr=mysqli_fetch_array($maily_user_exe);
 						$maily_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$maly_de[recive_user_id]'");
 						$maily_pic=mysqli_fetch_array($maily_ppicexe);
 						//where recive_user_id='$maily_de[user_id]'
-<<<<<<< HEAD
-						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$_SESSION[id]' AND recive_user_id='$_maily_de[recive_user_id]'");
-=======
-						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$_SESSION[id]' AND recive_user_id='$maly_de[recive_user_id]'");
->>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
+//<<<<<<< HEAD
+						$get_maily=mysqli_query($conn,"select * from send_mails where  sender_user_id='$_SESSION[id]' AND recive_user_id='$_maily_de[recive_user_id]'");
+//=======
+						$get_maily=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' AND recive_user_id='$maly_de[recive_user_id]'");
+//>>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
 						$maies=mysqli_fetch_array($get_maily);
 						
 					?>
@@ -177,11 +177,12 @@ if(!$_SESSION['Email'])
 							?>
                         </div>
                         <?php
-<<<<<<< HEAD
-                        }
-=======
-					}else
-					{
+//<<<<<<< HEAD
+                       // }
+//=======
+
+					//}else
+					//{
 						?>
                         <?php
                         if($maly_de['sender_user_id']!=$_SESSION['id'])
@@ -219,10 +220,10 @@ if(!$_SESSION['Email'])
 							?>
                         </div>
                         <?php
-					}
+					//}
                        
 					}
->>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
+//>>>>>>> 8776e6b69c6ee38af057299304580c54f159bac5
 					}
 						?>
                         <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;">

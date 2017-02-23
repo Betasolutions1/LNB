@@ -210,7 +210,19 @@ if(!$_SESSION['Email'])
                                             
                                                 <div class="col-lg-12 pad_0" style="height:80px; border-bottom:1px solid #afdf7c;">
                                                     <div class="col-lg-3 pad_0" style="width:80px;">
+                                                    <?php
+                                                    if($qusrpic['image']!='')
+													{
+													?>
                                                         <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;" />
+                                                        <?php
+													}else
+													{
+														?>
+                                                        <img src="images/profile/sq.PNG" width="80px" style="margin-left:0px;" >
+                                                        <?php
+													}
+														?>
                                                     </div>    
                                                     <!--width:810px;-->                                                 
                                                     <div class="col-lg-9 pad_0" style="height:80px;padding-left:15px;">

@@ -1960,7 +1960,19 @@ $from_count=0;
                                                             <div class="row  pst_cmt_body">
                                                                 <div class="col-lg-2" style="width:70px;">
                                                                     <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" class="pst_head_left">
+                                                                    <?php
+                                                                    if($us_cmt_pic['image']!='')
+																	{
+																	?>
                                                                         <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="70" height="70" style="margin-left:-15px;">
+                                                                        <?php
+																	}else
+																	{
+																		?>
+                                                                        <img src="images/profile/sq.PNG" width="70" height="70" style="margin-left:-15px;" />
+                                                                      <?php
+																	}
+																	  ?>  
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-top:5px;">
@@ -2040,7 +2052,19 @@ $from_count=0;
                                                         <div class="row pst_row_fill" style="">
                                                             <div class="col-lg-2 " align="left" style="width:70px;">
                                                                 <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>" class="pst_head_left">
+                                                                <?php 
+																if($industry_post_usr_profi_pic!='')
+																{
+																?>
                                                                     <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" width="70" style="margin-left:-15px;">
+                                                                    <?php
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG"  width="70" style="margin-left:-15px;">
+                                                                  <?php
+																}
+																  ?>  
                                                                 </a>
                                                             </div>
                                                             <div class="col-lg-8 pst_head_txt">
@@ -2115,7 +2139,19 @@ $from_count=0;
                                                             <div class="row  pst_cmt_body">
                                                                 <div class="col-lg-2" style="width:70px;">
                                                                     <a href="profile.php?id=<?php echo $industry_post_comment_user_retry['user_id'] ?>" class="pst_head_left">
-                                                                        <img src="fb_users/<?php echo $industry_post_comment_user_retry['Gender']?>/<?php echo $industry_post_comment_user_retry['Email']?>/Profile/<?php echo$industry_post_comment_user_pic_retry['image'];?>"  width="70" style="margin-left:-15px;">
+                                                                    <?php
+                                                                    if($industry_post_comment_user_pic_retry['image']!='')
+																	{
+																	?>
+                                                                        <img src="fb_users/<?php echo $industry_post_comment_user_retry['Gender']?>/<?php echo $industry_post_comment_user_retry['Email']?>/Profile/<?php echo $industry_post_comment_user_pic_retry['image'];?>"  width="70" style="margin-left:-15px;">
+                                                                        <?php
+																	}else
+																	{
+																		?>
+                                                                        <img src="images/profile/sq.PNG"  width="70" style="margin-left:-15px;">
+                                                                        <?php
+																	}
+																		?>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-top:5px;">
@@ -2184,7 +2220,18 @@ $from_count=0;
                                                     <div class="row pst_row_fill" style="">
                                                         <div class="col-lg-2 " align="left" style="width:70px;">
                                                             <a href="#" class="pst_head_left">
+                                                            <?php
+															if($user_profile_pic['image']!='')
+                                                            {
+															?>
                                                                 <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="70" style="margin-left:-15px;">
+                                                                <?php
+															}else{
+																?>
+                                                                <img src="images/profile/sq.PNG"  width="70" style="margin-left:-15px;">
+                                                                <?php
+															}
+																?>
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-8 pst_head_txt">
@@ -2259,7 +2306,19 @@ $from_count=0;
                                                         <div class="row  pst_cmt_body">
                                                             <div class="col-lg-2" style="width:70px;">
                                                                 <a href="#" class="pst_head_left">
+                                                                <?php
+                                                                if($prof_post_comment_user_pp['image']!='')
+																{
+																?>
                                                                     <img src="fb_users/<?php echo $profile_post_comment_user_de['Gender'];?>/<?php echo $profile_post_comment_user_de['Email']; ?>/Profile/<?php echo $prof_post_comment_user_pp['image']; ?>"  width="70" style="margin-left:-15px;">
+                                                                    <?php
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="margin-left:-15px;">
+                                                                    <?php
+																}
+																	?>
                                                                 </a>
                                                             </div>
                                                             <div class="col-lg-10" style="padding-top:5px;">
@@ -2337,7 +2396,19 @@ $from_count=0;
                                                 <div class="row pst_row_fill" style="">
                                                     <div class="col-lg-2 " align="left" style="width:70px;">
                                                         <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>" class="pst_head_left">
+                                                        <?php
+                                                        if($user_noted_ppic['image']!='')
+														{
+														?>
                                                             <img src="fb_users/<?php echo $user_pos_nrty['Gender']; ?>/<?php echo $user_pos_nrty['Email']; ?>/Profile/<?php echo $user_noted_ppic['image'];?>" width="70" style="margin-left:-15px;">
+                                                            <?php
+														}else
+														{
+															?>
+                                                            <img src="images/profile/sq.PNG"  width="70" style="margin-left:-15px;">
+                                                            <?php
+														}
+															?>
                                                         </a>
                                                     </div>
                                                     <div class="col-lg-8 pst_head_txt">
@@ -2417,7 +2488,19 @@ $from_count=0;
                                                     <div class="row  pst_cmt_body">
                                                         <div class="col-lg-2" style="width:70px;">
                                                             <a href="profile.php?id=<?php echo $profile_post_comment_user_de['user_id'] ?>" class="pst_head_left">
+                                                            <?php
+                                                            if($prof_post_comment_user_pp['image']!='')
+															{
+															?>
                                                                 <img src="fb_users/<?php echo $profile_post_comment_user_de['Gender'];?>/<?php echo $profile_post_comment_user_de['Email']; ?>/Profile/<?php echo $prof_post_comment_user_pp['image']; ?>"  width="70" style="margin-left:-15px;">
+                                                                <?php
+															}else
+															{
+																?>
+                                                                <img src="images/profile/sq.PNG" width="70" style="margin-left:-15px;">
+                                                                <?php
+															}
+																?>
                                                             </a>
                                                         </div>
                                                         <div class="col-lg-10" style="padding-top:5px;">
@@ -2469,7 +2552,18 @@ $from_count=0;
                                                 <h1 style="padding-top:25px; padding-right:20px;color:#fff; font-size:40px; font-family:lato-regular;"><?php echo $_SESSION['Name'];?></h1>
                                             </div>
                                             <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
+                                            <?php
+                                            if($fet_ppic['image']!='')
+											{
+											?>
                                                 <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <?php
+											}else{
+												?>
+                                                <img src="images/profile/sq.PNG" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <?php
+											}
+												?>
                                                 <div style="display:none;position:absolute; left:17.4%; top:52%; z-index:1;" id="change_user_ppic" >
                                               <a href="#profilepic" class="icon" onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();" > <i class="btn btn-success" >Edit Pic</i></a></div>
                                             </div>
@@ -2798,8 +2892,14 @@ $from_count=0;
                                 $cvpic=mysqli_fetch_array($cover_pic_exe);
                                 ?>
                                 <div class="pst_box">
+                                <?php
+                                if($cvpic['image']!='')
+								{
+								?>
                                     <div class="parallax_folio"  style="background-image: url('fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Cover/<?php echo $cvpic['image'];?>');" onMouseOver="dis_cover_pic_edit()" onMouseOut="out_cover_pic_edit()">
-
+								<?php }else{?>
+                                <div class="parallax_folio"  style="background-image:url(images/profile/Capture2.PNG);" onMouseOver="dis_cover_pic_edit()" onMouseOut="out_cover_pic_edit()">
+                                <?php } ?>
                                     </div>
                                     <!--top:30%;-->
                                     <div style="position:absolute; left:75%;margin-top:-100px;  z-index:1; display:none;" id="edit_cover_button" >

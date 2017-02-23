@@ -485,7 +485,7 @@ if(isset($_POST['sub_stage1']))
 </style>-->
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top signup_nav_height">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -494,11 +494,11 @@ if(isset($_POST['sub_stage1']))
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" style="font-family: Stencil Std;color: #808080;">
-    LN.BUSINESS</a>
+                    <a class="navbar-brand navbar_center" href="#" style="font-family: Stencil Std;;margin-top:15px;font-size:30px;color:#5a5a5a; ">
+    LN BUSINESS</a>
                 </div>
-                <div id="navbar" class="collapse navbar-collapse pull_right_navbar">
-                    <ul class="nav navbar-nav" >
+                <div id="navbar" class="collapse navbar-collapse" style="margin-top:20px;">
+                    <ul class="nav navbar-nav pull_right_navbar" style="text-align:right">
                         <!-- <li style=" padding-left:30px; padding-top:10px; padding-right:100px;">
                             <input type="text" placeholder="search" style="width:350px; height:30px">
                         </li>
@@ -511,16 +511,16 @@ if(isset($_POST['sub_stage1']))
                         <li>
                             <a href="#contact" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;color: #808080;">S</a>
                         </li> -->
-                        <li style="height:50px;line-height:13px;padding-top:3px;">
-                            <p class="diary" style="padding-top:0px; padding-left:50px;color:#808080"><span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:10px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:10px;">2016</span></p>
+                        <li style="height:50px;line-height:13px;padding-top:3px;color:#5a5a5a;">
+                            <p class="diary" style="padding-top:0px; padding-left:50px;"><span class="day" style="font-family:Stencil Std; font-size:12px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:12px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:12px; ">2016</span></p>
                         </li>
                         <li style="height:50px;">
                             <!--<hr style="width:0px; height:10px;" class="vertical" />-->
-                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
+                            <div style="border-left:2px solid #5a5a5a;margin-top:0px; margin-left:4px; margin-right:4px;height:45px;" class="line_div">
 </div>
                         </li>
-                        <li style="height:50px;">
-                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080">26</span>
+                        <li style="height:50px;padding-top:0px;">
+                            <span class="date" style="font-family:Stencil Std; font-size:45px; padding-top:0px; padding-right:10px;color:#5a5a5a;position:relative;top:-5px;padding-bottom:5px;">26</span>
                         </li>
                     </ul>
                 </div>
@@ -1219,7 +1219,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                
             </div>
         </section>
-        <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
+        <!-- <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
             <div class="col-lg-6  su_div_pad col-md-6 " id="tape" style="background-color:#d8d8d8; margin-bottom:50px;  color: #fff;">
                 <h3 style="margin-top: 0px !important;margin-bottom:0px !important; padding-top:0px;">
         NEW TO LNB</h3>
@@ -1243,10 +1243,10 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                 </div>
                 <div align="center" style="padding-top:5px;" class="remodal-bg">
                     <!--<input type="button" class="btn btn_grn " value="Start" style="width:100px; padding-top:3px;" />-->
-                    <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Submit</a>
+                  <!--  <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Submit</a>
                 </div>
             </div>
-            <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
+             <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
                 <form role="form" method="post" action=""> 
                     <div class="form-group"> 
                         <input type="email" class=" club_txt txt_font" name="email" id="exampleInputEmail1" placeholder="Entrepreneur"> 
@@ -1262,8 +1262,8 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                         <a href="#"><span>Unable to login</span></a>
                     </div>
                 </form>
-            </div>
-        </div>
+            </div> 
+        </div>  -->
         <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
              <form role="form" style="font-size:14px;" method="post" action=""> 
@@ -1347,9 +1347,59 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
             <button type="submit"  class="btn btn_grn" onClick="submit_stage1();" name="sub_stage1" style="width:67px;">Submit</button>
             </form>
         </div>
-       <footer class="footer" style="background-color:#afdf7c" align="center">
-    <span style="text-align:left"><a href="#" style="color:#fff;margin:10px;">About</a><a href="#" style="color:#fff; margin:10px;">Help</a><a href="#" style="color:#fff;margin:10px;">Terms</a><a href="#" style="color:#fff; margin:10px;">Privacy</a><a href="#" style="color:#fff; margin:10px; font-size:15px;">@2017 LN.BUSINESS</a> </span>
-</footer>
+        <div class="col-lg-6  su_div_pad col-md-6 su_sdw" id="tap" style="background-color:#fff;opacity:1; margin-bottom:50px;  color: #5a5a5a;font-family:lato-regular; position:absolute; top:300px; border-radius:0px;width:400px;height:180px;padding-top:20px;">
+            <h3 style="margin-top: 0px !important;margin-bottom:0px !important; padding-top:0px; text-align:center;padding-bottom:5px;">
+        NEW TO LNB</h3>
+            <h5 style="margin-top:5px !important; margin-bottom:5px !important; text-align:center;padding-bottom:5px;">
+        Create your Business card</h5>
+            <h5 style="font-weight:bold; margin-top:5px !important;margin-bottom:5px !important; text-align:center;padding-bottom:5px;">
+        LNB helps you to record your Business journey every moment and connecting business</h5>
+            <div class="row">
+                <!--<div class="col-lg-6" align="right;">
+            <h5 style="margin-top:0px;margin-bottom:0px; text-align:right">
+                Read  </h5>
+            <h5 style="margin-top:0px;margin-bottom:0px;text-align:right" data-pg-id="4637">
+                Note  </h5>
+            <h5 style="margin-top:0px;margin-bottom:0px;text-align:right" data-pg-id="4638">
+                Share  </h5>
+        </div>
+        <div class="col-lg-6" style="border-left:2px solid #000; height:50px; padding-top:10px;" align="left" data-pg-id="4639">
+            <h2 style="padding:0px;margin:0px; margin-top:5px;Font-family:Stencil Std" data-pg-id="4640">
+              Business</h2> 
+        </div>-->
+            </div>
+            <div align="center" style="padding-top:5px;" class="remodal-bg">
+                <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Signup</a>
+            </div>
+        </div>
+      <footer class="footer" style="background-color:#afdf7c;height:30px;padding:0px;height:70px;" align="center">
+            <div class="col-lg-12" style="height:70px;">
+                <div class="col-lg-6" align="left" style="padding-top:20px;height:70px;"> 
+                    <span style="text-align:ri; height:30px;"><a href="#" style="color:#fff;margin:10px; margin-bottom:25px;font-size:13px;">About</a><a href="#" style="color:#fff; margin:10px;font-size:13px;">Help</a><a href="#" style="color:#fff;margin:10px;font-size:13px;">Terms</a><a href="#" style="color:#fff; margin:10px;font-size:13px;">Privacy</a><a href="#" style="color:#fff; margin:10px;font-size:13px;">@2017 LN BUSINESS</a> </span>
+                </div>
+                <div class="col-lg-6 " style="color:#000; height:70px;padding:10px;" align="right">
+                    <form role="form" method="post" action=""> 
+                        <div class="col-lg-4" style="height:30px; padding-left:0px; padding-right:0px;margin-top:5px;width:150px;margin-right:5px;margin-left:5px;">
+                            <div class="form-group" style="text-align:left;">
+                                <input type="email" class=" club_tx txt_font" name="email" id="exampleInputEmail1" style="padding-top:0px; !important;height:25px;width:150px;" placeholder="Entrepreneur"> 
+                            </div>
+                        </div>                         
+                        <div class="col-lg-4" style="height:30px; padding-left:0px; padding-right:0px;width:150px;margin-top:5px; margin-right:0px;margin-left:5px;">
+                            <div class="form-group" style="text-align:left;">
+                                <input type="password" class=" club_tx txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password" style="padding-top:0px;height:25px;width:150px;"> 
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-lg-4" align="right" style="margin-top:2px;width:100px">
+                                <button type="submit" class="btn btn_gr lgn_hovr" name="login" style="float:left;width:75px; margin-top:4px;height:24px; padding:2px; border:1px solid #89d03f;border-radius:0px;">DAIRY</button>                                 
+                                <br>
+                                <span style="font-size:10px;text-align:left;color:#fff;"><a href="#" style="color:#fff;">Unable to login</a></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </footer>
         <!-- /.container -->
         <!-- Bootstrap core JavaScript
     ================================================== -->

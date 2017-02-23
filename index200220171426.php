@@ -2,7 +2,6 @@
 error_reporting(0);
 include 'config.php';
 session_start();
-
 if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
@@ -44,11 +43,10 @@ if(!$_SESSION['Email'])
          <!--   <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>-->
           <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
           <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk	"></script>
-  <script>
-  tinymce.init({
+  <script>tinymce.init({
+	  
   selector: 'post_data',
   height: 200,
-  statusbar: false,
   menubar: false,
   plugins: [
     'advlist autolink lists link image charmap  preview anchor',
@@ -132,9 +130,6 @@ function out_cover_pic_edit()
 {
 	document.getElementById("edit_cover_button").style.display='none';
 }
-
-
-
 </script>
         
       <script type="text/javascript" src="js/scripts.js"></script> 
@@ -142,21 +137,13 @@ function out_cover_pic_edit()
 	<script src="../preloaders/css3-preloader-transition-finish/js/vendor/modernizr-2.6.2.min.js"></script>      
     </head>
     <body>
-    <?php
-    if($_SESSION['sess_count']==0)
-	{
-		++$_SESSION['sess_count'];
-	?>
     <div id="loader-wrapper">
 			<div id="loader"></div>
 
 			<div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
 
-   </div>
-   <?php
-	}
-   ?>
+		</div>
     <?php
 $user_det=mysqli_query($conn,"select * from users where user_id='$_SESSION[id]'");
 $usr_dis=mysqli_fetch_array($user_det);
@@ -164,7 +151,6 @@ $get_user_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user
 $fet_ppic=mysqli_fetch_array($get_user_ppic_exe);
 $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
-$from_count=0;
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -196,7 +182,7 @@ $from_count=0;
                             <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="logout.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                     <!--    <li>
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
@@ -222,7 +208,7 @@ $from_count=0;
             <div class="row"> 
                 <div class="col-lg-3 col-md-4" align="center">
                 <!--padding-bottom:150px;-->
-                    <div class="jumbotron d_shdw" style="padding-top:0px;border-radius:0px;">
+                    <div class="jumbotron pst_box" style="padding-top:0px;border-radius:0px;">
                    
                         <div  style="margin-left:-60px;height:140px;width:280px;background:url()">
                       <?php /*?>  <h2><?php echo $ads['ads_name'];?></h2>
@@ -233,15 +219,13 @@ $from_count=0;
                         </div>
                     
                     </div>
-                    <div class="jumbotron banner_1_sticky sticky" >
-                    <div id="index_add1">
+                    <div class="jumbotron banner_1_sticky sticky">
                      <?php
                     $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
 					$ads=mysqli_fetch_array($get_ads_exe);
 					
 					?>
                         <img src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 "> 
@@ -286,14 +270,6 @@ $from_count=0;
                                                         <!-- <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>-->
                                                         <span class="todo_right " id="datepicker2"><a href="#" data-toggle=""><i class="fa fa-calendar "></i></a></span>
                                                         <span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()"><i class="fa fa-check-square-o "></i></a></span>
-                                                        
-                                                       <span class=" todo_right"> 
-                                                       <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type" onChange="return getodotype(this.value);">
-                                                       <option>Select Todo Type</option>
-                                                                    <option>CONSIGNMENTS</option>
-                                                                    <option>MEETINGS</option>
-                                                                    <option>CALL</option>
-                                                                </select></span>
                                                     </div>
                                                     <div id="todo_tasks_refresh">
                                                     <div class="panel-content" id="screen">
@@ -446,32 +422,10 @@ $from_count=0;
                                             <div class="sub-nav">
                                              <div class="w_todo td_div">
                                                     <span class="todo_right"><a href="#clientsmodel" > <i class="fa fa-plus "></i></a></span>
-                                                    <span class="todo_right " ><a href="#csv_upload"><i class="fa fa-upload"></i></a></span>
                                                     <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
                                                 </div>
                                                 <div class="html chat" id="todo_clients" style="height:250px; overflow-y:scroll;">
-                                                <?php
-                                                if(!empty($_GET['status'])){
-    switch($_GET['status']){
-        case 'succ':
-            $statusMsgClass = 'alert-success';
-            $statusMsg = 'Members data has been inserted successfully.';
-            break;
-        case 'err':
-            $statusMsgClass = 'alert-danger';
-            $statusMsg = 'Some problem occurred, please try again.';
-            break;
-        case 'invalid_file':
-            $statusMsgClass = 'alert-danger';
-            $statusMsg = 'Please upload a valid CSV file.';
-            break;
-        default:
-            $statusMsgClass = '';
-            $statusMsg = '';
-    }
-}
-												?>
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
@@ -553,22 +507,16 @@ $from_count=0;
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="contact" class="col-sm-2 control-label">Clients</label>
+                                                        <label for="contact" class="col-sm-2 control-label">CONTACT</label>
                                                         <div class="col-sm-10">
                                                             <div class="row">
                                                                 <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts" required>
-                                                                    <option value="">Select Client</option>
-                                                                    <?php
-                                                                    $get_clients_data=mysqli_query($conn,"select * from user_clients where user_id='$_SESSION[id]'");
-																	while($client_ret=mysqli_fetch_array($get_clients_data))
-																	{
- 
-																	?>
-                                                                    <option value="<?php echo $client_ret['client_name'];?>"><?php echo $client_ret['client_name'];?></option>
-                                                                   <?php
-																	}
-																   ?>
-                                                                   
+                                                                    <option value="Mustard">Mustard</option>
+                                                                    <option value="Ketchup">Ketchup</option>
+                                                                    <option value="Relish">Relish</option>
+                                                                    <option value="Tent">Tent</option>
+                                                                    <option value="Flashlight">Flashlight</option>
+                                                                    <option value="Toilet Paper">Toilet Paper</option>
                                                                 </select>
                                                             </div>
 
@@ -697,34 +645,7 @@ $from_count=0;
                                         </div>
                                         
                                         <!--------------------------------END clients Model------------------------------------>
-                                        <!-------BEGIn client csv upload--------------------->
                                         
-                                           <div class="remodal" data-remodal-id="csv_upload" id="csv_upload" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" action="script_code.php" method="post" enctype="multipart/form-data" id="importFrm">
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Upload CSV File</label>
-                                                        <div class="col-sm-9">
-                                                           
-                                                            <input type="file" class="form-control" id="client_csv" placeholder=""  name="client_csv"/>
-                                                        </div>
-                                                    </div>
-                                                 
-                                                  
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--onClick="return clientcsvupload();" data-remodal-action="confirm"-->
-                                                <button type="submit"  name="csv_uploaddata" class="remodal-confirm">Client Data</button>
-
-                                            </form>
-                                        </div>
-                                        
-                                        
-                                        <!------------End csv upload clients------------------>
 
                                         <!-----------------------------END WORK-------------------------------------------------->
                                     </div>
@@ -737,15 +658,11 @@ $from_count=0;
                                     
                                         <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
                                             <div class="col-lg-10" tyle="padding:0px;">
-                                                <h4 class="club_headers" style="margin:0px;float:left;">
-                                                    COMPANY INFO </h4><a href="#Your_role" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-pencil icon"></i></a>
+                                                <h4 class="club_headers" style="margin:0px;">
+                                                    COMPANY INFO </h4>
                                                 <br>
-                                                <p id="role" style="font-family:lato-light; color:#a9a9a9;">
-                                                <?php 
-												$get_user_role=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
-												$rolie=mysqli_fetch_array($get_user_role);
-												?>
-                                                    <?php echo $rolie['company_role_info']; ?></p>
+                                                <p style="font-family:lato-light; color:#a9a9a9;">
+                                                    Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adoLorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale ado</p>
                                             </div>
                                             <div class="col-lg-2" style="padding:0px;">
                                                 <img src="images/profile/logo.jpg" width="100" />
@@ -767,21 +684,8 @@ $from_count=0;
                                                         $colle_pic=mysqli_fetch_array($colle_ppic_exe);
                                                         ?>
 
-                                                        <div style="width:150px; height:190px;" align="center" id="c_hs">
-                                                        
-                                                        <?php
-                                                        if($colle_pic['image']!=0)
-														{
-														?>
-                                                            <img src="fb_users/<?php echo $colle['Gender']?>/<?php echo $colle['Email']?>/Profile/<?php echo $colle_pic['image'];?>" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
-                                                            <?php
-														}else
-														{
-															?>
-                                                            <img src="images/profile/sq.PNG" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt=""/>
-                                                            <?php
-														}
-															?>
+                                                        <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                            <img src="fb_users/<?php echo $colle['Gender']?>/<?php echo $colle['Email']?>/Profile/<?php echo $colle_pic['image'];?>" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
                                                             <h4 style=" color:#afdf7c">
                                                                 <?php echo $colle['Name'];?></h4>
                                                             <h5 style=" color:#afdf7c">
@@ -801,22 +705,31 @@ $from_count=0;
 
 
                                                 </div>
-                                               
-                                                
+                                                <!--  <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                      <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                      <h4 style=" color:#afdf7c">
+        Rajesh</h4>
+                                                      <h5 style=" color:#afdf7c">
+        CEO</h5>
+                                                  </div>-->
+                                                <?php /*?> <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                            <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                            <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                            <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                        </div><?php */?>
                                             </div>
                                             <br>
                                         </div>
                                         <div class="col-lg-12">
                                             <br>
-                                            <h4 class="club_headers">DISSCUSSION THREAD </h4>
+                                            <h4 class="club_headers">DISSCUSSIONS </h4>
                                             <form method="post" action="" id="form_dis_sub">
                                                 <input type="hidden" name="dis_company" id="dis_company" value="<?php echo $usr_dis['company']?>">
-                                                <!--maxlength="161"-->
-                                          <input type="text"  placeholder="INK... (160 characters only..)" class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;">
-                                          <!--  -->
+                                          <input type="text" maxlength="160" placeholder="INK... (160 characters only..)" class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;"><!--  -->
                                                 <input type="submit" name="dis_sub"  id="dis_sub" onClick="return space_disscussion();" style="display:none;">
                                             </form>
-                                            <div align="left" id="discu_valid" style="display:none;color:red;margin-left:15px;">The Length Must be 160 Charecters only</div>
                                             <br>
                                             <div class="club_network" style="height:300px; background-color:#eee;">
                                             <div id="club_discuss">
@@ -833,19 +746,7 @@ $from_count=0;
                                                     <div class="row club_network_row" style="width:100%;">
                                                         <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
-                                                            <?php 
-															if($twity_pic['image']!='')
-															{
-															?>
                                                                 <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70">
-                                                                <?php
-															}else
-															{
-																?>
-                                                             <img src="images/profile/sq.PNG" width="70"/>
-                                                                <?php
-															}
-																?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
@@ -879,39 +780,7 @@ $from_count=0;
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <!----------users Company Role begin------------------>
-                                    
-                                    
-                                        
-                                           <div class="remodal" data-remodal-id="Your_role" id="Your_role" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" action="" method="post" id="importFrm">
-                                                <div>
 
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Your Role</label>
-                                                        <div class="col-sm-9">
-                                                           
-                                                            <textarea  class="form-control" id="user_role" placeholder=""  name="user_role"><?php echo $fet_info['company_role_info'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                 
-                                                  
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--data-remodal-action="confirm"-->
-                                                <button type="submit" data-remodal-action="confirm" name="comp_role" onClick="return rlioncopmrole();"  class="remodal-confirm">Info</button>
-
-                                            </form>
-                                        </div>
-                                        
-                                        
-                                        
-                                    
-									<!-----------------END users role----------------------->
                                     <!--------------------------------------------END SPACE------------------------------------------------->
                                 </div>
                             </div>
@@ -920,19 +789,7 @@ $from_count=0;
                             <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;">
                             <div id="club_login">
                             <?php
-							$ckuic_exe=mysqli_query($conn,"select * from club_signup where user_id='$_SESSION[id]'");
-							$ck_cyt=mysqli_num_rows($ckuic_exe);
-							if($ck_cyt==0)
-							{
-								
-								?>
-                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;margin-top:25px;">
-                                <h2 style="color:#4D1B1B;margin-top:90px;">Hello <?php echo $_SESSION['Name'];?></h2>
-                                <h4>Please Join Club</h4>
-                                </div>
-                                <?php
-							}
-							else if(!$_SESSION['club_id'])
+							if(!$_SESSION['club_id'])
 							{
                                 ?>
                                 <!----------------------------------CLUB LOGIN BEGIN---------------------------------->
@@ -951,7 +808,7 @@ $from_count=0;
                                                 <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password" >
                                             </div>
                                           <!--return lnb_club() --> 
-                                            <input type="submit" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
+                                            <input type="button" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
                                         </form>
                                     </div>
                                     <br>
@@ -970,10 +827,10 @@ $from_count=0;
                                             <a href="#tab8" data-toggle="tab"><i class="fa fa-pencil"></i> Club Sheet</a>
                                         </li>                                         
                                         <li>
-                                            <a href="#tab9" data-toggle="tab"><i class="fa fa-pencil"></i> Clubbing</a>
+                                            <a href="#tab9" data-toggle="tab"><i class="fa fa-pencil"></i> Networking</a>
                                         </li>                                         
                                         <li>
-                                            <a href="#tab10" data-toggle="tab"><i class="fa fa-pencil"></i> Tag Me</a>
+                                            <a href="#tab10" data-toggle="tab"><i class="fa fa-pencil"></i> Suggestions</a>
                                         </li>                                         
                                         <li>
                                             <a href="#tab11" data-toggle="tab"><i class="fa fa-pencil"></i> Tag</a>
@@ -1000,24 +857,21 @@ $from_count=0;
                                                         $sug_date=date('Y-m-d');
                                                         ?>
                                                         <form method="post" action="">
-                                                        <!--maxlength="160"-->
-                                                            <input type="text" placeholder="Tag Me To (160 Characters only..)"  class="club_txt" id="suggest_me_to">
+                                                            <input type="text" placeholder="Suggest Me To (160 Characters only..)" maxlength="160" class="club_txt" id="suggest_me_to">
                                                             <input type="hidden" name="sug_usrt_id" id="sug_usrt_id" value="<?php echo $_SESSION['id'];?>"/>
                                                             <input type="hidden" name="sug_date" id="sug_date" value="<?php echo $sug_date;?>">
-                                                            
                                                             <input type="submit" name="sug_sub" style="display:none;" onClick="return ins_suggest();" />
                                                         </form>
-                                                        <div align="left" id="sugg_valid" style="display:none;color:red;margin-left:15px;">The Length Must Be 160 Characters Only</div>
                                                     </div>
                                                 </div>
                                                 <br>
                                                 <div class="row" style="margin-top:30px;">
                                                     <br>
-                                                    <h3 class="club_headers" style="float:left;">
-                                                        <?php echo $_SESSION['Name']?> Gen</h3><a href="#user_club_info" class="icon" style="float:left;margin-left:10px;margin-top:15px;"> <i class="fa fa-pencil icon"></i></a>
+                                                    <h3 class="club_headers">
+                                                        Ankitha Info</h3>
                                                     <div class="col-lg-12 club_txtbox" style="padding-left:0px; padding-right:10px; background-color:#eee;">
                                                         <!--<textarea class="form-control txt" rows="1" style="height:35px;"></textarea>-->
-                                                        <p id="user_pinoo" class="club_info"><?php echo $usr_dis['description'];?></p>
+                                                        <p class="club_info"><?php echo $usr_dis['description'];?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1041,20 +895,7 @@ $from_count=0;
                                                     <div class="col-lg-4 grow" align="center">
                                                         <h4>
                                                             <?php echo $fet_mem_de['industry'];?></h4>
-                                                            <?php
-                                                            if($gclb_uspi['image']!=0)
-															{
-															?>
-                                                            
                                                         <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="70" style="margin-top:5px;">
-                                                        <?php
-															}else
-															{
-														?>
-                                                        <img src="images/profile/sq.PNG" width="70" style="margin-top:5px;">
-                                                        <?php
-															}
-														?>
                                                         <br>
                                                         <span><?php echo $fet_mem_de['Name'];?></span>
                                                         <br>
@@ -1118,41 +959,6 @@ $from_count=0;
                                                
                                                
                                             </div>
-                                            
-                                               <!----------users club info begin model------------------>
-                                    
-                                    
-                                        
-                                           <div class="remodal" data-remodal-id="user_club_info" id="user_club_info" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" action="" method="post" >
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Personal Description</label>
-                                                        <div class="col-sm-9">
-                                                           
-                                                            <textarea  class="form-control" id="user_pers_desc" placeholder="" rows="3" cols="90" style="resize:none;" name="user_pers_desc"><?php echo $usr_dis['description'];?></textarea>
-                                                        </div>
-                                                    </div>
-                                                 
-                                                  
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--data-remodal-action="confirm"-->
-                                                <button type="submit" data-remodal-action="confirm" name="comp_role" onClick="return user_persdo_descbhg();"  class="remodal-confirm">Ur Info</button>
-
-                                            </form>
-                                        </div>
-                                        
-                                        
-                                        
-                                    
-									<!-----------------END users club info moddel----------------------->
-                                            
-                                            
 
                                <!------------------------------------------END CLUB SHEET-------------------------------------------->
                                         </div>
@@ -1161,8 +967,7 @@ $from_count=0;
                                             <h4 class="club_headers">
                                                 Networking </h4>
                                             <form method="post"  action="">
-                                            <!--maxlength="160"-->
-                                                <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
+                                                <input type="text" placeholder="Let's Network (160 characters only..)" maxlength="160" class="club_txt" name="chat_txt" id="chat_txt">
                                                 <?php
                                                 $msg_date=date("Y-m-d h:i");
                                                 ?>
@@ -1170,7 +975,6 @@ $from_count=0;
                                                 <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php echo $_SESSION['id']?>">
                                                 <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
                                             </form>
-                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div>
                                             <br>
                                             <br>
                                             <div id="club_networks">
@@ -1188,19 +992,7 @@ $from_count=0;
                                                     <div class="row club_network_row" style="width:100%;">
                                                         <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
-                                                            <?php
-                                                            if($gp_ppic['image']!='')
-															{
-															?>
                                                                 <img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width="80">
-                                                                <?php
-															}else
-															{
-																?>
-                                                             <img src="images/profile/sq.PNG" width="80"/>   
-                                                                <?php
-															}
-																?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-10 club_msg_shape" style=" height:80px; background-color:#eee; padding-right:0px;width:86%;" align="left">
@@ -1253,19 +1045,7 @@ $from_count=0;
                                                 <div class="club_suggest_top_div row">
                                                     <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
-                                                        <?php
-                                                        if($fet_ppic['image']!='')
-														{
-														?>
                                                             <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="80">
-                                                            <?php
-														}else
-														{
-															?>
-                                                            <img src="images/profile/sq.PNG" width="80"/>
-                                                            <?php
-														}
-															?>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-10 club_msg_shape" style=" height:80px; padding-right:0px;width:86%; padding-top:7px;" align="left">
@@ -1330,7 +1110,7 @@ $from_count=0;
         <br data-pg-id="8683">
         <span style="font-size:16px;" data-pg-id="8684"> IT - Software  </span>
     </div>-->
-                                                    <span>Club Member Tags</span><!--Suggestions-->
+                                                    <span>Club Member Suggestions</span>
                                                 </div>
                                                 <div id="connect_suggestion2">
                                                 <div class="club_sugg_scroll">
@@ -1355,21 +1135,7 @@ $from_count=0;
                                                             <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                                 <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                     <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id'];?>);"> 
-                                                                        <?php
-                                                                        if($clb_pic['image']!='')
-																		{
-																		?>
-                                                                         <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/>
-                                                                         <?php
-																		}else
-																		{
-																		 ?>
-                                                                         <img src="images/profile/sq.PNG" width="50">
-                                                                         <?php
-																		}
-																		 ?>
-                                                                         </a>
+                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id'];?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
                                                                     </div>
                                                                     <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                         <span><?php echo $kiloo['suggest_topic'];?> </span>
@@ -1435,7 +1201,7 @@ $from_count=0;
                                                     Add Tags</h4>
                                                 <form role="form" method="post" action="">
                                                     <div class="form-group">
-                                                        <select  name="club_memb" id="club_memb" class="club_txt">
+                                                        <select  name="club_memb" id="club_memb" class="form-control">
                                                             <option>Select Club Member</option>                                                             <?php
                                                             $sel_tg_mem_exe=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' AND user_id!='$_SESSION[id]'");
                                                             $model_count=0;
@@ -1499,21 +1265,7 @@ $from_count=0;
                                                         <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                             <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                 <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                    <a href="#modal_<?php echo $model_count;?>">
-                                                                    <?php
-                                                                    if($fet_ppic['image']!='')
-																	{
-																	?>
-                                                                      <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="50">
-                                                                      <?php
-																	}else
-																	{
-																	  ?>
-                                                                      <img src="images/profile/sq.PNG" width="50">
-                                                                      <?php
-																	}
-																	  ?>
-                                                                      </a>
+                                                                    <a href="#modal_<?php echo $model_count;?>">  <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="50"></a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                     <span><?php echo $gred['for_what'];?> </span>
@@ -1620,21 +1372,7 @@ $from_count=0;
                                                         <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                             <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                 <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                    <a href="#modal_<?php echo $model_count;?>">  
-                                                                    <?php
-                                                                    if($jil_pic['image']!='')
-																	{
-																	?>
-                                                                    <img src="fb_users/<?php echo $jil_data['Gender']?>/<?php echo $jil_data['Email'];?>/Profile/<?php echo $jil_pic['image'];?>" width="50">
-                                                                    <?php
-																	}else
-																	{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="50">
-                                                                    <?php
-																	}
-																	?>
-                                                                    </a>
+                                                                    <a href="#modal_<?php echo $model_count;?>">  <img src="fb_users/<?php echo $jil_data['Gender']?>/<?php echo $jil_data['Email'];?>/Profile/<?php echo $jil_pic['image'];?>" width="50"></a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                     <span><?php echo $jill['for_what'];?> </span>
@@ -1758,26 +1496,21 @@ $from_count=0;
                             </div>
 						</div>
                         <div class="tab-pane " id="dairy-vr">
-                            <ul class="nav nav-tabs" id="id_hover"> 
+                            <ul class="nav nav-tabs"> 
                                 <li class="active">
-                                    <a href="#tab1" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5></a>
+                                    <a href="#tab1" data-toggle="tab">Card Files</a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab2" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5></a>
+                                    <a href="#tab2" data-toggle="tab">Industry</a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab3" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5></a>
+                                    <a href="#tab3" data-toggle="tab">Inked</a>
                                 </li>                                 
                                 <li>
-                                    <a href="#tab4" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5></a>
+                                    <a href="#tab4" data-toggle="tab">Noted</a>
                                 </li> 
                                 <li>
-                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize"><img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff"><?php echo $_SESSION['Name'];?></h5></a>
+                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize"><?php echo $_SESSION['Name'];?></a>
                                 </li>                                
                             </ul>
                             <div class="tab-content">
@@ -1788,19 +1521,7 @@ $from_count=0;
                                         <div style="background-color:#fff;padding:5px;"  >
                                             <div class="media  bg" style="background:#afdf7c">
                                                 <a href="" class="pull-left">
-                                                <?php
-                                                if($fet_ppic['image']!='')
-												{
-												?>
                                                     <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" class="media-object">
-                                                    <?php
-												}else
-												{
-													?>
-                                                    <img src="images/profile/sq.PNG" width="50" class="media-object">
-                                                   <?php
-												}
-												   ?> 
                                                 </a>
                                                 <div class="media-body innerTB half bg" style="padding-top:4px;">
                                                     <a href="#" class="pull-right innerT innerR text-white"> </a>
@@ -1842,7 +1563,7 @@ $from_count=0;
                                         <div id="news_feed_comment">	
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
-											
+											$from_count=0;
                                             while($resp=mysqli_fetch_array($retpe))
                                             {
 												++$from_count;
@@ -1859,19 +1580,7 @@ $from_count=0;
                                                                 //$ency=base64_encode('id=$resp[user_id]');
                                                                 ?>
                                                                 <a href="profile.php?id=<?php echo $resp['user_id'] ?>" class="pst_head_left">
-                                                                <?php
-                                                                if($pupp['image']!='')
-																{
-																?>
                                                                     <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="70" height="70" style="margin-left:-15px;">
-                                                                    <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="70" height="70" style="margin-left:-15px;">
-                                                                    <?php
-																}
-																	?>
                                                                 </a>
                                                             </div>
                                                             <div class="col-lg-8 pst_head_txt">
@@ -1900,9 +1609,7 @@ $from_count=0;
                                                                 {
 
                                                                     ?>
-                                                                    <span>
-                                                                    <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                                    <a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "/></a></span>
+                                                                    <span><a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
                                                                     <!--unlike-->
                                                                     <?php
                                                                 }else
@@ -1911,9 +1618,7 @@ $from_count=0;
                                                                     //echo $_SESSION['id'];
                                                                     ?>
 
-                                                                    <span>
-                                                                    <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                                    <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                    <span><a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
                                                                                                                                         <!--like-->
 
                                                                     <?php
@@ -1940,14 +1645,13 @@ $from_count=0;
                                                     </div>
                                                     <div class="pst_cmt">
                                                         <?php $ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														$new_poe_cmcou=mysqli_num_rows($ret_coments);
 
                                                         ?>
                                                         <div class="pst_cmt_tog pst_cmt_pad">
                                                             <!--comment toggle-->
                                                             <i></i>
-                                                            <a href="#"><span style="margin-left:10px;">View Inks</span></a>
-                                                            <span class="pst_cmt_muted"><?php echo $new_poe_cmcou;?> Inks</span><span class="pst_cmt_muted"><?php echo $psc;?>Notes</span>
+                                                            <a href="#"><span style="margin-left:10px;">View Comments</span></a>
+                                                            <span class="pst_cmt_muted">+2 writes</span>
                                                         </div>
                                                         <?php
                                                         while($ret_cmt=mysqli_fetch_array($ret_coments))
@@ -1966,7 +1670,7 @@ $from_count=0;
                                                                 <div class="col-lg-10" style="padding-top:5px;">
                                                                     <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" style="color:#000;"><?php echo $use_cm['Name']; ?></a>
                                                                     <br>
-                                                                    <span class="pst_head_pos  pst_cmt_muted">- Inked On <?php echo $ret_cmt['comment_time'];?></span>
+                                                                    <span class="pst_head_pos  pst_cmt_muted">- 29 jan 2017</span>
                                                                     <br>
                                                                     <div style="margin-left:10px;"><?php echo $ret_cmt['comment'];?></div>
                                                                 </div>
@@ -1978,15 +1682,15 @@ $from_count=0;
                                                         <div class="row pst_cmt_row">
                                                             <div class="col-lg-10 pst_cmt_pad">
                                                                 <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $resp['post_id'];?>">
+                                                                    <input type="hidden" name="cmt_ins_id" id="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
+                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id" value="<?php echo $resp['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
 
                                                                     ?>
-                                                                    <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="INK...">
-                                                                    <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
+                                                                    <input type="hidden" name="cmt_ins_date" id="cmt_ins_date" value="<?php echo $date;?>">
+                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                    <input type="submit" name="cmt_ins" onClick="return comment_insertion();" style="display:none;">
                                                                 </form>
                                                             </div>
                                                             <!--<div class="col-lg-2 pst_cmt_c1">
@@ -2021,12 +1725,10 @@ $from_count=0;
                                         $industry_users_exe=mysqli_query($conn,"select * from users where industry='$usr_dis[industry]'");
                                         while($industry_users_ret=mysqli_fetch_array($industry_users_exe))
                                         {
-											++$from_count;
 
                                             $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]' order by post_id desc");
                                             while ($industry_post_rety = mysqli_fetch_array($industry_post_users_execu))
                                             {
-												++$from_count;
                                                 $industry_user_profile_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$industry_post_rety[user_id]'");
                                                 $indus_usr_prof_pic=mysqli_fetch_array($industry_user_profile_exe);
                                                 $industry_post_usr_profi_pic=$indus_usr_prof_pic[2];
@@ -2060,16 +1762,14 @@ $from_count=0;
                                                                     ?>
 
 
-                                                                    <span><a href="#" onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                                    <span><a href="#" onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" >unlike</a></span>
                                                                     <?php
                                                                 }
                                                                 else{
                                                                     ?>
 
 
-                                                                    <span>
-                                                                    <?php /*?>id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                                    <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                    <span><a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $resp['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
                                                                     <?php
                                                                 }
                                                                 ?>
@@ -2100,9 +1800,8 @@ $from_count=0;
                                                         <div class="pst_cmt_tog pst_cmt_pad">
                                                             <!--comment toggle-->
                                                             <i></i>
-                                                            <a href="#"><span style="margin-left:10px;">View Inks</span></a>
-                                                            <span class="pst_cmt_muted"><?php echo $industry_post_comment_count;?> Inks</span>
-                                                            <span class="pst_cmt_muted"><?php echo $industry_post_status_count;?>Notes</span>
+                                                            <a href="#"><span style="margin-left:10px;">View Comments</span></a>
+                                                            <span class="pst_cmt_muted"><?php echo $industry_post_comment_count;?> writes</span>
                                                         </div>
                                                         <?php
                                                         while($industry_post_comment_retry=mysqli_fetch_array($industry_post_comment_exeu)) {
@@ -2121,7 +1820,7 @@ $from_count=0;
                                                                 <div class="col-lg-10" style="padding-top:5px;">
                                                                     <a href="profile.php?id=<?php echo $industry_post_comment_user_retry['user_id'] ?>" style="color:#000;"><?php echo $industry_post_comment_user_retry['Name']; ?></a>
                                                                     <br>
-                                                                    <span class="pst_head_pos  pst_cmt_muted">-Inked on <?php echo $industry_post_comment_retry['comment_time'];?></span>
+                                                                    <span class="pst_head_pos  pst_cmt_muted">-wrote on <?php echo $industry_post_comment_retry['comment_time'];?></span>
                                                                     <br>
                                                                     <div style="margin-left:10px;"><?php echo $industry_post_comment_retry['comment']; ?></div>
                                                                 </div>
@@ -2132,16 +1831,16 @@ $from_count=0;
 
                                                         <div class="row pst_cmt_row">
                                                             <div class="col-lg-10 pst_cmt_pad">
-                                                                <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $industry_post_rety['post_id'];?>">
+                                                                <form method="post" action="script_code.php">
+                                                                    <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
+                                                                    <input type="hidden" name="cmt_post_id" value="<?php echo $industry_post_rety['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
 
                                                                     ?>
-                                                                    <input type="hidden" name="cmt_ins_date_<?php echo $from_count;?>" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Ink...">
-                                                                    <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
+                                                                    <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
+                                                                    <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                    <input type="submit" name="cmt_ins" style="display:none;">
                                                                 </form>
                                                             </div>
                                                             <!--<div class="col-lg-2 pst_cmt_c1">
@@ -2176,7 +1875,7 @@ $from_count=0;
                                         $count=0;
                                         $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."' order by post_id desc");
                                         while($user_profile_post=mysqli_fetch_array($user_profile_post_exet))
-                                        { ++$from_count;
+                                        {
                                             $count++;
                                             ?>
                                             <div class="pst_box" style="background-color:#fff;">
@@ -2198,13 +1897,12 @@ $from_count=0;
                                                             <?php
                                                             $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
                                                             $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
-															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
                                                             if($user_profilr_bookmark['status']=='Like')
                                                             {
                                                                 ?>
 
 
-                                                                <span><a href="#"  onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                                <span><a href=""  onClick="unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >unlike</a></span>
                                                                 <?php
                                                             }else
                                                             {
@@ -2212,7 +1910,7 @@ $from_count=0;
                                                                 //echo $_SESSION['id'];
                                                                 ?>
 
-                                                                <span><a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                                <span><a href=""  onClick="like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >like</a></span>
                                                                 <?php
                                                             }
                                                             ?>
@@ -2243,13 +1941,12 @@ $from_count=0;
                                                     <div class="pst_cmt_tog pst_cmt_pad">
                                                         <!--comment toggle-->
                                                         <i></i>
-                                                        <a href="#"><span style="margin-left:10px;">View Inks</span></a>
-                                                        <span class="pst_cmt_muted"><?php echo $user_profile_comment_count;?> Inks</span>
-                                                        <span class="pst_cmt_muted"><?php echo $ink_pos_not_cou;?>Notes</span>
+                                                        <a href="#"><span style="margin-left:10px;">View Comments</span></a>
+                                                        <span class="pst_cmt_muted"><?php echo $user_profile_comment_count;?> writes</span>
                                                     </div>
                                                     <?php
                                                     while($user_profile_post_comment=mysqli_fetch_array($user_profile_post_comment_execu))
-                                                    { ++$from_count;
+                                                    {
                                                         $profile_post_comment_user_exec=mysqli_query($conn,"select * from users where user_id='$user_profile_post_comment[user_id]'");
                                                         $profile_post_comment_user_de=mysqli_fetch_array($profile_post_comment_user_exec);
                                                         $profile_post_comment_user_pic_exect=mysqli_query($conn,"select * from user_profile_pic where user_id='$user_profile_post_comment[user_id]'");
@@ -2265,7 +1962,7 @@ $from_count=0;
                                                             <div class="col-lg-10" style="padding-top:5px;">
                                                                 <a href="#" style="color:#000;"><?php echo $profile_post_comment_user_de['Name'];?></a>
                                                                 <br>
-                                                                <span class="pst_head_pos  pst_cmt_muted">- Inked on <?php echo $user_profile_post_comment['comment_time'];?></span>
+                                                                <span class="pst_head_pos  pst_cmt_muted">- wrote on <?php echo $user_profile_post_comment['comment_time'];?></span>
                                                                 <br>
                                                                 <div style="margin-left:10px;"><?php echo $user_profile_post_comment['comment'];?></div>
                                                             </div>
@@ -2276,16 +1973,16 @@ $from_count=0;
 
                                                     <div class="row pst_cmt_row">
                                                         <div class="col-lg-10 pst_cmt_pad">
-                                                            <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
-                                                                <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
+                                                            <form method="post" action="script_code.php">
+                                                                <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
+                                                                <input type="hidden" name="cmt_post_id" value="<?php echo $user_profile_post['post_id'];?>">
                                                                 <?php
                                                                 $date=date('Y-m-d h:i');
 
                                                                 ?>
-                                                                <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
+                                                                <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
+                                                                <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                <input type="submit" name="cmt_ins" style="display:none;">
                                                             </form>
                                                         </div>
                                                         <!--<div class="col-lg-2 pst_cmt_c1">
@@ -2310,10 +2007,8 @@ $from_count=0;
                                     <div class="bg_pst">
                                         <?php
                                         $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_SESSION[id]'");
-										
                                         while($ret_user_noted=mysqli_fetch_array($user_noted_posts_exe))
-                                        { 
-										++$from_count;
+                                        {
                                             ?>
 
                                             <?php
@@ -2358,9 +2053,7 @@ $from_count=0;
                                                         {
 
                                                             ?>
-                                                            <span>
-                                                            <?php /*?>id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                            <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/unnote_1.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1; "   /></a></span>
+                                                            <span><a href=""   onClick="unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">unlike</a></span>
                                                             <?php
                                                         }else
                                                         {
@@ -2368,9 +2061,7 @@ $from_count=0;
                                                             //echo $_SESSION['id'];
                                                             ?>
 
-                                                            <span>
-                                                            <?php /*?>id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>"<?php */?>
-                                                            <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" style="margin-bottom: 0px;position: relative;height: 100px;z-index: 1;"   /></a></span>
+                                                            <span><a href=""  onClick="like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" id="<?php echo $user_noted_post['post_id'];?>" data-src="<?php echo $_SESSION['id'];?>">like</a></span>
                                                             <?php
                                                         }
                                                         ?>
@@ -2402,13 +2093,11 @@ $from_count=0;
                                                     <!--comment toggle-->
                                                     <i></i>
                                                     <a href="#"><span style="margin-left:10px;">View Comments</span></a>
-                                                    <span class="pst_cmt_muted"><?php echo $user_noted_comment_count;?> Inks</span>
-                                                   <span class="pst_cmt_muted"> <?php echo $user_noted_post['likes']?>Notes</span>
+                                                    <span class="pst_cmt_muted"><?php echo $user_noted_comment_count;?> writes</span>
                                                 </div>
                                                 <?php
                                                 while($user_profile_post_comment=mysqli_fetch_array($user_noted_post_comment_execu))
                                                 {
-													++$from_count;
                                                     $profile_post_comment_user_exec=mysqli_query($conn,"select * from users where user_id='$user_profile_post_comment[user_id]'");
                                                     $profile_post_comment_user_de=mysqli_fetch_array($profile_post_comment_user_exec);
                                                     $profile_post_comment_user_pic_exect=mysqli_query($conn,"select * from user_profile_pic where user_id='$user_profile_post_comment[user_id]'");
@@ -2434,16 +2123,16 @@ $from_count=0;
 
                                                 <div class="row pst_cmt_row">
                                                     <div class="col-lg-10 pst_cmt_pad">
-                                                        <form method="post" action="" id="form_<?php echo $from_count;?>" >
-                                                            <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                            <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_noted_post['post_id'];?>">
+                                                        <form method="post" action="script_code.php">
+                                                            <input type="hidden" name="cmt_ins_id" value="<?php echo $_SESSION['id'];?>">
+                                                            <input type="hidden" name="cmt_post_id" value="<?php echo $user_noted_post['post_id'];?>">
                                                             <?php
                                                             $date=date('Y-m-d h:i');
 
                                                             ?>
-                                                            <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                            <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Ink...">
-                                                            <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
+                                                            <input type="hidden" name="cmt_ins_date" value="<?php echo $date;?>">
+                                                            <input type="text" class="form-control" name="cmt_txt" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                            <input type="submit" name="cmt_ins" style="display:none;">
                                                         </form>
                                                     </div>
                                                     <!--<div class="col-lg-2 pst_cmt_c1">
@@ -2543,13 +2232,13 @@ $from_count=0;
                                                                 <h5 style="color:#afdf7c;margin-bottom:2px;">
                                                                     EMAIL</h5>
                                                                 <span>
-        <!--info@betasolutions.in--><?php echo $fet_info['Email'];?></span>
+        info@betasolutions.in</span>
                                                             </div>
                                                             <div>
                                                                 <h5 style="color:#afdf7c;margin-bottom:2px;">
                                                                     WEBSITE</h5>
                                                                 <span>
-        <!--www.betasolutions.in--><?php echo $fet_info['website'];?></span>
+        www.betasolutions.in</span>
                                                             </div>
                                                             <br>
                                                         </div>
@@ -3054,7 +2743,7 @@ $from_count=0;
                                     <a href="#folio-vr" data-toggle="tab" id="folio_tab">FOLIO</a>
                                 </li>
                                 <li>
-                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">WEBSITED FEED</a>
+                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">HUB</a>
                                 </li>
                                 <!--<li>
         <a href="#settings-vr" data-toggle="tab">Jun</a>
@@ -3062,14 +2751,12 @@ $from_count=0;
                             </ul>
                         </div>
                         <div class="col-lg-6">
-                        <div id="inadex_ads2">
                          <?php
                     $get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");
 					$ads2=mysqli_fetch_array($get_ads_exe2);
 					
 					?>
                             <img class="b_s" src="Console/advertises2/<?php echo $ads2['advertise_image2'];?>" style="width:200px; height:900px;" />
-                            </div>
                         </div>
                     </div>
                     <!-- Widget -->

@@ -762,22 +762,15 @@ ul
 
 .hover_li
 {
+    /*background-color: #fff;*/
 }
+.hover_li:hover{
+    background-color:#eee;
 
-.hover_li:hover
-{
-    background-color: #eee;
 }
-
 #id_hover a:hover
 {
-    background-color: #eee;
-}
-
-.d_shdw
-{
-    border-radius: 3px;
-    box-shadow: 0 17px 50px 0 rgba(0,0,0,.10),0 12px 15px 0 rgba(0,0,0,.20);
+background-color:#eee;
 }
 
 

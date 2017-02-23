@@ -553,11 +553,11 @@ $from_count=0;
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="contact" class="col-sm-2 control-label">CONTACT</label>
+                                                        <label for="contact" class="col-sm-2 control-label">Clients</label>
                                                         <div class="col-sm-10">
                                                             <div class="row">
                                                                 <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts" required>
-                                                                    <option value="">Select Contact</option>
+                                                                    <option value="">Select Client</option>
                                                                     <?php
                                                                     $get_clients_data=mysqli_query($conn,"select * from user_clients where user_id='$_SESSION[id]'");
 																	while($client_ret=mysqli_fetch_array($get_clients_data))
@@ -768,7 +768,20 @@ $from_count=0;
                                                         ?>
 
                                                         <div style="width:150px; height:190px;" align="center" id="c_hs">
+                                                        
+                                                        <?php
+                                                        if($colle_pic['image']!=0)
+														{
+														?>
                                                             <img src="fb_users/<?php echo $colle['Gender']?>/<?php echo $colle['Email']?>/Profile/<?php echo $colle_pic['image'];?>" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                            <?php
+														}else
+														{
+															?>
+                                                            <img src="images/profile/sq.PNG" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt=""/>
+                                                            <?php
+														}
+															?>
                                                             <h4 style=" color:#afdf7c">
                                                                 <?php echo $colle['Name'];?></h4>
                                                             <h5 style=" color:#afdf7c">
@@ -795,7 +808,7 @@ $from_count=0;
                                         </div>
                                         <div class="col-lg-12">
                                             <br>
-                                            <h4 class="club_headers">DISSCUSSIONS </h4>
+                                            <h4 class="club_headers">DISSCUSSION THREAD </h4>
                                             <form method="post" action="" id="form_dis_sub">
                                                 <input type="hidden" name="dis_company" id="dis_company" value="<?php echo $usr_dis['company']?>">
                                                 <!--maxlength="161"-->
@@ -820,7 +833,19 @@ $from_count=0;
                                                     <div class="row club_network_row" style="width:100%;">
                                                         <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+                                                            <?php 
+															if($twity_pic['image']!='')
+															{
+															?>
                                                                 <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70">
+                                                                <?php
+															}else
+															{
+																?>
+                                                             <img src="images/profile/sq.PNG" width="70"/>
+                                                                <?php
+															}
+																?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
@@ -926,7 +951,7 @@ $from_count=0;
                                                 <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password" >
                                             </div>
                                           <!--return lnb_club() --> 
-                                            <input type="button" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
+                                            <input type="submit" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
                                         </form>
                                     </div>
                                     <br>
@@ -945,10 +970,10 @@ $from_count=0;
                                             <a href="#tab8" data-toggle="tab"><i class="fa fa-pencil"></i> Club Sheet</a>
                                         </li>                                         
                                         <li>
-                                            <a href="#tab9" data-toggle="tab"><i class="fa fa-pencil"></i> Networking</a>
+                                            <a href="#tab9" data-toggle="tab"><i class="fa fa-pencil"></i> Clubbing</a>
                                         </li>                                         
                                         <li>
-                                            <a href="#tab10" data-toggle="tab"><i class="fa fa-pencil"></i> Suggestions</a>
+                                            <a href="#tab10" data-toggle="tab"><i class="fa fa-pencil"></i> Tag Me</a>
                                         </li>                                         
                                         <li>
                                             <a href="#tab11" data-toggle="tab"><i class="fa fa-pencil"></i> Tag</a>
@@ -976,7 +1001,7 @@ $from_count=0;
                                                         ?>
                                                         <form method="post" action="">
                                                         <!--maxlength="160"-->
-                                                            <input type="text" placeholder="Suggest Me To (160 Characters only..)"  class="club_txt" id="suggest_me_to">
+                                                            <input type="text" placeholder="Tag Me To (160 Characters only..)"  class="club_txt" id="suggest_me_to">
                                                             <input type="hidden" name="sug_usrt_id" id="sug_usrt_id" value="<?php echo $_SESSION['id'];?>"/>
                                                             <input type="hidden" name="sug_date" id="sug_date" value="<?php echo $sug_date;?>">
                                                             
@@ -989,7 +1014,7 @@ $from_count=0;
                                                 <div class="row" style="margin-top:30px;">
                                                     <br>
                                                     <h3 class="club_headers" style="float:left;">
-                                                        Ankitha Info</h3><a href="#user_club_info" class="icon" style="float:left;margin-left:10px;margin-top:15px;"> <i class="fa fa-pencil icon"></i></a>
+                                                        <?php echo $_SESSION['Name']?> Gen</h3><a href="#user_club_info" class="icon" style="float:left;margin-left:10px;margin-top:15px;"> <i class="fa fa-pencil icon"></i></a>
                                                     <div class="col-lg-12 club_txtbox" style="padding-left:0px; padding-right:10px; background-color:#eee;">
                                                         <!--<textarea class="form-control txt" rows="1" style="height:35px;"></textarea>-->
                                                         <p id="user_pinoo" class="club_info"><?php echo $usr_dis['description'];?></p>
@@ -1016,7 +1041,20 @@ $from_count=0;
                                                     <div class="col-lg-4 grow" align="center">
                                                         <h4>
                                                             <?php echo $fet_mem_de['industry'];?></h4>
+                                                            <?php
+                                                            if($gclb_uspi['image']!=0)
+															{
+															?>
+                                                            
                                                         <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="70" style="margin-top:5px;">
+                                                        <?php
+															}else
+															{
+														?>
+                                                        <img src="images/profile/sq.PNG" width="70" style="margin-top:5px;">
+                                                        <?php
+															}
+														?>
                                                         <br>
                                                         <span><?php echo $fet_mem_de['Name'];?></span>
                                                         <br>
@@ -1268,7 +1306,7 @@ $from_count=0;
         <br data-pg-id="8683">
         <span style="font-size:16px;" data-pg-id="8684"> IT - Software  </span>
     </div>-->
-                                                    <span>Club Member Suggestions</span>
+                                                    <span>Club Member Tags</span><!--Suggestions-->
                                                 </div>
                                                 <div id="connect_suggestion2">
                                                 <div class="club_sugg_scroll">
@@ -1657,7 +1695,7 @@ $from_count=0;
                             <ul class="nav nav-tabs" id="id_hover"> 
                                 <li class="active">
                                     <a href="#tab1" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Cards</h5></a>
+            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5></a>
                                 </li>                                 
                                 <li>
                                     <a href="#tab2" data-toggle="tab"><img src="images/others/folder.png" width="70" /> 
@@ -2012,7 +2050,7 @@ $from_count=0;
 
                                                                     ?>
                                                                     <input type="hidden" name="cmt_ins_date_<?php echo $from_count;?>" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                    <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Ink...">
                                                                     <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                                 </form>
                                                             </div>
@@ -2156,7 +2194,7 @@ $from_count=0;
 
                                                                 ?>
                                                                 <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Ink...">
                                                                 <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                             </form>
                                                         </div>
@@ -2314,7 +2352,7 @@ $from_count=0;
 
                                                             ?>
                                                             <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                            <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Write...">
+                                                            <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; " placeholder="Ink...">
                                                             <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                         </form>
                                                     </div>
@@ -2415,13 +2453,13 @@ $from_count=0;
                                                                 <h5 style="color:#afdf7c;margin-bottom:2px;">
                                                                     EMAIL</h5>
                                                                 <span>
-        info@betasolutions.in</span>
+        <!--info@betasolutions.in--><?php echo $fet_info['Email'];?></span>
                                                             </div>
                                                             <div>
                                                                 <h5 style="color:#afdf7c;margin-bottom:2px;">
                                                                     WEBSITE</h5>
                                                                 <span>
-        www.betasolutions.in</span>
+        <!--www.betasolutions.in--><?php echo $fet_info['website'];?></span>
                                                             </div>
                                                             <br>
                                                         </div>
@@ -2926,7 +2964,7 @@ $from_count=0;
                                     <a href="#folio-vr" data-toggle="tab" id="folio_tab">FOLIO</a>
                                 </li>
                                 <li>
-                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">HUB</a>
+                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">WEBSITED FEED</a>
                                 </li>
                                 <!--<li>
         <a href="#settings-vr" data-toggle="tab">Jun</a>

@@ -24,6 +24,7 @@ function Fourmquestions()
 					document.getElementById("forum_question").value='';
 					document.getElementById("quest_desc").value='';
 					$('#txtQuest').load('forum.php #txtQuest');
+					$('#frm_Qus').load('forum.php #frm_Qus');
                     }
                     });
                
@@ -68,19 +69,19 @@ function get_industryanswers(ans)
       document.getElementById("txtAnswe").innerHTML=this.responseText;
     }
   }
-xmlhttp.open("GET","industry_questions.php?as="+ans,true);
+xmlhttp.open("GET","industry_answer.php?as="+ans,true);
 xmlhttp.send();
 }
 
 
-function insert_answer()
+function insert_answer(faid)
 {
 	//alert('hello');
-	var que_id = document.getElementById("que_id").value;
-    var ans_frms = document.getElementById("ans_frms").value;
+	var que_id = document.getElementById("que_id_"+faid).value;
+    var ans_frms = document.getElementById("ans_frms_"+faid).value;
 	//var set_indus = document.getElementById("set_indus").value;
 	
-	//alert("hello" + que_id);
+	alert("hello" + que_id);
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'que_id=' + que_id + '&ans_frms=' + ans_frms ;
       

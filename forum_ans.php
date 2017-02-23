@@ -138,10 +138,10 @@ if(!$_SESSION['Email'])
                 <div class="col-lg-9 col-md-9 "> 
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
-                            <div class="pst_main_background pst_box " style="background-color:#fff;">
+                            <div class="pst_main_background pst_box " style="background-color:#fff;" >
                                 <br>
-                                <div class="club_sub_div_height" style="height:1120px">
-                                    <div class="row" style="padding:0px;" id="txtAnswe">
+                                <div class="club_sub_div_height" style="height:1120px" id="txtAnswe" >
+                                    <div class="row" style="padding:0px;" >
                                         <div class="col-lg-12" style="border-bottom:2px solid #afdf7c">
                                         <?php
                                         $get_Qust_ans_exe=mysqli_query($conn,"select * from question where q_id='$_GET[Qid]'");
@@ -176,16 +176,19 @@ if(!$_SESSION['Email'])
                                         <br>
                                         <div class="col-lg-12" style="height:100px; padding:0px;">
                                             <div class="col-lg-12">
-                                            <form method="post" action="">
-                                            <input type="hidden" name="qus_id" id="que_id" value="<?php echo $ques_desc['q_id'];?>">
-                                                <input type="text" class="club_txt" name="ans_frms" id="ans_frms"style="margin-bottom:15px;" placeholder="Ink your reply...">
-                                                <input type="submit" style="display:none;"  onClick="return insert_answer();" >
+                                            <?php 
+											$dummy_frm_id=1;
+											?>
+                                            <form method="post" action="" id="form_<?php echo $dummy_frm_id;?>">
+                                            <input type="hidden" name="qus_id" id="que_id_<?php echo $dummy_frm_id;?>" value="<?php echo $ques_desc['q_id'];?>">
+                                                <input type="text" class="club_txt" name="ans_frms" id="ans_frms_<?php echo $dummy_frm_id;?>"style="margin-bottom:15px;" placeholder="Ink your reply...">
+                                                <input type="submit" style="display:none;"  onClick="return insert_answer(<?php echo $dummy_frm_id;?>);" >
                                              </form>
                                             </div>
                                             <div class="col-lg-12" style="height:800px; overflow-y:scroll; padding:0px; border-top:2px solid #afdf7c">
                                             <div id="disanswers">
                                             <?php
-                                            $get_anse_frm_qte=mysqli_query($conn,"select * from answered where quest_id='$_GET[Qid]'");
+                                            $get_anse_frm_qte=mysqli_query($conn,"select * from answered where quest_id='$_GET[Qid]' order by ans_id desc");
 											while($dip_ans=mysqli_fetch_array($get_anse_frm_qte))
 											{
 											$watq_exe=mysqli_query($conn,"select * from users where user_id='$dip_ans[user_id]'");

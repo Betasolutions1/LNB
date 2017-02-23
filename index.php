@@ -1188,7 +1188,19 @@ $from_count=0;
                                                     <div class="row club_network_row" style="width:100%;">
                                                         <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
+                                                            <?php
+                                                            if($gp_ppic['image']!='')
+															{
+															?>
                                                                 <img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width="80">
+                                                                <?php
+															}else
+															{
+																?>
+                                                             <img src="images/profile/sq.PNG" width="80"/>   
+                                                                <?php
+															}
+																?>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-10 club_msg_shape" style=" height:80px; background-color:#eee; padding-right:0px;width:86%;" align="left">
@@ -1241,7 +1253,19 @@ $from_count=0;
                                                 <div class="club_suggest_top_div row">
                                                     <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
+                                                        <?php
+                                                        if($fet_ppic['image']!='')
+														{
+														?>
                                                             <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="80">
+                                                            <?php
+														}else
+														{
+															?>
+                                                            <img src="images/profile/sq.PNG" width="80"/>
+                                                            <?php
+														}
+															?>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-10 club_msg_shape" style=" height:80px; padding-right:0px;width:86%; padding-top:7px;" align="left">
@@ -1331,7 +1355,21 @@ $from_count=0;
                                                             <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                                 <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                     <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id'];?>);">  <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/></a>
+                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id'];?>);"> 
+                                                                        <?php
+                                                                        if($clb_pic['image']!='')
+																		{
+																		?>
+                                                                         <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/>
+                                                                         <?php
+																		}else
+																		{
+																		 ?>
+                                                                         <img src="images/profile/sq.PNG" width="50">
+                                                                         <?php
+																		}
+																		 ?>
+                                                                         </a>
                                                                     </div>
                                                                     <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                         <span><?php echo $kiloo['suggest_topic'];?> </span>
@@ -1461,7 +1499,21 @@ $from_count=0;
                                                         <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                             <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                 <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                    <a href="#modal_<?php echo $model_count;?>">  <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="50"></a>
+                                                                    <a href="#modal_<?php echo $model_count;?>">
+                                                                    <?php
+                                                                    if($fet_ppic['image']!='')
+																	{
+																	?>
+                                                                      <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="50">
+                                                                      <?php
+																	}else
+																	{
+																	  ?>
+                                                                      <img src="images/profile/sq.PNG" width="50">
+                                                                      <?php
+																	}
+																	  ?>
+                                                                      </a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                     <span><?php echo $gred['for_what'];?> </span>
@@ -1568,7 +1620,21 @@ $from_count=0;
                                                         <div class="td_div club_sug_row_bg" style="  height:50px;">
                                                             <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
                                                                 <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                    <a href="#modal_<?php echo $model_count;?>">  <img src="fb_users/<?php echo $jil_data['Gender']?>/<?php echo $jil_data['Email'];?>/Profile/<?php echo $jil_pic['image'];?>" width="50"></a>
+                                                                    <a href="#modal_<?php echo $model_count;?>">  
+                                                                    <?php
+                                                                    if($jil_pic['image']!='')
+																	{
+																	?>
+                                                                    <img src="fb_users/<?php echo $jil_data['Gender']?>/<?php echo $jil_data['Email'];?>/Profile/<?php echo $jil_pic['image'];?>" width="50">
+                                                                    <?php
+																	}else
+																	{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="50">
+                                                                    <?php
+																	}
+																	?>
+                                                                    </a>
                                                                 </div>
                                                                 <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
                                                                     <span><?php echo $jill['for_what'];?> </span>
@@ -1722,7 +1788,19 @@ $from_count=0;
                                         <div style="background-color:#fff;padding:5px;"  >
                                             <div class="media  bg" style="background:#afdf7c">
                                                 <a href="" class="pull-left">
+                                                <?php
+                                                if($fet_ppic['image']!='')
+												{
+												?>
                                                     <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" class="media-object">
+                                                    <?php
+												}else
+												{
+													?>
+                                                    <img src="images/profile/sq.PNG" width="50" class="media-object">
+                                                   <?php
+												}
+												   ?> 
                                                 </a>
                                                 <div class="media-body innerTB half bg" style="padding-top:4px;">
                                                     <a href="#" class="pull-right innerT innerR text-white"> </a>
@@ -1781,7 +1859,19 @@ $from_count=0;
                                                                 //$ency=base64_encode('id=$resp[user_id]');
                                                                 ?>
                                                                 <a href="profile.php?id=<?php echo $resp['user_id'] ?>" class="pst_head_left">
+                                                                <?php
+                                                                if($pupp['image']!='')
+																{
+																?>
                                                                     <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="70" height="70" style="margin-left:-15px;">
+                                                                    <?php
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" height="70" style="margin-left:-15px;">
+                                                                    <?php
+																}
+																	?>
                                                                 </a>
                                                             </div>
                                                             <div class="col-lg-8 pst_head_txt">

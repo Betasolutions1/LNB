@@ -4,7 +4,18 @@
                                                     <h1 style="padding-top:25px; padding-right:20px;color:#fff; font-size:40px; font-family:lato-regular;"><?php echo $candy['Name'];?></h1>
                                                 </div>
                                                 <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
+                                                <?php
+                                                if($candy_pic['image']!='')
+												{
+												?>
                                                     <img src="fb_users/<?php echo $candy['Gender']?>/<?php echo $candy['Email']?>/Profile/<?php echo $candy_pic['image'];?>" width="130px" style="border-radius:50%" />
+                                                    <?php
+                                                    }else
+                                                    {
+														?>
+                                                        <img src="images/profile/sq.PNG" width="80" class="triangle-down">
+                                                        <?php
+                                                    }?>
                                                 </div>
                                                 <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
                                                     <div class="row">

@@ -91,10 +91,10 @@ function insert_answer(faid)
                     url: "script2.php",
                     data: dataString,
                     cache: false,
-                    success: function(html) {
+                    success: function(data) {
                     //alert(html);
 					document.getElementById("ans_frms_"+faid).value='';
-					$('#workspace-vr').load('forum_ans.php #workspace-vr');
+					$('#workspace-vr').html(data);
                     }
                     });
                

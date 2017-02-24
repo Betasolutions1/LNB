@@ -135,6 +135,9 @@ if(!$_SESSION['Email'])
                                         
                                             <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;margin-bottom:10px;">
                                                 <div class="col-lg-2 pad_0" align="left" style="width:80px;">
+                                                <?php
+                                                if($upiv['image']!='')
+												?>
                                                     <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="80" />
                                                 </div>
                                                 <div class="col-lg-10">

@@ -770,7 +770,7 @@ $from_count=0;
                                                         <div style="width:150px; height:190px;" align="center" id="c_hs">
                                                         
                                                         <?php
-                                                        if($colle_pic['image']!=0)
+                                                        if($colle_pic['image']!='')
 														{
 														?>
                                                             <img src="fb_users/<?php echo $colle['Gender']?>/<?php echo $colle['Email']?>/Profile/<?php echo $colle_pic['image'];?>" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
@@ -1042,7 +1042,7 @@ $from_count=0;
                                                         <h4>
                                                             <?php echo $fet_mem_de['industry'];?></h4>
                                                             <?php
-                                                            if($gclb_uspi['image']!=0)
+                                                            if($gclb_uspi['image']!='')
 															{
 															?>
                                                             

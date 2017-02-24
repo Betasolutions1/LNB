@@ -259,6 +259,7 @@ ul
             .tabs-left>li.active>a:hover,
             .tabs-left>li.active>a:focus
 {
+	background-image:url(../../images/others/clipboard_1.png);
     border-bottom-color: #ddd;
     border-right-color: transparent;
 }

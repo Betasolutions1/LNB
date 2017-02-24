@@ -213,7 +213,8 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
                 <!--/.nav-collapse -->
             </div>
         </nav>
-        <div class="container paper" style=" padding-top: 30px;">
+        <div class="container paper" style="width:100%;">
+        <div class="container " style=" padding-top: 30px;">
             <div class="row"> 
                 <div class="col-lg-3 col-md-4" align="center">
                 <!--padding-bottom:150px;-->
@@ -2853,6 +2854,7 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
             <div>
 </div>
         </div>
+    </div>
          
      
 

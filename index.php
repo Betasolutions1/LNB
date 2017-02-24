@@ -218,7 +218,8 @@ $from_count=0;
                 <!--/.nav-collapse -->
             </div>
         </nav>
-        <div class="container-fluid paper" style=" padding-top: 30px;">
+        <div class="container paper" style="width:100%;">
+        <div class="container " style=" padding-top: 30px;">
             <div class="row"> 
                 <div class="col-lg-3 col-md-4" align="center">
                 <!--padding-bottom:150px;-->
@@ -244,21 +245,21 @@ $from_count=0;
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 "> 
+                <div class="col-lg-6  "> 
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
                             <ul class="nav nav-tabs " id="id_hover"> 
     <li class="active">
         <a href="#tab6" data-toggle="tab">
-            <img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">
+            <img src="images/others/s_n_1.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
             Work</h5>
         </a>
     </li>     
     <li class="hover_li">
         <a href="#tab7" data-toggle="tab">
-            <img src="images/others/folder.png" width="70" /> 
-            <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">
+            <img src="images/others/s_n_2.png" width="70" /> 
+            <h5 style="text-align:center; position:absolute; top:45px; left:40px;font-size:12px; color:#5a5a5a">
             Space</h5>
         </a>
     </li>     
@@ -3179,6 +3180,7 @@ $from_count=0;
             <div>
 </div>
         </div>
+    </div>
          
      
 

@@ -15,12 +15,18 @@ if(!$_SESSION['Email'])
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+       
+
+       
         <meta name="description" content="">
         <meta name="author" content="">
         <title>LN.BUSINESS</title>
         <!-- Bootstrap core CSS -->
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+       <!-- <link href="assets/css/non-responsive.css" rel="stylesheet">-->
+       
+        
         <!-- Custom styles for this template -->
         <link href="starter-template.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
@@ -33,7 +39,8 @@ if(!$_SESSION['Email'])
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
+   
+  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
@@ -160,8 +167,8 @@ function change_activetab11()
 	{
 		++$_SESSION['sess_count'];
 	?>
-    <div id="loader-wrapper">
-			<div id="loader"></div>
+    <div id="loader-wrapper" >
+			<div id="loader" ></div>
 
 			<div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
@@ -180,22 +187,23 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+            <div class="container" style="padding-right:2px;">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
+                    </button>-->
+                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;padding-left:35px;">
     LN.BUSINESS</a>
+    
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                        <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
                              <form method="get" action="search.php">
-                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;" placeholder="Search">
+                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;font-fsmily:lato;border:1px solid #afdf7c;" placeholder=" Search">
                             <input type="submit" name="sub_search" style="display:none;">
                             </form>
                         </li>
@@ -215,18 +223,21 @@ $from_count=0;
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
                         </li>-->
                         
-                       <li style="height:50px;line-height:13px;padding-top:3px;">
-                            <p class="diary" style="padding-top:0px; padding-left:50px;color:#808080; line-height:13px;"><span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:10px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:10px;">2016</span></p>
-                        </li>
-                        <li style="height:50px;">
-                            <!--<hr style="width:0px; height:10px;" class="vertical" />-->
-                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
-</div>
-                        </li>
-                        <li style="height:50px;">
-                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080">26</span>
-                        </li>
+                     
                     </ul>
+                     <div class="row" style="float:right;">
+                       <div class="col-lg-5" style="height:50px;line-height:13px;padding-top:3px;left:40px;">
+                            <p class="diary" style="padding-top:0px; padding-left:50px;color:#808080; line-height:13px;"><span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:10px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:10px;">2016</span></p>
+                        </div>
+                        <div  class="col-lg-2" style="height:50px;padding:0px;">
+                            <!--<hr style="width:0px; height:10px;" class="vertical" />-->
+                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;position:absolute; left:65px;" class="line_div">
+</div>
+                        </div>
+                        <div class="col-lg-5" style="height:50px;padding:0px;padding-left:40px;">
+                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:0px;color:#808080">26</span>
+                        </div>
+                        </div>
                 </div>
                 <!--/.nav-collapse -->
             </div>
@@ -953,7 +964,7 @@ $from_count=0;
                                 ?>
                                 <!----------------------------------CLUB LOGIN BEGIN---------------------------------->
                                 
-                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;">
+                                <div class="pst_main_background  " align="center" style="background-color:#fff;">
                                     <br>
                                     <h3 style="color:#afdf7c; text-align:center;">Club Login</h3>
                                     <br>
@@ -961,10 +972,10 @@ $from_count=0;
                                     <!--script_code.php-->
                                         <form class="form-horizontal" method="post" action="" >
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder="Enter Club Name">
+                                                <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder=" Enter Club Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password" >
+                                                <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder=" Password" >
                                             </div>
                                           <!--return lnb_club() --> 
                                             <input type="submit" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
@@ -1833,7 +1844,7 @@ $from_count=0;
 												}else
 												{
 													?>
-                                                    <img src="images/profile/sq.PNG" width="50" class="media-object">
+                                                    <img src="images/profile/sq.PNG" width="50" height="50" class="media-object">
                                                    <?php
 												}
 												   ?> 
@@ -1888,7 +1899,7 @@ $from_count=0;
                                                 $pupp=mysqli_fetch_array($pupe);
                                                 ?>
                                               
-                                               <div class="pst_box" style="background-color:#eee;height:370px">
+                                               <div class="pst_box" style="background-color:#eee;height:300px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -1910,20 +1921,20 @@ $from_count=0;
                                                             </div>
                                                             <div align="center" style="margin-top:5px;">
                                                                 <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>
+                                                                    <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
+                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
         <?php echo $pud['designation'];?></span>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>
+                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span>
+                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span>
                                                                 </div>
                                                             </div>
                                                             <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
@@ -1945,7 +1956,7 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($ps['status']=='Like')
@@ -1953,23 +1964,25 @@ $from_count=0;
 
                                                                     ?>
                                                                     <a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
+                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
                                                             <?php
                                                         if($resp['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive" width="400" />
+                                                           
+                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" />
+                                                             
                                                               <?php
                                                         }
                                                         ?>
@@ -2041,7 +2054,7 @@ $from_count=0;
                                                 ?>
                                               
                                               
-                                                <div class="pst_box" style="background-color:#eee;height:370px">
+                                                <div class="pst_box" style="background-color:#eee;height:300px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2096,7 +2109,7 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($industry_post_status_retry['status']=='Like')
@@ -2104,18 +2117,18 @@ $from_count=0;
 
                                                                     ?>
                                                                     <a href="#"  onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
+                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
                                                             <?php
                                                         if($industry_post_rety['post_pic']!='')
                                                         {
@@ -2180,7 +2193,7 @@ $from_count=0;
                                             ?>
                                            
                                            
-                                                <div class="pst_box" style="background-color:#eee;height:370px">
+                                                <div class="pst_box" style="background-color:#eee;height:300px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2235,7 +2248,7 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($user_profilr_bookmark['status']=='Like')
@@ -2243,18 +2256,18 @@ $from_count=0;
 
                                                                     ?>
                                                                     <a href="#"   onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
+                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
                                                             <?php
                                                         if($user_profile_post['post_pic']!='')
                                                         {
@@ -2326,7 +2339,7 @@ $from_count=0;
                                             $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
                                             ?>          
                                         
-                                            <div class="pst_box" style="background-color:#eee;height:370px">
+                                            <div class="pst_box" style="background-color:#eee;height:300px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2380,7 +2393,7 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($ret_user_noted['status']=='Like')
@@ -2388,18 +2401,18 @@ $from_count=0;
 
                                                                     ?>
                                                                     <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
+                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
                                                             <?php
                                                         if($user_noted_post['post_pic']!='')
                                                         {
@@ -2453,7 +2466,7 @@ $from_count=0;
                                             if($fet_ppic['image']!='')
 											{
 											?>
-                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" height="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
                                                 <?php
 											}else{
 												?>
@@ -3034,8 +3047,8 @@ $from_count=0;
 						</div>
                     </div>
                 </div>                 
-                <div class="col-md-3 col-lg-3 b_s " style="background-color:#fff;">
-                    <div class="row">
+                <div class="col-md-3 col-lg-3 b_s sidebar" style="background-color:#fff;top:30px;">
+                    <div class="row ">
                         <div class="col-lg-3" align="left">
                             <ul class="nav nav-tabs tabs-right vertical-text right" style="right:40px;  top:15px">
                                 <li class="active " style="font-color:solid #fff;" id="parallelogram">
@@ -3058,7 +3071,7 @@ $from_count=0;
     </li>-->
                             </ul>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 ">
                         <div id="inadex_ads2">
                          <?php
                     $get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");

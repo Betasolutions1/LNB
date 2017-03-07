@@ -382,7 +382,8 @@ function like(lpost_id,luser_id) {
 				  // $('#industry_likes').load('index.php #industry_likes');
 					//$('#inked_likes').load('index.php #inked_likes');
 					$('#noted_likes').load('index.php #noted_likes');
-					
+					$('#profile_inked_posts').load('profile.php #profile_inked_posts');
+					$('#profile_noted_post').load('profile.php #profile_noted_post');
 					
                     }
                     });
@@ -413,6 +414,8 @@ function unlike(ulpost_id,uluser_id) {
 				  // $('#industry_likes').load('index.php #industry_likes');
 					//$('#inked_likes').load('index.php #inked_likes');
 					$('#noted_likes').load('index.php #noted_likes');
+					$('#profile_inked_posts').load('profile.php #profile_inked_posts');
+					$('#profile_noted_post').load('profile.php #profile_noted_post');
 					
 					
                     }
@@ -748,6 +751,8 @@ function comment_insertion(ucid)
 				  // $('#industry_likes').load('index.php #industry_likes');
 					//$('#inked_likes').load('index.php #inked_likes');
 					$('#noted_likes').load('index.php #noted_likes');
+					$('#profile_inked_posts').load('profile.php #profile_inked_posts');
+					$('#profile_noted_post').load('profile.php #profile_noted_post');
                     }
                     });
                

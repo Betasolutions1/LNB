@@ -6,7 +6,17 @@ if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
 }
-
+if($_SESSION['id']==$_GET['id'])
+{
+	echo "<script>
+	
+	$(document).ready(function(){
+	setInterval(function(){
+		$('#begin_folio').load('index.php #begin_folio');
+    });
+});
+	</script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +102,7 @@ if(!$_SESSION['Email'])
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" style="font-family:Stencil Std;color:#808080;">
+                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -165,6 +175,7 @@ if(!$_SESSION['Email'])
                                 <div class="tab-pane" id="tab2">
                                 <!--PROFILE INKED BEGIN-->
                                 <div class="bg_pst">
+                                <div id="profile_inked_posts">
 
  
             <?php
@@ -291,6 +302,7 @@ if(!$_SESSION['Email'])
 											?>
 
 </div>
+</div>
                                    
                                     
                                  <!--END PROFILE INKED-->   
@@ -298,6 +310,7 @@ if(!$_SESSION['Email'])
                                 <div class="tab-pane" id="tab3">
                                 <!--BEGIN PROFILE NOTED POSTS-->
                                     <div class="bg_pst">
+                                    <div id="profile_noted_post">
 <?php
             $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_GET[id]'");
 			while($ret_user_noted=mysqli_fetch_array($user_noted_posts_exe))
@@ -434,6 +447,7 @@ if(!$_SESSION['Email'])
                                             <?php
 				}
 											?>
+</div>
 </div>
                                  <!--PROFILE NOTED POSTS END-->
                                 </div>

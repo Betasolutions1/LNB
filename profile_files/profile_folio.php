@@ -13,7 +13,7 @@
                                      
                                         <br>
                                       <h4 style="color:#afdf7c;">
-    WHO I AM <span class="icon" ><a href="#folio" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
+    WHO I AM <span class="icon" ><!--<a href="#folio" class="icon" > <i class="fa fa-pencil icon"></i></a>--> </span></h4>
     <?php
 	$folio_desc=mysqli_query($conn,"select * from folio where user_id='$_GET[id]'");
 	$fo_des=mysqli_fetch_array($folio_desc);
@@ -30,13 +30,13 @@
                                     <br>
                                     <div style="border-bottom:1px solid #afdf7c; width:570px; margin-left:10px; margin-right:10px;">
                                         <h4 style="color:#afdf7c;">
-    SKILLS <span class="icon" ><a href="#skill" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
+    SKILLS <span class="icon" ><!--<a href="#skill" class="icon" > <i class="fa fa-pencil icon"></i></a>--> </span></h4>
                                         <br>
                                     </div>
                                     <br>
                                     <div style=" width:570px; margin-left:10px; margin-right:10px;">
                                         <h4 style="color:#afdf7c;">
-   WORKS <span class="icon" ><a href="#user_work" class="icon" > <i class="fa fa-pencil icon"></i></a> </span></h4>
+   WORKS <span class="icon" ><!--<a href="#user_work" class="icon" > <i class="fa fa-pencil icon"></i></a> --></span></h4>
                                         <BR>
                                     </div>
                                     <div> 

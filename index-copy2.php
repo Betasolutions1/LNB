@@ -2,12 +2,10 @@
 error_reporting(0);
 include 'config.php';
 session_start();
-
 if(!$_SESSION['Email'])
 {
 	header("location:signup.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +13,12 @@ if(!$_SESSION['Email'])
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-       
-
-       
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <title>LN.BUSINESS</title>
         <!-- Bootstrap core CSS -->
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-       <!-- <link href="assets/css/non-responsive.css" rel="stylesheet">-->
-       
-        
         <!-- Custom styles for this template -->
         <link href="starter-template.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
@@ -39,8 +31,7 @@ if(!$_SESSION['Email'])
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-   
-  <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
@@ -105,7 +96,6 @@ if(!$_SESSION['Email'])
     url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.ttf") format("truetype"),
     url("//db.onlinewebfonts.com/t/93c4327f0457b01d13b376849536395d.svg#Stencil Std") format("svg");
 }
-
  
 font-face {
         font-family: "Lato Black";
@@ -124,17 +114,14 @@ function on_profile_hover()
 {
 	document.getElementById("change_user_ppic").style.display='block';
 }
-
 function out_profile_hover()
 {
 	document.getElementById("change_user_ppic").style.display='none';
 }
-
 function dis_cover_pic_edit()
 {
 	document.getElementById("edit_cover_button").style.display='block';
 }
-
 function out_cover_pic_edit()
 {
 	document.getElementById("edit_cover_button").style.display='none';
@@ -146,78 +133,12 @@ function change_activetab()
 	document.getElementById('act_tab11').style.display='none';
 	document.getElementById('act_tab12').style.display='block';
 }
-
 function change_activetab11()
 {
 	document.getElementById('act_tbw21').style.display='none';
 	document.getElementById('act_tbw22').style.display='block';
 	document.getElementById('act_tab11').style.display='block';
 	document.getElementById('act_tab12').style.display='none';
-}
-function club_tab8()
-{
-	document.getElementById('club_tab11').style.display='block';
-	document.getElementById('club_tab12').style.display='none';
-	document.getElementById('clubingb_tab21').style.display='none';
-	document.getElementById('clubingb_tab22').style.display='block';
-	document.getElementById('clubtagme_tab31').style.display='none';
-	document.getElementById('clubtagme_tab32').style.display='block';
-	document.getElementById('clubtag_tab41').style.display='none';
-	document.getElementById('clubtag_tab42').style.display='block';
-	document.getElementById('clubsettings_tab51').style.display='none';
-	document.getElementById('clubsettings_tab52').style.display='block';
-}
-function clubbind_tab9()
-{
-	document.getElementById('club_tab11').style.display='none';
-	document.getElementById('club_tab12').style.display='block';
-	document.getElementById('clubingb_tab21').style.display='block';
-	document.getElementById('clubingb_tab22').style.display='none';
-	document.getElementById('clubtagme_tab31').style.display='none';
-	document.getElementById('clubtagme_tab32').style.display='block';
-	document.getElementById('clubtag_tab41').style.display='none';
-	document.getElementById('clubtag_tab42').style.display='block';
-	document.getElementById('clubsettings_tab51').style.display='none';
-	document.getElementById('clubsettings_tab52').style.display='block';
-}
-function tagme_tab10()
-{
-	document.getElementById('club_tab11').style.display='none';
-	document.getElementById('club_tab12').style.display='block';
-	document.getElementById('clubingb_tab21').style.display='none';
-	document.getElementById('clubingb_tab22').style.display='block';
-	document.getElementById('clubtagme_tab31').style.display='block';
-	document.getElementById('clubtagme_tab32').style.display='none';
-	document.getElementById('clubtag_tab41').style.display='none';
-	document.getElementById('clubtag_tab42').style.display='block';
-	document.getElementById('clubsettings_tab51').style.display='none';
-	document.getElementById('clubsettings_tab52').style.display='block';
-}
-function tag_tab11()
-{
-	document.getElementById('club_tab11').style.display='none';
-	document.getElementById('club_tab12').style.display='block';
-	document.getElementById('clubingb_tab21').style.display='none';
-	document.getElementById('clubingb_tab22').style.display='block';
-	document.getElementById('clubtagme_tab31').style.display='none';
-	document.getElementById('clubtagme_tab32').style.display='block';
-	document.getElementById('clubtag_tab41').style.display='block';
-	document.getElementById('clubtag_tab42').style.display='none';
-	document.getElementById('clubsettings_tab51').style.display='none';
-	document.getElementById('clubsettings_tab52').style.display='block';
-}
-function settigs_tab12()
-{
-	document.getElementById('club_tab11').style.display='none';
-	document.getElementById('club_tab12').style.display='block';
-	document.getElementById('clubingb_tab21').style.display='none';
-	document.getElementById('clubingb_tab22').style.display='block';
-	document.getElementById('clubtagme_tab31').style.display='none';
-	document.getElementById('clubtagme_tab32').style.display='block';
-	document.getElementById('clubtag_tab41').style.display='none';
-	document.getElementById('clubtag_tab42').style.display='block';
-	document.getElementById('clubsettings_tab51').style.display='block';
-	document.getElementById('clubsettings_tab52').style.display='none';
 }
 </script>
         
@@ -231,8 +152,8 @@ function settigs_tab12()
 	{
 		++$_SESSION['sess_count'];
 	?>
-    <div id="loader-wrapper" >
-			<div id="loader" ></div>
+    <div id="loader-wrapper">
+			<div id="loader"></div>
 
 			<div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
@@ -251,23 +172,22 @@ $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
         <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container" style="padding-right:2px;">
+            <div class="container">
                 <div class="navbar-header">
-                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>-->
-                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;padding-left:35px;">
+                    </button>
+                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
     LN.BUSINESS</a>
-    
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                        <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
                              <form method="get" action="search.php">
-                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;font-fsmily:lato;border:1px solid #afdf7c;" placeholder=" Search">
+                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;" placeholder="Search">
                             <input type="submit" name="sub_search" style="display:none;">
                             </form>
                         </li>
@@ -287,21 +207,18 @@ $from_count=0;
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
                         </li>-->
                         
-                     
-                    </ul>
-                     <div class="row" style="float:right;">
-                       <div class="col-lg-5" style="height:50px;line-height:13px;padding-top:3px;left:40px;">
+                       <li style="height:50px;line-height:13px;padding-top:3px;">
                             <p class="diary" style="padding-top:0px; padding-left:50px;color:#808080; line-height:13px;"><span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:10px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:10px;">2016</span></p>
-                        </div>
-                        <div  class="col-lg-2" style="height:50px;padding:0px;">
+                        </li>
+                        <li style="height:50px;">
                             <!--<hr style="width:0px; height:10px;" class="vertical" />-->
-                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;position:absolute; left:65px;" class="line_div">
+                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
 </div>
-                        </div>
-                        <div class="col-lg-5" style="height:50px;padding:0px;padding-left:40px;">
-                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:0px;color:#808080">26</span>
-                        </div>
-                        </div>
+                        </li>
+                        <li style="height:50px;">
+                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080">26</span>
+                        </li>
+                    </ul>
                 </div>
                 <!--/.nav-collapse -->
             </div>
@@ -364,11 +281,9 @@ $from_count=0;
                                 <div class="tab-pane active" id="tab6">
                                     <div class="accordion-wrap">
                                         <!-----------------------------WORK BEGIN------------------------------------->
-
                                         <div class="accordion">
                                             <a href="#" class="active"><i class="fa fa-user"></i> TODO</a>
                                             <div class="sub-nav active">
-
                                                 <div id="todo" class="panel">
                                                     <h2 class="panel-title">Tasks</h2>
                                                     <!--<h2 class="panel-title">Tasks </h2>-->
@@ -401,7 +316,6 @@ $from_count=0;
                                                                         <li class="task">
                                                                             <?php if($ret_td['todo_status']==0)
                                                                             {
-
                                                                                 ?>
                                                                                 <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="return change_to(this.value);"/>
                                                                                 <?php
@@ -415,7 +329,6 @@ $from_count=0;
                                                                         </li>
                                                                         <?php
                                                                     }
-
                                                                     ?>
 
                                                                 </ul>
@@ -439,7 +352,6 @@ $from_count=0;
                                                                         <li class="task">
                                                                             <?php if($ret_td['todo_status']!=0)
                                                                             {
-
                                                                                 ?>
                                                                                 <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" checked="checked"  value="<?php echo $ret_td['todo_id'];?>"  onClick="return changestatus(this.value);"/>
                                                                                 <?php
@@ -453,7 +365,6 @@ $from_count=0;
                                                                         </li>
                                                                         <?php
                                                                     }
-
                                                                     ?>
 
                                                                 </ul>
@@ -745,7 +656,6 @@ $from_count=0;
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                             <form class="form-horizontal" role="form" method="post" action="">
                                                 <div>
-
                                                     <div class="form-group">
                                                         <label class="col-sm-2 control-label">Name</label>
                                                         <div class="col-sm-10">
@@ -771,19 +681,10 @@ $from_count=0;
                                                             <input type="text" class="form-control" id="client_details" placeholder="" name="client_details">
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-
                                                 </div>
                                                 <br>
-
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <button type="submit" data-remodal-action="confirm" onClick="return clientinsertions();" class="remodal-confirm">Client Data</button>
-
                                             </form>
                                         </div>
                                         
@@ -794,7 +695,6 @@ $from_count=0;
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                             <form class="form-horizontal" role="form" action="script_code.php" method="post" enctype="multipart/form-data" id="importFrm">
                                                 <div>
-
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Upload CSV File</label>
                                                         <div class="col-sm-9">
@@ -806,7 +706,6 @@ $from_count=0;
                                                   
                                                 </div>
                                                 <br>
-
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!--onClick="return clientcsvupload();" data-remodal-action="confirm"-->
                                                 <button type="submit"  name="csv_uploaddata" class="remodal-confirm">Client Data</button>
@@ -822,7 +721,6 @@ $from_count=0;
                                 </div>
                                 <div class="tab-pane" id="tab7">
                                     <!-----------------------------------------SPACE BEGIN----------------------------------------->
-
                                     <div class="row pst_box club_sub_div_height" style="background-color:#fff;">
                                     <br>
                                     
@@ -857,7 +755,6 @@ $from_count=0;
                                                         $colle_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$colle[user_id]'");
                                                         $colle_pic=mysqli_fetch_array($colle_ppic_exe);
                                                         ?>
-
                                                         <div style="width:150px; height:190px;" align="center" id="c_hs">
                                                         
                                                         <?php
@@ -888,9 +785,6 @@ $from_count=0;
                                                                 <h5 style=" color:#afdf7c">
               CEO</h5>
                                                             </div><?php */?>
-
-
-
                                                 </div>
                                                
                                                 
@@ -1028,7 +922,7 @@ $from_count=0;
                                 ?>
                                 <!----------------------------------CLUB LOGIN BEGIN---------------------------------->
                                 
-                                <div class="pst_main_background  " align="center" style="background-color:#fff;">
+                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;">
                                     <br>
                                     <h3 style="color:#afdf7c; text-align:center;">Club Login</h3>
                                     <br>
@@ -1036,10 +930,10 @@ $from_count=0;
                                     <!--script_code.php-->
                                         <form class="form-horizontal" method="post" action="" >
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder=" Enter Club Name">
+                                                <input type="text" class="form-control" name="club_user_name" id="club_user_name" placeholder="Enter Club Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder=" Password" >
+                                                <input type="password" class="form-control" name="club_pwd" id="club_pwd" placeholder="Password" >
                                             </div>
                                           <!--return lnb_club() --> 
                                             <input type="submit" name="club_login" id="club_login" onclick="return lnb_club()" value="Submit"  class="btn btn_grn">
@@ -1058,38 +952,19 @@ $from_count=0;
                             <div class="club_sub_div_height">
                                     <ul class="nav nav-tabs"> 
                                         <li class="active">
-                                            <a href="#tab8" data-toggle="tab" onClick="return club_tab8();">
-                                             <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
-                                             <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> 
-                                              <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>
+                                            <a href="#tab8" data-toggle="tab"><i class="fa fa-pencil"></i> Club Sheet</a>
                                         </li>                                         
-                                        <li class="hover_li">
-                                            <a href="#tab9" data-toggle="tab" onClick="return clubbind_tab9();">
-                                            <img id="clubingb_tab21" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubingb_tab22"  src="images/others/s_n_1.png" width="70" /> 
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Clubbing</h5>
-                                             </a>
+                                        <li>
+                                            <a href="#tab9" data-toggle="tab"><i class="fa fa-pencil"></i> Clubbing</a>
                                         </li>                                         
-                                        <li class="hover_li">
-                                            <a href="#tab10" data-toggle="tab" onClick="return tagme_tab10();">
-                                            <img id="clubtagme_tab31" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubtagme_tab32"  src="images/others/s_n_1.png" width="70" /> 
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag Me</h5>
-                                             </a>
+                                        <li>
+                                            <a href="#tab10" data-toggle="tab"><i class="fa fa-pencil"></i> Tag Me</a>
                                         </li>                                         
-                                        <li class="hover_li">
-                                            <a href="#tab11" data-toggle="tab" onClick="return tag_tab11();">
-                                            <img id="clubtag_tab41" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" /> 
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag</h5>
-                                             </a>
+                                        <li>
+                                            <a href="#tab11" data-toggle="tab"><i class="fa fa-pencil"></i> Tag</a>
                                         </li>                                         
-                                        <li class="hover_li">
-                                            <a href="#tab12" data-toggle="tab" onClick="return settigs_tab12();">
-                                            <img id="clubsettings_tab51" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubsettings_tab52"  src="images/others/s_n_1.png" width="70" /> 
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Settings</h5>
-                                             </a>
+                                        <li>
+                                            <a href="#tab12" data-toggle="tab"><i class="fa fa-pencil"></i> Settings</a>
                                         </li>   
                                         
                                          <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
@@ -1102,7 +977,6 @@ $from_count=0;
                                         <!-------------------------------------club sheet BEGIN------------------------------------------------->
                                             <div>
                                                 <div>
-
                                                     <h4 class="club_headers">
                                                         CLUB ID # <?php echo $_SESSION['club_id']?></h4>
                                                     <div class="col-lg-12 club_txtbox" style="padding-left:0px; padding-right:10px;paddin-top:0px;margin-top:0px;">
@@ -1137,11 +1011,8 @@ $from_count=0;
                                                 $get_club_menem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' and user_id!='$_SESSION[id]'");
                                                 while($club_members=mysqli_fetch_array($get_club_menem))
                                                 {
-
-
                                                     $get_user_sugg_exe=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$club_members[user_id]' order by sug_date desc");
                                                     $get_ur_sugg=mysqli_fetch_array($get_user_sugg_exe);
-
                                                     $get_club_user_deta_exe=mysqli_query($conn,"select * from users where user_id='$club_members[user_id]'");
                                                     $fet_mem_de=mysqli_fetch_array($get_club_user_deta_exe);
                                                     $get_pic_clb=mysqli_query($conn,"select * from user_profile_pic where user_id='$fet_mem_de[user_id]'");
@@ -1176,7 +1047,6 @@ $from_count=0;
                                                         <?php
                                                         if($get_ur_sugg['suggest_topic']!='')
                                                         {
-
                                                             $check_connect=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$get_ur_sugg[suggest_topic_id]' AND whos_suggest='$fet_mem_de[user_id]' AND to_whom_accept='$_SESSION[id]' AND status='1'");
                                                             $get_count_sug=mysqli_num_rows($check_connect);
                                                             if($get_count_sug!=0)
@@ -1192,7 +1062,6 @@ $from_count=0;
                                                                 <?php
                                                             }else
                                                             {
-
                                                                 ?>
 
                                                                 <span><a href="#" class="btn btn_grn" onClick="return connect_suggest(<?php echo $fet_mem_de['user_id'];?>,<?php echo $get_ur_sugg['suggest_topic_id'];?>);" >Connect</a></span>
@@ -1263,7 +1132,6 @@ $from_count=0;
 									<!-----------------END users club info moddel----------------------->
                                             
                                             
-
                                <!------------------------------------------END CLUB SHEET-------------------------------------------->
                                         </div>
                                         <div class="tab-pane" id="tab9">
@@ -1293,7 +1161,6 @@ $from_count=0;
                                                     $gp_ppic=mysqli_fetch_array($gp_us_pp_exe);
                                                     $gp_user_details_exe=mysqli_query($conn,"select * from users where user_id='$grp_ct[user_id]'");
                                                     $gp_det=mysqli_fetch_array($gp_user_details_exe);
-
                                                     ?>
                                                     <div class="row club_network_row" style="width:100%;">
                                                         <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
@@ -1349,11 +1216,9 @@ $from_count=0;
 												</div>
                                             </div>
                        <!--------------------------------------END NETWORKING----------------------------------------------------->
-
                                         </div>
                                         <div class="tab-pane" id="tab10">
                     <!-------------------------------------------BEGIN CLUB SUGGESTIONS------------------------------------------------->
-
                                             <h4 class="club_headers">
                                                 Suggestions</h4>
                                             <br>
@@ -1724,7 +1589,6 @@ $from_count=0;
                                                         $jil_data=mysqli_fetch_array($ji_user_de);
                                                         $jill_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$jil_data[user_id]'");
                                                         $jil_pic=mysqli_fetch_array($jill_pic_exe);
-
                                                         ?>
 
                                                         <div class="td_div club_sug_row_bg" style="  height:50px;">
@@ -1855,7 +1719,6 @@ $from_count=0;
                                                     <br>
                                                 </div>
                                             </div>
-
                                          <!------------------------------END CLUB TAGS--------------------------------------->
                                         </div>
                                     </div>
@@ -1927,7 +1790,7 @@ $from_count=0;
 												}else
 												{
 													?>
-                                                    <img src="images/profile/sq.PNG" width="50" height="50" class="media-object">
+                                                    <img src="images/profile/sq.PNG" width="50" class="media-object">
                                                    <?php
 												}
 												   ?> 
@@ -1968,8 +1831,8 @@ $from_count=0;
                                         <br />
 										<div id="news_feed">
                                         <div class="bg_pst">
-										<div id="news_feed_like">
-                                        <div id="news_feed_comment">	
+										
+                                        <div id="news_feed_like">	
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 											
@@ -1982,7 +1845,7 @@ $from_count=0;
                                                 $pupp=mysqli_fetch_array($pupe);
                                                 ?>
                                               
-                                               <div class="pst_box" style="background-color:#eee;height:300px">
+                                               <div class="pst_box" style="background-color:#eee;height:370px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2004,20 +1867,20 @@ $from_count=0;
                                                             </div>
                                                             <div align="center" style="margin-top:5px;">
                                                                 <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>
+                                                                    <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
         <?php echo $pud['designation'];?></span>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>
+                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span>
+                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span>
                                                                 </div>
                                                             </div>
                                                             <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
@@ -2027,7 +1890,6 @@ $from_count=0;
                                                                 $psc=mysqli_num_rows($pse);
 																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
 														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
-
                                                       
                                                                 ?>
                                                                 <div class="col col-lg-6" style="padding:0px;" align="center">
@@ -2039,44 +1901,43 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($ps['status']=='Like')
                                                                 {
-
                                                                     ?>
                                                                     <a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
                                                             <a href="#feepost_cmts_<?php echo $resp['post_id'];?>">
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
+                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
                                                             <?php
                                                         if($resp['post_pic']!='')
                                                         {
                                                             ?>
-                                                           
-                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" />
-                                                             
+                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive" width="400" />
                                                               <?php
                                                         }
                                                         ?>
                                                                 <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $resp['post_txt'];?></p> 
                                                             </div>
-                                                           
+                                                            
                                                             <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
                                                                 <span style="font-size:10px; margin-left:5px;"> - on <?php echo $resp['post_time'];?></span>
                                                             </div>
-                                                             </a>
+                                                            </a>
+                                                           
+                                                            
                                                            
                                                             
                                                             
@@ -2087,7 +1948,6 @@ $from_count=0;
                                                                     <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $resp['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
-
                                                                     ?>
                                                                     <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
                                                                 <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
@@ -2097,21 +1957,15 @@ $from_count=0;
                                                         </div>
                                                     </div>
                                                 </div>
-                                              
-                                              
-                                              
-                                              
-                                               <!----------feed post begin model------------------>
-                                    
+                                              <!----------news fee cmts begin model------------------>
+      <!---->                              
                                     
                                         
-                                           <div class="remodal" data-remodal-id="feepost_cmts_<?php echo $resp['post_id'];?>" id="feepost_cmts_<?php echo $resp['post_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                           
-                                               
-                                               
-                                                <!--data-remodal-action="confirm"-->
-                                                <div>
+                                              <div class="remodal" data-remodal-id="feepost_cmts_<?php echo $resp['post_id'];?>">
+                                            <a data-remodal-action="close" class="remodal-close"></a>
+												<!--script_code.php-->
+                                            <div class="col-lg-12" >
+                                                <div class="col-lg-8" style="float:left;">
                                                 <?php
                                                 $fee_mol_post_exe=mysqli_query($conn,"select * from user_post where post_id='$resp[post_id]'");
 												$fee_mol_post=mysqli_fetch_array($fee_mol_post_exe);
@@ -2121,86 +1975,80 @@ $from_count=0;
 												$fee_mol_ppic=mysqli_fetch_array($fee_mol_ppic_exe);
 												?>
 
-  <div class="pst_box" style="background-color:#eee;height:300px">
+                                                    <div class="pst_box" style="background-color:#eee;height:370px">
                                                     <div class="row">
                                                        
-                                                      <div class="col col-lg-8" style="background-color:#fff; height:300px;padding:0px;">
-                                                      <?php
-                                                      $feed_md_liks=mysqli_query($conn,"select * from user_post_status where post_id='$fee_mol_post[post_id]' AND user_id='$_SESSION[id]'");
-													  $fee_lik=mysqli_fetch_array($feed_md_liks);
-													  ?>
-                                                            <div>
+                                                        <div class="col col-lg-12" style="background-color:#fff; height:370px;padding:0px;">
+                                                           <?php /*?> <div>
                                                             <?php
-                                                                if($fee_lik['status']=='Like')
+                                                                if($ps['status']=='Like')
                                                                 {
-
                                                                     ?>
-                                                                    <a href="#"   onClick="return unlike(<?php echo $fee_mol_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                    <a href="#" data-remodal-action="confirm"  onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $fee_mol_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <a href="#" data-remodal-action="confirm"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
-                                                            </div>
-                                                           
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
+                                                            </div><?php */?>
+                                                            
+                                                            <div class="pst_body" style="height:300px;overflow-y:scroll;">
+                                                            <!-- padding-right:10px;-->
                                                             <?php
-                                                        if($fee_mol_post['post_pic']!='')
+                                                        if($resp['post_pic']!='')
                                                         {
                                                             ?>
-                                                           
-                                                              <img src="fb_users/<?php echo $fee_mol_usr['Gender']?>/<?php echo $fee_mol_usr['Email'];?>/Post/<?php echo $fee_mol_post['post_pic'];?>" class="img-responsive " width="400" />
-                                                             
+                                                              <img src="fb_users/<?php echo $fee_mol_usr['Gender']?>/<?php echo $fee_mol_usr['Email'];?>/Post/<?php echo $fee_mol_post['post_pic'];?>" class="img-responsive" width="400" />
                                                               <?php
                                                         }
                                                         ?>
                                                                 <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $fee_mol_post['post_txt'];?></p> 
                                                             </div>
                                                            
-                                                         
+                                                          
                                                             
+                                                           
+                                                            
+                                                            
+                                                            
+                                                           
                                                         </div>
-                                                         <div class="col col-lg-4" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                          <div style="bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12"><!--position:absolute;-->
-                                                            <?php
-                                                                $feed_modl_licoun_exe=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]'");
-                                                                
-                                                                $feed_lk_coun=mysqli_num_rows($feed_modl_licoun_exe);
-																$ret_coments_feedmd=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														         $new_poe_cmcou_feedmd=mysqli_num_rows($ret_coments);
-
-                                                      
-                                                                ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou_feedmd;?></a></i> 
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $feed_lk_coun;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                         <div class="col-lg-12" style="padding:0px;;bottom:0px;">
-                                                         <!--position:absolute-->
+                                                    </div>
+                                                </div>
+                                                  
+                                                </div>
+                                                  <?php
+                                                 $ret_cmt_exe=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+												 $ret_cmt_count=mysqli_num_rows($ret_cmt_exe);
+												?>
+                                                  
+                                                <div class="col-lg-4" style="float:left;" >
+                                              <div class="col-lg-12" style=" border-bottom:1px dashed #eee; ">
+                                                  <!--position:absolute;bottom:35px; -->
+                                                  <span style="font-size:10px; margin-left:5px;"><i class="fa fa-pencil-square-o"></i> <?php echo $ret_cmt_count;?></span>
+                                                   </div>
+                                                 <div class="col-lg-12" >
+                                                 <!--style="padding:0px;position:absolute;bottom:0px;"-->
                                                             <form method="post" action="" id="form_<?php echo $from_count;?>">
                                                                     <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
                                                                     <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $fee_mol_post['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
-
                                                                     ?>
                                                                     <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
+                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="border-radius:0px;"  placeholder="Ink..."><!--style="width:100%; padding-left:10px;padding-right:10px; "-->
                                                                 <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
                                                                         </form>
                                                             </div>
-                                                           <div class="row col-lg-12" style="height:250px;overflow-y:scroll;">
-                                                            <?php
-												 $ret_cmt_exe=mysqli_query($conn,"select * from user_post_comment where post_id='$fee_mol_post[post_id]'");
+                                                            <div class="col-lg-12" style="height:300px;overflow-y:scroll;">
+                                                 <?php
+												 
+												 $ret_cmt_exe=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
                                                         while($ret_cmt=mysqli_fetch_array($ret_cmt_exe))
                                                         {
                                                             $us_co_de=mysqli_query($conn,"select * from users where user_id='$ret_cmt[user_id]'");
@@ -2208,14 +2056,14 @@ $from_count=0;
                                                             $us_cmt_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$use_cm[user_id]'");
                                                             $us_cmt_pic=mysqli_fetch_array($us_cmt_pic_exe);
                                                             ?>
-                                                            <div class="row  pst_cmt_body">
-                                                                <div class="col-lg-2" ><!--style="width:70px;"-->
-                                                                    <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" class="pst_head_left">
+                                                            <div class="row  pst_cmt_body" >
+                                                                <div class="col-lg-2" style="width:70px;">
+                                                                    <a data-remodal-action="confirm" href="profile.php?id=<?php echo $use_cm['user_id'] ?>" class="pst_head_left">
                                                                     <?php
                                                                     if($us_cmt_pic['image']!='')
 																	{
 																	?>
-                                                                        <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="40" height="40" style="margin-left:-15px;">
+                                                                        <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="20" height="20" style="margin-left:-15px;">
                                                                         <?php
 																	}else
 																	{
@@ -2226,8 +2074,9 @@ $from_count=0;
 																	  ?>  
                                                                     </a>
                                                                 </div>
-                                                                <div class="col-lg-10" style="padding-top:5px;">
-                                                                    <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" style="color:#000;"><?php echo $use_cm['Name']; ?></a>
+                                                                <div class="col-lg-10" >
+                                                                <!--style="padding-top:5px;"-->
+                                                                    <a data-remodal-action="confirm" href="profile.php?id=<?php echo $use_cm['user_id'] ?>" style="color:#000;"><?php echo $use_cm['Name']; ?></a>
                                                                     <br>
                                                                     <span class="pst_head_pos  pst_cmt_muted">- Inked On <?php echo $ret_cmt['comment_time'];?></span>
                                                                     <br>
@@ -2237,30 +2086,28 @@ $from_count=0;
                                                             <?php
                                                         }
                                                         ?>
-                                                           </div>
                                                         </div>
-                                                    </div>
-                                                </div>
 
-                                                
                                                 </div>
-                                            
+                                               </div>
+
+
+                                            <!--<a data-remodal-action="cancel" class="remodal-cancel" href="#">Cancel</a>
+                                            <a data-remodal-action="confirm" class="remodal-confirm" href="#">OK</a>-->
                                         </div>
                                         
                                         
-                                        
                                     
-									<!-----------------END feed post moddel----------------------->
-                                              
-                                              
-                                              
+									<!-----------------END fee cmts moddel----------------------->
                                               
                                                 <?php
                                             }
                                             ?>
-											</div></div>
+											</div>
 											</div>
                                         </div>
+                                         
+                                        
 
                                      <!-----------------------------------------END NEWS FEED------------------------------------>
                                         
@@ -2273,14 +2120,12 @@ $from_count=0;
                                
                                     <div class="bg_pst">
                                      
-
                                         <?php
                                         $industry_count=100;
                                         $industry_users_exe=mysqli_query($conn,"select * from users where industry='$usr_dis[industry]'");
                                         while($industry_users_ret=mysqli_fetch_array($industry_users_exe))
                                         {
 											++$from_count;
-
                                             $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]' order by post_id desc");
                                             while ($industry_post_rety = mysqli_fetch_array($industry_post_users_execu))
                                             {
@@ -2288,14 +2133,12 @@ $from_count=0;
                                                 $industry_user_profile_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$industry_post_rety[user_id]'");
                                                 $indus_usr_prof_pic=mysqli_fetch_array($industry_user_profile_exe);
                                                 $industry_post_usr_profi_pic=$indus_usr_prof_pic[2];
-
                                                 $industry_post_user_data_exeu=mysqli_query($conn,"select * from users where user_id='$industry_post_rety[user_id]'");
                                                 $industry_post_user_data_retry=mysqli_fetch_array($industry_post_user_data_exeu);
-
                                                 ?>
                                               
                                               
-                                                <div class="pst_box" style="background-color:#eee;height:300px">
+                                                <div class="pst_box" style="background-color:#eee;height:370px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2315,6 +2158,7 @@ $from_count=0;
 																	?>
                                                                 </a>
                                                             </div>
+                                                            
                                                             <div align="center" style="margin-top:5px;">
                                                                 <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
                                                                     <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a>
@@ -2350,26 +2194,25 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($industry_post_status_retry['status']=='Like')
                                                                 {
-
                                                                     ?>
                                                                     <a href="#"  onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
+                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
                                                             <?php
                                                         if($industry_post_rety['post_pic']!='')
                                                         {
@@ -2391,7 +2234,6 @@ $from_count=0;
                                                                     <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $industry_post_rety['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
-
                                                                     ?>
                                                                     <input type="hidden" name="cmt_ins_date_<?php echo $from_count;?>" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
                                                                 <input type="text" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
@@ -2419,13 +2261,11 @@ $from_count=0;
 									<div id="my_inked">
                                     
                                     <div class="bg_pst">
-
                                         <?php
                                         $user_profile_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
                                         $user_profile_pic=mysqli_fetch_array($user_profile_photo_exe);
                                         ?>
                                         <?php
-
                                         $count=0;
                                         $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."' order by post_id desc");
                                         while($user_profile_post=mysqli_fetch_array($user_profile_post_exet))
@@ -2434,7 +2274,7 @@ $from_count=0;
                                             ?>
                                            
                                            
-                                                <div class="pst_box" style="background-color:#eee;height:300px">
+                                                <div class="pst_box" style="background-color:#eee;height:370px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2489,26 +2329,25 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($user_profilr_bookmark['status']=='Like')
                                                                 {
-
                                                                     ?>
                                                                     <a href="#"   onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
+                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
                                                             <?php
                                                         if($user_profile_post['post_pic']!='')
                                                         {
@@ -2530,7 +2369,6 @@ $from_count=0;
                                                                 <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
                                                                 <?php
                                                                 $date=date('Y-m-d h:i');
-
                                                                 ?>
                                                                 <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
                                                                 <input type="text"  name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
@@ -2563,11 +2401,9 @@ $from_count=0;
                                             ?>
 
                                             <?php
-
                                             $count=0;
                                             $user_noted_post_exet=mysqli_query($conn,"select * from user_post where post_id='".$ret_user_noted['post_id']."'");
                                             $user_noted_post=mysqli_fetch_array($user_noted_post_exet);
-
                                             $count++;
                                             ?>
                                             <?php
@@ -2580,7 +2416,7 @@ $from_count=0;
                                             $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
                                             ?>          
                                         
-                                            <div class="pst_box" style="background-color:#eee;height:300px">
+                                            <div class="pst_box" style="background-color:#eee;height:370px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2634,28 +2470,25 @@ $from_count=0;
                                                                 <br />
                                                             </div>
                                                         </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
+                                                        <div class="col col-lg-9" style="background-color:#fff; height:370px;padding:0px;">
                                                             <div>
                                                             <?php
                                                                 if($ret_user_noted['status']=='Like')
                                                                 {
-
                                                                     ?>
                                                                     <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:400px;top:0px;" /></a>
                                                                  <?php
                                                                 }else
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:400px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            
-                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-                                                         
+                                                            <div class="pst_body" style="height:px;overflow-y:scrol; padding-right:10px; height:500px">
                                                             <?php
                                                         if($user_noted_post['post_pic']!='')
                                                         {
@@ -2665,13 +2498,11 @@ $from_count=0;
                                                         }
                                                         ?>
                                                                 <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $user_noted_post['post_txt']?></p> 
-                                                                
                                                             </div>
-                                                            
                                                             <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
                                                                 <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $user_noted_post['post_time'];?></span>
                                                             </div>
-                                                           
+                                                            
                                                             
                                                             <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
                                                               <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
@@ -2679,7 +2510,6 @@ $from_count=0;
                                                                 <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
                                                                 <?php
                                                                 $date=date('Y-m-d h:i');
-
                                                                 ?>
                                                                 <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
                                                                 <input type="text"  name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
@@ -2690,7 +2520,7 @@ $from_count=0;
                                                     </div>
                                                 </div>
                                                 
-                                      
+                                        
                                         
                                             <?php
                                         }
@@ -2711,7 +2541,7 @@ $from_count=0;
                                             if($fet_ppic['image']!='')
 											{
 											?>
-                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" height="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
                                                 <?php
 											}else{
 												?>
@@ -2726,7 +2556,6 @@ $from_count=0;
                                             <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
                                                 <div class="row">
                                                     <div class="col-lg-4" style="height:150px;width:170px; background-color:#fff;border-bottom:1px dashed #afdf7c;">
-
                                                     </div>
                                                     <div class="col-lg-8" style="height:150px;width:420px; background-color:#fff; border-bottom:1px dashed #afdf7c;">
                                                         <div class="col-lg-12" style="padding-right: 5px;">
@@ -3039,9 +2868,8 @@ $from_count=0;
                             </div>
                                     
                                     <!------END Edit Cover Model------------->
-
 	
-                            <div class="pst_main_background" style="background-color:#fff;">
+                            <div class="pst_main_background" style="background-color:#fff;" id="begin_folio">
                                 <?php
                                 $cover_pic_exe=mysqli_query($conn,"select * from user_cover_pic where user_id='$_SESSION[id]'");
                                 $cvpic=mysqli_fetch_array($cover_pic_exe);
@@ -3289,11 +3117,16 @@ $from_count=0;
 						</div>
                         <div class="tab-pane" id="hub-vr">
                             hub
+                            <a class="twitter-timeline"
+   href="https://twitter.com/TwitterDev"
+  data-aria-polite="assertive">
+Tweets by @TwitterDev
+</a>
 						</div>
                     </div>
                 </div>                 
-                <div class="col-md-3 col-lg-3 b_s sidebar" style="background-color:#fff;top:30px;">
-                    <div class="row ">
+                <div class="col-md-3 col-lg-3 b_s sidebar" style="background-color:#fff;">
+                    <div class="row">
                         <div class="col-lg-3" align="left">
                             <ul class="nav nav-tabs tabs-right vertical-text right" style="right:40px;  top:15px">
                                 <li class="active " style="font-color:solid #fff;" id="parallelogram">
@@ -3309,14 +3142,14 @@ $from_count=0;
                                     <a href="#folio-vr" data-toggle="tab" id="folio_tab">FOLIO</a>
                                 </li>
                                 <li>
-                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">WEBSITED FEED</a>
+                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">HUB</a>
                                 </li>
                                 <!--<li>
         <a href="#settings-vr" data-toggle="tab">Jun</a>
     </li>-->
                             </ul>
                         </div>
-                        <div class="col-lg-6 ">
+                        <div class="col-lg-6">
                         <div id="inadex_ads2">
                          <?php
                     $get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");
@@ -3338,7 +3171,6 @@ $from_count=0;
 
 <script type="text/javascript">
 //dairy tab change script
-
 function chng_dryfeed()
 {
 	document.getElementById('dry_feed11').style.display='block';
@@ -3409,7 +3241,6 @@ function chng_dryuinfo()
 	document.getElementById('dry_uinfo52').style.display='block';
 	
 }
-
 </script>         
      
 
@@ -3440,5 +3271,4 @@ function chng_dryuinfo()
   </script>
         
     </body>
-</html>
- 
+   </html>

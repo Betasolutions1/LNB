@@ -1971,48 +1971,27 @@ $from_count=0;
 										<div id="news_feed_like">
                                         <div id="news_feed_comment">	
                                             <?php
-											$sel1=$conn->prepare("select * from user_post order by post_id desc");
-											
-											$sel1->excute();
-											$sel1->bind_result($postid,$uid,$post,$pic,$time,$priority,$like);
-											$sel1->store_result();
-											
-											
-                                            $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");  
+                                            $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 											
                                             while($resp=mysqli_fetch_array($retpe))
                                             {
 												++$from_count;
-												
-												$sel2=$conn->prepare("select * from users where `user_id`='$uid'");
-												$sel2->execute();
-												$sel2->bind_result($u_id,$name,$email,$pwd,$gender,$bdate,$fbdate,$design,$busy,$comp,$indus,$ustatus,$phno,$desc);
-												$sel2->store_result();
-												$sel2->fetch();	
-												
                                                 $pue=mysqli_query($conn,"select * from users where user_id='$resp[user_id]'");
                                                 $pud=mysqli_fetch_array($pue);
-                                                
-												$sel3=$conn->prepare("select * from user_profile_pic where `user_id`='$uid'");
-												$sel3->execute();
-												$sel3->bind_result($p_id,$u_id,$image);
-												$sel3->store_result();
-												$sel3->fetch();
-												
-												//$pupe=mysqli_query($conn,"select * from user_profile_pic where user_id='$resp[user_id]'");
-                                                //$pupp=mysqli_fetch_array($pupe);
+                                                $pupe=mysqli_query($conn,"select * from user_profile_pic where user_id='$resp[user_id]'");
+                                                $pupp=mysqli_fetch_array($pupe);
                                                 ?>
                                               
                                                <div class="pst_box" style="background-color:#eee;height:300px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $uid; ?>" ><!--class="pst_head_left"-->
+                                                           <a href="profile.php?id=<?php echo $resp['user_id'] ?>" ><!--class="pst_head_left"-->
                                                             <?php
-                                                                if($image!='')
+                                                                if($pupp['image']!='')
 																{
 																?>
-                                                                <img src="fb_users/<?php echo $gender;?>/<?php echo $email;?>/Profile/<?php echo $image;?>" width="80" class="triangle-down" />
+                                                                <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="80" class="triangle-down" />
                                                                 <?php
 																}else
 																{
@@ -2025,52 +2004,37 @@ $from_count=0;
                                                             </div>
                                                             <div align="center" style="margin-top:5px;">
                                                                 <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $uid; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $name;?></span></a>
+                                                                    <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
                                                                     <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php echo $design;?></span>
+        <?php echo $pud['designation'];?></span>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $comp;?></span>
+                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>
                                                                     <br />
                                                                 </div>
                                                                 <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $indus;?> </span>
+                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span>
                                                                 </div>
                                                             </div>
                                                             <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
                                                             <?php
-                                                               // $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
-                                                                //$ps=mysqli_fetch_array($pse);
-                                                                //$psc=mysqli_num_rows($pse);
-																
-																//$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														        // $new_poe_cmcou=mysqli_num_rows($ret_coments);
-																
-																
-																$sel4=$conn->prepare("select * from user_post_status where post_id='$p_id' AND user_id='$_SESSION[id]' ");
-																$sel4->execute();
-																$sel4->bind_result($status_id,$post_id,$user_id,$status1);
-																$sel4->store_result();
-																$sel4->fetch();
-																$s4row=$sel4->num_rows;
-																
-																$comments=$conn->prepare("select * from user_post_comment where post_id='$postid' ");
-																$comments->execute();
-																$comments->bind_result($c_id,$cp_id,$cu_id,$comment,$ctime);
-																$comments->store_result();
-																$comments->fetch();
-																$rows=$comments->num_rows;
-																                                                      
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
+
+                                                      
                                                                 ?>
                                                                 <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $rows;?></a></i> 
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou;?></a></i> 
                                                                 </div>
                                                                 <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $like;?></a></i>
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $resp['likes'];?></a></i>
                                                                 </div>
                                                                 <br />
                                                             </div>
@@ -2078,7 +2042,7 @@ $from_count=0;
                                                         <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
                                                             <div>
                                                             <?php
-                                                                if($status1=='Like')
+                                                                if($ps['status']=='Like')
                                                                 {
 
                                                                     ?>
@@ -2089,28 +2053,28 @@ $from_count=0;
                                                                 {
                                                                    
                                                                     ?>
-                                                                <a href="#"  onClick="return like(<?php echo $postid;?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
                                                                 <?php
                                                         }
                                                         ?>
                                                             </div>
-                                                            <a href="#feepost_cmts_<?php echo $postid;?>">
+                                                            <a href="#feepost_cmts_<?php echo $resp['post_id'];?>">
                                                             <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
                                                             <?php
-                                                        if($pic!='')
+                                                        if($resp['post_pic']!='')
                                                         {
                                                             ?>
                                                            
-                                                              <img src="fb_users/<?php echo $gender;?>/<?php echo $email;?>/Post/<?php echo $pic;?>" class="img-responsive " width="400" />
+                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" />
                                                              
                                                               <?php
                                                         }
                                                         ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $post;?></p> 
+                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $resp['post_txt'];?></p> 
                                                             </div>
                                                            
                                                             <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on <?php echo $time;?></span>
+                                                                <span style="font-size:10px; margin-left:5px;"> - on <?php echo $resp['post_time'];?></span>
                                                             </div>
                                                              </a>
                                                            
@@ -2120,7 +2084,7 @@ $from_count=0;
                                                             <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
                                                             <form method="post" action="" id="form_<?php echo $from_count;?>">
                                                                     <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $postid;?>">
+                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $resp['post_id'];?>">
                                                                     <?php
                                                                     $date=date('Y-m-d h:i');
 
@@ -2141,7 +2105,7 @@ $from_count=0;
                                     
                                     
                                         
-                                           <div class="remodal" data-remodal-id="feepost_cmts_<?php echo $postid;?>" id="feepost_cmts_<?php echo $postid;?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                           <div class="remodal" data-remodal-id="feepost_cmts_<?php echo $resp['post_id'];?>" id="feepost_cmts_<?php echo $resp['post_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                            
                                                
@@ -2155,8 +2119,6 @@ $from_count=0;
 												$fee_mol_usr=mysqli_fetch_array($fee_mo_user_exe);
 												$fee_mol_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$fee_mol_post[user_id]'");
 												$fee_mol_ppic=mysqli_fetch_array($fee_mol_ppic_exe);
-												
-											
 												?>
 
   <div class="pst_box" style="background-color:#eee;height:300px">

@@ -328,7 +328,14 @@ $from_count=0;
                     $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
 					$ads=mysqli_fetch_array($get_ads_exe);
 					
+					/*$query = "select advertise_image from advertisments order by RAND() desc limit 1";
+					$stmt=$conn->prepare($query);
+					$stmt->execute();
+					$stmt->bind_result($img);
+					$stmt->fetch();*/
 					?>
+					
+					
                         <img src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
                         </div>
                     </div>
@@ -1139,8 +1146,10 @@ $from_count=0;
                                                 {
 
 
-                                                    $get_user_sugg_exe=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$club_members[user_id]' order by sug_date desc");
-                                                    $get_ur_sugg=mysqli_fetch_array($get_user_sugg_exe);
+                                                    //$get_user_sugg_exe=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$club_members[user_id]' order by sug_date desc");
+                                                    //$get_ur_sugg=mysqli_fetch_array($get_user_sugg_exe);
+													
+													$query2= "select  from tbl_suggest_topic where user_id='$club_members[user_id]' order by sug_date desc";
 
                                                     $get_club_user_deta_exe=mysqli_query($conn,"select * from users where user_id='$club_members[user_id]'");
                                                     $fet_mem_de=mysqli_fetch_array($get_club_user_deta_exe);
@@ -3319,11 +3328,21 @@ $from_count=0;
                         <div class="col-lg-6 ">
                         <div id="inadex_ads2">
                          <?php
-                    $get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");
-					$ads2=mysqli_fetch_array($get_ads_exe2);
+                    //$get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");
+					//$ads2=mysqli_fetch_array($get_ads_exe2);
+					/*$sel= "select advertise_image2 from advertisments2 order by RAND() desc limit 1";
+					$stmt1=$conn->prepare($sel);
+					$stmt1->execute();
+					$stmt1->bind_result($img1);
+					$stmt1->fetch();*/
+					$query1 = "select advertise_image2 from advertisments2 order by RAND() desc limit 1";
+					$stmt1=$conn->prepare($query1);
+					$stmt1->execute();
+					$stmt1->bind_result($img1);
+					$stmt1->fetch();
 					
 					?>
-                            <img class="b_s" src="Console/advertises2/<?php echo $ads2['advertise_image2'];?>" style="width:200px; height:900px;" />
+                            <img class="b_s" src="Console/advertises2/<?php echo $img1;?>" style="width:200px; height:900px;" />
                             </div>
                         </div>
                     </div>

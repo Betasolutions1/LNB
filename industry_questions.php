@@ -30,7 +30,7 @@ if(isset($_GET['q']))
 												$qusr_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$quser[user_id]'");
 												$qusrpic=mysqli_fetch_array($qusr_pic_exe);
 											?>
-                                            
+                                            <div class="row" style="padding:0px;">
                                                 <div class="col-lg-12 pad_0" style="height:80px; border-bottom:1px solid #afdf7c;">
                                                     <div class="col-lg-3 pad_0" style="width:80px;">
                                                         <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;" />
@@ -49,6 +49,7 @@ if(isset($_GET['q']))
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </div>
                                               <?php
 											}
 											  ?>
@@ -61,12 +62,14 @@ if(isset($_GET['q']))
    <?php
    if(isset($_GET['as']))
    {
+	   $form_answ=0;
 	   $val2=$_GET['as'];
    ?>                                          
    <?php
     $get_Qust_ans_exe=mysqli_query($conn,"select * from question where INDUSTRY_ID='$val2'");
 										while($ques_desc=mysqli_fetch_array($get_Qust_ans_exe))
 										{
+											++$form_answ;
    ?>
      <div class="row" style="padding:0px;">
                                         <div class="col-lg-12" style="border-bottom:2px solid #afdf7c">
@@ -82,7 +85,18 @@ if(isset($_GET['q']))
                                         
                                             <div class="col-lg-12 pad_0" style="border-bottom:1px solid #afdf7c;margin-bottom:10px;">
                                                 <div class="col-lg-2 pad_0" align="left" style="width:80px;">
+                                                <?php
+                                                if($$upiv['image']!='')
+												{
+												?>
                                                     <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="80" />
+                                                    <?php
+												}else{
+													?>
+                                                    <img src="images/profile/sq.PNG"  width="80">
+                                                    <?php
+												}
+													?>
                                                 </div>
                                                 <div class="col-lg-10">
                                                     <h3 class="club_headers" style="width:500px;">
@@ -98,15 +112,16 @@ if(isset($_GET['q']))
                                                 <span style="color:#a9a9a9"><?php echo $in_qwy['Name'];?></span>
                                             </div>
                                         </div>
+                                        </div>
                                         <br>
                                         <br>
                                         <br>
                                         <div class="col-lg-12" style="height:100px; padding:0px;">
                                             <div class="col-lg-12">
-                                            <form method="post" action="">
-                                            <input type="hidden" name="qus_id" id="que_id" value="<?php echo $ques_desc['q_id'];?>">
-                                                <input type="text" class="club_txt" name="ans_frms" id="ans_frms"style="margin-bottom:15px;" placeholder="Ink your reply...">
-                                                <input type="submit" style="display:none;"  onClick="return insert_answer();" >
+                                            <form method="post" action="" id="form_<?php echo $form_answ;?>">
+                                            <input type="hidden" name="qus_id" id="que_id_<?php echo $form_answ;?>" value="<?php echo $ques_desc['q_id'];?>">
+                                                <input type="text" class="club_txt" name="ans_frms_<?php echo $form_answ;?>" id="ans_frms"style="margin-bottom:15px;" placeholder="Ink your reply...">
+                                                <input type="submit" style="display:none;"  onClick="return insert_answer(<?php echo $form_answ;?>);" >
                                              </form>
                                             </div>
                                             <div class="col-lg-12" style="height:800px; overflow-y:scroll; padding:0px; border-top:2px solid #afdf7c">
@@ -122,7 +137,18 @@ if(isset($_GET['q']))
 											?>
                                                 <div class="col-lg-12 pad_0" style=" border-bottom:1px solid #afdf7c; ">
                                                     <div class="col-lg-2 pad_0" style="width:80px;">
+                                                    <?php
+                                                    if($ur_pic['image']!='')
+													{
+													?>
                                                         <img src="fb_users/<?php echo $watq['Gender'];?>/<?php echo $watq['Email'];?>/Profile/<?php echo $ur_pic['image'];?>" width="80px" />
+                                                        <?php
+													}else{
+														?>
+                                                        <img src="images/profile/sq.PNG" width="80px" >
+                                                        <?php
+													}
+														?>
                                                     </div>                                                     
                                                     <div class="col-lg-10 pad_0" style="width:810px;padding-left:15px;">
                                                         <div class="col-lg-12" style="padding:5px;padding-left:5px">

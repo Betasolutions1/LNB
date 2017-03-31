@@ -14,6 +14,7 @@ if(isset($_POST['about_data']))
 {
 	$ins_about=mysqli_query($conn,"INSERT INTO `lnb_about`( `about_description`) VALUES ('".$_POST['about_data']."')");
 }
+
 //add advertises
 if(isset($_POST['add_advertise']))
 {
@@ -48,6 +49,43 @@ if(isset($_POST['add_advertise']))
 	$ins_ads=mysqli_query($conn,"INSERT INTO `advertisments`( `ads_name`,`advertise_image`, `ads_desc`) VALUES ('$_POST[Advertise_name]','$prod_img_path','$_POST[advertise_desc]')");*/
 	header("location:add_advertise.php");
 }
+//add advertise 2
+
+//add advertises
+if(isset($_POST['add_advertise2']))
+{
+	
+	if(($_FILES['Advertise_img2']['type']=='image/gif') || ($_FILES['Advertise_img2']['type']=='image/jpeg')
+	|| ($_FILES['Advertise_img']['type2']=='image/png') || ($_FILES['Advertise_img2']['type']=='image/pjpeg')
+	&& ($_FILES['Advertise_img']['size2']<200000))
+	{
+		if($_FILES['Advertise_img2']['error']>0)
+		{
+			echo "return code:" ,$_FILES['Advertise_img2']['error'];
+		}
+		/*else if(file_exists('advertises2/'.$_FILES['Advertise_img2']['name']))
+		{
+			echo $_FILES['Advertise_img2']['name']."Already Exits";
+		}
+*/		
+		else if(move_uploaded_file($_FILES['Advertise_img2']['tmp_name'],'advertises2/'.$_FILES['Advertise_img2']['name']))
+		{
+			$prod_img_path2=$_FILES['Advertise_img2']['name'];
+			
+			$ins_ads2=mysqli_query($conn,"INSERT INTO `advertisments2`( `ads_name2`,`advertise_image2`, `ads_desc2`) VALUES ('$_POST[Advertise_name2]','$prod_img_path2','$_POST[advertise_desc2]')");
+		}
+	}else{
+		echo "<script>alert('Image Size Lessthan 2mb')</script>";
+	}
+			
+	   /* $img_name=$_FILES['Advertise_img']['name'];
+    	$img_tmp_name=$_FILES['Advertise_img']['tmp_name'];
+    	$prod_img_path=$img_name;
+		move_uploaded_file($img_tmp_name,"advertises/".$prod_img_path);
+	$ins_ads=mysqli_query($conn,"INSERT INTO `advertisments`( `ads_name`,`advertise_image`, `ads_desc`) VALUES ('$_POST[Advertise_name]','$prod_img_path','$_POST[advertise_desc]')");*/
+	header("location:add_advertise.php");
+}
+
 //add clubs
 if(isset($_POST['club_name']))
 {

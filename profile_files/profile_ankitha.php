@@ -4,7 +4,48 @@
                                                     <h1 style="padding-top:25px; padding-right:20px;color:#fff; font-size:40px; font-family:lato-regular;"><?php echo $candy['Name'];?></h1>
                                                 </div>
                                                 <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
+                                                <?php
+                                                if($candy_pic['image']!='')
+												{
+												?>
                                                     <img src="fb_users/<?php echo $candy['Gender']?>/<?php echo $candy['Email']?>/Profile/<?php echo $candy_pic['image'];?>" width="130px" style="border-radius:50%" />
+                                                    <?php
+                                                    }else
+                                                    {
+														?>
+                                                        <img src="images/profile/sq.PNG" width="80" class="triangle-down">
+                                                        <?php
+                                                    }?>
+                                                    <?php
+                                                    $chek_frndlist=mysqli_query($conn,"select * from  friend_request where who_sent_user_id='$_SESSION[id]' AND to_whom_user_id='$_GET[id]' AND status='1'");
+													$check_statct=mysqli_num_rows($chek_frndlist);
+													if($check_statct!=0)
+													{?>
+                                                    <form method="post">
+                                                    <input type="hidden" name="req_deluser_id" id="requser_id" value="<?php echo $_SESSION['id'];?>">
+                                                    <input type="hidden" name="frnd_userid" id="frnd_userid" value="<?php echo $_GET['id']?>">
+                                                    <button type="submit" onClick="delte_friend();" class="btn btn_grn">Friends</button>
+                                                    </form>
+                                                    <?php
+													}else if($check_statct==0){
+														$chek_frndlist1=mysqli_query($conn,"select * from friend_request where  to_whom_user_id='$_SESSION[id]' AND who_sent_user_id='$_GET[id]' AND status='1'");
+														$ck_syoi=mysqli_num_rows($chek_frndlist1);
+														if($ck_syoi!=0)
+														{
+															?>
+                                                            <input type="hidden" name="req_deluser_id" id="requser_id" value="<?php echo $_SESSION['id'];?>">
+                                                    <input type="hidden" name="frnd_userid" id="frnd_userid" value="<?php echo $_GET['id']?>">
+                                                            <button type="submit" onClick="delte_friend();" class="btn btr_grn">Friends</button>
+                                                            <?php
+														}else{
+													?>
+                                                    <input type="hidden" name="sent_req_urid" id="sent_req_urid" value="<?php echo $_SESSION['id'];?>">
+                                                    <input type="hidden" name="reci_req_urid" id="reci_req_urid" value="<?php echo $_GET['id'];?>">
+                                                    <button type="submit" onClick="ask_friend();" class="btn btr_grn">Add Friend</button>
+                                                    <?php
+													}
+													}
+													?>
                                                 </div>
                                                 <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
                                                     <div class="row">

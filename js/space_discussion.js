@@ -24,6 +24,7 @@ function Fourmquestions()
 					document.getElementById("forum_question").value='';
 					document.getElementById("quest_desc").value='';
 					$('#txtQuest').load('forum.php #txtQuest');
+					$('#frm_Qus').load('forum.php #frm_Qus');
                     }
                     });
                
@@ -68,16 +69,16 @@ function get_industryanswers(ans)
       document.getElementById("txtAnswe").innerHTML=this.responseText;
     }
   }
-xmlhttp.open("GET","industry_questions.php?as="+ans,true);
+xmlhttp.open("GET","industry_answer.php?as="+ans,true);
 xmlhttp.send();
 }
 
 
-function insert_answer()
+function insert_answer(faid)
 {
 	//alert('hello');
-	var que_id = document.getElementById("que_id").value;
-    var ans_frms = document.getElementById("ans_frms").value;
+	var que_id = document.getElementById("que_id_"+faid).value;
+    var ans_frms = document.getElementById("ans_frms_"+faid).value;
 	//var set_indus = document.getElementById("set_indus").value;
 	
 	//alert("hello" + que_id);
@@ -90,23 +91,23 @@ function insert_answer()
                     url: "script2.php",
                     data: dataString,
                     cache: false,
-                    success: function(html) {
+                    success: function(data) {
                     //alert(html);
-					document.getElementById("ans_frms").value='';
-					$('#txtAnswe').load('forum_ans.php #txtAnswe');
+					document.getElementById("ans_frms_"+faid).value='';
+					$('#workspace-vr').html(data);
                     }
                     });
                
         return false;
 }
 
- function sendmails()
+ function sendmails(mci)
 {
-	alert('hello');
-	var recer_user_id = document.getElementById("recer_user_id").value;
-    var mail_subject = document.getElementById("mail_subject").value;
-	var mail_desc = document.getElementById("mail_desc").value;
 	
+	var recer_user_id = document.getElementById("recer_user_id_"+mci).value;
+    var mail_subject = document.getElementById("mail_subject_"+mci).value;
+	var mail_desc = document.getElementById("mail_desc_"+mci).value;
+	alert('hello'+mci);
 	//alert("hello" + que_id);
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'recer_user_id=' + recer_user_id + '&mail_subject=' + mail_subject + '&mail_desc=' + mail_desc ;

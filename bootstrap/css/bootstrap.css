@@ -20,8 +20,6 @@ body
     margin: 0;
 }
 
-
-
 article,
 aside,
 details,
@@ -2406,11 +2404,11 @@ pre code
     margin-left: auto;
 }
 
-@media (min-width: 768px)
+/*<!--@media (min-width: 768px)
 {
     .container
     {
-        width: 750px;
+       width: 1150px !important;
     }
 }
 
@@ -2418,17 +2416,16 @@ pre code
 {
     .container
     {
-        width: 970px;
-    }
+ width: 1150px !important;    }
 }
 
 @media (min-width: 1200px)
 {
     .container
     {
-        width: 1170px;
+        width: 1150px !important;
     }
-}
+}-->*/
 
 .container-fluid
 {
@@ -5693,7 +5690,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     margin-right: 2px;
     line-height: 1.42857143;
     border: 1px solid transparent;
-    border-radius: 4px 4px 0 0;
+    border-radius: 0px 0px 0 0;
 }
 
 .nav-tabs > li > a:hover
@@ -5709,7 +5706,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     cursor: default;
     background-color: #fff;
     border: 1px solid #ddd;
-    border-bottom-color: transparent;
 }
 
 .nav-tabs.nav-justified
@@ -6031,8 +6027,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 .navbar-fixed-top
 {
     top: 0;
-    border-width: 0 0 2px;
+    border-width: 0 0 3px;
 }
+
 
 .navbar-fixed-bottom
 {
@@ -6049,7 +6046,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn
     padding-top: 18px;
     font-size: 24px;
     line-height: 20px;
-    font-family:StencilStd;
+    font-family: StencilStd;
 }
 
 .navbar-brand:hover,

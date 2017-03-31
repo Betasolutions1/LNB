@@ -113,9 +113,9 @@ if(!$_SESSION['Email'])
                         <li>
                             <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
-                         <li>
+                        <!-- <li>
                             <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
-                        </li>
+                        </li>-->
                        <?php /*?> <li>
                                         <a class="diary" style="padding-left:25px; padding-right:25px;"><span class="day" style="font-family:Stencil Std; font-size:11px;"><?php echo date("l"); ?></span><br><span class="month" style="font-family:Stencil Std; font-size:11px;"><?php echo date("F"); ?></span><br><span class="year" style="font-family:Stencil Std; font-size:11px;"><?php echo date("Y"); ?></span></a>
                                     </li>
@@ -141,6 +141,7 @@ if(!$_SESSION['Email'])
            Category</h3>
                         </div>
                         <div class="col-lg-12" style="padding:0px; overflow-y:scroll; height:230px">
+                        <div id="frm_Qus">
                         <?php
                         $dis_indu=mysqli_query($conn,"select * from add_industry");
 						while($ddii=mysqli_fetch_array($dis_indu))
@@ -154,7 +155,7 @@ if(!$_SESSION['Email'])
                             <?php
 						}
 							?>
-                          
+                          </div>
                            <!-- <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
                                 <span> <h5>Furniture &nbsp <span class="badge">43</span></h5> </span> 
                             </button>-->
@@ -184,7 +185,7 @@ if(!$_SESSION['Email'])
                                     <div class="row" style="padding:0px;">
                                         <div class="col-lg-12" align="center">
                                             <a href="#fourms" class="btn btn_grn" style="width:280px;height:50px;padding:12px ">
-                                                ASK QUESTION
+                                               RAISE A TOPIC 
 </a>
                                         </div>
                                         <br>
@@ -209,7 +210,19 @@ if(!$_SESSION['Email'])
                                             
                                                 <div class="col-lg-12 pad_0" style="height:80px; border-bottom:1px solid #afdf7c;">
                                                     <div class="col-lg-3 pad_0" style="width:80px;">
+                                                    <?php
+                                                    if($qusrpic['image']!='')
+													{
+													?>
                                                         <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;" />
+                                                        <?php
+													}else
+													{
+														?>
+                                                        <img src="images/profile/sq.PNG" width="80px" style="margin-left:0px;" >
+                                                        <?php
+													}
+														?>
                                                     </div>    
                                                     <!--width:810px;-->                                                 
                                                     <div class="col-lg-9 pad_0" style="height:80px;padding-left:15px;">

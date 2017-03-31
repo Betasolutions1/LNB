@@ -1,13 +1,66 @@
 
+$(document).ready(function(){
+	setInterval(function(){
+		$("#sensex_today").load('index.php #sensex_today');
+    }, 2000);
+});
+$(document).ready(function(){
+	setInterval(function(){
+		$("#index_add1").load('index.php #index_add1');
+    }, 5000);
+});
+$(document).ready(function(){
+	setInterval(function(){
+		$("#inadex_ads2").load('index.php #inadex_ads2');
+    }, 2000);
+});
 
 /*function lnb_club()
 {
 	alert("club");
 }*/
 
+//------------users role in their company--
+
+function rlioncopmrole()
+{
+	//alert('hello');
+	var user_role=document.getElementById('user_role').value;
+	var dataString = 'user_role=' + user_role ;
+	$.ajax({
+		type: "POST",
+		url:"script_code.php",
+		data:dataString,
+		cache:false,
+		success: function(html){
+			$('#role').load('index.php #role');
+		}
+	});
+	return false;
+}
+
+//--------------------user club personal description---------
+
+function user_persdo_descbhg()
+{
+	//alert('hello');
+	var user_pers_desc=document.getElementById('user_pers_desc').value;
+	var dataString = 'user_pers_desc=' + user_pers_desc ;
+	$.ajax({
+		type: "POST",
+		url:"script_code.php",
+		data:dataString,
+		cache:false,
+		success: function(html){
+			$('#user_pinoo').load('index.php #user_pinoo');
+		}
+	});
+	return false;
+}
+
 function lnb_club()
 {
-	alert("hello" );
+	//alert("hello" );
     var club_user_name  = document.getElementById("club_user_name").value;
     var club_pwd = document.getElementById("club_pwd").value;
 	
@@ -40,7 +93,11 @@ function space_disscussion()
 	 var dis_company  = document.getElementById("dis_company").value;
      var disscussion_topic = document.getElementById("disscussion_topic").value;
 	
-	
+	if(disscussion_topic.length>160)
+	{
+		document.getElementById('discu_valid').style.display='block';
+		return false;
+	}
 	
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'dis_company=' + dis_company + '&disscussion_topic=' + disscussion_topic ;
@@ -127,6 +184,27 @@ function change_to(str)
 	
 }
 
+function changestatus(srt)
+{
+	//alert('trhtrfh');
+	var dataString = 'todo_status1=' + srt ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					
+					$('#todo_tasks_refresh').load('index.php #todo_tasks_refresh');
+                    }
+                    });
+               
+        return false;
+}
+//ledger insertion
 function ledger_insert() {
 	alert("hello" );
 	var led_cur_date  = document.getElementById("led_cur_date").value;
@@ -155,9 +233,24 @@ function ledger_insert() {
                
         return false;
 }
+//disable debit
+function disable_debit()
+{
+	document.getElementById('ledger_debit').style.display='none';
+}
+//disable credit
+function diable_credit()
+{
+	document.getElementById('ledger_credit').style.display='none';
+}
+function show_credit_debit()
+{
+	document.getElementById('ledger_debit').style.display='block';
+	document.getElementById('ledger_credit').style.display='block';
+}
 
 function todoinsertions() {
-	alert("hello" );
+	//alert("hello" );
 	var todo_date  = document.getElementById("todo_date").value;
 	var todo_title  = document.getElementById("todo_title").value;
     var todo_contacts  = document.getElementById("todo_contacts").value;
@@ -184,12 +277,34 @@ function todoinsertions() {
         return false;
 }
 
+//todo change select
+
+function getodotype(vali)
+{
+	if (vali=="") {
+    document.getElementById("todo_tasks_refresh").innerHTML="";
+    return;
+  } 
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("todo_tasks_refresh").innerHTML=this.responseText;
+    }
+  }
+xmlhttp.open("GET","todotasks.php?q="+vali,true);
+xmlhttp.send();
+}
 
 //----add skills---
 
 function add_user_skill()
 {
-	alert("hello" );
+	//alert("hello" );
 	var skill_name  = document.getElementById("skill_name").value;
     var skill_rate  = document.getElementById("skill_rate").value;
    
@@ -222,7 +337,7 @@ function add_user_skill()
 //---ADD folio--
 function folio_ins_desc()
 {
-	alert("folio");
+	//alert("folio");
 	var folio_desc  = document.getElementById("folio_desc").value;
   
     // Returns successful data submission message when the entered information is stored in database.
@@ -249,7 +364,7 @@ function like(lpost_id,luser_id) {
 	//alert("hello" );
     //var lpost_id=$(this).attr('id');
 	//var luser_id=$(this).attr('data-src');
-	alert("hello" + luser_id );
+	
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'luser_id=' + luser_id + '&lpost_id=' + lpost_id;
       
@@ -261,14 +376,14 @@ function like(lpost_id,luser_id) {
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					//document.getElementById("firstname").select();
-					$('#news_feed_like').load('index2.php #news_feed_like');
-					$('#my_industry').load('index2.php #my_industry');
-					$('#my_inked').load('index2.php #my_inked');
-					//$('#industry_likes').load('index2.php #industry_likes');
-					//$('#inked_likes').load('index2.php #inked_likes');
+					$('#news_feed_like').load('index.php #news_feed_like');
+					$('#my_industry').load('index.php #my_industry');
+					$('#my_inked').load('index.php #my_inked');
+				  // $('#industry_likes').load('index.php #industry_likes');
+					//$('#inked_likes').load('index.php #inked_likes');
 					$('#noted_likes').load('index.php #noted_likes');
-					
+					$('#profile_inked_posts').load('profile.php #profile_inked_posts');
+					$('#profile_noted_post').load('profile.php #profile_noted_post');
 					
                     }
                     });
@@ -280,7 +395,7 @@ function unlike(ulpost_id,uluser_id) {
 	//alert("hello" );
    // var ulpost_id=$(this).attr('id');
 	//var uluser_id=$(this).attr('data-src');
-	alert("hello" + ulpost_id );
+	//alert("hello" + ulpost_id );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'uluser_id=' + uluser_id + '&ulpost_id=' + ulpost_id;
       
@@ -292,13 +407,15 @@ function unlike(ulpost_id,uluser_id) {
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					//document.getElementById("firstname").select();,
+					
 					$('#news_feed_like').load('index.php #news_feed_like');
 					$('#my_industry').load('index.php #my_industry');
 					$('#my_inked').load('index.php #my_inked');
 				  // $('#industry_likes').load('index.php #industry_likes');
 					//$('#inked_likes').load('index.php #inked_likes');
 					$('#noted_likes').load('index.php #noted_likes');
+					$('#profile_inked_posts').load('profile.php #profile_inked_posts');
+					$('#profile_noted_post').load('profile.php #profile_noted_post');
 					
 					
                     }
@@ -316,7 +433,7 @@ function ins_suggest() {
 	var sug_date = document.getElementById("sug_date").value;
     if(sugg_info.length > 160) //i got a problem with this one i think
     {
-     alert("Suggest info must be less than 160 characters");
+     document.getElementById('sugg_valid').style.display='block';
      return false;
     }else
 	{
@@ -392,6 +509,11 @@ function inse_msg() {
     var chat_txt  = document.getElementById("chat_txt").value;
     var msg_time_date = document.getElementById("msg_time_date").value;
 	 var msg_user_id = document.getElementById("msg_user_id").value;
+	 if(chat_txt.length > 160)
+	 {
+		 document.getElementById('network_valid').style.display='block';
+		 return false;
+	 }
 	//alert("hello" + user_id );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'chat_txt=' + chat_txt + '&msg_time_date=' + msg_time_date + '&msg_user_id=' +msg_user_id;
@@ -416,7 +538,7 @@ function inse_msg() {
 
 function refrals_insertins()
 {
-	alert("hello");
+	//alert("hello");
 	var club_memb  = document.getElementById("club_memb").value;
     var tag_title = document.getElementById("tag_title").value;
 	var vendor_name = document.getElementById("vendor_name").value;
@@ -539,9 +661,8 @@ function remove_club(club_rm_id)
 function ins_posts()
 {
 	//alert('hello');
-	 var post_data  = document.getElementById("post_data").value;
-    
-	
+	 tinyMCE.triggerSave();
+   post_data= $('#post_data').submit();
 	//alert("hello" + user_id );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'post_data=' + post_data  ;
@@ -550,10 +671,13 @@ function ins_posts()
                     $.ajax({
                     type: "POST",
                     url: "script_code.php",
-                    data: dataString,
+                    data:  post_data,
                     cache: false,
                     success: function(html) {
                     //alert(html);
+					if (typeof(tinyMCE) != 'undefined') {  
+                     $('#post_data').val(''); 
+                      }
 					document.getElementById("post_data").value='';
 					
 					$('#news_feed').load('index.php #news_feed');
@@ -571,7 +695,7 @@ function ins_posts()
 
 function add_work_projects()
 {
-	alert('hello');
+	//alert('hello');
 	 var project_name  = document.getElementById("project_name").value;
     var project_desc = document.getElementById("project_desc").value;
 	var project_image = document.getElementById("project_image").value;
@@ -599,14 +723,14 @@ function add_work_projects()
 	
 }
 
-function comment_insertion()
+function comment_insertion(ucid)
 {
-	alert('hello');
-	var cmt_txt  = document.getElementById("cmt_txt").value;
-    var cmt_post_id = document.getElementById("cmt_post_id").value;
-	var cmt_ins_date = document.getElementById("cmt_ins_date").value;
+	//alert('hello');
+	var cmt_txt  = document.getElementById("cmt_txt_"+ucid).value;
+    var cmt_post_id = document.getElementById("cmt_post_id_"+ucid).value;
+	var cmt_ins_date = document.getElementById("cmt_ins_date_"+ucid).value;
 	
-	//alert("hello" + user_id );
+	//alert("hello" + ucid );
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'cmt_txt=' + cmt_txt + '&cmt_post_id=' + cmt_post_id + '&cmt_ins_date=' +cmt_ins_date ;
       
@@ -618,9 +742,17 @@ function comment_insertion()
                     cache: false,
                     success: function(html) {
                     //alert(html);
-					document.getElementById("cmt_txt").value='';
+					document.getElementById("cmt_txt_"+ucid).value='';
 					
 					$('#news_feed').load('index.php #news_feed');
+					//$('#news_feed_like').load('index.php #news_feed_like');
+					$('#my_industry').load('index.php #my_industry');
+					$('#my_inked').load('index.php #my_inked');
+				  // $('#industry_likes').load('index.php #industry_likes');
+					//$('#inked_likes').load('index.php #inked_likes');
+					$('#noted_likes').load('index.php #noted_likes');
+					$('#profile_inked_posts').load('profile.php #profile_inked_posts');
+					$('#profile_noted_post').load('profile.php #profile_noted_post');
                     }
                     });
                
@@ -630,7 +762,7 @@ function comment_insertion()
 
 function clientinsertions()
 {
-	alert('hello');
+	//alert('hello');
 	var client_name  = document.getElementById("client_name").value;
     var client_company = document.getElementById("client_company").value;
 	var client_phone_no = document.getElementById("client_phone_no").value;
@@ -658,6 +790,67 @@ function clientinsertions()
                
         return false;
 }
+
+//add user quotes
+
+function inseruserquote()
+{
+	alert('hello');
+	var user_quote  = document.getElementById("user_quote").value;
+    
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'user_quote=' + user_quote ;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("user_quote").value='';
+					
+					$('#disp_user_quote').load('index.php #disp_user_quote');
+                    }
+                    });
+               
+        return false;
+
+}
+
+function insertaccomplishments()
+{
+	//alert('hello');
+	var from_year  = document.getElementById("from_year").value;
+    var to_year = document.getElementById("to_year").value;
+	var acomp_title = document.getElementById("acomp_title").value;
+	var acomp_desc = document.getElementById("acomp_desc").value;
+	
+	//alert("hello" + user_id );
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'from_year=' + from_year + '&to_year=' + to_year + '&acomp_title=' +acomp_title + '&acomp_desc=' + acomp_desc;
+      
+                    // AJAX code to submit form.
+                    $.ajax({
+                    type: "POST",
+                    url: "script_code.php",
+                    data: dataString,
+                    cache: false,
+                    success: function(html) {
+                    //alert(html);
+					document.getElementById("acomp_desc").value='';
+					document.getElementById("acomp_title").value='';
+					
+					$('#user_acomplis').load('index.php #user_acomplis');
+                    }
+                    });
+               
+        return false;
+}
+
 
 
 function add_work_projects()

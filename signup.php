@@ -137,6 +137,8 @@ if(isset($_POST['sub_stage1']))
             }
 
 </style>
+
+
         <style type="text/css">
             .photostack-perspective
             {

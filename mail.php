@@ -77,43 +77,7 @@ if(!$_SESSION['Email'])
 </style>
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php" style="color:#808080;font-family:Stencil Std;">
-    LN.BUSINESS</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
-                             <form method="get" action="search.php">
-                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;" placeholder="Search">
-                            <input type="submit" name="sub_search" style="display:none;">
-                            </form>
-                        </li>
-                        <li style=" padding-top:11px; padding-right:30px; padding-left:30px">
-                            <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
-                        </li>
-                        <li >
-                            <a href="forum.php" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px; ">F</a>
-                        </li>
-                        <li class="active">
-                            <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px; color:#808080">M</a>
-                        </li>
-                        <li>
-                            <a href="#contact" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;color:#808080">S</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </nav>
+       <?php include "inc/header_m.php" ?>
         <div class="container-fluid paper" style=" padding-top: 30px;">
             <div class="row" style="overflow-x:none;"> 
                 <div class="col-lg-4 col-md-4 pad_0 pst_box row" style="height:1100px; background-color:#fff;">

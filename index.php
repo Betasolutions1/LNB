@@ -250,90 +250,62 @@ $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_i
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container" style="padding-right:2px;">
-                <div class="navbar-header">
-                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>-->
-                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;padding-left:35px;">
-    LN.BUSINESS</a>
+<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;">
+						<div class="container">
+								<div class="navbar-header ">
+										<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+												<span class="sr-only">Toggle navigation</span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+												<span class="icon-bar"></span>
+										</button> -->
+										<a class="navbar-brand" href="#" style="font-family:Stencil Std;color: #808080;">
+		LN BUSINESS</a>
+								</div>
+								<div id="navbar" class="collapse navbar-collapse">
+										<ul class="nav navbar-nav">
 
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                       <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
-                             <form method="get" action="search.php">
-                            <input type="text" name="search_data" id="search_data" style="width:350px; height:30px;color:#808080;font-fsmily:lato;border:1px solid #afdf7c;" placeholder=" Search">
-                            <input type="submit" name="sub_search" style="display:none;">
-                            </form>
-                        </li>
-                        <li style=" padding-top:11px; padding-right:30px; padding-left:30px">
-                            <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
-                        </li>
-                        <li class="active">
-                            <a href="forum.php" style="font-family:Stencil Std; color:#fff;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
-                        </li>
-                        <li>
-                            <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
-                        </li>
-                        <li>
-                            <a href="logout.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
-                        </li>
-                    <!--    <li>
-                            <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
-                        </li>-->
-
-
-                    </ul>
-                     <div class="row" style="float:right;">
-                       <div class="col-lg-5" style="height:50px;line-height:13px;padding-top:3px;left:40px;">
-                            <p class="diary" style="padding-top:0px; padding-left:50px;color:#808080; line-height:13px;"><span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:10px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:10px;">2016</span></p>
-                        </div>
-                        <div  class="col-lg-2" style="height:50px;padding:0px;">
-                            <!--<hr style="width:0px; height:10px;" class="vertical" />-->
-                            <div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;position:absolute; left:65px;" class="line_div">
+												<li style=" padding-left:30px; padding-top:10px; padding-right:100px; ">
+													<div style="background-color:#808080;padding-right:5px;">
+														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
+														<i class="fa  fa-2x fa-search" style="color:#fff; padding-top:5px;"></i>
+												</div>
+												</li>
+												<li>
+													<i class="fa fa-3x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
+												</li>
+												<li >
+														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
+												</li>
+												<li>
+														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
+												</li>
+																							 <li style="height:50px;line-height:13px;padding-top:3px;">
+														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
+															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
+															<br>
+															<span class="month" style="font-family:Stencil Std; font-size:10px;">March</span>
+															<br>
+															<span class="year" style="font-family:Stencil Std; font-size:10px;">2017</span></p>
+												</li>
+												<li style="height:50px;">
+														<!--<hr style="width:0px; height:10px;" class="vertical" />-->
+														<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
 </div>
-                        </div>
-                        <div class="col-lg-5" style="height:50px;padding:0px;padding-left:40px;">
-                            <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:0px;color:#808080">26</span>
-                        </div>
-                        </div>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </nav>
+												</li>
+												<li style="height:50px; float:right;">
+														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080;">31</span>
+												</li>
+										</ul>
+								</div>
+								<!--/.nav-collapse -->
+						</div>
+				</nav>
         <div class="container paper" style="width:100%;">
         <div class="container " style=" padding-top: 30px;">
             <div class="row">
-                <div class="col-lg-3 col-md-4" align="center">
-                <!--padding-bottom:150px;-->
-                    <div class="jumbotron d_shdw" style="padding-top:0px;border-radius:0px;">
-
-                        <div  style="margin-left:-60px;height:140px;width:280px;background:url()">
-                      <?php /*?>  <h2><?php echo $ads['ads_name'];?></h2>
-                        <p style="text-align:justify;width:250px;font-size:12px;color:#000;;"><?php echo $ads['ads_desc']?></p><?php */?>
-
-                        <img src="https://chart.finance.yahoo.com/t?s=%5eBSESN&amp;lang=en-IN&amp;region=IN&amp;width=280&amp;height=180" alt="S&amp;P BSE SENSEX (^BSESN)" width="280" height="190" id="sensex_today">
-
-                        </div>
-
-                    </div>
-                    <div class="jumbotron banner_1_sticky sticky" >
-                    <div id="index_add1">
-                     <?php
-                    $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
-					$ads=mysqli_fetch_array($get_ads_exe);
-
-					?>
-                        <img src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6  ">
+                
+                <div class="col-lg-12 col-md-12">
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
                             <ul class="nav nav-tabs " id="id_hover">
@@ -1058,38 +1030,39 @@ $from_count=0;
                             <div class="club_sub_div_height">
                                     <ul class="nav nav-tabs">
                                         <li class="active">
-                                            <a href="#tab8" data-toggle="tab" onClick="return club_tab8();">
-                                             <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
-                                             <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" />
-                                              <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>
+                                            <a href="#tab8" data-toggle="tab">Club</a>
+                                             <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
+                                             <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
+                                              <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>-->
                                         </li>
                                         <li class="hover_li">
-                                            <a href="#tab9" data-toggle="tab" onClick="return clubbind_tab9();">
-                                            <img id="clubingb_tab21" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubingb_tab22"  src="images/others/s_n_1.png" width="70" />
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Clubbing</h5>
-                                             </a>
+                                            <a href="#tab9" data-toggle="tab" >Clubbing</a>
+                                            <!-- <img id="clubingb_tab21" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubingb_tab22"  src="images/others/s_n_1.png" width="70" /> -->
+                                           <!-- <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Clubbing</h5>
+                                             </a>-->
                                         </li>
                                         <li class="hover_li">
-                                            <a href="#tab10" data-toggle="tab" onClick="return tagme_tab10();">
-                                            <img id="clubtagme_tab31" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubtagme_tab32"  src="images/others/s_n_1.png" width="70" />
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag Me</h5>
-                                             </a>
+                                            <a href="#tab10" data-toggle="tab" >Tag Me</a>
+                                            <!-- <img id="clubtagme_tab31" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubtagme_tab32"  src="images/others/s_n_1.png" width="70" /> -->
+                                            <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag Me</h5>
+                                             </a>-->
                                         </li>
                                         <li class="hover_li">
-                                            <a href="#tab11" data-toggle="tab" onClick="return tag_tab11();">
-                                            <img id="clubtag_tab41" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" />
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag</h5>
-                                             </a>
+                                            <a href="#tab11" data-toggle="tab" >Tag</a>
+                                            <!-- <img id="clubtag_tab41" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" /> -->
+                                            <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag</h5>
+                                             </a>-->
                                         </li>
                                         <li class="hover_li">
-                                            <a href="#tab12" data-toggle="tab" onClick="return settigs_tab12();">
-                                            <img id="clubsettings_tab51" style="display:none" src="images/others/s_n_2.png" width="70" />
-                                            <img id="clubsettings_tab52"  src="images/others/s_n_1.png" width="70" />
-                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Settings</h5>
-                                             </a>
+                                            <!-- <a href="#tab12" data-toggle="tab" onClick="return settigs_tab12();"> -->
+                                            <!-- <img id="clubsettings_tab51" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubsettings_tab52"  src="images/others/s_n_1.png" width="70" /> -->
+                                            <!-- <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Settings</h5> -->
+                                             <!-- </a> -->
+                                            <a href="#tab12" data-toggle="tab" >Settings</a>
                                         </li>
 
                                          <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
@@ -1100,7 +1073,10 @@ $from_count=0;
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab8">
                                         <!-------------------------------------club sheet BEGIN------------------------------------------------->
-                                            <div>
+                                            <div class="col-lg-2 grow" align="center" style="
+    padding: 10px;
+    margin: 10px;
+">
                                                 <div>
 
                                                     <h4 class="club_headers">
@@ -1148,30 +1124,39 @@ $from_count=0;
                                                     $gclb_uspi=mysqli_fetch_array($get_pic_clb);
                                                     ?>
 
-                                                    <div class="col-lg-4 grow" align="center">
-                                                        <h4>
-                                                            <?php echo $fet_mem_de['industry'];?></h4>
-                                                            <?php
+                                                    <div class="col-lg-2 grow" align="center" style="
+    padding: 10px;
+    margin: 10px;
+">
+													<div class="row">
+                                                    <div class="col-md-1" style="float:left;margin-left:-15px" align="left">
+                                                    <?php
                                                             if($gclb_uspi['image']!='')
 															{
 															?>
 
-                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="70" style="margin-top:5px;">
+                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="50" style="margin-top:5px;">
                                                         <?php
 															}else
 															{
 														?>
-                                                        <img src="images/profile/sq.PNG" width="70" style="margin-top:5px;">
+                                                        <img src="images/profile/sq.PNG" width="50" style="margin-top:5px;">
                                                         <?php
 															}
 														?>
-                                                        <br>
+                                                    </div>
+                                                    <div class="col-md-11" style="margin-top: -65px;margin-left: 50px;text-align:initial">
+                                                     <h5>
+                                                            <?php echo $fet_mem_de['industry'];?></h5>
+                                                           
                                                         <span><?php echo $fet_mem_de['Name'];?></span>
                                                         <br>
                                                         <span><?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?></span>
                                                         <br>
                                                         <span><?php echo $fet_mem_de['industry'];?></span>
-                                                        <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                     <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
 
                                                         <?php
                                                         if($get_ur_sugg['suggest_topic']!='')
@@ -1202,8 +1187,30 @@ $from_count=0;
                                                             }
                                                         }
                                                         ?>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                     <p><?php echo $fet_mem_de['description'];?></p>
+                                                     </div>
+                                                    </div>
+                                                       
+                                                            <?php /*?><?php
+                                                            if($gclb_uspi['image']!='')
+															{
+															?>
 
-                                                        <p><?php echo $fet_mem_de['description'];?></p>
+                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="70" style="margin-top:5px;">
+                                                        <?php
+															}else
+															{
+														?>
+                                                        <img src="images/profile/sq.PNG" width="70" style="margin-top:5px;">
+                                                        <?php
+															}
+														?><?php */?>
+                                                        
+                                                       
+
+                                                       
                                                     </div>
                                                     <?php
                                                 }
@@ -1268,23 +1275,16 @@ $from_count=0;
                                         </div>
                                         <div class="tab-pane" id="tab9">
                         <!-------------------------------BEGIN networking------------------------------------------------------------->
-                                            <h4 class="club_headers">
+                                            <div class="row" style="margin: 10px;
+    border: 2px solid #808080;max-height:450px">
+                                            <br>
+                                            <div class="club_suggest_top_div row col-md-12" align="center" style="margin-top:-15px">
+                                            <h4 class="club_headers" style="color:#fff;text-align:center">
                                                 Networking </h4>
-                                            <form method="post"  action="">
-                                            <!--maxlength="160"-->
-                                                <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
-                                                <?php
-                                                $msg_date=date("Y-m-d h:i");
-                                                ?>
-                                                <input type="hidden" name="msg_time_date" id="msg_time_date" value="<?php echo $msg_date;?>"/>
-                                                <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php echo $_SESSION['id']?>">
-                                                <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
-                                            </form>
-                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div>
-                                            <br>
-                                            <br>
-                                            <div id="club_networks">
-                                            <div class="club_network">
+                                                </div>
+                                                <div class="col-md-12">
+                                                 <div id="club_networks">
+                                            <div class="club_network" style="height:300px">
                                                 <?php
                                                 $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
                                                 while($grp_ct=mysqli_fetch_array($group_chat_exe))
@@ -1295,8 +1295,8 @@ $from_count=0;
                                                     $gp_det=mysqli_fetch_array($gp_user_details_exe);
 
                                                     ?>
-                                                    <div class="row club_network_row" style="width:100%;">
-                                                        <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
+                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;">
+                                                        <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
                                                             <?php
                                                             if($gp_ppic['image']!='')
@@ -1314,23 +1314,17 @@ $from_count=0;
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-10 club_msg_shape" style=" height:80px; background-color:#eee; padding-right:0px;width:86%;" align="left">
-                                                        <span style="text-align:right; color:#d3d3d3;font-size:10px;">
-    <?php echo $gp_det['Name'];?> - <?php echo $gp_det['company']?> - <?php echo $gp_det['industry'];?> </span>
-                                                            <span class="pull-right" style="text-align:right; color:#d3d3d3;font-size:10px;"><?php echo $grp_ct['time'];?> </span>
-                                                            <p> <?php echo $grp_ct['chat_txt'];?></p>
+                                                        <span style="text-align:right; color:#fff;font-size:10px;">
+    <?php echo $gp_det['Name'];?> / <?php echo $gp_det['company']?> / <?php echo $gp_det['industry'];?> </span>
+                                                            <span class="pull-right" style="text-align:right; color:#fff;font-size:10px;"><?php echo $grp_ct['time'];?> </span>
+                                                            <p style="color:#fff"> <?php echo $grp_ct['chat_txt'];?></p>
                                                         </div>
-                                                    </div>
+                                                  
+                                                   </div> 
+                                                  
                                                     <?php
                                                 }
                                                 ?>
-
-
-
-
-
-
-
-
 
                                                 <?php /*?>  <div class="row club_network_row" style="width:100%;">
                                                     <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
@@ -1348,6 +1342,26 @@ $from_count=0;
 
 												</div>
                                             </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                <form method="post"  action="">
+                                            <!--maxlength="160"-->
+                                                <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
+                                                <?php
+                                                $msg_date=date("Y-m-d h:i");
+                                                ?>
+                                                <input type="hidden" name="msg_time_date" id="msg_time_date" value="<?php echo $msg_date;?>"/>
+                                                <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php echo $_SESSION['id']?>">
+                                                <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
+                                            </form>
+                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div>
+                                            <br>
+                                            <br>
+                                            </div>
+                                                </div>
+                                            
+                                            
+                                           
                        <!--------------------------------------END NETWORKING----------------------------------------------------->
 
                                         </div>
@@ -3292,10 +3306,9 @@ $from_count=0;
 						</div>
                     </div>
                 </div>
-                <div class="col-md-3 col-lg-3 b_s sidebar" style="background-color:#fff;top:30px;">
-                    <div class="row ">
-                        <div class="col-lg-3" align="left">
-                            <ul class="nav nav-tabs tabs-right vertical-text right" style="right:40px;  top:15px">
+
+                        <div  align="right">
+                            <ul class="nav nav-tabs tabs-right vertical-text right" style="position:fixed;top:90px;right:100px;background:#fff;width:0px;">
                                 <li class="active " style="font-color:solid #fff;" id="parallelogram">
                                     <a href="#workspace-vr" data-toggle="tab" id="workspace_tab">WORKSPACE</a>
                                 </li>
@@ -3316,7 +3329,7 @@ $from_count=0;
     </li>-->
                             </ul>
                         </div>
-                        <div class="col-lg-6 ">
+                         <?php /* <div class="col-lg-6 ">
                         <div id="inadex_ads2">
                          <?php
                     $get_ads_exe2=mysqli_query($conn,"select * from advertisments2 order by RAND() desc limit 1");
@@ -3326,15 +3339,15 @@ $from_count=0;
                             <img class="b_s" src="Console/advertises2/<?php echo $ads2['advertise_image2'];?>" style="width:200px; height:900px;" />
                             </div>
                         </div>
-                    </div>
-                    <!-- Widget -->
-                    <!-- // Widget END -->
-                </div>
+												*/?>
+
             </div>
             <div>
 </div>
         </div>
     </div>
+		<footer>
+		</footer>
 
 <script type="text/javascript">
 //dairy tab change script

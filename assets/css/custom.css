@@ -13,7 +13,15 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
-
+footer
+{
+      position:fixed;
+      bottom:0;
+      left:0px;
+      width:100%;
+      background-color:#808080;
+      height:7%;
+}
 .pst_cmt_wid
 {
     width: 550px;
@@ -25,11 +33,11 @@
 }
 
 .paper {
-            
+
             width: 100%;
             height: 100%;
             margin: 0 auto;
-            
+
             position: relative;
             color: #444;
             line-height: 20px;
@@ -52,8 +60,8 @@
             -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
             -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
             box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-            
-            
+
+
             }
 
 .ws_ta_tab_a
@@ -249,7 +257,10 @@ ul
 {
     margin-right: -1px;
 }
-
+li>a
+{
+  color:#808080;
+}
 .tabs-right>li
 {
     margin-left: -1px;
@@ -260,7 +271,7 @@ ul
             .tabs-left>li.active>a:hover,
             .tabs-left>li.active>a:focus
 {
-	
+
     border-bottom-color: #ddd;
     border-right-color: transparent;
 }
@@ -269,7 +280,7 @@ ul
             .tabs-right>li.active>a:hover,
             .tabs-right>li.active>a:focus
 {
-    background: #afdf7c;
+    background: #808080;
     color: #fff;
     -webkit-clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
     clip-path: polygon(0 0, 70% 0, 100% 100%, 30% 100%);
@@ -287,6 +298,10 @@ ul
     border-radius: 0 4px 4px 0;
     margin-right: 0;
 }
+.nav-tabs>li>a:hover
+{
+  background: #808080;
+}
 
 .vertical-text
 {
@@ -301,7 +316,10 @@ ul
     width: 180px;
     margin-bottom: 110px;
 }
-
+/*.tabs-right>ul>li:hover
+{
+  background: #808080;
+}*/
 .vertical-text>li>a
 {
     border-bottom: 1px solid #ddd;
@@ -569,7 +587,7 @@ ul
 
 ::-webkit-scrollbar-thumb:window-inactive
 {
-	
+
 }
 
 .club_suggest_top_div
@@ -803,22 +821,18 @@ ul
 {
   border-radius: 5px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: opacity 0.3s ease-in-out;   
+    transition: opacity 0.3s ease-in-out;
 }
 
 .triangle-down {
 /*-webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
 clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);*/
     border:3px solid #fff;
-    
-	
+
+
 }
 .sidebar {
   position: -webkit-sticky;
   position: sticky;
   top: 30px;
 }
-
-
-
-

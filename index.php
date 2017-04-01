@@ -305,7 +305,11 @@ $from_count=0;
         <div class="container " style=" padding-top: 30px;">
             <div class="row">
                 
+<<<<<<< HEAD
                 <div class="col-lg-12 col-md-12">
+=======
+                <div class="col-lg-6  ">
+>>>>>>> 27f9d20a7f1dd7ef731f3787bde27ba50b6fd40a
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
                             <ul class="nav nav-tabs " id="id_hover">
@@ -1030,6 +1034,7 @@ $from_count=0;
                             <div class="club_sub_div_height">
                                     <ul class="nav nav-tabs">
                                         <li class="active">
+<<<<<<< HEAD
                                             <a href="#tab8" data-toggle="tab">Club</a>
                                              <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
                                              <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
@@ -1055,6 +1060,33 @@ $from_count=0;
                                             <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" /> -->
                                             <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag</h5>
                                              </a>-->
+=======
+                                            <a href="#tab8" data-toggle="tab" onClick="return club_tab8();">
+                                             <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
+                                             <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
+                                              <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>
+                                        </li>
+                                        <li class="hover_li">
+                                            <a href="#tab9" data-toggle="tab" onClick="return clubbind_tab9();">
+                                            <!-- <img id="clubingb_tab21" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubingb_tab22"  src="images/others/s_n_1.png" width="70" /> -->
+                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Clubbing</h5>
+                                             </a>
+                                        </li>
+                                        <li class="hover_li">
+                                            <a href="#tab10" data-toggle="tab" onClick="return tagme_tab10();">
+                                            <!-- <img id="clubtagme_tab31" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubtagme_tab32"  src="images/others/s_n_1.png" width="70" /> -->
+                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag Me</h5>
+                                             </a>
+                                        </li>
+                                        <li class="hover_li">
+                                            <a href="#tab11" data-toggle="tab" onClick="return tag_tab11();">
+                                            <!-- <img id="clubtag_tab41" style="display:none" src="images/others/s_n_2.png" width="70" />
+                                            <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" /> -->
+                                            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag</h5>
+                                             </a>
+>>>>>>> 27f9d20a7f1dd7ef731f3787bde27ba50b6fd40a
                                         </li>
                                         <li class="hover_li">
                                             <!-- <a href="#tab12" data-toggle="tab" onClick="return settigs_tab12();"> -->
@@ -1062,7 +1094,11 @@ $from_count=0;
                                             <img id="clubsettings_tab52"  src="images/others/s_n_1.png" width="70" /> -->
                                             <!-- <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Settings</h5> -->
                                              <!-- </a> -->
+<<<<<<< HEAD
                                             <a href="#tab12" data-toggle="tab" >Settings</a>
+=======
+																						<a href="#tab12" data-toggle="tab" >Settings</a>
+>>>>>>> 27f9d20a7f1dd7ef731f3787bde27ba50b6fd40a
                                         </li>
 
                                          <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>

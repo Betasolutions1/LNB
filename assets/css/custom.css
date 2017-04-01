@@ -1,5 +1,15 @@
 
+.tab_border
+{
+border-bottom: 2px solid #808080;
 
+
+}
+
+.tab_trans
+{
+  background: transparent;
+}
 .pst_box:hover
 {
     border-radius: 5px;
@@ -41,7 +51,8 @@ footer
             position: relative;
             color: #444;
             line-height: 20px;
-            border: 1px solid #d2d2d2;
+            /*border: 1px solid #d2d2d2;*/
+
             background: #fff;
             background: -webkit-gradient(linear, 0 0, 0 100%, from(#5a5a5a), color-stop(4%, #fff)) 0 4px;
             background: -webkit-linear-gradient(top, #5a5a5a 0%, #fff 3.1%) 0 4px;
@@ -68,7 +79,10 @@ footer
 {
     background-color: #88bf6c;
 }
-
+.centered
+{
+  margin-left: 50%;
+}
 /*---------------------------------todostart-----------------*/
 
 .panel

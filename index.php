@@ -225,19 +225,19 @@ function settigs_tab12()
       <link rel="stylesheet" href="../preloaders/css3-preloader-transition-finish/css/main.css">
 	<script src="../preloaders/css3-preloader-transition-finish/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
-    <body>
+    <body class="paper">
     <?php
     if($_SESSION['sess_count']==0)
 	{
 		++$_SESSION['sess_count'];
 	?>
-    <div id="loader-wrapper" >
+    <!-- <div id="loader-wrapper" >
 			<div id="loader" ></div>
 
 			<div class="loader-section section-left"></div>
             <div class="loader-section section-right"></div>
 
-   </div>
+   </div> -->
    <?php
 	}
    ?>
@@ -301,29 +301,31 @@ $from_count=0;
 								<!--/.nav-collapse -->
 						</div>
 				</nav>
-        <div class="container paper" style="width:100%;">
+        <div class="container " style="width:100%;">
         <div class="container " style=" padding-top: 30px;">
             <div class="row">
-                
+
                 <div class="col-lg-6  ">
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
-                            <ul class="nav nav-tabs " id="id_hover">
-    <li class="active">
-        <a href="#tab6" data-toggle="tab" onClick="return change_activetab11();">
+                            <ul class="nav nav-tabs centered " id="id_hover"style="margin-left:50%;">
+    <li class="active tab_border tab_trans">
+        <!-- <a href="#tab6" data-toggle="tab" onClick="return change_activetab11();">
             <img id="act_tab11" src="images/others/s_n_2.png" width="70" />
              <img id="act_tab12" style="display:none" src="images/others/s_n_1.png" width="70" />
             <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
             Work</h5>
-        </a>
+        </a> -->
+				<a href="#tab6" data-toggle="tab"> Work</a>
     </li>
-    <li class="hover_li">
-        <a href="#tab7" data-toggle="tab" onClick="return change_activetab();">
+    <li class="hover_li tab_trans">
+        <!-- <a href="#tab7" data-toggle="tab" onClick="return change_activetab();">
             <img id="act_tbw21" src="images/others/s_n_2.png" width="70" style="display:none;"/>
              <img id="act_tbw22" src="images/others/s_n_1.png" width="70" />
             <h5 style="text-align:center; position:absolute; top:45px; left:40px;font-size:12px; color:#5a5a5a">
             Space</h5>
-        </a>
+        </a> -->
+				<a href="#tab7" data-toggle="tab"> Space</a>
     </li>
     <!-- <li>
         <a href="#tab8" data-toggle="tab">Messages</a>

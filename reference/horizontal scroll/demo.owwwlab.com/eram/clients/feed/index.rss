@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Clients &#8211; Eram</title>
+	<atom:link href="http://demo.owwwlab.com/eram/clients/feed/" rel="self" type="application/rss+xml" />
+	<link>http://demo.owwwlab.com/eram</link>
+	<description>Premium Photography WordPress Theme</description>
+	<lastBuildDate>Tue, 14 Feb 2017 20:08:04 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.7.3</generator>
+
+<image>
+	<url>http://demo.owwwlab.com/eram/wp-content/uploads/2016/11/cropped-23491091749_86c7e07141_k-32x32.jpg</url>
+	<title>Clients &#8211; Eram</title>
+	<link>http://demo.owwwlab.com/eram</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Hilda Jayda</title>
+		<link>http://demo.owwwlab.com/eram/clients/jane-doe-copy-5/</link>
+		<pubDate>Sun, 27 Nov 2016 10:24:39 +0000</pubDate>
+		<dc:creator><![CDATA[owwwlab]]></dc:creator>
+		
+		<guid isPermaLink="false">http://demo.owwwlab.com/eram/clients/jane-doe-copy-5/</guid>
+		<description><![CDATA[]]></description>
+				<content:encoded><![CDATA[]]></content:encoded>
+			</item>
+		<item>
+		<title> Lilly Jayde</title>
+		<link>http://demo.owwwlab.com/eram/clients/jane-doe-copy-4/</link>
+		<pubDate>Sun, 27 Nov 2016 10:24:36 +0000</pubDate>
+		<dc:creator><![CDATA[owwwlab]]></dc:creator>
+		
+		<guid isPermaLink="false">http://demo.owwwlab.com/eram/clients/jane-doe-copy-4/</guid>
+		<description><![CDATA[There is no excerpt because this is a protected post.]]></description>
+				<content:encoded><![CDATA[<div class="er-content">
+<h2 class="title">Password Protected Area</h2>
+<div class="description">This area is restricted and you need a password to access it.</div>
+<form class="m-top-50" action="http://demo.owwwlab.com/eram/wp-login.php?action=postpass" method="post" >
+<div class="row er-inline-form">
+<div class="col-sm-10"><label for="pwbox-476">Password: </label><input name="post_password" id="pwbox-476" type="password" size="20" maxlength="20" /></div>
+<div class="col-sm-2"><input type="submit" name="Submit" value="Send" class="btn" /></div>
+</div>
+</form>
+</div>
+]]></content:encoded>
+			</item>
+		<item>
+		<title> Aston Jewell</title>
+		<link>http://demo.owwwlab.com/eram/clients/jane-doe-copy-3/</link>
+		<pubDate>Sun, 27 Nov 2016 10:24:34 +0000</pubDate>
+		<dc:creator><![CDATA[owwwlab]]></dc:creator>
+		
+		<guid isPermaLink="false">http://demo.owwwlab.com/eram/clients/jane-doe-copy-3/</guid>
+		<description><![CDATA[There is no excerpt because this is a protected post.]]></description>
+				<content:encoded><![CDATA[<div class="er-content">
+<h2 class="title">Password Protected Area</h2>
+<div class="description">This area is restricted and you need a password to access it.</div>
+<form class="m-top-50" action="http://demo.owwwlab.com/eram/wp-login.php?action=postpass" method="post" >
+<div class="row er-inline-form">
+<div class="col-sm-10"><label for="pwbox-475">Password: </label><input name="post_password" id="pwbox-475" type="password" size="20" maxlength="20" /></div>
+<div class="col-sm-2"><input type="submit" name="Submit" value="Send" class="btn" /></div>
+</div>
+</form>
+</div>
+]]></content:encoded>
+			</item>
+		<item>
+		<title> Madeline &#038; Jose</title>
+		<link>http://demo.owwwlab.com/eram/clients/jane-doe-copy-2/</link>
+		<pubDate>Sun, 27 Nov 2016 10:24:32 +0000</pubDate>
+		<dc:creator><![CDATA[owwwlab]]></dc:creator>
+		
+		<guid isPermaLink="false">http://demo.owwwlab.com/eram/clients/jane-doe-copy-2/</guid>
+		<description><![CDATA[There is no excerpt because this is a protected post.]]></description>
+				<content:encoded><![CDATA[<div class="er-content">
+<h2 class="title">Password Protected Area</h2>
+<div class="description">This area is restricted and you need a password to access it.</div>
+<form class="m-top-50" action="http://demo.owwwlab.com/eram/wp-login.php?action=postpass" method="post" >
+<div class="row er-inline-form">
+<div class="col-sm-10"><label for="pwbox-474">Password: </label><input name="post_password" id="pwbox-474" type="password" size="20" maxlength="20" /></div>
+<div class="col-sm-2"><input type="submit" name="Submit" value="Send" class="btn" /></div>
+</div>
+</form>
+</div>
+]]></content:encoded>
+			</item>
+		<item>
+		<title>Carley &#038; Brandon</title>
+		<link>http://demo.owwwlab.com/eram/clients/jane-doe-copy/</link>
+		<pubDate>Sun, 27 Nov 2016 10:24:29 +0000</pubDate>
+		<dc:creator><![CDATA[owwwlab]]></dc:creator>
+		
+		<guid isPermaLink="false">http://demo.owwwlab.com/eram/clients/jane-doe-copy/</guid>
+		<description><![CDATA[]]></description>
+				<content:encoded><![CDATA[]]></content:encoded>
+			</item>
+		<item>
+		<title>Jane Doe</title>
+		<link>http://demo.owwwlab.com/eram/clients/jane-doe/</link>
+		<pubDate>Sun, 27 Nov 2016 10:24:07 +0000</pubDate>
+		<dc:creator><![CDATA[owwwlab]]></dc:creator>
+		
+		<guid isPermaLink="false">http://demo.owwwlab.com/eram/?post_type=eram_client&#038;p=472</guid>
+		<description><![CDATA[]]></description>
+				<content:encoded><![CDATA[]]></content:encoded>
+			</item>
+	</channel>
+</rss>

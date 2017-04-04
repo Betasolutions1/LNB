@@ -475,6 +475,8 @@ function connect_suggest(whos_sugg,sugg_id)
 					//document.getElementById("suggest_me_to").value='';
 					$('#connect_suggestion').load('index.php #connect_suggestion');
 					$('#connect_suggestion2').load('index.php #connect_suggestion2');
+					$('#mamber-suggestions').load('suggestion.php #mamber-suggestions');
+					$('#suggest1').load('index_club.php #suggest1');
                     }
                     });
 					
@@ -496,6 +498,8 @@ function disconnect_suggest(diswhos_sugg,dissugg_id)
 					//document.getElementById("suggest_me_to").value='';
 					$('#connect_suggestion').load('index.php #connect_suggestion');
 					$('#connect_suggestion2').load('index.php #connect_suggestion2');
+					$('#mamber-suggestions').load('suggestion.php #mamber-suggestions');
+					$('#suggest1').load('index_club.php #suggest1');
                     }
                     });
 					

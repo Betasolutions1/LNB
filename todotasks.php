@@ -5,7 +5,7 @@ $task_type=$_GET['q'];
 ?> 
  
  <div id="todo_tasks_refresh">
-                                                    <div class="panel-content" id="screen">
+                                                    <div class="panel-content clo-lg-9" id="screen" style="display:none;height:400px; overflow-y:scroll;" id="screen1">
                                                         <form>
                                                             <fieldset>
                                                                 <ul class="tasks">
@@ -29,7 +29,7 @@ $task_type=$_GET['q'];
                                                                                 <span class="line-through"></span>
 
                                                                             </label>
-                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey;    padding-top: 10px; "><?php echo $ret_td['todo_datetime']?></p>
+                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey; margin-top:-23px;    "><?php echo $ret_td['todo_datetime']?></p>
                                                                         </li>
                                                                         <?php
                                                                     }
@@ -43,7 +43,7 @@ $task_type=$_GET['q'];
 
                                                     <!--Invisable Panel-->
 
-                                                    <div class="panel-content" style="display:none" id="screen1">
+                                                    <div class="panel-content col-lg-9" style="display:none;height:400px; overflow-y:scroll;" id="screen1">
                                                         <form method="post">
                                                             <fieldset>
                                                                 <ul class="tasks">
@@ -67,7 +67,7 @@ $task_type=$_GET['q'];
                                                                                 <span class="line-through"></span>
 
                                                                             </label>
-                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey;    padding-top: 10px; "><?php echo $ret_td['todo_datetime']?></p>
+                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey;  margin-top:-23px; "><?php echo $ret_td['todo_datetime']?></p>
                                                                         </li>
                                                                         <?php
                                                                     }

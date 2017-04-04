@@ -28,10 +28,33 @@
          <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/style.css">
         <style>
-		.popover.fade.bottom.in{
-			width:400px;
+		/*.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown:hover.dropdown-content {
+    display: block;
+}
+*/
+	.popover.fade.bottom.in{
+			/*width:400px;
 			height:200px;
-			margin-left:-90px;
+			margin-left:-90px;*/
 			}
         /* hola bonita */
             /*#parallelogram {
@@ -44,6 +67,52 @@
             }*/
 </style>
 <!-- notification-->
+<style>
+
+.dropdown-content:before {
+    overflow:hidden;
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    /**/
+    border-bottom-color: #f9f9f9;
+    border-width: 8px;
+    margin-left: -7px;
+    
+}
+.dropdown-content {
+	
+	margin-left:-50px;
+    margin-top: 10px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 250px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content p {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+	
+}
+
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+	
+}
+
+</style>
 
 <!--<link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css'>
 <link rel="stylesheet" href="css/style2.css">-->
@@ -54,31 +123,42 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
+                
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" id="lnb">
+                    <div class="dropdown">
+                    <a class="navbar-brand" href="#" id="lnb" style="font-family:Stencil Std;">
     LN.BUSINESS</a>
+    <div class="dropdown-content" style="margin-top:50px;font-family:Stencil Std;">
+    
+    <p>ghfghfh</p>
+    <p>ghfghfh</p>
+   
+    </div>
+    </div>
+    
                 </div>
+                
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li style=" padding-left:30px; padding-top:10px; padding-right:100px;">
                             <input type="text" placeholder="search" style="width:350px; height:30px">
                         </li>
                         <li class="active">
-                            <a href="#" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
+                            <a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">F</a>
                         </li>
                         <li>
-                            <a href="#about" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
+                            <a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
                         </li>
                         <li>
-                            <a href="#contact" style="font-family:StencilStd; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
+                            <a href="#contact" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
                         </li>
                         <li>
-                                        <p class="diary" style="padding-top:5px; padding-left:50px;"><span class="day" style="font-family:lintsec; font-size:11px;"><?php echo date("l"); ?></span><br><span class="month" style="font-family:lintsec; font-size:11px;"><?php echo date("F"); ?></span><br><span class="year" style="font-family:lintsec; font-size:11px;"><?php echo date("Y"); ?></span></p>
+                                        <p class="diary" style="padding-top:5px; padding-left:50px;"><span class="day" style="font-family:Stencil Std; font-size:11px;"><?php echo date("l"); ?></span><br><span class="month" style="font-family:Stencil Std; font-size:11px;"><?php echo date("F"); ?></span><br><span class="year" style="font-family:Stencil Std; font-size:11px;"><?php echo date("Y"); ?></span></p>
                                     </li>
                                     <li>
                                         <!--<hr style="width:0px; height:10px;" class="vertical" />-->
@@ -86,7 +166,7 @@
 </div>
                                     </li>
                                     <li>
-                                        <span class="date" style="font-family:lintsec; font-size:40px; padding-top:5px; padding-right:10px;"><?php echo date("j"); ?></span>
+                                        <span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;"><?php echo date("j"); ?></span>
                                     </li>
                     </ul>
                 </div>
@@ -1656,10 +1736,10 @@
     ================================================== -->
     <!--notification-->
     
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+   <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js'></script>
 
-    <script src="js/index2.js"></script>
+    <script src="js/index2.js"></script>-->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>

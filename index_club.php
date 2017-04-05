@@ -1061,13 +1061,13 @@ $from_count=0;
 
 
 
-									<!-----------------END users role----------------------->
-                                    <!--------------------------------------------END SPACE------------------------------------------------->
+									<!--END users role-->
+                                    <!--END SPACE-->
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="club-vr">
-                            <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;">
+                            <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;margin-top: 25px;">
                             <div id="club_login">
                             <?php
 							$ckuic_exe=mysqli_query($conn,"select * from club_signup where user_id='$_SESSION[id]'");
@@ -1076,7 +1076,7 @@ $from_count=0;
 							{
 
 								?>
-                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;margin-top:25px;">
+                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;">
                                 <h2 style="color:#4D1B1B;margin-top:90px;">Hello <?php echo $_SESSION['Name'];?></h2>
                                 <h4>Please Join Club</h4>
                                 </div>
@@ -1108,7 +1108,7 @@ $from_count=0;
                                     <br>
 
 								</div>
-                                <!----------------------------------------END CLUB LOGIN------------------------------->
+                               <!-- END CLUB LOGIN-->
                                 <?php
 							}else
 							{
@@ -1118,7 +1118,7 @@ $from_count=0;
                                     <ul class="nav nav-tabs">
                                         <li class="active">
 
-                                            <a href="#tab8" data-toggle="tab">Club</a>
+                                            <a href="#tab8" data-toggle="tab">Club Sheet</a>
                                              <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
                                              <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
                                               <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>-->
@@ -1167,8 +1167,16 @@ $from_count=0;
 
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab8">
-                                        <!--club sheet BEGIN-->
-<div class="row" style="height:550px;">
+
+
+
+                                                                  <!--club sheet BEGIN-->
+
+
+<div class="row" style="height: 520px;
+    border: 2px solid #808080;
+    margin: 10px;overflow-y: scroll;">
+
 
 
 																						<div class="col-lg-2 grow" align="center" style="
@@ -1227,15 +1235,16 @@ $from_count=0;
                                                     <div class="col-lg-2 grow" align="center" style="
     padding: 10px;
     margin: 10px;
+
 ">
 													<div class="row">
-                                                    <div class="col-md-1" style="float:left;margin-left:-15px" align="left">
+                                                    <div class="col-md-3" align="left" style="margin-left: -5px;">
                                                     <?php
                                                             if($gclb_uspi['image']!='')
 															{
 															?>
 
-                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="50" style="margin-top:5px;">
+                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" style="width: 55px;">
                                                         <?php
 															}else
 															{
@@ -1245,17 +1254,19 @@ $from_count=0;
 															}
 														?>
                                                     </div>
-                                                    <div class="col-md-11" style="margin-top: -65px;margin-left: 50px;text-align:initial">
-                                                     <h5>
-                                                            <?php echo $fet_mem_de['industry'];?></h5>
+                                                    <div class="col-md-9" style="    text-align: initial;
+    font-size: 12px;
+    line-height: 13px;margin-left: 5px;">
+                                                  
+                                                        <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
-                                                        <span><?php echo $fet_mem_de['Name'];?></span>
+                                                        <?php echo $fet_mem_de['Name'];?>
                                                         <br>
-                                                        <span><?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?></span>
+                                                        <?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?>
                                                         <br>
-                                                        <span><?php echo $fet_mem_de['industry'];?></span>
+                                                        <?php echo $fet_mem_de['industry'];?></span>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" align="center">
                                                      <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
 
                                                         <?php
@@ -1288,7 +1299,7 @@ $from_count=0;
                                                         }
                                                         ?>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" style="text-align: justify;">
                                                      <p><?php echo $fet_mem_de['description'];?></p>
                                                      </div>
                                                     </div>
@@ -1363,6 +1374,7 @@ $from_count=0;
 
                                             </form>
                                         </div>
+                                        
 
 </div>
 
@@ -1377,15 +1389,17 @@ $from_count=0;
                                                                        <!--BEGIN networking-->
 
 																					  <div class="row" style="margin: 10px;
-    border: 2px solid #808080;max-height:465px">
-    <div class="col-md-9" id="mamber-chat">
+    border: 2px solid #808080;height: 520px;">
+    <div class="col-md-9" >
+    <div class="col-md-12" style=" border: 1px solid #808080;margin-top: 10px;height: 495px;">
                                             <br>
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
-                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>CLUBBING</h4> </div>
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;    margin-left: -31px;width: 1060px;"><h4>CLUBBING</h4> </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-12" style="width: 1045px;
+    margin-left: -10px;    height: 385px;">
                                                  <div id="club_networks">
-                                            <div class="club_network" style="height:350px;background-color:#fff">
+                                            <div class="club_network" style="height: 385px;background-color:#fff" id="mamber-chat">
                                                 <?php
                                                 $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
                                                 while($grp_ct=mysqli_fetch_array($group_chat_exe))
@@ -1444,7 +1458,8 @@ $from_count=0;
 												</div>
                                             </div>
                                                 </div>
-                                                <div class="col-md-12">
+
+                                                <div class="col-md-12" style="margin-top: -20px;">
                                                 <form method="post"  action="">
                                             <!--maxlength="160"-->
                                                 <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
@@ -1459,18 +1474,24 @@ $from_count=0;
                                             <br>
                                             <br>
                                             </div>
+                                            </div>
                                                 </div>
                                                  <!--members of networking-->
                                                 <div class="col-md-3">
+                                                <div class="col-md-12" style="margin-top: 10px;
+    border: 1px solid #808080;
+    height: 495px;">
                                                   <br>
+
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
-                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>MEMBERS</h4> </div>
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;    margin-left: -30px;
+    width: 332px;"><h4>MEMBERS</h4> </div>
                                                 </div>
                                                 <!-- member data -->
                                                 <div class="row">
                                                 <div class="col-md-12">
                                                  <div id="club_networks">
-                                            <div class="club_network" style="height:350px;background-color:#fff">
+                                            <div class="club_network" style="    height: 420px;background-color:#fff">
                                                 <?php
                                                 $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
                                                 while($grp_ct=mysqli_fetch_array($group_chat_exe))
@@ -1522,7 +1543,7 @@ $from_count=0;
                                                 </div>
 
                                                 <!--end members-->
-
+                                                </div>
                                                 </div>
 
 
@@ -1538,15 +1559,20 @@ $from_count=0;
 
 
                                             <div class="row" style="margin: 10px;
-    border: 2px solid #808080;max-height:465px" id="suggest1">
-    <div class="col-md-9" id="mamber-suggestions">
+    border: 2px solid #808080;height: 520px;">
+    <div class="col-md-12" style="    margin: 10px;
+    border: 1px solid #808080;
+    width: 1433px;
+    height: 497px; ">
                                             <br>
-                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
+                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px;    margin-left: -30px;
+    width: 1462px;">
                                             <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>SUGGESTIONS</h4> </div>
                                                 </div>
-                                                <div class="col-md-12">
-                                                 <div id="club_networks">
-                                            <div class="club_network" style="height:350px;background-color:#fff">
+                                                <div class="col-md-12"  id="suggest1">
+                                                 <div id="club_networks" style="    margin-left: -10px;
+    width: 1390px;">
+                                            <div class="club_network" style="height:350px;background-color:#fff" id="mamber-suggestions">
                                                 <?php
                                                 $sug1=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
                                                 while($sug2=mysqli_fetch_array($sug1))
@@ -1559,16 +1585,16 @@ $from_count=0;
                                                     // $sug8=mysqli_fetch_array($sug7);
 
                                                     ?>
-                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px;  ">
-                                                        <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:80px; ">
+                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px;">
+                                                       <!--  <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
                                                             <?php
-                                                            if($fet_ppic['image']!='')
+                                                            //if($fet_ppic['image']!='')
                               {
                               ?>
-                                                                <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" height="80">
+                                                                <img src="fb_users/<?php //echo $usr_dis['Gender'];?>/<?php //echo $usr_dis['Email'];?>/Profile/<?php //echo $fet_ppic['image'];?>" width="50" height="80">
                                                                 <?php
-                              }else
+                              }//else
                               {
                                 ?>
                                                              <img src="images/profile/sq.PNG" width="80"/>
@@ -1576,12 +1602,15 @@ $from_count=0;
                               }
                                 ?>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-10 club_msg_shape" style=" height:80px; background-color:#fff; padding-right:0px;" align="left">
-                                                        <span style="text-align:right; color:#000;font-size:10px;">
-    <?php echo $usr_dis['Name'];?> / <?php echo $usr_dis['company']?> / <?php echo $usr_dis['industry'];?> </span>
-                                                            <span class="pull-right" style="text-align:right; color:#808080;font-size:10px;"><?php echo $sug2['sug_date'];?> </span>
-                                                            <p style="color:#808080"> <?php echo $sug2['suggest_topic'];?></p>
+                                                        </div> -->
+                                                        <div class="col-lg-12 club_msg_shape" style=" height:50px; background-color:#fff; padding-right:0px;" align="left">
+                                                       <!--  <span style="text-align:right; color:#000;font-size:10px;">
+    <?php// echo $usr_dis['Name'];?> / <?php// echo $usr_dis['company']?> / <?php// echo $usr_dis['industry'];?> </span> -->
+
+
+    <div class="col-md-8" align="left" style=""><p style="color:#808080"> <?php echo $sug2['suggest_topic'];?></p></div>
+                                                            <div class="col-md-2" align="right"><span class="pull-right" style="text-align:right; color:#808080;font-size:10px;"><?php echo $sug2['sug_date'];?> </span></div>
+                                                            
 
                                                             <?php
                                                                     $sugg_count_exe=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$sug2[suggest_topic_id]' AND whos_suggest='$usr_dis[user_id]' AND to_whom_accept='$_SESSION[id]' AND status='1'");
@@ -1590,13 +1619,13 @@ $from_count=0;
                                                                     {
                                                                         ?>
 
-                                      <button style="margin-left: 770px;color: white;background-color: #808080;" onClick="return disconnect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connected
-                                      </button>
+                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;" onClick="return disconnect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connected
+                                      </button></div>
 
 
     <?php } else { ?>
-                                      <button style="margin-left: 770px;color: white;background-color: #808080;" onClick="return connect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connect
-                                      </button>
+                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;" onClick="return connect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connect
+                                      </button></div>
                                       <?php } ?>
 
                                                         </div>
@@ -1628,81 +1657,7 @@ $from_count=0;
                                             </div>
                                                 </div>
                                                  <!--members of suggestion-->
-                                                <div class="col-md-3">
-                                                  <br>
-                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
-                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>MEMBERS</h4> </div>
-                                                </div>
-                                                <!-- member  data -->
-                                                <div class="row">
-                                                <div class="col-md-12">
-                                                 <div id="club_networks">
-                                            <div class="club_network" style="height:350px;background-color:#fff">
-                                                <?php
-
-                                                // $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
-                                                // while($grp_ct=mysqli_fetch_array($group_chat_exe))
-                                                // {
-                                                //     $gp_us_pp_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$grp_ct[user_id]'");
-                                                //     $gp_ppic=mysqli_fetch_array($gp_us_pp_exe);
-                                                //     $gp_user_details_exe=mysqli_query($conn,"select * from users where user_id='$grp_ct[user_id]'");
-                                                //     $gp_det=mysqli_fetch_array($gp_user_details_exe); 
-
-                                                $sg1=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' AND user_id!='$_SESSION[id]'");
-                                                while($sg2=mysqli_fetch_array($sg1)){
-                                                  $sg3=mysqli_query($conn,"select * from users where user_id='$sg2[user_id]'");
-                                                  $sg4=mysqli_fetch_array($sg3);
-                                                  $sg5=mysqli_query($conn,"select * from user_profile_pic where user_id='$sg4[user_id]'");
-                                                  $sg6=mysqli_fetch_array($sg5);
-                                                  $sg7=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$sg2[user_id]'  ORDER BY sug_date DESC");
-                                                  $sg8=mysqli_fetch_array($sg7);
-
-                                                  if($sg8['suggest_topic']!='')
-                                                        {
-
-                                                    ?>
-                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px; ">
-                                                      
-                                                        <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;" align="right"><p style="color:#808080"> <?php echo $sg4['chat_txt'];?></p>
-                                                        <span style="text-align:right; color:#000;font-size:10px;">
-    <a href="#" class="club1" onclick="return suggest(<?php echo $sg4['user_id'];?>)"><?php echo $sg4['Name'];?></a><br><?php echo $sg4['company']?> <br><?php echo $sg4['industry'];?> </span>
-                                                           
-                                                        </div>
-                                                          <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:30px; " align="left">
-                                                            
-                                                            <?php
-                                                            if($sg6['image']!='')
-                              {
-                              ?>
-                                                                <a href="#" class="club1" onclick="return suggest(<?php echo $sg4['user_id'];?>)"><img src="fb_users/<?php echo $sg4['Gender'];?>/<?php echo $sg4['Email'];?>/Profile/<?php echo $sg6['image'];?>" width="50" height="100"></a>
-                                                                <?php
-                              }else
-                              {
-                                ?>
-                                                             <img src="images/profile/sq.PNG" width="80"/>
-                                                                <?php
-                              }
-                                ?>
-                                                            
-                                                        </div>
-
-                                                   </div>
-
-                                                    <?php
-                                                }
-                                                ?>
-                                                <?php
-                                              }
-                                                ?>
-
-
-                        </div>
-                                            </div>
-                                                </div>
                                                 
-                                                </div>
-                                                <!-- end member data -->
-                                                </div>
 
                                                 <!--end members suggestion-->
 

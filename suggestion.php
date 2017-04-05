@@ -13,8 +13,7 @@ if(!$_SESSION['Email'])
                                                              <!--BEGIN CLUB SUGGESTIONS-->
 
 
-                                            <div class="row" style="margin: 10px;
-    max-height:465px">
+                                          <!--  <div class="row" style="margin: 10px;max-height:465px">
     <div class="col-md-12" style="    margin-top: -10px;
     margin-left: -20px;
     width: 1085px;">
@@ -22,9 +21,9 @@ if(!$_SESSION['Email'])
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
                                             <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>SUGGESTIONS</h4> </div>
                                                 </div>
-                                                <div class="col-md-12" id="mamber-suggestions">
-                                                 <div id="club_networks">
-                                            <div class="club_network" style="height:350px;background-color:#fff">
+                                                <div class="col-md-12" >
+                                                 <div id="club_networks">-->
+                                            <div class="club_network" style="height:350px;background-color:#fff" >
                                                 <?php
                                             $usr_ret_exe=mysqli_query($conn,"select * from `users` where `user_id`='$val'");
                       $usr_res=mysqli_fetch_array($usr_ret_exe);
@@ -36,7 +35,7 @@ if(!$_SESSION['Email'])
                                                 while($usr_sgg=mysqli_fetch_array($usr_sggtp_exe))
                         {
                         ?>
-                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px;  ">
+                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px;  " id="suggest2">
                                                         <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:80px; ">
                                                             <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
                                                             <?php
@@ -93,10 +92,10 @@ if(!$_SESSION['Email'])
 
 
                         </div>
-                                            </div>
+                                             <!--</div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                <!-- <form method="post"  action="">
+                                                <form method="post"  action="">
                                             <!--maxlength="160"->
                                                 <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
                                                 <?php
@@ -106,7 +105,7 @@ if(!$_SESSION['Email'])
                                                 <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php //echo $_SESSION['id']?>">
                                                 <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
                                             </form>
-                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div> -->
+                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div> 
                                             <br>
                                             <br>
                                             </div>
@@ -114,7 +113,7 @@ if(!$_SESSION['Email'])
                                                  <!--members of suggestion-->
                                                 
 
-                                                <!--end members suggestion-->
+                                                <!--end members suggestion
 
                                                 </div>
 
@@ -122,4 +121,4 @@ if(!$_SESSION['Email'])
 
 
 
-	</div>
+	</div>-->

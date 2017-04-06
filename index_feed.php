@@ -2590,6 +2590,12 @@ $from_count=0;
                                             $user_noted_pers_de_ex=mysqli_query($conn,"select * from users where user_id='".$user_noted_post['user_id']."'");
                                             $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
                                             ?>
+                                             <?php
+                                                                $user_noted_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_noted_post[post_id]'");
+															$ink_noted_not_cou=mysqli_num_rows($user_noted_bookmark_exe);
+															 $user_noted_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_noted_post[post_id]'");
+                                                $user_noted_comment_count=mysqli_num_rows($user_noted_post_comment_execu);
+                                                                ?>
 
                                          
                                           <div class="item ">

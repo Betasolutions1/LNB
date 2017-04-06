@@ -49,7 +49,7 @@ if(!$_SESSION['Email'])
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
         <link rel="stylesheet" href="css/style.css">
         
-        
+       
 
 
         <!--REmodel Begin-->
@@ -3342,6 +3342,7 @@ $from_count=0;
         </div>
     </div>
 		<footer>
+        
 		</footer>
 
 <script type="text/javascript">
@@ -3448,5 +3449,6 @@ function chng_dryuinfo()
   </script>
   
   
+        
     </body>
 </html>

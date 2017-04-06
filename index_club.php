@@ -1569,12 +1569,12 @@ $from_count=0;
     width: 1465px;
     margin-bottom: 0px;
 ;">
-                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>SUGGESTIONS</h4> </div>
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;width:1465px"><h4>SUGGESTIONS</h4> </div>
                                                 </div>
                                                 <div class="col-md-12"  id="suggest1">
                                                  <div id="club_networks" style="    margin-left: -10px;
     width: 1390px;">
-                                            <div class="club_network" style="height:350px;background-color:#fff" id="mamber-suggestions">
+                                            <div class="club_network" style="height:400px;background-color:#fff" id="mamber-suggestions">
                                                 <?php
                                                 $sug1=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
                                                 while($sug2=mysqli_fetch_array($sug1))
@@ -1605,7 +1605,10 @@ $from_count=0;
                                 ?>
                                                             </div>
                                                         </div> -->
-                                                        <div class="col-lg-12 club_msg_shape" style=" height:50px; background-color:#fff; padding-right:0px;" align="left">
+                                                        <div class="col-lg-12 club_msg_shape" style="     height: 34px;
+    background-color: #fff;
+    padding-right: 0px;
+    margin-top: 5px;" align="left">
                                                        <!--  <span style="text-align:right; color:#000;font-size:10px;">
     <?php// echo $usr_dis['Name'];?> / <?php// echo $usr_dis['company']?> / <?php// echo $usr_dis['industry'];?> </span> -->
 

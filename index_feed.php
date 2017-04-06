@@ -48,8 +48,8 @@ if(!$_SESSION['Email'])
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
         <link rel="stylesheet" href="css/style.css">
-        
-       
+
+
 
 
         <!--REmodel Begin-->
@@ -124,7 +124,7 @@ font-face {
         font-style: normal;
 }
 	 </style>
-     
+
      <!--feed css-->
      <style>
 	 *, *:before, *:after {box-sizing:  border-box !important;}
@@ -134,14 +134,14 @@ font-face {
  -moz-column-width: 16em;
  -webkit-column-width: 16em;
  -moz-column-gap: 1em;
- -webkit-column-gap:1em; 
-  
+ -webkit-column-gap:1em;
+
 }
 
 .item {
  display: inline-block;
  padding:  .25rem;
- width:  100%; 
+ width:  100%;
 }
 
 .well {
@@ -336,8 +336,8 @@ $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_i
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;">
-						<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
+						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
 								<div class="navbar-header ">
 										<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 												<span class="sr-only">Toggle navigation</span>
@@ -351,14 +351,14 @@ $from_count=0;
 								<div id="navbar" class="collapse navbar-collapse">
 										<ul class="nav navbar-nav">
 
-												<li style=" padding-left:30px; padding-top:10px; padding-right:100px; ">
+												<li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
 													<div style="background-color:#808080;padding-right:5px;">
 														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
-														<i class="fa  fa-2x fa-search" style="color:#fff; padding-top:5px;"></i>
+														<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
 												</div>
 												</li>
 												<li>
-													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
+													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
 												</li>
 												<li >
 														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
@@ -366,7 +366,7 @@ $from_count=0;
 												<li>
 														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
-																							 <li style="height:50px;line-height:13px;padding-top:3px;">
+																							 <li style="height:50px;line-height:10px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
 															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
 															<br>
@@ -379,8 +379,8 @@ $from_count=0;
 														<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
 </div>
 												</li>
-												<li style="height:50px; float:right;">
-														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080;">31</span>
+												<li style="height:50px; float:right; padding-top:20px;">
+														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
 												</li>
 										</ul>
 								</div>
@@ -436,8 +436,8 @@ $from_count=0;
 																	                                            <br>
 																																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>
 																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
-																	                                          
-																	                                           
+
+
 																	                                            <br>
 																	                                            <div id="todo_tasks_refresh" class="col-lg-9">
                                                     <div class="panel-content " id="screen" style="height:400px; overflow-y:scroll;">
@@ -513,18 +513,18 @@ $from_count=0;
                                                             </fieldset>
                                                         </form>
                                                     </div>
-                                                    
+
 												</div>
                                                  <div class="panel-content col-lg-3" style="height:400px;">
                                                       <ul class="tasks" style="margin-left:-15px;padding:0px;height:10px;">
-                                                                   
+
                                                                          <li class="task"><span class=" todo_right"><a href="#" data-remodal-target="modal"> Create New</a></span></li>
                                                                          <li class="task"><span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()">Completed</a></span></li>
                                                                          <li class="task">Date</li>
                                                                          <li class="task" id="todo_type" onClick=""><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
                                                                          <li class="task"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
                                                                          <li class="task"><a href="#" onClick="return getodotype('CALL');">Clients</a></li>
-                                                                      
+
                                                                 </ul>
                                                      </div>
 																	                                        </div>
@@ -602,7 +602,7 @@ $from_count=0;
                                                     </table>
                                                     </div>
                                             </div>
-                                           
+
                                         </div>
                                         <br>
 	<!-- colleagues																			 -->
@@ -611,12 +611,12 @@ $from_count=0;
 																						<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>CLIENTS</h4> </div>
                                                       <a href="#clientsmodel" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus "></i></a>
                                                    <a href="#csv_upload" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-upload"></i></a>
-                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card"></i></a>                                 
+                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card"></i></a>
                                             <!-- <h4 class="club_headers" style="margin:0px;">
                                                 COLLEAGUES </h4> -->
                                             <br>
                                            <div class="html chat" id="todo_clients" style="height:150px; overflow-y:scroll;">
-                                               
+
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
@@ -937,7 +937,7 @@ $from_count=0;
 																	                                                    <?php
 																	                                                }
 																	                                                ?>
-																	                                                
+
 
 
 
@@ -952,8 +952,8 @@ $from_count=0;
                                         <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
                                             <div class="col-lg-12" tyle="padding:0px;">
 												<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>  COMPANY INFO</h4>  </div>
-                                               
-													
+
+
                                                 <br>
 											<div class="col-lg-10 col-md-10">
 
@@ -965,7 +965,7 @@ $from_count=0;
 												?>
                                                     <?php echo $rolie['company_role_info']; ?><a href="#Your_role" style="float:left;">  <i class="fa fa-pencil icon"></i></a></p>
 											</div>
-                                            
+
                                             <div class="col-lg-2" style="padding:0px;margin-top:-20px;">
                                                 <img src="images/profile/logo.jpg" width="80" />
                                             </div>
@@ -1067,7 +1067,7 @@ $from_count=0;
                                     <!--------------------------------------------END SPACE------------------------------------------------->
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="tab-pane" id="club-vr">
                             <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;">
@@ -1485,14 +1485,14 @@ $from_count=0;
 
                                                     ?>
                                                     <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px; ">
-                                                      
+
                                                         <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;" align="right"><p style="color:#808080"> <?php echo $grp_ct['chat_txt'];?></p>
                                                         <span style="text-align:right; color:#000;font-size:10px;">
     <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><?php echo $gp_det['Name'];?></a><br><?php echo $gp_det['company']?> <br><?php echo $gp_det['industry'];?> </span>
-                                                           
+
                                                         </div>
                                                           <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:30px; " align="left">
-                                                            
+
                                                             <?php
                                                             if($gp_ppic['image']!='')
                               {
@@ -1506,7 +1506,7 @@ $from_count=0;
                                                                 <?php
                               }
                                 ?>
-                                                            
+
                                                         </div>
 
                                                    </div>
@@ -1519,7 +1519,7 @@ $from_count=0;
                         </div>
                                             </div>
                                                 </div>
-                                                
+
                                                 </div>
                                                 <!-- end member data -->
                                                 </div>
@@ -1649,7 +1649,7 @@ $from_count=0;
                                                 //     $gp_us_pp_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$grp_ct[user_id]'");
                                                 //     $gp_ppic=mysqli_fetch_array($gp_us_pp_exe);
                                                 //     $gp_user_details_exe=mysqli_query($conn,"select * from users where user_id='$grp_ct[user_id]'");
-                                                //     $gp_det=mysqli_fetch_array($gp_user_details_exe); 
+                                                //     $gp_det=mysqli_fetch_array($gp_user_details_exe);
 
                                                 $sg1=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' AND user_id!='$_SESSION[id]'");
                                                 while($sg2=mysqli_fetch_array($sg1)){
@@ -1665,14 +1665,14 @@ $from_count=0;
 
                                                     ?>
                                                     <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px; ">
-                                                      
+
                                                         <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;" align="right"><p style="color:#808080"> <?php echo $sg4['chat_txt'];?></p>
                                                         <span style="text-align:right; color:#000;font-size:10px;">
     <a href="#" class="club1" onclick="return suggest(<?php echo $sg4['user_id'];?>)"><?php echo $sg4['Name'];?></a><br><?php echo $sg4['company']?> <br><?php echo $sg4['industry'];?> </span>
-                                                           
+
                                                         </div>
                                                           <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:30px; " align="left">
-                                                            
+
                                                             <?php
                                                             if($sg6['image']!='')
                               {
@@ -1686,7 +1686,7 @@ $from_count=0;
                                                                 <?php
                               }
                                 ?>
-                                                            
+
                                                         </div>
 
                                                    </div>
@@ -1702,7 +1702,7 @@ $from_count=0;
                         </div>
                                             </div>
                                                 </div>
-                                                
+
                                                 </div>
                                                 <!-- end member data -->
                                                 </div>
@@ -2054,43 +2054,44 @@ $from_count=0;
                         <div class="tab-pane " id="dairy-vr">
                             <ul class="nav nav-tabs" id="id_hover">
                                 <li class="active">
-                                    <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">
-                                    <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
+                                    <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">Feed
+                                    <!-- <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
                                     <img id="dry_feed12" src="images/others/s_n_1.png" width="70" style="display:none;"/>
-                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Feed</h5>
+                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a"> -->
+            <!-- Feed</h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5>--></a>
                                 </li>
+
                                 <li>
-                                    <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">
-                                    <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">Industry
+                                    <!-- <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_indu22" src="images/others/s_n_2.png" width="70" style="display:none;" />
-                               <h5 style="text-align:center; position:absolute; top:45px; left:35px;font-size:12px; color:#5a5a5a">
-            Industry</h5>
+                               <h5 style="text-align:center; position:absolute; top:45px; left:35px;font-size:12px; color:#5a5a5a"> -->
+            <!-- </h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5>--></a>
                                 </li>
                                 <li>
-                                    <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">
-                                    <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">Inked
+                                    <!-- <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_ink32" src="images/others/s_n_2.png" width="70" style="display:none;" />
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Inked</h5>
+            </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5>--></a>
                                 </li>
                                 <li>
-                                    <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">
-                                    <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">Noted
+                                    <!-- <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_not42" src="images/others/s_n_2.png" width="70" style="display:none;" />
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Noted</h5>
+            </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5>--></a>
                                 </li>
                                 <li>
-                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();">
-                                    <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();"><?php echo $_SESSION['Name'];?>
+                                    <!-- <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_uinfo52" src="images/others/s_n_2.png" width="70" style="display:none;" />
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            <?php echo $_SESSION['Name'];?></h5>
+            </h5> -->
             <?php /*?><h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff"><?php echo $_SESSION['Name'];?></h5><?php */?></a>
                                 </li>
                             </ul>
@@ -2154,12 +2155,12 @@ $from_count=0;
                                         <div class="bg_pst">
 										<div id="news_feed_like">
                                         <div id="news_feed_comment">
-                                        
-                                       
+
+
                								<div class="container">
                                             <div class="news_feed">
-                                             
-                   
+
+
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 
@@ -2180,10 +2181,12 @@ $from_count=0;
 
 
                                                                 ?>
-                                                
-                           <div class="item">
-                            <div class="well" style="background:#fff;"> 
-       <div style="background:#fff;">
+
+
+                           <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
         <div>
                                                             <?php
                                                                 if($ps['status']=='Like')
@@ -2202,40 +2205,43 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                              
+
                                <?php
                                                         if($resp['post_pic']!='')
                                                         {
                                                             ?>
 
-                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" style="width:250px;height:240px;" />
+                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
 
                                                               <?php
                                                         }
                                                         ?>
-                              
+
                                 <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
-                                <div style="width:60px; position:relative;float:right;top:-10px;right:10px;margin-right:-10px;">
-                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" style="height:50px;width:50px;" />
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" style="height:70px;width:70px;" />
                                 </div>
-                                <div style=" position:relative;float:right;right:20px;top:0px; text-align:right;line-height:8px;margin-left:-15px;margin-top:5px;">
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
                                     <p >
-            <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>/<span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php echo $pud['designation'];?></span></p>
+            <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $pud['designation'];?></span></p>
                                     <p>
           <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span></p>
                                 </div>
-                                <div>
-                                    <br>
-                                    <br>
+                                <div style="padding:15px;">
+<br>
+<br>
                                     <br>
                                     <hr>
                                     <!--<h3>Letterpress asymmetrical</h3>-->
                                     <p> <?php echo $resp['post_txt'];?></p>
-                                    <br>
                                     <hr>
-                                    
-                                    
+																		<br>
+
+
                                       <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
                                                             <?php
                                                                 $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
@@ -2258,13 +2264,13 @@ $from_count=0;
                             </div>
                              </div>
                           </div>
-                        
-                                               
-                                               
+<!-- </div> -->
+
+
                                                 <?php
                                             }
                                             ?>
-                                           
+
                                          </div>
                                           </div>
 											</div></div>
@@ -3342,7 +3348,7 @@ $from_count=0;
         </div>
     </div>
 		<footer>
-        
+
 		</footer>
 
 <script type="text/javascript">
@@ -3447,8 +3453,8 @@ function chng_dryuinfo()
         $('#summernote').summernote();
     });
   </script>
-  
-  
-        
+
+
+
     </body>
 </html>

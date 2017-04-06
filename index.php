@@ -393,682 +393,1000 @@ $from_count=0;
                 <div class="col-lg-12 col-md-12  ">
 
                     <div class="tab-content">
-                        <div class="tab-pane active" id="workspace-vr">
-                            <ul class="nav nav-tabs centered " id="id_hover"style="margin-left:50%;">
-    <li class="active tab_border tab_trans">
-        <!-- <a href="#tab6" data-toggle="tab" onClick="return change_activetab11();">
-            <img id="act_tab11" src="images/others/s_n_2.png" width="70" />
-             <img id="act_tab12" style="display:none" src="images/others/s_n_1.png" width="70" />
-            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Work</h5>
-        </a> -->
-				<a href="#tab6" data-toggle="tab"> Work</a>
-    </li>
-    <li class="hover_li tab_trans">
-        <!-- <a href="#tab7" data-toggle="tab" onClick="return change_activetab();">
-            <img id="act_tbw21" src="images/others/s_n_2.png" width="70" style="display:none;"/>
-             <img id="act_tbw22" src="images/others/s_n_1.png" width="70" />
-            <h5 style="text-align:center; position:absolute; top:45px; left:40px;font-size:12px; color:#5a5a5a">
-            Space</h5>
-        </a> -->
-				<a href="#tab7" data-toggle="tab"> Space</a>
-    </li>
-    <!-- <li>
-        <a href="#tab8" data-toggle="tab">Messages</a>
-    </li>
-    <li>
-        <a href="#tab9" data-toggle="tab">Settings</a>
-    </li>     -->
-</ul>
-                             <div class="tab-content">
-                                <div class="tab-pane active" id="tab6">
-                                    <div class="accordion-wrap">
-                                        <!-----------------------------WORK BEGIN------------------------------------->
+                       <!--------dairy----------------->
+                       
+                        <div class="tab-pane active" id="dairy-vr">
+                            <ul class="nav nav-tabs" id="id_hover">
+                                <li class="active">
+                                    <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">Feed
+                                    <!-- <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
+                                    <img id="dry_feed12" src="images/others/s_n_1.png" width="70" style="display:none;"/>
+                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a"> -->
+            <!-- Feed</h5> -->
+           <!-- <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5>--></a>
+                                </li>
 
-                                         <div class="row" style="background-color:transparent; height:10%;margin-top:-15px;">
-                                    <br>
-																		<!-- disscussions	 -->
-
-																	                                        <div id="todo" class="col-lg-6 col-md-6 panel  pst_box " style=" border: 2px solid #7c7c7c; padding-left: 0px; padding-right: 0px; padding-top: 0px; border-radius: 0px;">
-																	                                            <br>
-																																							<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>
-																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
-
-
-
-																	                                            <div id="todo_tasks_refresh" class="col-lg-9" style="padding-top:5px;padding-left:0px;padding-right:0px;">
-                                                    <div class="panel-content " id="screen" style="height:400px; overflow-y:scroll;">
-                                                        <form>
-                                                            <fieldset>
-                                                                <ul class="tasks">
-                                                                    <?php
-                                                                    $td_cu=0;
-                                                                    $tdl=mysqli_query($conn,"select * from todo_insertions where todo_status='0' AND todo_user_id='".$_SESSION['id']."'");
-                                                                    while($ret_td=mysqli_fetch_array($tdl))
-                                                                    {
-                                                                        ++$td_cu;
-                                                                        ?>
-                                                                        <li class="task">
-                                                                            <?php if($ret_td['todo_status']==0)
-                                                                            {
-
-                                                                                ?>
-                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="return change_to(this.value);"/>
-                                                                                <?php
-                                                                            }
-                                                                            ?>
-                                                                            <label for="task<?php echo $td_cu;?>"><?php echo $ret_td['todo_label'];?>
-                                                                                <span class="line-through"></span>
-
-                                                                            </label>
-                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px;  "><?php echo $ret_td['todo_datetime']?></p>
-                                                                        </li>
-                                                                        <?php
-                                                                    }
-
-                                                                    ?>
-
-                                                                </ul>
-                                                            </fieldset>
-                                                        </form>
-                                                    </div>
-
-                                                    <!--Invisable Panel-->
-
-                                                    <div class="panel-content col-lg-9" style="display:none;height:400px; overflow-y:scroll;width:100%;" id="screen1" >
-                                                        <form method="post">
-                                                            <fieldset>
-                                                                <ul class="tasks">
-                                                                    <?php
-                                                                    $td_cu=0;
-                                                                    $tdl=mysqli_query($conn,"select * from todo_insertions where todo_status='1' AND todo_user_id='".$_SESSION['id']."'");
-                                                                    while($ret_td=mysqli_fetch_array($tdl))
-                                                                    {
-                                                                        ++$td_cu;
-                                                                        ?>
-                                                                        <li class="task" style="color:grey;">
-                                                                            <?php if($ret_td['todo_status']!=0)
-                                                                            {
-
-                                                                                ?>
-                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" checked="checked"  value="<?php echo $ret_td['todo_id'];?>"  onClick="return changestatus(this.value);"/>
-                                                                                <?php
-                                                                            }
-                                                                            ?>
-                                                                            <label for="task<?php echo $td_cu;?>" style="color:grey"><?php echo $ret_td['todo_label'];?>
-                                                                                <span class="line-through"></span>
-
-                                                                            </label>
-                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px; "><?php echo $ret_td['todo_datetime']?></p>
-                                                                        </li>
-                                                                        <?php
-                                                                    }
-
-                                                                    ?>
-
-                                                                </ul>
-                                                            </fieldset>
-                                                        </form>
-                                                    </div>
-
-												</div>
-                                                 <div class="panel-content col-lg-3" style=" height: 400px; border-left: 1px solid #ddd; padding-left:30px;padding-top:5px;">
-                                                      <ul class="tasks" style="margin-left:-15px;padding:0px;height:10px;">
-
-                                                                         <li class="task" style="padding:5px;"><span class=" todo_right"><a href="#" data-remodal-target="modal"> Create New</a></span></li>
-                                                                         <li class="task" style="padding:5px;"><span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()">Completed</a></span></li>
-                                                                         <li class="task" style="padding:5px;">Date</li>
-                                                                         <li class="task" id="todo_type" onClick="" style="padding:5px;"><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
-                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
-                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('CALL');">Clients</a></li>
-
-                                                                </ul>
-                                                     </div>
-																	                                        </div>
-																																					<!-- discussion end -->
-<!-- company info -->
-<div class="col-lg-6 col-md-6">
-
-
-                                        <div class="col-lg-12" style="">
-                                            <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;background-color:#fff;">
-																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> LEDGER</h4> </div>
-                                                <!-- <h4 class="club_headers" style="margin:0px;float:left;">
-                                                    COMPANY INFO </h4> -->
-												<a href="#modal1" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
-                                                <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
-                                                <br>
-																								 <div id="ledger_tbl" style="height:150px; overflow-y:scroll;">
-                                                    <table class="dynamicTable scrollVertical table table-primary " >
-                                                        <!-- Table heading -->
-                                                        <thead style="background:#808080;color:#fff;">
-                                                        <tr style="background:#808080;color:#fff;">
-                                                            <th>Date</th>
-                                                            <th>Details</th>
-                                                            <th>Debit</th>
-                                                            <th>Credit</th>
-                                                            <th>Balance</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <!-- // Table heading END -->
-                                                        <!-- Table body -->
-                                                        <tbody>
-                                                        <?php
-                                                        $led_de=mysqli_query($conn,"select * from user_ledger where user_id='".$_SESSION['id']."' order by ledger_id desc");
-                                                        while($led_ret=mysqli_fetch_array($led_de))
-                                                        {
-                                                            ?>
-                                                            <!-- Table row -->
-                                                            <tr class="gradeX">
-                                                                <td><?php echo $led_ret['date'];?></td>
-                                                                <td><?php echo $led_ret['led_reason'];?></td>
-                                                                <td>
-																<?php
-																if($led_ret['debit']==0)
-																{
-																	echo "-";
-																}else
-																{
-																	echo $led_ret['debit'];
-																}
-																?>
-
-                                                                </td>
-                                                                <td class="center">
-																<?php
-																if($led_ret['credit']==0)
-																{
-																	echo "-";
-																}else
-																{
-																 echo $led_ret['credit'];
-																}
-																 ?>
-                                                                </td>
-                                                                <td class="center"><?php echo $led_ret['total_bal'];?></td>
-                                                            </tr>
-                                                            <!-- // Table row END -->
-
-                                                            <?php
-                                                        }
-                                                        ?>
-
-
-                                                        </tbody>
-                                                        <!-- // Table body END -->
-                                                    </table>
-                                                    </div>
-                                            </div>
-
-                                        </div>
+                                <li>
+                                    <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">Industry
+                                    <!-- <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
+                                    <img id="dry_indu22" src="images/others/s_n_2.png" width="70" style="display:none;" />
+                               <h5 style="text-align:center; position:absolute; top:45px; left:35px;font-size:12px; color:#5a5a5a"> -->
+            <!-- </h5> -->
+           <!-- <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5>--></a>
+                                </li>
+                                <li>
+                                    <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">Inked
+                                    <!-- <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
+                                    <img id="dry_ink32" src="images/others/s_n_2.png" width="70" style="display:none;" />
+                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
+            </h5> -->
+            <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5>--></a>
+                                </li>
+                                <li>
+                                    <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">Noted
+                                    <!-- <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
+                                    <img id="dry_not42" src="images/others/s_n_2.png" width="70" style="display:none;" />
+                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
+            </h5> -->
+            <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5>--></a>
+                                </li>
+                                <li>
+                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();"><?php echo $_SESSION['Name'];?>
+                                    <!-- <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
+                                    <img id="dry_uinfo52" src="images/others/s_n_2.png" width="70" style="display:none;" />
+                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
+            </h5> -->
+            <?php /*?><h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff"><?php echo $_SESSION['Name'];?></h5><?php */?></a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1">
+                                    <div class="pst_main_background">
                                         <br>
-	<!-- colleagues																			 -->
-	<div class="col-lg-12">
-                                        <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;height:220px;margin-top:0px;background-color:#fff;">
-                                            <br>
-																						<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4>CLIENTS</h4> </div>
-                                                      <a href="#clientsmodel" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
-                                                   <a href="#csv_upload" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-upload" style="color:#808080;"></i></a>
-                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
-                                            <!-- <h4 class="club_headers" style="margin:0px;">
-                                                COLLEAGUES </h4> -->
-                                            <br>
-                                           <div class="html chat" id="todo_clients" style="height:150px; overflow-y:scroll;">
-
-                                                    <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
-                                                        <!-- Table heading -->
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Company</th>
-                                                            <th>Phone No</th>
-                                                            <th>Details</th>
-
-                                                        </tr>
-                                                        </thead>
-                                                        <!-- // Table heading END -->
-                                                        <!-- Table body -->
-                                                        <tbody>
-                                                        <?php
-                                                        $cli_de=mysqli_query($conn,"select * from user_clients where user_id='".$_SESSION['id']."'");
-                                                        while($cli_ret=mysqli_fetch_array($cli_de))
-                                                        {
-                                                            ?>
-                                                            <!-- Table row -->
-                                                            <tr class="gradeX">
-                                                                <td><?php echo $cli_ret['client_name'];?></td>
-                                                                <td><?php echo $cli_ret['client_company'];?></td>
-                                                                <td><?php echo $cli_ret['client_phone'];?></td>
-                                                                <td class="center"><?php echo $cli_ret['clients_details'];?></td>
-
-                                                            </tr>
-                                                            <!-- // Table row END -->
-
-                                                            <?php
-                                                        }
-                                                        ?>
-
-
-                                                        </tbody>
-                                                        <!-- // Table body END -->
-                                                    </table>
-                                                </div>
-                                            <br>
-                                        </div>
-																			</div>
-																				</div>
-
-                                    </div>
-
-
-
-
-                                        <!--Todo Model Code-->
-                                        <div class="remodal" data-remodal-id="modal">
-                                            <a data-remodal-action="close" class="remodal-close"></a>
-												<!--script_code.php-->
-                                            <form class="form-horizontal"  method="post" action="">
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">TITLE</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Date</label>
-                                                        <div class="col-sm-10">
-															<?php
-                                                            $tododate=date('Y-m-d h:i');
-															?>
-                                                            <input type="text" class="form-control" id="todo_date" value="<?php echo $tododate;?>" name="todo_date" placeholder="Date" name="todo_date">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="type" class="col-sm-2 control-label">TYPE</label>
-                                                        <div class="col-sm-10">
-                                                            <div class="row">
-                                                                <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type" required>
-                                                                    <option>CONSIGNMENTS</option>
-                                                                    <option>MEETINGS</option>
-                                                                    <option>CALL</option>
-                                                                </select>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="contact" class="col-sm-2 control-label">Clients</label>
-                                                        <div class="col-sm-10">
-                                                            <div class="row">
-                                                                <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts" required>
-                                                                    <option value="">Select Client</option>
-                                                                    <?php
-                                                                    $get_clients_data=mysqli_query($conn,"select * from user_clients where user_id='$_SESSION[id]'");
-																	while($client_ret=mysqli_fetch_array($get_clients_data))
-																	{
-
-																	?>
-                                                                    <option value="<?php echo $client_ret['client_name'];?>"><?php echo $client_ret['client_name'];?></option>
-                                                                   <?php
-																	}
-																   ?>
-
-                                                                </select>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!-- data-remodal-action="confirm"-->
-                                           <button type="submit"  data-remodal-action="confirm"  name="todo_insert" onClick="return todoinsertions();"  class="remodal-confirm">INK</button>
-
-                                            </form>
-
-
-                                            <!--<a data-remodal-action="cancel" class="remodal-cancel" href="#">Cancel</a>
-                                            <a data-remodal-action="confirm" class="remodal-confirm" href="#">OK</a>-->
-                                        </div>
-                                        <!--End todo Model Code-->
-
-
-
-
-                                        <!--Ledger Model begin Panel-->
-
-                                        <div class="remodal" data-remodal-id="modal1" id="modal1" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" method="post" action="">
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Date</label>
-                                                        <div class="col-sm-10">
-                                                            <?php
-                                                            $led_cur_date=date('Y-m-d');
-															?>
-                                                            <input type="text" class="form-control" id="led_cur_date" placeholder="" value="<?php echo $led_cur_date;?>" name="led_cur_date" readonly/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Details</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="led_details" onFocus="return show_credit_debit();" placeholder="" name="led_details" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" id="ledger_credit">
-                                                        <label class="col-sm-2 control-label">Credit</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="led_credit" placeholder="" name="led_credit" onFocus="return disable_debit();" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" id="ledger_debit">
-                                                        <label class="col-sm-2 control-label">Debit</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="led_debit" onFocus="return diable_credit();" placeholder="" name="led_debit" >
-                                                        </div>
-                                                    </div>
-
-
-
-
-
-
-
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <button type="submit" data-remodal-action="confirm" onClick="ledger_insert();" class="remodal-confirm">Credit Or Debit</button>
-
-                                            </form>
-                                        </div>
-
-
-                                        <!--Ledger End MOdel-->
-
-
-                                        <!---------------------------Clients Normal insertion model--------------------------->
-
-                                           <div class="remodal" data-remodal-id="clientsmodel" id="clientsmodel" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" method="post" action="">
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Name</label>
-                                                        <div class="col-sm-10">
-
-                                                            <input type="text" class="form-control" id="client_name" placeholder=""  name="client_name"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Company</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="client_company" placeholder="" name="client_company">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Phone No</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="client_phone_no" placeholder="" name="client_phone_no">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-2 control-label">Details</label>
-                                                        <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="client_details" placeholder="" name="client_details">
-                                                        </div>
-                                                    </div>
-
-
-
-
-
-
-
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <button type="submit" data-remodal-action="confirm" onClick="return clientinsertions();" class="remodal-confirm">Client Data</button>
-
-                                            </form>
-                                        </div>
-
-                                        <!--------------------------------END clients Model------------------------------------>
-                                        <!-------BEGIn client csv upload--------------------->
-
-                                           <div class="remodal" data-remodal-id="csv_upload" id="csv_upload" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" action="script_code.php" method="post" enctype="multipart/form-data" id="importFrm">
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Upload CSV File</label>
-                                                        <div class="col-sm-9">
-
-                                                            <input type="file" class="form-control" id="client_csv" placeholder=""  name="client_csv"/>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--onClick="return clientcsvupload();" data-remodal-action="confirm"-->
-                                                <button type="submit"  name="csv_uploaddata" class="remodal-confirm">Client Data</button>
-
-                                            </form>
-                                        </div>
-
-
-                                        <!------------End csv upload clients------------------>
-
-                                        <!-----------------------------END WORK-------------------------------------------------->
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tab7">
-                                    <!-----------------------------------------SPACE BEGIN----------------------------------------->
-
-                                    <div class="row  " style="background-color:transparent; height:450px">
-
-																		<!-- disscussions	 -->
-
-																	                                        <div class="col-lg-6 col-md-6 pst_box" style="border:2px solid #7c7c7c;background-color:#fff;padding:0px;margin-top:20px;">
-
-																																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> DISSCUSSION THREAD</h4> </div>
-																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
-																	                                            <form method="post" action="" id="form_dis_sub">
-																	                                                <input type="hidden" name="dis_company" id="dis_company" value="<?php echo $usr_dis['company']?>">
-																	                                                <!--maxlength="161"-->
-																	                                          <input type="text"  placeholder="INK... (160 characters only..)" class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;">
-																	                                          <!--  -->
-																	                                                <input type="submit" name="dis_sub"  id="dis_sub" onClick="return space_disscussion();" style="display:none;">
-																	                                            </form>
-																	                                            <div align="left" id="discu_valid" style="display:none;color:red;margin-left:15px;">The Length Must be 160 Charecters only</div>
-																	                                            <br>
-																	                                            <div class="club_network" style=" height: 350px; background-color: #fff; border-top:2px solid #7c7c7c; padding-top:5px;">
-																	                                            <div id="club_discuss">
-																	                                                <?php
-																	                                                $twity_exe=mysqli_query($conn,"select * from company_discussions where company='$usr_dis[company]' order by dscussion_id desc");
-																	                                                while($twity=mysqli_fetch_array($twity_exe))
-																	                                                {
-																	                                                    $twity_details_exe=mysqli_query($conn,"select * from users where user_id='$twity[user_id]'");
-																	                                                    $twity_det=mysqli_fetch_array($twity_details_exe);
-																	                                                    $twity_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$twity[user_id]'");
-																	                                                    $twity_pic=mysqli_fetch_array($twity_pic_exe);
-																	                                                    ?>
-
-																	                                                    <div class="row club_network_row" style="width:100%;">
-																	                                                        <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
-																	                                                            <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
-																	                                                            <?php
-																																if($twity_pic['image']!='')
-																																{
-																																?>
-																	                                                                <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70" height="70">
-																	                                                                <?php
-																																}else
-																																{
-																																	?>
-																	                                                             <img src="images/profile/sq.PNG" width="70"/>
-																	                                                                <?php
-																																}
-																																	?>
-																	                                                            </div>
-																	                                                        </div>
-																	                                                        <div class="col-lg-10 club_msg_shape" style=" height: 70px; background-color: #fff; padding-right: 0px; width: 86%; border-botto: 1px solid #7c7c7c;" align="left">
-																	                                                                <span style="text-align:right; color:#7c7c7c;font-size:10px;">
-																	    <?php echo $twity_det['Name']?> - <?php echo $twity_det['company']?> - <?php echo $twity_det['designation'];?>  </span><span class="pull-right" style="text-align:right; color:#7c7c7c;font-size:10px;"> <?php echo $twity['date'];?> </span>
-																	                                                            <p>
-																	                                                                <?php echo $twity['discussion_txt'];?></p>
-																	                                                        </div>
-																	                                                    </div>
-																																											<hr style="margin-top:5px;margin-bottom:5px;border-top:1px solid #7c7c7c">
-																	                                                    <?php
-																	                                                }
-																	                                                ?>
-
-
-
-
-																												</div>
-																	                                            </div>
-																	                                        </div>
-																																					<!-- discussion end -->
-<!-- company info -->
-<div class="col-lg-6 col-md-6">
-
-
-                                        <div class="col-lg-12" style="">
-                                            <div class="col-lg-12 pst_box" style=" padding: 0px; border: 2px solid #7c7c7c; margin-top: 20px; background: #fff;">
-												<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>  COMPANY INFO</h4>  </div>
-
-
-                                            <div class="col-lg-12" style="padding:10px;margin-top:15px;">
-											<div class="col-lg-10 col-md-10">
-
-
-                                                <p id="role" style="font-family:lato-light; color:#a9a9a9;">
+                                     <!---------------------------------------NEWS FEED BEGIN---------------------------------------->
+                                        <div style="background-color:#fff;padding:5px;"  >
+                                           
+                                            <br style="height:2px;">
+                                              <button type="button"  name="sub_post" class="btn btn_grn" data-toggle="modal" data-target="#myModal">INK</button>
+                                            <!---ink post modal-->
+                                            <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div style="background-color:#fff;padding:5px;"  >
+                                            <div class="media  bg" style="background:#afdf7c">
+                                                <a href="" class="pull-left">
                                                 <?php
-												$get_user_role=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
-												$rolie=mysqli_fetch_array($get_user_role);
+                                                if($fet_ppic['image']!='')
+												{
 												?>
-                                                    <?php echo $rolie['company_role_info']; ?><a href="#Your_role" style="float:left;">  <i class="fa fa-pencil icon"></i></a></p>
-											</div>
-
-                                            <div class="col-lg-2" style="padding:0px;margin-top:-20px;">
-                                                <img src="images/profile/logo.jpg" width="80" />
-                                            </div>
-                                            </div>
-																					</div>
-                                        </div>
-                                        <br>
-	<!-- colleagues-->
-                                        <div class="col-lg-12 pst_box" style=" background: #fff; border: 2px solid #7c7c7c; padding: 0px; margin-top: -5px; margin-left: 15px; width: 516px; height: 310px;">
-
-																						<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>COLLEAGUES</h4> </div>
-                                            <!-- <h4 class="club_headers" style="margin:0px;">
-                                                COLLEAGUES </h4> -->
-                                            <br>
-                                            <div id="gallerycontainer">
-                                                <div id="gallery">
+                                                    <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" class="media-object">
                                                     <?php
-                                                    $collegus_exe=mysqli_query($conn,"select * from users where company='$usr_dis[company]'");
-                                                    while($colle=mysqli_fetch_array($collegus_exe))
-                                                    {
-                                                        $colle_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$colle[user_id]'");
-                                                        $colle_pic=mysqli_fetch_array($colle_ppic_exe);
-                                                        ?>
-
-                                                        <div style="width:150px; height:190px;" align="center" id="c_hs">
-
-                                                        <?php
-                                                        if($colle_pic['image']!='')
-														{
-														?>
-                                                            <img src="fb_users/<?php echo $colle['Gender']?>/<?php echo $colle['Email']?>/Profile/<?php echo $colle_pic['image'];?>" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
-                                                            <?php
-														}else
-														{
-															?>
-                                                            <img src="images/profile/sq.PNG" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt=""/>
-                                                            <?php
-														}
-															?>
-                                                            <h4 style=" color:#afdf7c">
-                                                                <?php echo $colle['Name'];?></h4>
-                                                            <h5 style=" color:#afdf7c">
-                                                                <?php echo $colle['designation'];?></h5>
-                                                        </div>
-                                                        <?php
-                                                    }
-                                                    ?>
-                                                    <?php /*?> <div style="width:150px; height:180px;" align="center" id="c_hs">
-                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
-                                                                <h4 style=" color:#afdf7c">
-              Rajesh</h4>
-                                                                <h5 style=" color:#afdf7c">
-              CEO</h5>
-                                                            </div><?php */?>
-
-
-
+												}else
+												{
+													?>
+                                                    <img src="images/profile/sq.PNG" width="50" height="50" class="media-object">
+                                                   <?php
+												}
+												   ?>
+                                                </a>
+                                                <div class="media-body innerTB half bg" style="padding-top:4px;">
+                                                    <a href="#" class="pull-right innerT innerR text-white"> </a>
+                                                    <a href="" class="text-white strong display-block"><?php echo $usr_dis['Name']?></a>
+                                                    <br>
+                                                    <span style="color:#fff;"><?php echo $usr_dis['designation'];?></span>
+                                                    <span style="color:#fff;">-</span>
+                                                    <span style="color:#fff;"><?php echo $usr_dis['company'];?></span>
                                                 </div>
-
-
                                             </div>
-                                            <br>
-                                        </div>
-																				</div>
+                                            <br style="height:2px;">
+                                                                             
+                                            <form method="post" action="script_code.php">
+                                                <div class="input-group comment">
+                                                    <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
+                                                    <textarea style="resize:none;border:1px solid #afdf7c;" class=" span12 form-control" name="post_data" id="post_data" data-id="post_data" cols="90" rows="2" placeholder=" Ink your reflections..."></textarea>
 
-                                    </div>
-
-                                    <!----------users Company Role begin------------------>
-
-
-
-                                           <div class="remodal" data-remodal-id="Your_role" id="Your_role" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                            <form class="form-horizontal" role="form" action="" method="post" id="importFrm">
-                                                <div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Your Role</label>
-                                                        <div class="col-sm-9">
-
-                                                            <textarea  class="form-control" id="user_role" placeholder=""  name="user_role"><?php echo $fet_info['company_role_info'];?></textarea>
-                                                        </div>
-                                                    </div>
 
 
                                                 </div>
-                                                <br>
-
-                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                                                <!--data-remodal-action="confirm"-->
-                                                <button type="submit" data-remodal-action="confirm" name="comp_role" onClick="return rlioncopmrole();"  class="remodal-confirm">Info</button>
-
+                                                <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; margin-top:10px; ">
+                                                <!-- -->
+                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn_grn">
+                                                        INK
+                                                    </button>
+                                                    <?php /*?><button type="button" class="btn btn-success navbar-btn">
+                                                        SCHEDULE
+                                                    </button><?php */?>
+                                                    <button type="reset" class="btn btn_grn">
+                                                        DUST
+                                                    </button>
+                                                </div>
                                             </form>
                                         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+                                            <!--End ink post modal-->
+                                          
+                                           
+                                        </div>
+                                        <!--<hr class="style5">-->
+                                        <br />
+										<div id="news_feed">
+                                        <div class="bg_pst">
+										<div id="news_feed_like">
+                                        <div id="news_feed_comment">
 
 
+               								<div class="container">
+                                            <div class="news_feed">
 
 
-									<!-----------------END users role----------------------->
-                                    <!--------------------------------------------END SPACE------------------------------------------------->
+                                            <?php
+                                            $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
+
+                                            while($resp=mysqli_fetch_array($retpe))
+                                            {
+												++$from_count;
+                                                $pue=mysqli_query($conn,"select * from users where user_id='$resp[user_id]'");
+                                                $pud=mysqli_fetch_array($pue);
+                                                $pupe=mysqli_query($conn,"select * from user_profile_pic where user_id='$resp[user_id]'");
+                                                $pupp=mysqli_fetch_array($pupe);
+                                                ?>
+                                              <?php
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
+
+
+                                                                ?>
+
+
+                           <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+        <div>
+                                                            <?php
+                                                                if($ps['status']=='Like')
+                                                                {
+
+                                                                    ?>
+                                                                    <a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                 <?php
+                                                                }else
+                                                                {
+
+                                                                    ?>
+                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <?php
+                                                        }
+                                                        ?>
+                                                            </div>
+
+                               <?php
+                                                        if($resp['post_pic']!='')
+                                                        {
+                                                            ?>
+
+                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
+
+                                                              <?php
+                                                        }
+                                                        ?>
+
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" style="height:70px;width:70px;" />
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $pud['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                    <!--<h3>Letterpress asymmetrical</h3>-->
+                                    <p> <?php echo $resp['post_txt'];?></p>
+                                    <hr>
+																		<br>
+
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                            <?php
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
+
+
+                                                                ?>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou;?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $resp['likes'];?></a></i>
+                                                                </div>
+                                                                <br />
+                                                            </div>
                                 </div>
                             </div>
+                             </div>
+                          </div>
+<!-- </div> -->
+
+
+                                                <?php
+                                            }
+                                            ?>
+
+                                         </div>
+                                          </div>
+											</div></div>
+											</div>
+                                        </div>
+
+                                     <!-----------------------------------------END NEWS FEED------------------------------------>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab2">
+                                 <!------------------------------------BEGIN INDUSTRY--------------------------------------------------->
+                                 <div id="my_industry">
+
+
+                                    <div class="bg_pst">
+                                    <div class="container">
+                                            <div class="news_feed">
+
+
+                                        <?php
+                                        $industry_count=100;
+                                        $industry_users_exe=mysqli_query($conn,"select * from users where industry='$usr_dis[industry]'");
+                                        while($industry_users_ret=mysqli_fetch_array($industry_users_exe))
+                                        {
+											++$from_count;
+
+                                            $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]' order by post_id desc");
+                                            while ($industry_post_rety = mysqli_fetch_array($industry_post_users_execu))
+                                            {
+												++$from_count;
+                                                $industry_user_profile_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$industry_post_rety[user_id]'");
+                                                $indus_usr_prof_pic=mysqli_fetch_array($industry_user_profile_exe);
+                                                $industry_post_usr_profi_pic=$indus_usr_prof_pic[2];
+
+                                                $industry_post_user_data_exeu=mysqli_query($conn,"select * from users where user_id='$industry_post_rety[user_id]'");
+                                                $industry_post_user_data_retry=mysqli_fetch_array($industry_post_user_data_exeu);
+
+                                                ?>
+                                                
+                                                  <?php
+                                                                $industry_post_status_exe=mysqli_query($conn,"select * from user_post_status where post_id='$industry_post_rety[post_id]'");
+                                                                $industry_post_status_count=mysqli_num_rows($industry_post_status_exe);
+                                                                $industry_post_status_retry=mysqli_fetch_array($industry_post_status_exe);
+																$industry_post_comment_exeu=mysqli_query($conn,"select * from user_post_comment where post_id='$industry_post_rety[post_id]'");
+                                                        $industry_post_comment_count=mysqli_num_rows($industry_post_comment_exeu);
+                                                                ?>
+
+
+                                                 <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
+                                                            <?php
+                                                                if($industry_post_status_retry['status']=='Like')
+                                                                {
+
+                                                                    ?>
+                                                                    <a href="#"  onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                 <?php
+                                                                }else
+                                                                {
+
+                                                                    ?>
+                                                                <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <?php
+                                                        }
+                                                        ?>
+                                                            </div>
+                                                            
+                                                            
+                                                              <?php
+                                                        if($industry_post_rety['post_pic']!='')
+                                                        {
+                                                            ?>
+                                                              <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email'];?>/Post/<?php echo $industry_post_rety['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
+                                                              <?php
+                                                        }
+                                                        ?>
+
+                              
+
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                    <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" style="height:70px;width:70px;" />
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $industry_post_rety['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $industry_post_user_data_retry['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $industry_post_rety['post_txt'];?></p>
+                                    <hr>
+																		<br>
+
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                            <?php
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
+
+
+                                                                ?>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $industry_post_comment_count ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $industry_post_status_count;?></a></i>
+                                                                </div>
+                                                                <br />
+                                                            </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>
+
+
+
+
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                        </div></div>
+
+                                    </div>
+									</div>
+                                  <!----------------------------------END INDUSTRY---------------------------------------------------->
+                                </div>
+                                <div class="tab-pane" id="tab3">
+                                 <!------------------------------------------BEGIN INKED--------------------------------->
+									<div id="my_inked">
+
+                                    <div class="bg_pst">
+                                    
+                                    <div class="container">
+                                            <div class="news_feed">
+
+                                        <?php
+                                        $user_profile_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
+                                        $user_profile_pic=mysqli_fetch_array($user_profile_photo_exe);
+                                        ?>
+                                        <?php
+
+                                        $count=0;
+                                        $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."' order by post_id desc");
+                                        while($user_profile_post=mysqli_fetch_array($user_profile_post_exet))
+                                        { ++$from_count;
+                                            $count++;
+                                            ?>
+                                            
+                                            <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
+                                                                ?>
+                                            
+										  <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
+                                                            <?php
+                                                                if($user_profilr_bookmark['status']=='Like')
+                                                                {
+
+                                                                    ?>
+                                                                    <a href="#"   onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                 <?php
+                                                                }else
+                                                                {
+
+                                                                    ?>
+                                                                <a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <?php
+                                                        }
+                                                        ?>
+                                                            </div>
+                                                            
+                                                            <?php
+                                                        if($user_profile_post['post_pic']!='')
+                                                        {
+                                                            ?>
+                                                              <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email']; ?>/Post/<?php echo $user_profile_post['post_pic'];?>"  class="img-responsive " width="400" style="width:100%;height:240px;"  />
+                                                              <?php
+                                                        }
+                                                        ?>
+                                                            
+                                                            
+                                                            
+
+                              
+
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                
+                                 <?php
+																if($user_profile_pic['image']!='')
+																{
+																?>
+                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
+                                                                <?php
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
+                                                                    <?php
+																}
+																	?>
+                                
+                                   
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $usr_dis['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $usr_dis['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $usr_dis['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $usr_dis['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $user_profile_post['post_txt']?></p>
+                                    <hr>
+																		<br>
+
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                           <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
+                                                                ?>
+                                                               <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_profile_comment_count; ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_pos_not_cou;?></a></i>
+                                                                </div>
+                                                                <br />
+                                                            </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>			                                            
+                                            
+
+
+                                              
+
+
+                                            <?php
+                                        }
+                                        ?>
+                                        </div></div>
+
+										</div>
+                                    </div>
+                                 <!---------------------------------------------END INKED---------------------------------------->
+                                </div>
+                                <div class="tab-pane" id="tab4">
+                                 <!---------------------------------------------------BEGIN NOTED FILE---------------------------->
+									<div id="noted_likes">
+                                    <div class="bg_pst">
+                                     <div class="container">
+                                            <div class="news_feed">
+
+                                        <?php
+                                        $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_SESSION[id]'");
+
+                                        while($ret_user_noted=mysqli_fetch_array($user_noted_posts_exe))
+                                        {
+										++$from_count;
+                                            ?>
+
+                                            <?php
+
+                                            $count=0;
+                                            $user_noted_post_exet=mysqli_query($conn,"select * from user_post where post_id='".$ret_user_noted['post_id']."'");
+                                            $user_noted_post=mysqli_fetch_array($user_noted_post_exet);
+
+                                            $count++;
+                                            ?>
+                                            <?php
+                                            $user_noted_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$user_noted_post[user_id]'");
+                                            $user_noted_ppic=mysqli_fetch_array($user_noted_photo_exe);
+                                            ?>
+
+                                            <?php
+                                            $user_noted_pers_de_ex=mysqli_query($conn,"select * from users where user_id='".$user_noted_post['user_id']."'");
+                                            $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
+                                            ?>
+                                            
+                                             <?php
+                                                                $user_noted_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_noted_post[post_id]'");
+															$ink_noted_not_cou=mysqli_num_rows($user_noted_bookmark_exe);
+															 $user_noted_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_noted_post[post_id]'");
+                                                $user_noted_comment_count=mysqli_num_rows($user_noted_post_comment_execu);
+                                                                ?>
+
+                                         
+                                          <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
+                                                            <?php
+                                                                if($ret_user_noted['status']=='Like')
+                                                                {
+
+                                                                    ?>
+                                                                    <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
+                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
+                                                                 <?php
+                                                                }else
+                                                                {
+
+                                                                    ?>
+                                                                <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
+                                                                <?php
+                                                        }
+                                                        ?>
+                                                            </div>
+                                                            
+                                                           
+                                                            
+                                                           <?php
+                                                        if($user_noted_post['post_pic']!='')
+                                                        {
+                                                            ?>
+                                                              <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive"  style="width:100%;height:240px;" />
+                                                              <?php
+                                                        }
+                                                        ?>   
+                                                            
+
+                              
+
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                
+                                 <?php
+																if($user_profile_pic['image']!='')
+																{
+																?>
+                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
+                                                                <?php
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
+                                                                    <?php
+																}
+																	?>
+                                
+                                   
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $user_pos_nrty['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $user_pos_nrty['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $user_pos_nrty['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $user_noted_post['post_txt']?></p>
+                                    <hr>
+																		<br>
+
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                           <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
+                                                                ?>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_noted_comment_count ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_noted_not_cou;?></a></i>
+                                                                </div>
+                                                                <br />
+                                                            </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>			                
+
+
+
+                                            <?php
+                                        }
+                                        ?>
+                                        </div></div>
+                                    </div>
+									</div>
+                                 <!------------------------------END NOTED FILES----------------------------------------------->
+                                </div>
+                                <div class="tab-pane" id="tab5">
+                                  <!------------------------------------------------BEGIN ANKITHA FILE--------------------------->
+                                    <div style="background-color:#fff;height:850px; width:590px; ">
+                                        <div>
+                                            <div style="height:80px;position:relative;  background-color:#afdf7c; z-index:1;" align="right">
+                                                <h1 style="padding-top:25px; padding-right:20px;color:#fff; font-size:40px; font-family:lato-regular;"><?php echo $_SESSION['Name'];?></h1>
+                                            </div>
+                                            <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
+                                            <?php
+                                            if($fet_ppic['image']!='')
+
+											{
+											?>
+                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" height="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <?php
+											}else{
+												?>
+                                                <img src="images/profile/sq.PNG" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
+                                                <?php
+											}
+												?>
+                                                <div style="display:none;position:absolute; left:17.4%; top:52%; z-index:1;" id="change_user_ppic" >
+                                              <a href="#profilepic" class="icon" onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();" > <i class="btn btn-success" >Edit Pic</i></a></div>
+                                            </div>
+
+                                            <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
+                                                <div class="row">
+                                                    <div class="col-lg-4" style="height:150px;width:170px; background-color:#fff;border-bottom:1px dashed #afdf7c;">
+
+                                                    </div>
+                                                    <div class="col-lg-8" style="height:150px;width:420px; background-color:#fff; border-bottom:1px dashed #afdf7c;">
+                                                        <div class="col-lg-12" style="padding-right: 5px;">
+                                                            <h3 class="club_headers" style="text-align:right;font-family:lato-hairline; margin-right:0px;">
+                                                                <?php echo $usr_dis['designation'];?></h3>
+                                                        </div>
+                                                        <div style="height:30px; ">
+                                                            <img src="images/others/d_quote1.png" width="40px" style="opacity:.1" />
+                                                        </div>
+                                                        <div class="col-lg-12" style="padding-right:0px;" id="disp_user_quote">
+                                                        <?php
+                                                        $get_user_quotes=mysqli_query($conn,"select * from users_quotes where user_id='$_SESSION[id]' order by quote_id desc limit 1");
+														$quote_desc=mysqli_fetch_array($get_user_quotes);
+														?>
+                                                        <a href="#user_quote" class="icon" > <i class="fa fa-pencil icon"></i></a>
+                                                            <blockquote style="color:#afdf7c; font-family:lato-light; border-left:5px solid #afdf7c;"><?php echo $quote_desc['quote_txt'];?></blockquote>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" style=" background-color:#fff;height:610px;">
+                                                    <div class="col-lg-4 profile_left_navbar" style="border-right:1px dashed #acdf7c; height:500px; margin-top:10px; margin-bottom:10px;">
+                                                        <div class="col-lg-12 profile_l_n_personal">
+                                                            <h3 class="club_headers" style="text-align:right;margin-right:0px;">
+                                                                PERSONAL</h3>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    CONTACT</h5>
+                                                                <span>
+        +91 <?php echo $fet_info['mobile_no'];?></span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    ADDRESS</h5>
+                                                                <span>
+       <?php echo $fet_info['hometown'];?></span>
+                                                                <br>
+                                                                <span><?php echo $fet_info['current_city'];?></span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    EMAIL</h5>
+                                                                <span>
+        <?php echo $fet_info['Email'];?></span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    WEBSITE</h5>
+                                                                <span>
+        <?php echo $fet_info['website'];?></span>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                        <div class="col-lg-12 profile_l_n_personal">
+                                                            <h3 class="club_headers" style="text-align:right;margin-right:0px;">
+                                                                COMPANY</h3>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    COMPANY NAME</h5>
+                                                                <span>
+        <?php echo $usr_dis['company'];?></span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    EMAIL</h5>
+                                                                <span>
+        <!--info@betasolutions.in--><?php echo $fet_info['Email'];?></span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
+                                                                    WEBSITE</h5>
+                                                                <span>
+        <!--www.betasolutions.in--><?php echo $fet_info['website'];?></span>
+                                                            </div>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-8" style=" margin-top:10px; margin-bottom:10px; height:600px;">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 p_r_box">
+                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
+                                                                    PROFILE</h3>
+                                                                <p>
+                                                                    <?php echo $usr_dis['description'];?></p>
+                                                            </div>
+                                                            <div id="user_acomplis" class="col-lg-12 p_r_box" style="overflow-y:none;">
+                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
+                                                                    ACCOMPLISHMENTS</h3>
+                                                                    <a href="#ACCOMPLISHMENTS" class="icon" style="margin-top:-32px;"> <i class="fa fa-pencil icon"></i></a>
+                                                                    <?php
+                                                                    $ret_acopmi_exe=mysqli_query($conn,"select * from user_accomplishments where user_id='$_SESSION[id]' order by accomp_id desc");
+																	while($ret_acompy=mysqli_fetch_array($ret_acopmi_exe))
+																	{
+																	?>
+                                                                <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
+                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
+                                                                        <h5>
+                                                                            <?php echo $ret_acompy['start_year'];?>-<?php echo $ret_acompy['end_year'];?></h5>
+                                                                    </div>
+                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
+                                                                        <h5 style="margin:0px;color:#afdf7c">
+                                                                            <?php echo $ret_acompy['acomp_title'];?></h5>
+                                                                        <p style="text-align:;">
+                                                                            <?php echo $ret_acompy['acomp_desc'];?></p>
+                                                                    </div>
+                                                                </div>
+                                                                <?php
+																	}
+																?>
+                                                               <!-- <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
+                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
+                                                                        <h5>
+                                                                            2015-2016</h5>
+                                                                    </div>
+                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
+                                                                        <h5 style="margin:0px;color:#afdf7c">
+                                                                            BIG PROJECT</h5>
+                                                                        <p style="text-align:;">
+                                                                            electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale a</p>
+                                                                    </div>
+                                                                </div>-->
+
+                                                            </div>
+                                                         <!--   <div class="col-lg-12 p_r_box">
+                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
+                                                                    EDUCATION</h3>
+                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
+                                                                <br>
+                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
+                                                                <br>
+                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
+                                                                <br>
+                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
+                                                                <br>
+                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
+                                                                <br>
+                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
+                                                            </div>-->
+                                                            <div class="col-lg-12 p_r_box" style="border-bottom:none;">
+                                                            <div id="skill6">
+                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
+                                                                    SKILLS</h3>
+                                                                <?php
+                                                                $us_sli_exe=mysqli_query($conn,"select * from user_skills where user_id='$_SESSION[id]'");
+                                                                while($uskil=mysqli_fetch_array($us_sli_exe))
+                                                                {
+                                                                    ?>
+                                                                    <button type="button" class="btn btn_grn" value="" style="height:30px; margin:5px;text-transform:uppercase;"><?php echo $uskil['skill'];?></button>
+                                                                    <?php
+                                                                }
+                                                                ?>
+                                                                <!-- <input type="button" class="btn btn_grn" value="PHOTOSHOP" style=" margin:1px; height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="WEB DESIGN" style=" margin:1px; height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="PHP" style=" margin:1px; height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="3D MODELING" style=" margin:1px;height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="C#" style=" margin:1px;height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="DOT.NET" style=" margin:1px;height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="CINEMA4D" style=" margin:1px;height:30px;">
+                                                                 <input type="button" class="btn btn_grn" value="ANIMATION" style=" margin:1px;height:30px;">-->
+                                                                 </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <!--Edit Profile Model Begin-->
+                                      <div class="remodal" data-remodal-id="profilepic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="script_code.php" enctype="multipart/form-data">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Edit Profile Pic</h4>
+
+                                            <input type="file"  name="profile_pic" id="profile_pic"/>
+                                        </div>
+
+
+                                    </div>
+                                    <br>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit"  name="sub_edit_ppic"   class="remodal-confirm">Edit Pic</button>
+
+                                </form>
+
+                            </div>
+
+                                    <!------END Edit Profile Model------------->
+                                    <!--ADD QUOTE OF THE DAY BEGIN-->
+                                     <div class="remodal" data-remodal-id="user_quote" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Today Quote</h4>
+
+                                            <input type="text" class="form-control"  name="user_quote" id="user_quote"/>
+                                            <br/><br/>
+                                        </div>
+
+
+                                    </div>
+                                    <br><br/>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit" data-remodal-action="confirm"  onClick="return inseruserquote();"  class="remodal-confirm">Quote</button>
+
+                                </form>
+
+                            </div>
+                                    <!--END QUOTE OF THE DAY-->
+
+                              <!--add Acomplishments model begin-->
+
+                                     <div class="remodal" data-remodal-id="ACCOMPLISHMENTS" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                <form method="post" action="">
+                                    <div>
+
+                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
+                                        <div class="col-lg-12">
+                                            <h4 id="modal1Title">Add Accomplishments</h4>
+                                            <div class="col-lg-6">
+                                            <div class="form-group">
+                                            <select  name="from_year" id="from_year" class="club_txt" required>
+                                                            <option>From year</option>
+                                                            <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option> <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option> <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
+
+                                                        </select>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                        <div class="form-group">
+                                            <select  name="to_year" id="to_year" class="club_txt" required>
+                                                            <option>to year</option>
+                                                            <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option> <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option> <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
+
+                                                        </select>
+                                                        </div>
+                                                        </div>
+
+
+                                                      <div class="col-lg-12">
+                                            			<div class="form-group">
+                                                        <input type="text" class="club_txt" name="acomp_title" id="acomp_title" placeholder="Project Title" required>
+                                                   		 </div>
+                                                     </div>
+                                                      <div class="col-lg-12">
+                                            			<div class="form-group">
+                                                        <input type="text" class="club_txt" name="acomp_desc" id="acomp_desc" placeholder="Project Descriptions" required>
+                                                   		 </div>
+                                                     </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <br><br/>
+
+                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+										<!--data-remodal-action="confirm"-->
+                                    <button type="submit" data-remodal-action="confirm"  onClick="return insertaccomplishments();"  class="remodal-confirm">ADD</button>
+
+                                </form>
+
+                            </div>
+
+                               <!--end model accomplishments-->
+                                 <!--------------------------------END ANKITHA FILE--------------------------------------->
+                                </div>
+                            </div>
+
                         </div>
+                       
+                       
+                       <!-------Dairy ends-------------->
                         <div class="tab-pane" id="club-vr">
                            <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;margin-top: 25px;">
                             <div id="club_login">
@@ -2057,973 +2375,686 @@ $from_count=0;
                              </div>
                             </div>
 						</div>
-                         <div class="tab-pane " id="dairy-vr">
-                            <ul class="nav nav-tabs" id="id_hover">
-                                <li class="active">
-                                    <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">Feed
-                                    <!-- <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
-                                    <img id="dry_feed12" src="images/others/s_n_1.png" width="70" style="display:none;"/>
-                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a"> -->
-            <!-- Feed</h5> -->
-           <!-- <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5>--></a>
-                                </li>
+                        
+                        <!--work space begin-->
+                         <div class="tab-pane " id="workspace-vr">
+                            <ul class="nav nav-tabs centered " id="id_hover"style="margin-left:50%;">
+    <li class="active tab_border tab_trans">
+        <!-- <a href="#tab6" data-toggle="tab" onClick="return change_activetab11();">
+            <img id="act_tab11" src="images/others/s_n_2.png" width="70" />
+             <img id="act_tab12" style="display:none" src="images/others/s_n_1.png" width="70" />
+            <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
+            Work</h5>
+        </a> -->
+				<a href="#tab6" data-toggle="tab"> Work</a>
+    </li>
+    <li class="hover_li tab_trans">
+        <!-- <a href="#tab7" data-toggle="tab" onClick="return change_activetab();">
+            <img id="act_tbw21" src="images/others/s_n_2.png" width="70" style="display:none;"/>
+             <img id="act_tbw22" src="images/others/s_n_1.png" width="70" />
+            <h5 style="text-align:center; position:absolute; top:45px; left:40px;font-size:12px; color:#5a5a5a">
+            Space</h5>
+        </a> -->
+				<a href="#tab7" data-toggle="tab"> Space</a>
+    </li>
+    <!-- <li>
+        <a href="#tab8" data-toggle="tab">Messages</a>
+    </li>
+    <li>
+        <a href="#tab9" data-toggle="tab">Settings</a>
+    </li>     -->
+</ul>
+                             <div class="tab-content">
+                                <div class="tab-pane active" id="tab6">
+                                    <div class="accordion-wrap">
+                                        <!-----------------------------WORK BEGIN------------------------------------->
 
-                                <li>
-                                    <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">Industry
-                                    <!-- <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
-                                    <img id="dry_indu22" src="images/others/s_n_2.png" width="70" style="display:none;" />
-                               <h5 style="text-align:center; position:absolute; top:45px; left:35px;font-size:12px; color:#5a5a5a"> -->
-            <!-- </h5> -->
-           <!-- <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5>--></a>
-                                </li>
-                                <li>
-                                    <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">Inked
-                                    <!-- <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
-                                    <img id="dry_ink32" src="images/others/s_n_2.png" width="70" style="display:none;" />
-                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            </h5> -->
-            <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5>--></a>
-                                </li>
-                                <li>
-                                    <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">Noted
-                                    <!-- <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
-                                    <img id="dry_not42" src="images/others/s_n_2.png" width="70" style="display:none;" />
-                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            </h5> -->
-            <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5>--></a>
-                                </li>
-                                <li>
-                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();"><?php echo $_SESSION['Name'];?>
-                                    <!-- <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
-                                    <img id="dry_uinfo52" src="images/others/s_n_2.png" width="70" style="display:none;" />
-                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            </h5> -->
-            <?php /*?><h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff"><?php echo $_SESSION['Name'];?></h5><?php */?></a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab1">
-                                    <div class="pst_main_background">
-                                        <br>
-                                     <!---------------------------------------NEWS FEED BEGIN---------------------------------------->
-                                        <div style="background-color:#fff;padding:5px;"  >
-                                            <div class="media  bg" style="background:#afdf7c">
-                                                <a href="" class="pull-left">
-                                                <?php
-                                                if($fet_ppic['image']!='')
-												{
-												?>
-                                                    <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="50" class="media-object">
-                                                    <?php
-												}else
-												{
-													?>
-                                                    <img src="images/profile/sq.PNG" width="50" height="50" class="media-object">
-                                                   <?php
-												}
-												   ?>
-                                                </a>
-                                                <div class="media-body innerTB half bg" style="padding-top:4px;">
-                                                    <a href="#" class="pull-right innerT innerR text-white"> </a>
-                                                    <a href="" class="text-white strong display-block"><?php echo $usr_dis['Name']?></a>
-                                                    <br>
-                                                    <span style="color:#fff;"><?php echo $usr_dis['designation'];?></span>
-                                                    <span style="color:#fff;">-</span>
-                                                    <span style="color:#fff;"><?php echo $usr_dis['company'];?></span>
-                                                </div>
+                                         <div class="row" style="background-color:transparent; height:10%;margin-top:-15px;">
+                                    <br>
+																		<!-- disscussions	 -->
+
+																	                                        <div id="todo" class="col-lg-6 col-md-6 panel  pst_box " style=" border: 2px solid #7c7c7c; padding-left: 0px; padding-right: 0px; padding-top: 0px; border-radius: 0px;">
+																	                                            <br>
+																																							<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>
+																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
+
+
+
+																	                                            <div id="todo_tasks_refresh" class="col-lg-9" style="padding-top:5px;padding-left:0px;padding-right:0px;">
+                                                    <div class="panel-content " id="screen" style="height:400px; overflow-y:scroll;">
+                                                        <form>
+                                                            <fieldset>
+                                                                <ul class="tasks">
+                                                                    <?php
+                                                                    $td_cu=0;
+                                                                    $tdl=mysqli_query($conn,"select * from todo_insertions where todo_status='0' AND todo_user_id='".$_SESSION['id']."'");
+                                                                    while($ret_td=mysqli_fetch_array($tdl))
+                                                                    {
+                                                                        ++$td_cu;
+                                                                        ?>
+                                                                        <li class="task">
+                                                                            <?php if($ret_td['todo_status']==0)
+                                                                            {
+
+                                                                                ?>
+                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" value="<?php echo $ret_td['todo_id'];?>"   onClick="return change_to(this.value);"/>
+                                                                                <?php
+                                                                            }
+                                                                            ?>
+                                                                            <label for="task<?php echo $td_cu;?>"><?php echo $ret_td['todo_label'];?>
+                                                                                <span class="line-through"></span>
+
+                                                                            </label>
+                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px;  "><?php echo $ret_td['todo_datetime']?></p>
+                                                                        </li>
+                                                                        <?php
+                                                                    }
+
+                                                                    ?>
+
+                                                                </ul>
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+
+                                                    <!--Invisable Panel-->
+
+                                                    <div class="panel-content col-lg-9" style="display:none;height:400px; overflow-y:scroll;width:100%;" id="screen1" >
+                                                        <form method="post">
+                                                            <fieldset>
+                                                                <ul class="tasks">
+                                                                    <?php
+                                                                    $td_cu=0;
+                                                                    $tdl=mysqli_query($conn,"select * from todo_insertions where todo_status='1' AND todo_user_id='".$_SESSION['id']."'");
+                                                                    while($ret_td=mysqli_fetch_array($tdl))
+                                                                    {
+                                                                        ++$td_cu;
+                                                                        ?>
+                                                                        <li class="task" style="color:grey;">
+                                                                            <?php if($ret_td['todo_status']!=0)
+                                                                            {
+
+                                                                                ?>
+                                                                                <input type="checkbox" name="todo-tasks" id="task<?php echo $td_cu;?>" checked="checked"  value="<?php echo $ret_td['todo_id'];?>"  onClick="return changestatus(this.value);"/>
+                                                                                <?php
+                                                                            }
+                                                                            ?>
+                                                                            <label for="task<?php echo $td_cu;?>" style="color:grey"><?php echo $ret_td['todo_label'];?>
+                                                                                <span class="line-through"></span>
+
+                                                                            </label>
+                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px; "><?php echo $ret_td['todo_datetime']?></p>
+                                                                        </li>
+                                                                        <?php
+                                                                    }
+
+                                                                    ?>
+
+                                                                </ul>
+                                                            </fieldset>
+                                                        </form>
+                                                    </div>
+
+												</div>
+                                                 <div class="panel-content col-lg-3" style=" height: 400px; border-left: 1px solid #ddd; padding-left:30px;padding-top:5px;">
+                                                      <ul class="tasks" style="margin-left:-15px;padding:0px;height:10px;">
+
+                                                                         <li class="task" style="padding:5px;"><span class=" todo_right"><a href="#" data-remodal-target="modal"> Create New</a></span></li>
+                                                                         <li class="task" style="padding:5px;"><span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()">Completed</a></span></li>
+                                                                         <li class="task" style="padding:5px;">Date</li>
+                                                                         <li class="task" id="todo_type" onClick="" style="padding:5px;"><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
+                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
+                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('CALL');">Clients</a></li>
+
+                                                                </ul>
+                                                     </div>
+																	                                        </div>
+																																					<!-- discussion end -->
+<!-- company info -->
+<div class="col-lg-6 col-md-6">
+
+
+                                        <div class="col-lg-12" style="">
+                                            <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;background-color:#fff;">
+																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> LEDGER</h4> </div>
+                                                <!-- <h4 class="club_headers" style="margin:0px;float:left;">
+                                                    COMPANY INFO </h4> -->
+												<a href="#modal1" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
+                                                <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
+                                                <br>
+																								 <div id="ledger_tbl" style="height:150px; overflow-y:scroll;">
+                                                    <table class="dynamicTable scrollVertical table table-primary " >
+                                                        <!-- Table heading -->
+                                                        <thead style="background:#808080;color:#fff;">
+                                                        <tr style="background:#808080;color:#fff;">
+                                                            <th>Date</th>
+                                                            <th>Details</th>
+                                                            <th>Debit</th>
+                                                            <th>Credit</th>
+                                                            <th>Balance</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <!-- // Table heading END -->
+                                                        <!-- Table body -->
+                                                        <tbody>
+                                                        <?php
+                                                        $led_de=mysqli_query($conn,"select * from user_ledger where user_id='".$_SESSION['id']."' order by ledger_id desc");
+                                                        while($led_ret=mysqli_fetch_array($led_de))
+                                                        {
+                                                            ?>
+                                                            <!-- Table row -->
+                                                            <tr class="gradeX">
+                                                                <td><?php echo $led_ret['date'];?></td>
+                                                                <td><?php echo $led_ret['led_reason'];?></td>
+                                                                <td>
+																<?php
+																if($led_ret['debit']==0)
+																{
+																	echo "-";
+																}else
+																{
+																	echo $led_ret['debit'];
+																}
+																?>
+
+                                                                </td>
+                                                                <td class="center">
+																<?php
+																if($led_ret['credit']==0)
+																{
+																	echo "-";
+																}else
+																{
+																 echo $led_ret['credit'];
+																}
+																 ?>
+                                                                </td>
+                                                                <td class="center"><?php echo $led_ret['total_bal'];?></td>
+                                                            </tr>
+                                                            <!-- // Table row END -->
+
+                                                            <?php
+                                                        }
+                                                        ?>
+
+
+                                                        </tbody>
+                                                        <!-- // Table body END -->
+                                                    </table>
+                                                    </div>
                                             </div>
-                                            <br style="height:2px;">
-                                            <form method="post" action="script_code.php">
-                                                <div class="input-group comment">
-                                                    <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                    <textarea style="resize:none;border:1px solid #afdf7c;" class=" span12 form-control" name="post_data" id="post_data" data-id="post_data" cols="90" rows="2" placeholder=" Ink your reflections..."></textarea>
+
+                                        </div>
+                                        <br>
+	<!-- colleagues																			 -->
+	<div class="col-lg-12">
+                                        <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;height:220px;margin-top:0px;background-color:#fff;">
+                                            <br>
+																						<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4>CLIENTS</h4> </div>
+                                                      <a href="#clientsmodel" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
+                                                   <a href="#csv_upload" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-upload" style="color:#808080;"></i></a>
+                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
+                                            <!-- <h4 class="club_headers" style="margin:0px;">
+                                                COLLEAGUES </h4> -->
+                                            <br>
+                                           <div class="html chat" id="todo_clients" style="height:150px; overflow-y:scroll;">
+
+                                                    <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
+                                                        <!-- Table heading -->
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Company</th>
+                                                            <th>Phone No</th>
+                                                            <th>Details</th>
+
+                                                        </tr>
+                                                        </thead>
+                                                        <!-- // Table heading END -->
+                                                        <!-- Table body -->
+                                                        <tbody>
+                                                        <?php
+                                                        $cli_de=mysqli_query($conn,"select * from user_clients where user_id='".$_SESSION['id']."'");
+                                                        while($cli_ret=mysqli_fetch_array($cli_de))
+                                                        {
+                                                            ?>
+                                                            <!-- Table row -->
+                                                            <tr class="gradeX">
+                                                                <td><?php echo $cli_ret['client_name'];?></td>
+                                                                <td><?php echo $cli_ret['client_company'];?></td>
+                                                                <td><?php echo $cli_ret['client_phone'];?></td>
+                                                                <td class="center"><?php echo $cli_ret['clients_details'];?></td>
+
+                                                            </tr>
+                                                            <!-- // Table row END -->
+
+                                                            <?php
+                                                        }
+                                                        ?>
+
+
+                                                        </tbody>
+                                                        <!-- // Table body END -->
+                                                    </table>
+                                                </div>
+                                            <br>
+                                        </div>
+																			</div>
+																				</div>
+
+                                    </div>
+
+
+
+
+                                        <!--Todo Model Code-->
+                                        <div class="remodal" data-remodal-id="modal">
+                                            <a data-remodal-action="close" class="remodal-close"></a>
+												<!--script_code.php-->
+                                            <form class="form-horizontal"  method="post" action="">
+                                                <div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">TITLE</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="todo_title" name="todo_title" placeholder="TITLE" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Date</label>
+                                                        <div class="col-sm-10">
+															<?php
+                                                            $tododate=date('Y-m-d h:i');
+															?>
+                                                            <input type="text" class="form-control" id="todo_date" value="<?php echo $tododate;?>" name="todo_date" placeholder="Date" name="todo_date">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="type" class="col-sm-2 control-label">TYPE</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type" required>
+                                                                    <option>CONSIGNMENTS</option>
+                                                                    <option>MEETINGS</option>
+                                                                    <option>CALL</option>
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="contact" class="col-sm-2 control-label">Clients</label>
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <select class="selectpicker col-md-12 form-control" name="todo_contacts" id="todo_contacts" required>
+                                                                    <option value="">Select Client</option>
+                                                                    <?php
+                                                                    $get_clients_data=mysqli_query($conn,"select * from user_clients where user_id='$_SESSION[id]'");
+																	while($client_ret=mysqli_fetch_array($get_clients_data))
+																	{
+
+																	?>
+                                                                    <option value="<?php echo $client_ret['client_name'];?>"><?php echo $client_ret['client_name'];?></option>
+                                                                   <?php
+																	}
+																   ?>
+
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <br>
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!-- data-remodal-action="confirm"-->
+                                           <button type="submit"  data-remodal-action="confirm"  name="todo_insert" onClick="return todoinsertions();"  class="remodal-confirm">INK</button>
+
+                                            </form>
+
+
+                                            <!--<a data-remodal-action="cancel" class="remodal-cancel" href="#">Cancel</a>
+                                            <a data-remodal-action="confirm" class="remodal-confirm" href="#">OK</a>-->
+                                        </div>
+                                        <!--End todo Model Code-->
+
+
+
+
+                                        <!--Ledger Model begin Panel-->
+
+                                        <div class="remodal" data-remodal-id="modal1" id="modal1" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" method="post" action="">
+                                                <div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Date</label>
+                                                        <div class="col-sm-10">
+                                                            <?php
+                                                            $led_cur_date=date('Y-m-d');
+															?>
+                                                            <input type="text" class="form-control" id="led_cur_date" placeholder="" value="<?php echo $led_cur_date;?>" name="led_cur_date" readonly/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Details</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="led_details" onFocus="return show_credit_debit();" placeholder="" name="led_details" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="ledger_credit">
+                                                        <label class="col-sm-2 control-label">Credit</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="led_credit" placeholder="" name="led_credit" onFocus="return disable_debit();" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="ledger_debit">
+                                                        <label class="col-sm-2 control-label">Debit</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="led_debit" onFocus="return diable_credit();" placeholder="" name="led_debit" >
+                                                        </div>
+                                                    </div>
+
+
+
+
 
 
 
                                                 </div>
-                                                <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; margin-top:10px; ">
-                                                <!-- -->
-                                                    <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn_grn">
-                                                        INK
-                                                    </button>
-                                                    <?php /*?><button type="button" class="btn btn-success navbar-btn">
-                                                        SCHEDULE
-                                                    </button><?php */?>
-                                                    <button type="button" class="btn btn_grn">
-                                                        DUST
-                                                    </button>
-                                                </div>
+                                                <br>
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <button type="submit" data-remodal-action="confirm" onClick="ledger_insert();" class="remodal-confirm">Credit Or Debit</button>
+
                                             </form>
                                         </div>
-                                        <!--<hr class="style5">-->
-                                        <br />
-										<div id="news_feed">
-                                        <div class="bg_pst">
-										<div id="news_feed_like">
-                                        <div id="news_feed_comment">
 
 
-               								<div class="container">
-                                            <div class="news_feed">
+                                        <!--Ledger End MOdel-->
 
 
-                                            <?php
-                                            $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
+                                        <!---------------------------Clients Normal insertion model--------------------------->
 
-                                            while($resp=mysqli_fetch_array($retpe))
-                                            {
-												++$from_count;
-                                                $pue=mysqli_query($conn,"select * from users where user_id='$resp[user_id]'");
-                                                $pud=mysqli_fetch_array($pue);
-                                                $pupe=mysqli_query($conn,"select * from user_profile_pic where user_id='$resp[user_id]'");
-                                                $pupp=mysqli_fetch_array($pupe);
-                                                ?>
-                                              <?php
-                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
-                                                                $ps=mysqli_fetch_array($pse);
-                                                                $psc=mysqli_num_rows($pse);
-																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
+                                           <div class="remodal" data-remodal-id="clientsmodel" id="clientsmodel" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" method="post" action="">
+                                                <div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Name</label>
+                                                        <div class="col-sm-10">
+
+                                                            <input type="text" class="form-control" id="client_name" placeholder=""  name="client_name"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Company</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="client_company" placeholder="" name="client_company">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Phone No</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="client_phone_no" placeholder="" name="client_phone_no">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2 control-label">Details</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="client_details" placeholder="" name="client_details">
+                                                        </div>
+                                                    </div>
 
 
-                                                                ?>
 
 
-                           <div class="item ">
-                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
-<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
-			 <div style="background:#fff;">
-        <div>
-                                                            <?php
-                                                                if($ps['status']=='Like')
-                                                                {
 
-                                                                    ?>
-                                                                    <a href="#"   onClick="return unlike(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
-                                                                 <?php
-                                                                }else
-                                                                {
 
-                                                                    ?>
-                                                                <a href="#"  onClick="return like(<?php echo $resp['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
-                                                                <?php
-                                                        }
-                                                        ?>
-                                                            </div>
 
-                               <?php
-                                                        if($resp['post_pic']!='')
-                                                        {
-                                                            ?>
+                                                </div>
+                                                <br>
 
-                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <button type="submit" data-remodal-action="confirm" onClick="return clientinsertions();" class="remodal-confirm">Client Data</button>
 
-                                                              <?php
-                                                        }
-                                                        ?>
+                                            </form>
+                                        </div>
 
-                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
-                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
-                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" style="height:70px;width:70px;" />
+                                        <!--------------------------------END clients Model------------------------------------>
+                                        <!-------BEGIn client csv upload--------------------->
+
+                                           <div class="remodal" data-remodal-id="csv_upload" id="csv_upload" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" action="script_code.php" method="post" enctype="multipart/form-data" id="importFrm">
+                                                <div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Upload CSV File</label>
+                                                        <div class="col-sm-9">
+
+                                                            <input type="file" class="form-control" id="client_csv" placeholder=""  name="client_csv"/>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <br>
+
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!--onClick="return clientcsvupload();" data-remodal-action="confirm"-->
+                                                <button type="submit"  name="csv_uploaddata" class="remodal-confirm">Client Data</button>
+
+                                            </form>
+                                        </div>
+
+
+                                        <!------------End csv upload clients------------------>
+
+                                        <!-----------------------------END WORK-------------------------------------------------->
+                                    </div>
                                 </div>
-                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
-                                    <p >
-            <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php /*echo $pud['designation'];*/?></span></p>
-				<p >
-<a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-<?php echo $pud['designation'];?></span></p>
-                                    <p>
-          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span></p>
-                                </div>
-                                <div style="padding:15px;">
-<br>
-<br>
-                                    <br>
-                                    <hr>
-                                    <!--<h3>Letterpress asymmetrical</h3>-->
-                                    <p> <?php echo $resp['post_txt'];?></p>
-                                    <hr>
-																		<br>
+                                <div class="tab-pane" id="tab7">
+                                    <!-----------------------------------------SPACE BEGIN----------------------------------------->
+
+                                    <div class="row  " style="background-color:transparent; height:450px">
+
+																		<!-- disscussions	 -->
+
+																	                                        <div class="col-lg-6 col-md-6 pst_box" style="border:2px solid #7c7c7c;background-color:#fff;padding:0px;margin-top:20px;">
+
+																																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> DISSCUSSION THREAD</h4> </div>
+																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
+																	                                            <form method="post" action="" id="form_dis_sub">
+																	                                                <input type="hidden" name="dis_company" id="dis_company" value="<?php echo $usr_dis['company']?>">
+																	                                                <!--maxlength="161"-->
+																	                                          <input type="text"  placeholder="INK... (160 characters only..)" class="club_txt" name="disscussion_topic" id="disscussion_topic" style="margin-top:5px;margin-bottom:5px;">
+																	                                          <!--  -->
+																	                                                <input type="submit" name="dis_sub"  id="dis_sub" onClick="return space_disscussion();" style="display:none;">
+																	                                            </form>
+																	                                            <div align="left" id="discu_valid" style="display:none;color:red;margin-left:15px;">The Length Must be 160 Charecters only</div>
+																	                                            <br>
+																	                                            <div class="club_network" style=" height: 350px; background-color: #fff; border-top:2px solid #7c7c7c; padding-top:5px;">
+																	                                            <div id="club_discuss">
+																	                                                <?php
+																	                                                $twity_exe=mysqli_query($conn,"select * from company_discussions where company='$usr_dis[company]' order by dscussion_id desc");
+																	                                                while($twity=mysqli_fetch_array($twity_exe))
+																	                                                {
+																	                                                    $twity_details_exe=mysqli_query($conn,"select * from users where user_id='$twity[user_id]'");
+																	                                                    $twity_det=mysqli_fetch_array($twity_details_exe);
+																	                                                    $twity_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$twity[user_id]'");
+																	                                                    $twity_pic=mysqli_fetch_array($twity_pic_exe);
+																	                                                    ?>
+
+																	                                                    <div class="row club_network_row" style="width:100%;">
+																	                                                        <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+																	                                                            <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+																	                                                            <?php
+																																if($twity_pic['image']!='')
+																																{
+																																?>
+																	                                                                <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70" height="70">
+																	                                                                <?php
+																																}else
+																																{
+																																	?>
+																	                                                             <img src="images/profile/sq.PNG" width="70"/>
+																	                                                                <?php
+																																}
+																																	?>
+																	                                                            </div>
+																	                                                        </div>
+																	                                                        <div class="col-lg-10 club_msg_shape" style=" height: 70px; background-color: #fff; padding-right: 0px; width: 86%; border-botto: 1px solid #7c7c7c;" align="left">
+																	                                                                <span style="text-align:right; color:#7c7c7c;font-size:10px;">
+																	    <?php echo $twity_det['Name']?> - <?php echo $twity_det['company']?> - <?php echo $twity_det['designation'];?>  </span><span class="pull-right" style="text-align:right; color:#7c7c7c;font-size:10px;"> <?php echo $twity['date'];?> </span>
+																	                                                            <p>
+																	                                                                <?php echo $twity['discussion_txt'];?></p>
+																	                                                        </div>
+																	                                                    </div>
+																																											<hr style="margin-top:5px;margin-bottom:5px;border-top:1px solid #7c7c7c">
+																	                                                    <?php
+																	                                                }
+																	                                                ?>
 
 
-                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                            <?php
-                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
-                                                                $ps=mysqli_fetch_array($pse);
-                                                                $psc=mysqli_num_rows($pse);
-																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
 
 
-                                                                ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou;?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $resp['likes'];?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                </div>
-                            </div>
-                             </div>
-                          </div>
-<!-- </div> -->
+																												</div>
+																	                                            </div>
+																	                                        </div>
+																																					<!-- discussion end -->
+<!-- company info -->
+<div class="col-lg-6 col-md-6">
 
 
+                                        <div class="col-lg-12" style="">
+                                            <div class="col-lg-12 pst_box" style=" padding: 0px; border: 2px solid #7c7c7c; margin-top: 20px; background: #fff;">
+												<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>  COMPANY INFO</h4>  </div>
+
+
+                                            <div class="col-lg-12" style="padding:10px;margin-top:15px;">
+											<div class="col-lg-10 col-md-10">
+
+
+                                                <p id="role" style="font-family:lato-light; color:#a9a9a9;">
                                                 <?php
-                                            }
-                                            ?>
-
-                                         </div>
-                                          </div>
-											</div></div>
+												$get_user_role=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
+												$rolie=mysqli_fetch_array($get_user_role);
+												?>
+                                                    <?php echo $rolie['company_role_info']; ?><a href="#Your_role" style="float:left;">  <i class="fa fa-pencil icon"></i></a></p>
 											</div>
+
+                                            <div class="col-lg-2" style="padding:0px;margin-top:-20px;">
+                                                <img src="images/profile/logo.jpg" width="80" />
+                                            </div>
+                                            </div>
+																					</div>
                                         </div>
+                                        <br>
+	<!-- colleagues-->
+                                        <div class="col-lg-12 pst_box" style=" background: #fff; border: 2px solid #7c7c7c; padding: 0px; margin-top: -5px; margin-left: 15px; width: 516px; height: 310px;">
 
-                                     <!-----------------------------------------END NEWS FEED------------------------------------>
-
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tab2">
-                                 <!------------------------------------BEGIN INDUSTRY--------------------------------------------------->
-                                 <div id="my_industry">
-
-
-                                    <div class="bg_pst">
-                                    <div class="container">
-                                            <div class="news_feed">
-
-
-                                        <?php
-                                        $industry_count=100;
-                                        $industry_users_exe=mysqli_query($conn,"select * from users where industry='$usr_dis[industry]'");
-                                        while($industry_users_ret=mysqli_fetch_array($industry_users_exe))
-                                        {
-											++$from_count;
-
-                                            $industry_post_users_execu = mysqli_query($conn, "select * from user_post where user_id='$industry_users_ret[user_id]' order by post_id desc");
-                                            while ($industry_post_rety = mysqli_fetch_array($industry_post_users_execu))
-                                            {
-												++$from_count;
-                                                $industry_user_profile_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$industry_post_rety[user_id]'");
-                                                $indus_usr_prof_pic=mysqli_fetch_array($industry_user_profile_exe);
-                                                $industry_post_usr_profi_pic=$indus_usr_prof_pic[2];
-
-                                                $industry_post_user_data_exeu=mysqli_query($conn,"select * from users where user_id='$industry_post_rety[user_id]'");
-                                                $industry_post_user_data_retry=mysqli_fetch_array($industry_post_user_data_exeu);
-
-                                                ?>
-                                                
-                                                  <?php
-                                                                $industry_post_status_exe=mysqli_query($conn,"select * from user_post_status where post_id='$industry_post_rety[post_id]'");
-                                                                $industry_post_status_count=mysqli_num_rows($industry_post_status_exe);
-                                                                $industry_post_status_retry=mysqli_fetch_array($industry_post_status_exe);
-																$industry_post_comment_exeu=mysqli_query($conn,"select * from user_post_comment where post_id='$industry_post_rety[post_id]'");
-                                                        $industry_post_comment_count=mysqli_num_rows($industry_post_comment_exeu);
-                                                                ?>
-
-
-                                                 <div class="item ">
-                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
-<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
-			 <div style="background:#fff;">
-                                                     <div>
-                                                            <?php
-                                                                if($industry_post_status_retry['status']=='Like')
-                                                                {
-
-                                                                    ?>
-                                                                    <a href="#"  onClick="return unlike(<?php echo $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
-                                                                 <?php
-                                                                }else
-                                                                {
-
-                                                                    ?>
-                                                                <a href="#"  onClick="return like(<?php echo  $industry_post_rety['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
-                                                                <?php
-                                                        }
-                                                        ?>
-                                                            </div>
-                                                            
-                                                            
-                                                              <?php
-                                                        if($industry_post_rety['post_pic']!='')
-                                                        {
-                                                            ?>
-                                                              <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email'];?>/Post/<?php echo $industry_post_rety['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
-                                                              <?php
-                                                        }
+																						<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>COLLEAGUES</h4> </div>
+                                            <!-- <h4 class="club_headers" style="margin:0px;">
+                                                COLLEAGUES </h4> -->
+                                            <br>
+                                            <div id="gallerycontainer">
+                                                <div id="gallery">
+                                                    <?php
+                                                    $collegus_exe=mysqli_query($conn,"select * from users where company='$usr_dis[company]'");
+                                                    while($colle=mysqli_fetch_array($collegus_exe))
+                                                    {
+                                                        $colle_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$colle[user_id]'");
+                                                        $colle_pic=mysqli_fetch_array($colle_ppic_exe);
                                                         ?>
 
-                              
+                                                        <div style="width:150px; height:190px;" align="center" id="c_hs">
 
-                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
-                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
-                                    <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" style="height:70px;width:70px;" />
-                                </div>
-                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
-                                    <p >
-            <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php /*echo $pud['designation'];*/?></span></p>
-				<p >
-<a href="profile.php?id=<?php  echo $industry_post_rety['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-<?php echo $industry_post_user_data_retry['designation'];?></span></p>
-                                    <p>
-          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['industry'];?> </span></p>
-                                </div>
-                                <div style="padding:15px;">
-<br>
-<br>
-                                    <br>
-                                    <hr>
-                                  
-                                    <p> <?php echo $industry_post_rety['post_txt'];?></p>
-                                    <hr>
-																		<br>
-
-
-                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                            <?php
-                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
-                                                                $ps=mysqli_fetch_array($pse);
-                                                                $psc=mysqli_num_rows($pse);
-																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
-
-
-                                                                ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $industry_post_comment_count ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $industry_post_status_count;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                </div>
-                            </div>
-                             </div>
-                          </div>
-
-
-
-
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-                                        </div></div>
-
-                                    </div>
-									</div>
-                                  <!----------------------------------END INDUSTRY---------------------------------------------------->
-                                </div>
-                                <div class="tab-pane" id="tab3">
-                                 <!------------------------------------------BEGIN INKED--------------------------------->
-									<div id="my_inked">
-
-                                    <div class="bg_pst">
-                                    
-                                    <div class="container">
-                                            <div class="news_feed">
-
-                                        <?php
-                                        $user_profile_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
-                                        $user_profile_pic=mysqli_fetch_array($user_profile_photo_exe);
-                                        ?>
-                                        <?php
-
-                                        $count=0;
-                                        $user_profile_post_exet=mysqli_query($conn,"select * from user_post where user_id='".$_SESSION['id']."' order by post_id desc");
-                                        while($user_profile_post=mysqli_fetch_array($user_profile_post_exet))
-                                        { ++$from_count;
-                                            $count++;
-                                            ?>
-                                            
-                                            <?php
-                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
-                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
-															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
-															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
-                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
-                                                                ?>
-                                            
-										  <div class="item ">
-                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
-<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
-			 <div style="background:#fff;">
-                                                     <div>
-                                                            <?php
-                                                                if($user_profilr_bookmark['status']=='Like')
-                                                                {
-
-                                                                    ?>
-                                                                    <a href="#"   onClick="return unlike(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
-                                                                 <?php
-                                                                }else
-                                                                {
-
-                                                                    ?>
-                                                                <a href="#"  onClick="return like(<?php echo $user_profile_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
-                                                                <?php
-                                                        }
-                                                        ?>
-                                                            </div>
-                                                            
-                                                            <?php
-                                                        if($user_profile_post['post_pic']!='')
-                                                        {
-                                                            ?>
-                                                              <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email']; ?>/Post/<?php echo $user_profile_post['post_pic'];?>"  class="img-responsive " width="400" style="width:100%;height:240px;"  />
-                                                              <?php
-                                                        }
-                                                        ?>
-                                                            
-                                                            
-                                                            
-
-                              
-
-                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
-                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
-                                
-                                 <?php
-																if($user_profile_pic['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
-                                                                    <?php
-																}
-																	?>
-                                
-                                   
-                                </div>
-                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
-                                    <p >
-            <a href="profile.php?id=<?php echo $usr_dis['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $usr_dis['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php /*echo $pud['designation'];*/?></span></p>
-				<p >
-<a href="profile.php?id=<?php  echo $usr_dis['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-<?php echo $usr_dis['designation'];?></span></p>
-                                    <p>
-          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['industry'];?> </span></p>
-                                </div>
-                                <div style="padding:15px;">
-<br>
-<br>
-                                    <br>
-                                    <hr>
-                                  
-                                    <p> <?php echo $user_profile_post['post_txt']?></p>
-                                    <hr>
-																		<br>
-
-
-                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
-                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
-                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
-															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
-															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
-                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
-                                                                ?>
-                                                               <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_profile_comment_count; ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_pos_not_cou;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                </div>
-                            </div>
-                             </div>
-                          </div>			                                            
-                                            
-
-
-                                              
-
-
-                                            <?php
-                                        }
-                                        ?>
-                                        </div></div>
-
-										</div>
-                                    </div>
-                                 <!---------------------------------------------END INKED---------------------------------------->
-                                </div>
-                                <div class="tab-pane" id="tab4">
-                                 <!---------------------------------------------------BEGIN NOTED FILE---------------------------->
-									<div id="noted_likes">
-                                    <div class="bg_pst">
-                                     <div class="container">
-                                            <div class="news_feed">
-
-                                        <?php
-                                        $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_SESSION[id]'");
-
-                                        while($ret_user_noted=mysqli_fetch_array($user_noted_posts_exe))
-                                        {
-										++$from_count;
-                                            ?>
-
-                                            <?php
-
-                                            $count=0;
-                                            $user_noted_post_exet=mysqli_query($conn,"select * from user_post where post_id='".$ret_user_noted['post_id']."'");
-                                            $user_noted_post=mysqli_fetch_array($user_noted_post_exet);
-
-                                            $count++;
-                                            ?>
-                                            <?php
-                                            $user_noted_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$user_noted_post[user_id]'");
-                                            $user_noted_ppic=mysqli_fetch_array($user_noted_photo_exe);
-                                            ?>
-
-                                            <?php
-                                            $user_noted_pers_de_ex=mysqli_query($conn,"select * from users where user_id='".$user_noted_post['user_id']."'");
-                                            $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
-                                            ?>
-                                            
-                                             <?php
-                                                                $user_noted_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_noted_post[post_id]'");
-															$ink_noted_not_cou=mysqli_num_rows($user_noted_bookmark_exe);
-															 $user_noted_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_noted_post[post_id]'");
-                                                $user_noted_comment_count=mysqli_num_rows($user_noted_post_comment_execu);
-                                                                ?>
-
-                                         
-                                          <div class="item ">
-                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
-<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
-			 <div style="background:#fff;">
-                                                     <div>
-                                                            <?php
-                                                                if($ret_user_noted['status']=='Like')
-                                                                {
-
-                                                                    ?>
-                                                                    <a href="#"   onClick="return unlike(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);"  >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
-                                                                 <?php
-                                                                }else
-                                                                {
-
-                                                                    ?>
-                                                                <a href="#"  onClick="return like(<?php echo $user_noted_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
-                                                                <?php
-                                                        }
-                                                        ?>
-                                                            </div>
-                                                            
-                                                           
-                                                            
-                                                           <?php
-                                                        if($user_noted_post['post_pic']!='')
-                                                        {
-                                                            ?>
-                                                              <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive"  style="width:100%;height:240px;" />
-                                                              <?php
-                                                        }
-                                                        ?>   
-                                                            
-
-                              
-
-                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
-                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
-                                
-                                 <?php
-																if($user_profile_pic['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
-                                                                    <?php
-																}
-																	?>
-                                
-                                   
-                                </div>
-                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
-                                    <p >
-            <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $user_pos_nrty['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php /*echo $pud['designation'];*/?></span></p>
-				<p >
-<a href="profile.php?id=<?php  echo $user_pos_nrty['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-<?php echo $user_pos_nrty['designation'];?></span></p>
-                                    <p>
-          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['industry'];?> </span></p>
-                                </div>
-                                <div style="padding:15px;">
-<br>
-<br>
-                                    <br>
-                                    <hr>
-                                  
-                                    <p> <?php echo $user_noted_post['post_txt']?></p>
-                                    <hr>
-																		<br>
-
-
-                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
-                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
-                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
-															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
-															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
-                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
-                                                                ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_noted_comment_count ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_noted_not_cou;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                </div>
-                            </div>
-                             </div>
-                          </div>			                
-
-
-
-                                            <?php
-                                        }
-                                        ?>
-                                        </div></div>
-                                    </div>
-									</div>
-                                 <!------------------------------END NOTED FILES----------------------------------------------->
-                                </div>
-                                <div class="tab-pane" id="tab5">
-                                  <!------------------------------------------------BEGIN ANKITHA FILE--------------------------->
-                                    <div style="background-color:#fff;height:850px; width:590px; ">
-                                        <div>
-                                            <div style="height:80px;position:relative;  background-color:#afdf7c; z-index:1;" align="right">
-                                                <h1 style="padding-top:25px; padding-right:20px;color:#fff; font-size:40px; font-family:lato-regular;"><?php echo $_SESSION['Name'];?></h1>
-                                            </div>
-                                            <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
-                                            <?php
-                                            if($fet_ppic['image']!='')
-
-											{
-											?>
-                                                <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" height="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
-                                                <?php
-											}else{
-												?>
-                                                <img src="images/profile/sq.PNG" width="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>
-                                                <?php
-											}
-												?>
-                                                <div style="display:none;position:absolute; left:17.4%; top:52%; z-index:1;" id="change_user_ppic" >
-                                              <a href="#profilepic" class="icon" onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();" > <i class="btn btn-success" >Edit Pic</i></a></div>
-                                            </div>
-
-                                            <div style="height:150px;width: 591px;;background-color: rgb(216, 216, 216);z-index: 2;margin: 0px 0px 0px 540px !important;top: -140px;left: -540px;position: relative ;" align="right">
-                                                <div class="row">
-                                                    <div class="col-lg-4" style="height:150px;width:170px; background-color:#fff;border-bottom:1px dashed #afdf7c;">
-
-                                                    </div>
-                                                    <div class="col-lg-8" style="height:150px;width:420px; background-color:#fff; border-bottom:1px dashed #afdf7c;">
-                                                        <div class="col-lg-12" style="padding-right: 5px;">
-                                                            <h3 class="club_headers" style="text-align:right;font-family:lato-hairline; margin-right:0px;">
-                                                                <?php echo $usr_dis['designation'];?></h3>
-                                                        </div>
-                                                        <div style="height:30px; ">
-                                                            <img src="images/others/d_quote1.png" width="40px" style="opacity:.1" />
-                                                        </div>
-                                                        <div class="col-lg-12" style="padding-right:0px;" id="disp_user_quote">
                                                         <?php
-                                                        $get_user_quotes=mysqli_query($conn,"select * from users_quotes where user_id='$_SESSION[id]' order by quote_id desc limit 1");
-														$quote_desc=mysqli_fetch_array($get_user_quotes);
+                                                        if($colle_pic['image']!='')
+														{
 														?>
-                                                        <a href="#user_quote" class="icon" > <i class="fa fa-pencil icon"></i></a>
-                                                            <blockquote style="color:#afdf7c; font-family:lato-light; border-left:5px solid #afdf7c;"><?php echo $quote_desc['quote_txt'];?></blockquote>
+                                                            <img src="fb_users/<?php echo $colle['Gender']?>/<?php echo $colle['Email']?>/Profile/<?php echo $colle_pic['image'];?>" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                            <?php
+														}else
+														{
+															?>
+                                                            <img src="images/profile/sq.PNG" width="120" height="90" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt=""/>
+                                                            <?php
+														}
+															?>
+                                                            <h4 style=" color:#afdf7c">
+                                                                <?php echo $colle['Name'];?></h4>
+                                                            <h5 style=" color:#afdf7c">
+                                                                <?php echo $colle['designation'];?></h5>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row" style=" background-color:#fff;height:610px;">
-                                                    <div class="col-lg-4 profile_left_navbar" style="border-right:1px dashed #acdf7c; height:500px; margin-top:10px; margin-bottom:10px;">
-                                                        <div class="col-lg-12 profile_l_n_personal">
-                                                            <h3 class="club_headers" style="text-align:right;margin-right:0px;">
-                                                                PERSONAL</h3>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    CONTACT</h5>
-                                                                <span>
-        +91 <?php echo $fet_info['mobile_no'];?></span>
-                                                            </div>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    ADDRESS</h5>
-                                                                <span>
-       <?php echo $fet_info['hometown'];?></span>
-                                                                <br>
-                                                                <span><?php echo $fet_info['current_city'];?></span>
-                                                            </div>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    EMAIL</h5>
-                                                                <span>
-        <?php echo $fet_info['Email'];?></span>
-                                                            </div>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    WEBSITE</h5>
-                                                                <span>
-        <?php echo $fet_info['website'];?></span>
-                                                            </div>
-                                                            <br>
-                                                        </div>
-                                                        <div class="col-lg-12 profile_l_n_personal">
-                                                            <h3 class="club_headers" style="text-align:right;margin-right:0px;">
-                                                                COMPANY</h3>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    COMPANY NAME</h5>
-                                                                <span>
-        <?php echo $usr_dis['company'];?></span>
-                                                            </div>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    EMAIL</h5>
-                                                                <span>
-        <!--info@betasolutions.in--><?php echo $fet_info['Email'];?></span>
-                                                            </div>
-                                                            <div>
-                                                                <h5 style="color:#afdf7c;margin-bottom:2px;">
-                                                                    WEBSITE</h5>
-                                                                <span>
-        <!--www.betasolutions.in--><?php echo $fet_info['website'];?></span>
-                                                            </div>
-                                                            <br>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-8" style=" margin-top:10px; margin-bottom:10px; height:600px;">
-                                                        <div class="row">
-                                                            <div class="col-lg-12 p_r_box">
-                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
-                                                                    PROFILE</h3>
-                                                                <p>
-                                                                    <?php echo $usr_dis['description'];?></p>
-                                                            </div>
-                                                            <div id="user_acomplis" class="col-lg-12 p_r_box" style="overflow-y:none;">
-                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
-                                                                    ACCOMPLISHMENTS</h3>
-                                                                    <a href="#ACCOMPLISHMENTS" class="icon" style="margin-top:-32px;"> <i class="fa fa-pencil icon"></i></a>
-                                                                    <?php
-                                                                    $ret_acopmi_exe=mysqli_query($conn,"select * from user_accomplishments where user_id='$_SESSION[id]' order by accomp_id desc");
-																	while($ret_acompy=mysqli_fetch_array($ret_acopmi_exe))
-																	{
-																	?>
-                                                                <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
-                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
-                                                                        <h5>
-                                                                            <?php echo $ret_acompy['start_year'];?>-<?php echo $ret_acompy['end_year'];?></h5>
-                                                                    </div>
-                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
-                                                                        <h5 style="margin:0px;color:#afdf7c">
-                                                                            <?php echo $ret_acompy['acomp_title'];?></h5>
-                                                                        <p style="text-align:;">
-                                                                            <?php echo $ret_acompy['acomp_desc'];?></p>
-                                                                    </div>
-                                                                </div>
-                                                                <?php
-																	}
-																?>
-                                                               <!-- <div class="col-lg-12" tyle="height:40px; border-bottom:1px dashed #afdf7c" align="left">
-                                                                    <div class="col-lg-4" style="background-color:#afdf7c;height:40px;color:#fff;">
-                                                                        <h5>
-                                                                            2015-2016</h5>
-                                                                    </div>
-                                                                    <div class="col-lg-8" tyle="border:1px solid #afdf7c;height:40px; color:#a9a9a9;">
-                                                                        <h5 style="margin:0px;color:#afdf7c">
-                                                                            BIG PROJECT</h5>
-                                                                        <p style="text-align:;">
-                                                                            electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale a</p>
-                                                                    </div>
-                                                                </div>-->
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                    <?php /*?> <div style="width:150px; height:180px;" align="center" id="c_hs">
+                                                                <img src="images/profile/6.jpg" width="120" style="border-radius:50%; padding-left:3px; padding-top:3px;" alt="" />
+                                                                <h4 style=" color:#afdf7c">
+              Rajesh</h4>
+                                                                <h5 style=" color:#afdf7c">
+              CEO</h5>
+                                                            </div><?php */?>
 
-                                                            </div>
-                                                         <!--   <div class="col-lg-12 p_r_box">
-                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
-                                                                    EDUCATION</h3>
-                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                                <br>
-                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                                <br>
-                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                                <br>
-                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                                <br>
-                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                                <br>
-                                                                <span> <b style="color:#afdf7c">2010-2016</b> &nbsp;|&nbsp; Beta Solutions </span>
-                                                            </div>-->
-                                                            <div class="col-lg-12 p_r_box" style="border-bottom:none;">
-                                                            <div id="skill6">
-                                                                <h3 class="club_headers" style="text-align:left;margin-left:0px;">
-                                                                    SKILLS</h3>
-                                                                <?php
-                                                                $us_sli_exe=mysqli_query($conn,"select * from user_skills where user_id='$_SESSION[id]'");
-                                                                while($uskil=mysqli_fetch_array($us_sli_exe))
-                                                                {
-                                                                    ?>
-                                                                    <button type="button" class="btn btn_grn" value="" style="height:30px; margin:5px;text-transform:uppercase;"><?php echo $uskil['skill'];?></button>
-                                                                    <?php
-                                                                }
-                                                                ?>
-                                                                <!-- <input type="button" class="btn btn_grn" value="PHOTOSHOP" style=" margin:1px; height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="WEB DESIGN" style=" margin:1px; height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="PHP" style=" margin:1px; height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="3D MODELING" style=" margin:1px;height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="C#" style=" margin:1px;height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="DOT.NET" style=" margin:1px;height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="CINEMA4D" style=" margin:1px;height:30px;">
-                                                                 <input type="button" class="btn btn_grn" value="ANIMATION" style=" margin:1px;height:30px;">-->
-                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+
                                                 </div>
+
+
                                             </div>
+                                            <br>
                                         </div>
+																				</div>
+
                                     </div>
 
-
-                                    <!--Edit Profile Model Begin-->
-                                      <div class="remodal" data-remodal-id="profilepic" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                <form method="post" action="script_code.php" enctype="multipart/form-data">
-                                    <div>
-
-                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
-                                        <div class="col-lg-12">
-                                            <h4 id="modal1Title">Edit Profile Pic</h4>
-
-                                            <input type="file"  name="profile_pic" id="profile_pic"/>
-                                        </div>
+                                    <!----------users Company Role begin------------------>
 
 
-                                    </div>
-                                    <br>
 
-                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-										<!--data-remodal-action="confirm"-->
-                                    <button type="submit"  name="sub_edit_ppic"   class="remodal-confirm">Edit Pic</button>
+                                           <div class="remodal" data-remodal-id="Your_role" id="Your_role" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+                                            <form class="form-horizontal" role="form" action="" method="post" id="importFrm">
+                                                <div>
 
-                                </form>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Your Role</label>
+                                                        <div class="col-sm-9">
 
-                            </div>
+                                                            <textarea  class="form-control" id="user_role" placeholder=""  name="user_role"><?php echo $fet_info['company_role_info'];?></textarea>
+                                                        </div>
+                                                    </div>
 
-                                    <!------END Edit Profile Model------------->
-                                    <!--ADD QUOTE OF THE DAY BEGIN-->
-                                     <div class="remodal" data-remodal-id="user_quote" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                <form method="post" action="">
-                                    <div>
 
-                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
-                                        <div class="col-lg-12">
-                                            <h4 id="modal1Title">Today Quote</h4>
+                                                </div>
+                                                <br>
 
-                                            <input type="text" class="form-control"  name="user_quote" id="user_quote"/>
-                                            <br/><br/>
+                                                <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                                                <!--data-remodal-action="confirm"-->
+                                                <button type="submit" data-remodal-action="confirm" name="comp_role" onClick="return rlioncopmrole();"  class="remodal-confirm">Info</button>
+
+                                            </form>
                                         </div>
 
 
-                                    </div>
-                                    <br><br/>
-
-                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-										<!--data-remodal-action="confirm"-->
-                                    <button type="submit" data-remodal-action="confirm"  onClick="return inseruserquote();"  class="remodal-confirm">Quote</button>
-
-                                </form>
-
-                            </div>
-                                    <!--END QUOTE OF THE DAY-->
-
-                              <!--add Acomplishments model begin-->
-
-                                     <div class="remodal" data-remodal-id="ACCOMPLISHMENTS" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-                                <form method="post" action="">
-                                    <div>
-
-                                        <h2><span><?php echo $_SESSION['Name'];?></span></h2>
-                                        <div class="col-lg-12">
-                                            <h4 id="modal1Title">Add Accomplishments</h4>
-                                            <div class="col-lg-6">
-                                            <div class="form-group">
-                                            <select  name="from_year" id="from_year" class="club_txt" required>
-                                                            <option>From year</option>
-                                                            <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option> <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option> <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
-
-                                                        </select>
-                                                        </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                        <div class="form-group">
-                                            <select  name="to_year" id="to_year" class="club_txt" required>
-                                                            <option>to year</option>
-                                                            <option value="2009">2009</option> <option value="2010">2010</option> <option value="2011">2011</option> <option value="2012">2012</option> <option value="2013">2013</option> <option value="2014">2014</option> <option value="2015">2015</option> <option value="2016">2016</option> <option value="2017">2017</option>
-
-                                                        </select>
-                                                        </div>
-                                                        </div>
 
 
-                                                      <div class="col-lg-12">
-                                            			<div class="form-group">
-                                                        <input type="text" class="club_txt" name="acomp_title" id="acomp_title" placeholder="Project Title" required>
-                                                   		 </div>
-                                                     </div>
-                                                      <div class="col-lg-12">
-                                            			<div class="form-group">
-                                                        <input type="text" class="club_txt" name="acomp_desc" id="acomp_desc" placeholder="Project Descriptions" required>
-                                                   		 </div>
-                                                     </div>
-
-                                        </div>
-
-
-                                    </div>
-                                    <br><br/>
-
-                                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-										<!--data-remodal-action="confirm"-->
-                                    <button type="submit" data-remodal-action="confirm"  onClick="return insertaccomplishments();"  class="remodal-confirm">ADD</button>
-
-                                </form>
-
-                            </div>
-
-                               <!--end model accomplishments-->
-                                 <!--------------------------------END ANKITHA FILE--------------------------------------->
+									<!-----------------END users role----------------------->
+                                    <!--------------------------------------------END SPACE------------------------------------------------->
                                 </div>
                             </div>
-
                         </div>
+                        <!--workspace End-->
+                        
                         <div class="tab-pane" id="folio-vr">
                          <!-----------------------------------------BEGIN FOLIO---------------------------------------->
 
@@ -3311,13 +3342,13 @@ $from_count=0;
                         <div  align="right">
                             <ul class="nav nav-tabs tabs-right vertical-text right" style="position:fixed;top:90px;right:100px;background:#fff;width:0px;">
                                 <li class="active " style="font-color:solid #fff;" id="parallelogram">
-                                    <a href="#workspace-vr" data-toggle="tab" id="workspace_tab">WORKSPACE</a>
+                                    <a href="#dairy-vr" data-toggle="tab" id="dairy_tab">DAIRY</a>
                                 </li>
                                 <li>
                                     <a href="#club-vr" data-toggle="tab" id="club_tab">CLUB</a>
                                 </li>
                                 <li>
-                                    <a href="#dairy-vr" data-toggle="tab" id="dairy_tab">DAIRY</a>
+                                    <a href="#workspace-vr" data-toggle="tab" id="workspace_tab" >WORKSPACE</a>
                                 </li>
                                 <li>
                                     <a href="#folio-vr" data-toggle="tab" id="folio_tab">FOLIO</a>

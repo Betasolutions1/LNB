@@ -1579,7 +1579,9 @@ $from_count=0;
                                                 $sug1=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
                                                 while($sug2=mysqli_fetch_array($sug1))
                                                 {
-                                                    
+                                                   
+                                                   
+
 
                                                     // $sug3=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$sug2[suggest_topic_id]'");
                                                     // $sug4=mysqli_fetch_array($sug3);

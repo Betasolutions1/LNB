@@ -405,6 +405,8 @@ if(!$_SESSION['Email'])
                                                     <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#7c7c7c;">Valli</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
                                                 </div>
 
+
+
                                                 <div class="col-lg-12 pad_0">
                                                     <h4>
     Please Share the document to my mail id....</h4>

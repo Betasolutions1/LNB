@@ -2033,6 +2033,7 @@ $from_count=0;
                                         <div class="bg_pst">
 																					<!-- <div id="news_feed_like">
 											                                        <div id="news_feed_comment"> -->
+																															<div class="contianer">
 																					<div id="grid-gallery" class="grid-gallery">
 																							<section class="grid-wrap">
 																								<ul class="grid">
@@ -2055,6 +2056,7 @@ $from_count=0;
 						<!-- image and text -->
 
 						<li>
+
 							<figure>
 									<img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" alt="img01" />
 									<div style="width:60px; position:relative;float:right;top:10px;right:10px">
@@ -2076,12 +2078,13 @@ $from_count=0;
 											<hr>
 									</figcaption>
 							</figure>
-						</li>
+</li>
 
 					<?php
 // 								if($resp['post_pic']!='')
 // {
 // ?>
+
 						<!-- // else
 						// 		{
 									?> -->
@@ -2147,10 +2150,12 @@ $from_count=0;
 																								<?php
 																							}
 																							?>
+
 																						</ul>
 
 																				</section>
 																			</div>
+																		</div>
 																			<!-- // grid-gallery -->
 																	<!-- </div> -->
                                               <?php /* <div class="pst_box" style="background-color:#eee;height:300px">

@@ -34,7 +34,7 @@ border-bottom: 2px solid #808080;
 }
 .pst_box:hover
 {
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: opacity 0.3s ease-in-out;
 }
@@ -93,7 +93,7 @@ footer
             -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
             -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.07);
             box-shadow: 0 1px 2px rgba(0,0,0,0.07);
-            
+
 
             }
 
@@ -404,7 +404,7 @@ li>a
 
 .pst_box
 {
-    border: 1px dotted #afdf7c;
+    /*border: 1px dotted #afdf7c;*/
     margin-bottom: 20px;
 }
 
@@ -544,7 +544,7 @@ li>a
     border: 0;
     outline: 0;
     background: transparent;
-    border-bottom: 1px solid #afdf7c;
+    border-bottom: 1px solid #808080;
     margin-left: 10px;
     margin-right: 0px;
     margin-top: 20px;
@@ -617,7 +617,7 @@ li>a
 {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: #afdf7c;
+    background: #808080;
     opacity: 0.7;
 }
 

@@ -250,8 +250,8 @@ $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_i
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;">
-						<div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
+						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
 								<div class="navbar-header ">
 										<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 												<span class="sr-only">Toggle navigation</span>
@@ -265,14 +265,14 @@ $from_count=0;
 								<div id="navbar" class="collapse navbar-collapse">
 										<ul class="nav navbar-nav">
 
-												<li style=" padding-left:30px; padding-top:10px; padding-right:100px; ">
+												<li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
 													<div style="background-color:#808080;padding-right:5px;">
 														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
-														<i class="fa  fa-2x fa-search" style="color:#fff; padding-top:5px;"></i>
+														<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
 												</div>
 												</li>
 												<li>
-													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
+													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
 												</li>
 												<li >
 														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
@@ -280,7 +280,7 @@ $from_count=0;
 												<li>
 														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
-																							 <li style="height:50px;line-height:13px;padding-top:3px;">
+																							 <li style="height:50px;line-height:10px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
 															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
 															<br>
@@ -293,8 +293,8 @@ $from_count=0;
 														<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
 </div>
 												</li>
-												<li style="height:50px; float:right;">
-														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080;">31</span>
+												<li style="height:50px; float:right; padding-top:20px;">
+														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
 												</li>
 										</ul>
 								</div>
@@ -342,18 +342,18 @@ $from_count=0;
                                     <div class="accordion-wrap">
                                         <!-----------------------------WORK BEGIN------------------------------------->
 
-                                         <div class="row pst_box " style="background-color:#fff; height:550px">
+                                         <div class="row" style="background-color:transparent; height:10%;margin-top:-15px;">
                                     <br>
 																		<!-- disscussions	 -->
 
-																	                                        <div id="todo" class="col-lg-6 col-md-6 panel">
+																	                                        <div id="todo" class="col-lg-6 col-md-6 panel  pst_box " style=" border: 2px solid #7c7c7c; padding-left: 0px; padding-right: 0px; padding-top: 0px; border-radius: 0px;">
 																	                                            <br>
-																																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>
+																																							<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>
 																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
-																	                                          
-																	                                           
-																	                                            <br>
-																	                                            <div id="todo_tasks_refresh" class="col-lg-9">
+
+
+
+																	                                            <div id="todo_tasks_refresh" class="col-lg-9" style="padding-top:5px;padding-left:0px;padding-right:0px;">
                                                     <div class="panel-content " id="screen" style="height:400px; overflow-y:scroll;">
                                                         <form>
                                                             <fieldset>
@@ -378,7 +378,7 @@ $from_count=0;
                                                                                 <span class="line-through"></span>
 
                                                                             </label>
-                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey; margin-top:-23px;   "><?php echo $ret_td['todo_datetime']?></p>
+                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px;  "><?php echo $ret_td['todo_datetime']?></p>
                                                                         </li>
                                                                         <?php
                                                                     }
@@ -392,7 +392,7 @@ $from_count=0;
 
                                                     <!--Invisable Panel-->
 
-                                                    <div class="panel-content col-lg-9" style="display:none;height:400px; overflow-y:scroll;" id="screen1" >
+                                                    <div class="panel-content col-lg-9" style="display:none;height:400px; overflow-y:scroll;width:100%;" id="screen1" >
                                                         <form method="post">
                                                             <fieldset>
                                                                 <ul class="tasks">
@@ -403,7 +403,7 @@ $from_count=0;
                                                                     {
                                                                         ++$td_cu;
                                                                         ?>
-                                                                        <li class="task">
+                                                                        <li class="task" style="color:grey;">
                                                                             <?php if($ret_td['todo_status']!=0)
                                                                             {
 
@@ -412,11 +412,11 @@ $from_count=0;
                                                                                 <?php
                                                                             }
                                                                             ?>
-                                                                            <label for="task<?php echo $td_cu;?>"><?php echo $ret_td['todo_label'];?>
+                                                                            <label for="task<?php echo $td_cu;?>" style="color:grey"><?php echo $ret_td['todo_label'];?>
                                                                                 <span class="line-through"></span>
 
                                                                             </label>
-                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey;    margin-top:-23px; "><?php echo $ret_td['todo_datetime']?></p>
+                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px; "><?php echo $ret_td['todo_datetime']?></p>
                                                                         </li>
                                                                         <?php
                                                                     }
@@ -427,18 +427,18 @@ $from_count=0;
                                                             </fieldset>
                                                         </form>
                                                     </div>
-                                                    
+
 												</div>
-                                                 <div class="panel-content col-lg-3" style="height:400px;">
+                                                 <div class="panel-content col-lg-3" style=" height: 400px; border-left: 1px solid #ddd; padding-left:30px;padding-top:5px;">
                                                       <ul class="tasks" style="margin-left:-15px;padding:0px;height:10px;">
-                                                                   
-                                                                         <li class="task"><span class=" todo_right"><a href="#" data-remodal-target="modal"> Create New</a></span></li>
-                                                                         <li class="task"><span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()">Completed</a></span></li>
-                                                                         <li class="task">Date</li>
-                                                                         <li class="task" id="todo_type" onClick=""><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
-                                                                         <li class="task"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
-                                                                         <li class="task"><a href="#" onClick="return getodotype('CALL');">Clients</a></li>
-                                                                      
+
+                                                                         <li class="task" style="padding:5px;"><span class=" todo_right"><a href="#" data-remodal-target="modal"> Create New</a></span></li>
+                                                                         <li class="task" style="padding:5px;"><span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()">Completed</a></span></li>
+                                                                         <li class="task" style="padding:5px;">Date</li>
+                                                                         <li class="task" id="todo_type" onClick="" style="padding:5px;"><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
+                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
+                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('CALL');">Clients</a></li>
+
                                                                 </ul>
                                                      </div>
 																	                                        </div>
@@ -447,19 +447,19 @@ $from_count=0;
 <div class="col-lg-6 col-md-6">
 
 
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
-                                            <div class="col-lg-12" tyle="padding:0px;">
+                                        <div class="col-lg-12" style="">
+                                            <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;background-color:#fff;">
 																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> LEDGER</h4> </div>
                                                 <!-- <h4 class="club_headers" style="margin:0px;float:left;">
                                                     COMPANY INFO </h4> -->
-												<a href="#modal1" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus "></i></a>
-                                                <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card"></i></a>
+												<a href="#modal1" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
+                                                <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
                                                 <br>
 																								 <div id="ledger_tbl" style="height:150px; overflow-y:scroll;">
                                                     <table class="dynamicTable scrollVertical table table-primary " >
                                                         <!-- Table heading -->
-                                                        <thead style="background:#8BBF61;">
-                                                        <tr style="background:#8BBF61;">
+                                                        <thead style="background:#808080;color:#fff;">
+                                                        <tr style="background:#808080;color:#fff;">
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                             <th>Debit</th>
@@ -516,21 +516,22 @@ $from_count=0;
                                                     </table>
                                                     </div>
                                             </div>
-                                           
+
                                         </div>
                                         <br>
 	<!-- colleagues																			 -->
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
+	<div class="col-lg-12">
+                                        <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;height:220px;margin-top:0px;background-color:#fff;">
                                             <br>
-																						<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>CLIENTS</h4> </div>
-                                                      <a href="#clientsmodel" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus "></i></a>
-                                                   <a href="#csv_upload" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-upload"></i></a>
-                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card"></i></a>                                 
+																						<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4>CLIENTS</h4> </div>
+                                                      <a href="#clientsmodel" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
+                                                   <a href="#csv_upload" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-upload" style="color:#808080;"></i></a>
+                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
                                             <!-- <h4 class="club_headers" style="margin:0px;">
                                                 COLLEAGUES </h4> -->
                                             <br>
                                            <div class="html chat" id="todo_clients" style="height:150px; overflow-y:scroll;">
-                                               
+
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
@@ -571,6 +572,7 @@ $from_count=0;
                                                 </div>
                                             <br>
                                         </div>
+																			</div>
 																				</div>
 
                                     </div>
@@ -794,12 +796,12 @@ $from_count=0;
                                 <div class="tab-pane" id="tab7">
                                     <!-----------------------------------------SPACE BEGIN----------------------------------------->
 
-                                    <div class="row pst_box " style="background-color:#fff; height:550px">
-                                    <br>
+                                    <div class="row  " style="background-color:transparent; height:450px">
+
 																		<!-- disscussions	 -->
 
-																	                                        <div class="col-lg-6 col-md-6">
-																	                                            <br>
+																	                                        <div class="col-lg-6 col-md-6 pst_box" style="border:2px solid #7c7c7c;background-color:#fff;padding:0px;margin-top:20px;">
+
 																																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> DISSCUSSION THREAD</h4> </div>
 																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
 																	                                            <form method="post" action="" id="form_dis_sub">
@@ -811,7 +813,7 @@ $from_count=0;
 																	                                            </form>
 																	                                            <div align="left" id="discu_valid" style="display:none;color:red;margin-left:15px;">The Length Must be 160 Charecters only</div>
 																	                                            <br>
-																	                                            <div class="club_network" style="height:350px; background-color:#eee;">
+																	                                            <div class="club_network" style=" height: 350px; background-color: #fff; border-top:2px solid #7c7c7c; padding-top:5px;">
 																	                                            <div id="club_discuss">
 																	                                                <?php
 																	                                                $twity_exe=mysqli_query($conn,"select * from company_discussions where company='$usr_dis[company]' order by dscussion_id desc");
@@ -830,7 +832,7 @@ $from_count=0;
 																																if($twity_pic['image']!='')
 																																{
 																																?>
-																	                                                                <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70">
+																	                                                                <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70" height="70">
 																	                                                                <?php
 																																}else
 																																{
@@ -841,17 +843,18 @@ $from_count=0;
 																																	?>
 																	                                                            </div>
 																	                                                        </div>
-																	                                                        <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
-																	                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
-																	    <?php echo $twity_det['Name']?> - <?php echo $twity_det['company']?> - <?php echo $twity_det['designation'];?>  </span><span class="pull-right" style="text-align:right; color:#d3d3d3;font-size:10px;"> <?php echo $twity['date'];?> </span>
+																	                                                        <div class="col-lg-10 club_msg_shape" style=" height: 70px; background-color: #fff; padding-right: 0px; width: 86%; border-botto: 1px solid #7c7c7c;" align="left">
+																	                                                                <span style="text-align:right; color:#7c7c7c;font-size:10px;">
+																	    <?php echo $twity_det['Name']?> - <?php echo $twity_det['company']?> - <?php echo $twity_det['designation'];?>  </span><span class="pull-right" style="text-align:right; color:#7c7c7c;font-size:10px;"> <?php echo $twity['date'];?> </span>
 																	                                                            <p>
 																	                                                                <?php echo $twity['discussion_txt'];?></p>
 																	                                                        </div>
 																	                                                    </div>
+																																											<hr style="margin-top:5px;margin-bottom:5px;border-top:1px solid #7c7c7c">
 																	                                                    <?php
 																	                                                }
 																	                                                ?>
-																	                                                
+
 
 
 
@@ -863,12 +866,12 @@ $from_count=0;
 <div class="col-lg-6 col-md-6">
 
 
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
-                                            <div class="col-lg-12" tyle="padding:0px;">
+                                        <div class="col-lg-12" style="">
+                                            <div class="col-lg-12 pst_box" style=" padding: 0px; border: 2px solid #7c7c7c; margin-top: 20px; background: #fff;">
 												<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>  COMPANY INFO</h4>  </div>
-                                               
-													
-                                                <br>
+
+
+                                            <div class="col-lg-12" style="padding:10px;margin-top:15px;">
 											<div class="col-lg-10 col-md-10">
 
 
@@ -879,16 +882,17 @@ $from_count=0;
 												?>
                                                     <?php echo $rolie['company_role_info']; ?><a href="#Your_role" style="float:left;">  <i class="fa fa-pencil icon"></i></a></p>
 											</div>
-                                            
+
                                             <div class="col-lg-2" style="padding:0px;margin-top:-20px;">
                                                 <img src="images/profile/logo.jpg" width="80" />
                                             </div>
                                             </div>
+																					</div>
                                         </div>
                                         <br>
-	<!-- colleagues																			 -->
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
-                                            <br>
+	<!-- colleagues-->
+                                        <div class="col-lg-12 pst_box" style=" background: #fff; border: 2px solid #7c7c7c; padding: 0px; margin-top: -5px; margin-left: 15px; width: 516px; height: 310px;">
+
 																						<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>COLLEAGUES</h4> </div>
                                             <!-- <h4 class="club_headers" style="margin:0px;">
                                                 COLLEAGUES </h4> -->
@@ -3392,7 +3396,7 @@ $from_count=0;
 </div>
         </div>
     </div>
-		<footer>
+		<footer style="z-index:99999;">
 		</footer>
 
 <script type="text/javascript">

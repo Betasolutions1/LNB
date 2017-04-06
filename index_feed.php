@@ -131,8 +131,8 @@ font-face {
 
 
 .news_feed {
- -moz-column-width: 16em;
- -webkit-column-width: 16em;
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
  -moz-column-gap: 1em;
  -webkit-column-gap:1em;
 
@@ -2287,6 +2287,8 @@ $from_count=0;
 
 
                                     <div class="bg_pst">
+                                    <div class="container">
+                                            <div class="news_feed">
 
 
                                         <?php
@@ -2308,65 +2310,21 @@ $from_count=0;
                                                 $industry_post_user_data_retry=mysqli_fetch_array($industry_post_user_data_exeu);
 
                                                 ?>
-
-
-                                                <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>" ><!--class="pst_head_left"-->
-                                                             <?php
-																if($industry_post_usr_profi_pic!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
-       <?php echo $industry_post_user_data_retry['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['company'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
+                                                
+                                                  <?php
                                                                 $industry_post_status_exe=mysqli_query($conn,"select * from user_post_status where post_id='$industry_post_rety[post_id]'");
                                                                 $industry_post_status_count=mysqli_num_rows($industry_post_status_exe);
                                                                 $industry_post_status_retry=mysqli_fetch_array($industry_post_status_exe);
 																$industry_post_comment_exeu=mysqli_query($conn,"select * from user_post_comment where post_id='$industry_post_rety[post_id]'");
                                                         $industry_post_comment_count=mysqli_num_rows($industry_post_comment_exeu);
                                                                 ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $industry_post_comment_count ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $industry_post_status_count;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+
+
+                                                 <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
                                                             <?php
                                                                 if($industry_post_status_retry['status']=='Like')
                                                                 {
@@ -2384,38 +2342,66 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-                                                            <?php
+                                                            
+                                                            
+                                                              <?php
                                                         if($industry_post_rety['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email'];?>/Post/<?php echo $industry_post_rety['post_pic'];?>" class="img-responsive" width="400" />
+                                                              <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email'];?>/Post/<?php echo $industry_post_rety['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
                                                               <?php
                                                         }
                                                         ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $industry_post_rety['post_txt'];?></p>
-                                                            </div>
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $industry_post_rety['post_time'];?></span>
-                                                            </div>
+
+                              
+
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                    <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" style="height:70px;width:70px;" />
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $industry_post_rety['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $industry_post_user_data_retry['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $industry_post_rety['post_txt'];?></p>
+                                    <hr>
+																		<br>
 
 
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                             <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $industry_post_rety['post_id'];?>">
-                                                                    <?php
-                                                                    $date=date('Y-m-d h:i');
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                            <?php
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
 
-                                                                    ?>
-                                                                    <input type="hidden" name="cmt_ins_date_<?php echo $from_count;?>" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                </form>
+
+                                                                ?>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $industry_post_comment_count ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $industry_post_status_count;?></a></i>
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>
 
 
 
@@ -2424,6 +2410,7 @@ $from_count=0;
                                             }
                                         }
                                         ?>
+                                        </div></div>
 
                                     </div>
 									</div>
@@ -2434,6 +2421,9 @@ $from_count=0;
 									<div id="my_inked">
 
                                     <div class="bg_pst">
+                                    
+                                    <div class="container">
+                                            <div class="news_feed">
 
                                         <?php
                                         $user_profile_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
@@ -2447,65 +2437,20 @@ $from_count=0;
                                         { ++$from_count;
                                             $count++;
                                             ?>
-
-
-                                                <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>" ><!--class="pst_head_left"-->
-                                                             <?php
-																if($user_profile_pic['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $usr_dis['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
-        <?php echo $usr_dis['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $usr_dis['company']?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $usr_dis['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
+                                            
+                                            <?php
                                                                 $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
                                                             $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
 															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
 															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
                                                     $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_profile_comment_count; ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_pos_not_cou;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+                                            
+										  <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
                                                             <?php
                                                                 if($user_profilr_bookmark['status']=='Like')
                                                                 {
@@ -2523,43 +2468,91 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
+                                                            
                                                             <?php
                                                         if($user_profile_post['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email']; ?>/Post/<?php echo $user_profile_post['post_pic'];?>" class="img-responsive" width="400" />
+                                                              <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email']; ?>/Post/<?php echo $user_profile_post['post_pic'];?>"  class="img-responsive " width="400" style="width:100%;height:240px;"  />
                                                               <?php
                                                         }
                                                         ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $user_profile_post['post_txt']?></p>
-                                                            </div>
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $user_profile_post['post_time'];?></span>
-                                                            </div>
+                                                            
+                                                            
+                                                            
 
+                              
 
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                              <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
-                                                                <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                
+                                 <?php
+																if($user_profile_pic['image']!='')
+																{
+																?>
+                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
                                                                 <?php
-                                                                $date=date('Y-m-d h:i');
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
+                                                                    <?php
+																}
+																	?>
+                                
+                                   
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $usr_dis['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $usr_dis['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $usr_dis['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $usr_dis['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $user_profile_post['post_txt']?></p>
+                                    <hr>
+																		<br>
 
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                           <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                                                <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text"  name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                </form>
+                                                               <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_profile_comment_count; ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_pos_not_cou;?></a></i>
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>			                                            
+                                            
+
+
+                                              
 
 
                                             <?php
                                         }
                                         ?>
+                                        </div></div>
 
 										</div>
                                     </div>
@@ -2569,6 +2562,9 @@ $from_count=0;
                                  <!---------------------------------------------------BEGIN NOTED FILE---------------------------->
 									<div id="noted_likes">
                                     <div class="bg_pst">
+                                     <div class="container">
+                                            <div class="news_feed">
+
                                         <?php
                                         $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_SESSION[id]'");
 
@@ -2595,62 +2591,12 @@ $from_count=0;
                                             $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
                                             ?>
 
-                                            <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>" ><!--class="pst_head_left"-->
-                                                             <?php
-																if($user_noted_ppic['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $user_pos_nrty['Gender']; ?>/<?php echo $user_pos_nrty['Email']; ?>/Profile/<?php echo $user_noted_ppic['image'];?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $user_pos_nrty['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
-        <?php echo $user_pos_nrty['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['company']?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
-                                                                $user_noted_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_noted_post[post_id]'");
-															$ink_noted_not_cou=mysqli_num_rows($user_noted_bookmark_exe);
-															 $user_noted_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_noted_post[post_id]'");
-                                                $user_noted_comment_count=mysqli_num_rows($user_noted_post_comment_execu);
-                                                                ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_noted_comment_count ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_noted_not_cou;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+                                         
+                                          <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
                                                             <?php
                                                                 if($ret_user_noted['status']=='Like')
                                                                 {
@@ -2668,48 +2614,88 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-
-                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-
-                                                            <?php
+                                                            
+                                                           
+                                                            
+                                                           <?php
                                                         if($user_noted_post['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive" width="400" />
+                                                              <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive"  style="width:100%;height:240px;" />
                                                               <?php
                                                         }
-                                                        ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $user_noted_post['post_txt']?></p>
+                                                        ?>   
+                                                            
 
-                                                            </div>
+                              
 
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $user_noted_post['post_time'];?></span>
-                                                            </div>
-
-
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                              <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
-                                                                <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                
+                                 <?php
+																if($user_profile_pic['image']!='')
+																{
+																?>
+                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
                                                                 <?php
-                                                                $date=date('Y-m-d h:i');
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
+                                                                    <?php
+																}
+																	?>
+                                
+                                   
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $user_pos_nrty['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $user_pos_nrty['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $user_pos_nrty['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $user_noted_post['post_txt']?></p>
+                                    <hr>
+																		<br>
 
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                           <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                                                <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text"  name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                </form>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_noted_comment_count ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_noted_not_cou;?></a></i>
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>			                
 
 
 
                                             <?php
                                         }
                                         ?>
+                                        </div></div>
                                     </div>
 									</div>
                                  <!------------------------------END NOTED FILES----------------------------------------------->

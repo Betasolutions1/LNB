@@ -50,7 +50,7 @@ if(!$_SESSION['Email'])
         <!-- editor-->
          <!--   <script src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js"></script>-->
           <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
-          <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk	"></script>
+          <script src="http://cloud.tinymce.com/stable/tinymce.min.js?apiKey=3x8m7u6eu4r17en245q10ya3a0u7j7695z1elia7zhm2o1xk"></script>
   <script>
   tinymce.init({
   selector: 'post_data',

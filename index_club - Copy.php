@@ -1388,15 +1388,16 @@ $from_count=0;
                                         <div class="tab-pane" id="tab9">
                                                                        <!--BEGIN networking-->
 
-																					  <div class="row" >
-    <div class="col-md-9" style=" border: 2px solid #7c7c7c;margin-top: 10px;height: 495px;">
-    
+																					  <div class="row" style="margin: 10px;
+    border: 2px solid #808080;height: 520px;">
+    <div class="col-md-9" >
+    <div class="col-md-12" style=" border: 1px solid #808080;margin-top: 10px;height: 495px;">
                                             <br>
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
-                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;        margin-left: -48px;
-    width: 1120px;"><h4>CLUBBING</h4> </div>
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;    margin-left: -31px;width: 1060px;"><h4>CLUBBING</h4> </div>
                                                 </div>
-                                                <div class="col-md-12" >
+                                                <div class="col-md-12" style="width: 1045px;
+    margin-left: -10px;    height: 385px;">
                                                  <div id="club_networks">
                                             <div class="club_network" style="height: 385px;background-color:#fff" id="mamber-chat">
                                                 <?php
@@ -1473,12 +1474,12 @@ $from_count=0;
                                             <br>
                                             <br>
                                             </div>
-                                            
+                                            </div>
                                                 </div>
                                                  <!--members of networking-->
                                                 <div class="col-md-3">
                                                 <div class="col-md-12" style="margin-top: 10px;
-    border: 2px solid #7c7c7c;
+    border: 1px solid #808080;
     height: 495px;">
                                                   <br>
 
@@ -1487,7 +1488,7 @@ $from_count=0;
     width: 332px;"><h4>MEMBERS</h4> </div>
                                                 </div>
                                                 <!-- member data -->
-                                                
+                                                <div class="row">
                                                 <div class="col-md-12">
                                                  <div id="club_networks">
                                             <div class="club_network" style="    height: 420px;background-color:#fff">
@@ -1503,8 +1504,8 @@ $from_count=0;
                                                     ?>
                                                     <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px; ">
                                                       
-                                                        <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;    margin-left: -25px;" align="right"><span style="text-align:right; color:#000;font-size:10px;line-height: 0px"><b><?php echo $grp_ct['chat_txt'];?></b><br>
-                                                        
+                                                        <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;" align="right"><p style="color:#808080"> <?php echo $grp_ct['chat_txt'];?></p>
+                                                        <span style="text-align:right; color:#000;font-size:10px;">
     <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><?php echo $gp_det['Name'];?></a><br><?php echo $gp_det['company']?> <br><?php echo $gp_det['industry'];?> </span>
                                                            
                                                         </div>
@@ -1514,13 +1515,12 @@ $from_count=0;
                                                             if($gp_ppic['image']!='')
                               {
                               ?>
-                                                                <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width= "80" height="65"></a>
+                                                                <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width="50" height="100"></a>
                                                                 <?php
                               }else
                               {
                                 ?>
-                                                             <img src="images/profile/sq.PNG"     width= "80"
-    height="65"/>
+                                                             <img src="images/profile/sq.PNG" width="80"/>
                                                                 <?php
                               }
                                 ?>
@@ -1538,7 +1538,7 @@ $from_count=0;
                                             </div>
                                                 </div>
                                                 
-                                                
+                                                </div>
                                                 <!-- end member data -->
                                                 </div>
 
@@ -1558,17 +1558,15 @@ $from_count=0;
                                                              <!--BEGIN CLUB SUGGESTIONS-->
 
 
-                                            <div class="row" style="    margin: 10px;
-    border: 2px solid #7c7c7c;
-    width: 99%;
-    height: 497px;">
-   
+                                            <div class="row" style="margin: 10px;
+    border: 2px solid #808080;height: 520px;">
+    <div class="col-md-12" style="    margin: 10px;
+    border: 1px solid #808080;
+    width: 1433px;
+    height: 497px; ">
                                             <br>
-                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top: -15px;
-    margin-left: -17px;
-    width: 1465px;
-    margin-bottom: 0px;
-;">
+                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px;    margin-left: -30px;
+    width: 1462px;">
                                             <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>SUGGESTIONS</h4> </div>
                                                 </div>
                                                 <div class="col-md-12"  id="suggest1">
@@ -1611,7 +1609,7 @@ $from_count=0;
 
 
     <div class="col-md-8" align="left" style=""><p style="color:#808080"> <?php echo $sug2['suggest_topic'];?></p></div>
-                                                            <div class="col-md-2" align="right" style="margin-right: -10px"><span class="pull-right" style="text-align:right; color:#808080;font-size:10px;margin-right: -120px;"><?php echo $sug2['sug_date'];?> </span></div>
+                                                            <div class="col-md-2" align="right" style="margin-right: -10px"><span class="pull-right" style="text-align:right; color:#808080;font-size:10px;"><?php echo $sug2['sug_date'];?> </span></div>
                                                             
 
                                                             <?php
@@ -1621,12 +1619,12 @@ $from_count=0;
                                                                     {
                                                                         ?>
 
-                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;margin-left: 115px;" onClick="return disconnect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connected
+                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;" onClick="return disconnect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connected
                                       </button></div>
 
 
     <?php } else { ?>
-                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;margin-left: 115px;" onClick="return connect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connect
+                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;" onClick="return connect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connect
                                       </button></div>
                                       <?php } ?>
 
@@ -1642,8 +1640,8 @@ $from_count=0;
                         </div>
                                             </div>
                                                 </div>
-                                                <!--<div class="col-md-12">
-                                                 <form method="post"  action="">
+                                                <div class="col-md-12">
+                                                <!-- <form method="post"  action="">
                                             <!--maxlength="160"->
                                                 <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
                                                 <?php
@@ -1653,11 +1651,11 @@ $from_count=0;
                                                 <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php //echo $_SESSION['id']?>">
                                                 <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
                                             </form>
-                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div>
+                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div> -->
                                             <br>
                                             <br>
-                                            </div> -->
-                                                
+                                            </div>
+                                                </div>
                                                  <!--members of suggestion-->
                                                 
 
@@ -1674,24 +1672,12 @@ $from_count=0;
 
                                         <div class="tab-pane" id="tab11">
                                         <!-- ---------------------------------------BEGIN CLUB TAGS-------------------------------------->
-                                            <h4 class="club_headers" style="color: #808080">
-                                                 Add Tags</h4>
+                                            <h4 class="club_headers">
+                                                Tags</h4>
                                             <br>
-                                             <i class="fa fa-plus" style="color: #808080;margin-left: -1450px" data-toggle="modal" data-target="#tags"></i>
-                                             <!-- modal tags -->
-
-                                               <div class="modal fade" id="tags" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">TAGS</h4>
-        </div>
-        <div class="modal-body">
-           <div class="row" style="width:400px">
-                                                
+                                            <div class="row" style="width:400px">
+                                                <h4 class="club_headers">
+                                                    Add Tags</h4>
                                                 <form role="form" method="post" action="">
                                                     <div class="form-group">
                                                         <select  name="club_memb" id="club_memb" class="club_txt">
@@ -1724,28 +1710,13 @@ $from_count=0;
                                                     </div>
                                                     <!---->
 
-                                                    <button type="button"  name="add_refrals" onClick="return refrals_insertins();" class="btn btn_grn" data-dismiss="modal">Submit</button>
-                                                    <button type="button" class="btn btn_grn" data-dismiss="modal">Clear</button>
+                                                    <button type="button"  name="add_refrals" onClick="return refrals_insertins();" class="btn btn_grn">Submit</button>
+                                                    <button type="button" class="btn btn_grn">Clear</button>
                                                 </form>
                                             </div>
-        </div>
-        
-      </div>
-      
-    </div>
-  </div>
-
-                                             <!-- end tag modal -->
                                             <br>
-                                            <div class="row" style="margin: 10px">
-                                            <div class="col-md-6" style="    border: 2px solid #7c7c7c;
-    height: 450px;margin-left: -5px;">
-                                                <div class="club_suggest_top_div row" style="padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 5px;
-    background-color: #808080;
-    margin-left: -15px;
-    width: 727px;">
+                                            <div class="row">
+                                                <div class="club_suggest_top_div row" style="padding-top:10px;padding-bottom:10px;">
                                                     <!--<div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
             <img src="images/profile/6.jpg" width="80">
@@ -1759,11 +1730,9 @@ $from_count=0;
         <span style="font-size:16px;"> IT - Software  </span>
     </div>-->
                                                     <span>Tagged to you</span>
-
                                                 </div>
                                                 <div id="accept_tag_confirmation">
-                                                <div class="club_sugg_scroll" style="    height: 400px;
-    width: 100%;">
+                                                <div class="club_sugg_scroll">
                                                     <?php
                                                     $find_refer=mysqli_query($conn,"select * from tbl_reference where to_whom_user_id='$_SESSION[id]'  order by date desc");
                                                     while($gred=mysqli_fetch_array($find_refer))
@@ -1860,21 +1829,11 @@ $from_count=0;
 
 
                                                 </div>
-                                                </div>
-                                            
+                                            </div>
                                             <br>
                                             <br>
-                                            <div class="col-md-6" style="margin-top: -40px;
-    border: 2px solid #7c7c7c;
-    width: 48%;
-    height: 450px;
-    margin-left: 15px;">
-                                                <div class="club_suggest_top_div row" style="    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 5px;
-    margin-left: -15px;
-    background-color: #808080;
-    width: 698px;">
+                                            <div class="row">
+                                                <div class="club_suggest_top_div row" style="padding-top:10px;padding-bottom:10px;">
                                                     <!--<div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
             <img src="images/profile/6.jpg" width="80">
@@ -1889,8 +1848,8 @@ $from_count=0;
     </div>-->
                                                     <span>Tagged others</span>
                                                 </div>
-                                                <div id="add_tags" style="    width: 102%;">
-                                                <div class="club_sugg_scroll" style="height: 400px">
+                                                <div id="add_tags">
+                                                <div class="club_sugg_scroll">
                                                     <?php
                                                     $add_fre=mysqli_query($conn,"select * from tbl_reference where who_user_id='$_SESSION[id]'");
                                                     while($jill=mysqli_fetch_array($add_fre))
@@ -1987,7 +1946,7 @@ $from_count=0;
 
                                                 </div>
                                             </div>
-</div>
+
 
 
 
@@ -2000,12 +1959,11 @@ $from_count=0;
                                             <!---------------------------------------------END CLUB TAGS---------------------------------------->
                                         </div>
                                         <div class="tab-pane" id="tab12">
-                                        <!--BEGIN CLUB SETTINGS--><div style="border: 2px solid #7c7c7c;margin: 10px">
+                                        <!---------------------------BEGIN CLUB SETTINGS----------------------------------------->
                                             <h4 class="club_headers">
                                                 Settings</h4>
                                             <br>
-                                            <div class="row" style="    margin-top: 70px;
-    width: 400px;">
+                                            <div class="row" style="width:400px;">
                                                 <form role="form">
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" id="old_pwd" name="old_pwd" placeholder="Old Password">
@@ -2016,26 +1974,24 @@ $from_count=0;
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Verify">
                                                     </div>
-                                                    <button type="submit" class="btn btn_grn" onClick="change_pwd();" style="background-color: #7c7c7c">Change Password</button>
+                                                    <button type="submit" class="btn btn_grn" onClick="change_pwd();">Change Password</button>
                                                 </form>
                                             </div>
                                             <br>
                                             <div class="row">
-                                                <div class="col-lg-12" style="height: 40px;
-    background-color: #7c7c7c;">
-                                                    <h4 style="color:#7c7c7c; ">
+                                                <div class="col-lg-12" style="height:40px; background-color:#F48E8B;">
+                                                    <h4 style="color:#fff; ">
                                                         Remove From club</h4>
                                                 </div>
-                                                <div class="col-lg-12" style="border:1px dotted #7c7c7c">
+                                                <div class="col-lg-12" style="border:1px dotted #F48E8B">
                                                     <br>
-                                                    <input type="button" value="Remove from this Club" class="btn" onClick="remove_club(<?php echo $_SESSION['id']?>);" style="background-color:#7c7c7c; color:#fff;">
+                                                    <input type="button" value="Remove from this Club" class="btn" onClick="remove_club(<?php echo $_SESSION['id']?>);" style="background-color:#F48E8B; color:#fff;">
                                                     <br>
                                                     <br>
                                                 </div>
                                             </div>
-                                            </div>
 
-                                         <!--END CLUB TAGS-->
+                                         <!------------------------------END CLUB TAGS--------------------------------------->
                                         </div>
                                     </div>
 

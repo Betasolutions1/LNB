@@ -119,6 +119,89 @@ font-face {
 }
 	 </style>
 
+<!--feed style-->
+
+ <style>
+	 *, *:before, *:after {box-sizing:  border-box !important;}
+
+
+.news_feed {
+ -moz-column-width: 18em;
+ -webkit-column-width: 18em;
+ -moz-column-gap: 1em;
+ -webkit-column-gap:1em;
+
+}
+
+.item {
+ display: inline-block;
+ padding:  .25rem;
+ width:  100%;
+}
+
+.well {
+ position:relative;
+ display: block;
+}
+	 </style>
+
+
+  <!-- club member -->
+
+        <script>
+function members(str) {
+    if (str == "") {
+        document.getElementById("mamber-chat").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("mamber-chat").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","getchat.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+</script>
+
+        <!-- end club member -->
+
+        <!-- suggestions -->
+
+        <script>
+function suggest(str) {
+    if (str == "") {
+        document.getElementById("mamber-suggestions").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("mamber-suggestions").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","suggestion.php?s="+str,true);
+        xmlhttp.send();
+    }
+}
+</script>
+
+<!-- end suggestions -->
+
 <script type="text/javascript">
 function on_profile_hover()
 {
@@ -337,34 +420,24 @@ $from_count=0;
         <a href="#tab9" data-toggle="tab">Settings</a>
     </li>     -->
 </ul>
-                            <div class="tab-content">
+                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab6">
                                     <div class="accordion-wrap">
                                         <!-----------------------------WORK BEGIN------------------------------------->
 
-                                        <div class="accordion">
-                                            <a href="#" class="active"><i class="fa fa-user"></i> TODO</a>
-                                            <div class="sub-nav active">
+                                         <div class="row" style="background-color:transparent; height:10%;margin-top:-15px;">
+                                    <br>
+																		<!-- disscussions	 -->
 
-                                                <div id="todo" class="panel">
-                                                    <h2 class="panel-title">Tasks</h2>
-                                                    <!--<h2 class="panel-title">Tasks </h2>-->
-                                                    <div class="w_todo td_div">
-                                                        <span class=" todo_right"><a href="#" data-remodal-target="modal"> <i class="fa fa-plus "></i></a></span>
-                                                        <!-- <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>-->
-                                                        <span class="todo_right " id="datepicker2"><a href="#" data-toggle=""><i class="fa fa-calendar "></i></a></span>
-                                                        <span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()"><i class="fa fa-check-square-o "></i></a></span>
+																	                                        <div id="todo" class="col-lg-6 col-md-6 panel  pst_box " style=" border: 2px solid #7c7c7c; padding-left: 0px; padding-right: 0px; padding-top: 0px; border-radius: 0px;">
+																	                                            <br>
+																																							<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>
+																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
 
-                                                       <span class=" todo_right">
-                                                       <select class="selectpicker col-md-12 form-control" name="todo_type" id="todo_type" onChange="return getodotype(this.value);">
-                                                       <option>Select Todo Type</option>
-                                                                    <option>CONSIGNMENTS</option>
-                                                                    <option>MEETINGS</option>
-                                                                    <option>CALL</option>
-                                                                </select></span>
-                                                    </div>
-                                                    <div id="todo_tasks_refresh">
-                                                    <div class="panel-content" id="screen">
+
+
+																	                                            <div id="todo_tasks_refresh" class="col-lg-9" style="padding-top:5px;padding-left:0px;padding-right:0px;">
+                                                    <div class="panel-content " id="screen" style="height:400px; overflow-y:scroll;">
                                                         <form>
                                                             <fieldset>
                                                                 <ul class="tasks">
@@ -388,7 +461,7 @@ $from_count=0;
                                                                                 <span class="line-through"></span>
 
                                                                             </label>
-                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey;    padding-top: 10px; "><?php echo $ret_td['todo_datetime']?></p>
+                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px;  "><?php echo $ret_td['todo_datetime']?></p>
                                                                         </li>
                                                                         <?php
                                                                     }
@@ -402,7 +475,7 @@ $from_count=0;
 
                                                     <!--Invisable Panel-->
 
-                                                    <div class="panel-content" style="display:none" id="screen1">
+                                                    <div class="panel-content col-lg-9" style="display:none;height:400px; overflow-y:scroll;width:100%;" id="screen1" >
                                                         <form method="post">
                                                             <fieldset>
                                                                 <ul class="tasks">
@@ -413,7 +486,7 @@ $from_count=0;
                                                                     {
                                                                         ++$td_cu;
                                                                         ?>
-                                                                        <li class="task">
+                                                                        <li class="task" style="color:grey;">
                                                                             <?php if($ret_td['todo_status']!=0)
                                                                             {
 
@@ -422,11 +495,11 @@ $from_count=0;
                                                                                 <?php
                                                                             }
                                                                             ?>
-                                                                            <label for="task<?php echo $td_cu;?>"><?php echo $ret_td['todo_label'];?>
+                                                                            <label for="task<?php echo $td_cu;?>" style="color:grey"><?php echo $ret_td['todo_label'];?>
                                                                                 <span class="line-through"></span>
 
                                                                             </label>
-                                                                            <p class="pull-right alert-numb" style="padding-left:250px;     font-size: x-small;     color: grey;    padding-top: 10px; "><?php echo $ret_td['todo_datetime']?></p>
+                                                                            <p class="pull-right alert-numb" style="    font-size: x-small;     color: grey; position:relative; top:0px; "><?php echo $ret_td['todo_datetime']?></p>
                                                                         </li>
                                                                         <?php
                                                                     }
@@ -437,22 +510,39 @@ $from_count=0;
                                                             </fieldset>
                                                         </form>
                                                     </div>
-												</div>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="ws_ta_tab_a"><i class="fa fa-comments"></i> LEDGER</a>
-                                            <div class="sub-nav">
-                                                <div class="w_todo td_div">
-                                                    <span class="todo_right"><a href="#modal1" > <i class="fa fa-plus "></i></a></span>
-                                                    <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
-                                                </div>
-                                                <div class="html chat">
-                                                <div id="ledger_tbl" style="height:250px; overflow-y:scroll;">
+												</div>
+                                                 <div class="panel-content col-lg-3" style=" height: 400px; border-left: 1px solid #ddd; padding-left:30px;padding-top:5px;">
+                                                      <ul class="tasks" style="margin-left:-15px;padding:0px;height:10px;">
+
+                                                                         <li class="task" style="padding:5px;"><span class=" todo_right"><a href="#" data-remodal-target="modal"> Create New</a></span></li>
+                                                                         <li class="task" style="padding:5px;"><span id="test" class="todo_right "><a href="#" id="check" onclick="return Check()">Completed</a></span></li>
+                                                                         <li class="task" style="padding:5px;">Date</li>
+                                                                         <li class="task" id="todo_type" onClick="" style="padding:5px;"><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
+                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
+                                                                         <li class="task" style="padding:5px;"><a href="#" onClick="return getodotype('CALL');">Clients</a></li>
+
+                                                                </ul>
+                                                     </div>
+																	                                        </div>
+																																					<!-- discussion end -->
+<!-- company info -->
+<div class="col-lg-6 col-md-6">
+
+
+                                        <div class="col-lg-12" style="">
+                                            <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;background-color:#fff;">
+																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> LEDGER</h4> </div>
+                                                <!-- <h4 class="club_headers" style="margin:0px;float:left;">
+                                                    COMPANY INFO </h4> -->
+												<a href="#modal1" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
+                                                <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
+                                                <br>
+																								 <div id="ledger_tbl" style="height:150px; overflow-y:scroll;">
                                                     <table class="dynamicTable scrollVertical table table-primary " >
                                                         <!-- Table heading -->
-                                                        <thead style="background:#8BBF61;">
-                                                        <tr style="background:#8BBF61;">
+                                                        <thead style="background:#808080;color:#fff;">
+                                                        <tr style="background:#808080;color:#fff;">
                                                             <th>Date</th>
                                                             <th>Details</th>
                                                             <th>Debit</th>
@@ -508,38 +598,23 @@ $from_count=0;
                                                         <!-- // Table body END -->
                                                     </table>
                                                     </div>
-                                                </div>
                                             </div>
-                                            <a href="#"><i class="fa fa-envelope"></i> CLIENTS <!--<span class="pull-right alert-numb"></span>--></a>
-                                            <div class="sub-nav">
-                                             <div class="w_todo td_div">
-                                                    <span class="todo_right"><a href="#clientsmodel" > <i class="fa fa-plus "></i></a></span>
-                                                    <span class="todo_right " ><a href="#csv_upload"><i class="fa fa-upload"></i></a></span>
-                                                    <span class="todo_right " ><a href="#"><i class="fa fa-id-card"></i></a></span>
 
-                                                </div>
-                                                <div class="html chat" id="todo_clients" style="height:250px; overflow-y:scroll;">
-                                                <?php
-                                                if(!empty($_GET['status'])){
-    switch($_GET['status']){
-        case 'succ':
-            $statusMsgClass = 'alert-success';
-            $statusMsg = 'Members data has been inserted successfully.';
-            break;
-        case 'err':
-            $statusMsgClass = 'alert-danger';
-            $statusMsg = 'Some problem occurred, please try again.';
-            break;
-        case 'invalid_file':
-            $statusMsgClass = 'alert-danger';
-            $statusMsg = 'Please upload a valid CSV file.';
-            break;
-        default:
-            $statusMsgClass = '';
-            $statusMsg = '';
-    }
-}
-												?>
+                                        </div>
+                                        <br>
+	<!-- colleagues																			 -->
+	<div class="col-lg-12">
+                                        <div class="col-lg-12  pst_box " style=" border: 2px solid #7c7c7c; padding: 0px;height:220px;margin-top:0px;background-color:#fff;">
+                                            <br>
+																						<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4>CLIENTS</h4> </div>
+                                                      <a href="#clientsmodel" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-plus " style="color:#808080;"></i></a>
+                                                   <a href="#csv_upload" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-upload" style="color:#808080;"></i></a>
+                                                    <a href="#" class="icon" style="float:left;margin-left:10px;"><i class="fa fa-id-card" style="color:#808080;"></i></a>
+                                            <!-- <h4 class="club_headers" style="margin:0px;">
+                                                COLLEAGUES </h4> -->
+                                            <br>
+                                           <div class="html chat" id="todo_clients" style="height:150px; overflow-y:scroll;">
+
                                                     <table class="dynamicTable scrollVertical table table-primary " style="height:20px; overflow-y:scroll;">
                                                         <!-- Table heading -->
                                                         <thead>
@@ -578,8 +653,12 @@ $from_count=0;
                                                         <!-- // Table body END -->
                                                     </table>
                                                 </div>
-                                            </div>
+                                            <br>
                                         </div>
+																			</div>
+																				</div>
+
+                                    </div>
 
 
 
@@ -800,12 +879,12 @@ $from_count=0;
                                 <div class="tab-pane" id="tab7">
                                     <!-----------------------------------------SPACE BEGIN----------------------------------------->
 
-                                    <div class="row pst_box " style="background-color:#fff; height:550px">
-                                    <br>
+                                    <div class="row  " style="background-color:transparent; height:450px">
+
 																		<!-- disscussions	 -->
 
-																	                                        <div class="col-lg-6 col-md-6">
-																	                                            <br>
+																	                                        <div class="col-lg-6 col-md-6 pst_box" style="border:2px solid #7c7c7c;background-color:#fff;padding:0px;margin-top:20px;">
+
 																																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> DISSCUSSION THREAD</h4> </div>
 																	                                            <!-- <h4 class="club_headers">DISSCUSSION THREAD </h4> -->
 																	                                            <form method="post" action="" id="form_dis_sub">
@@ -817,7 +896,7 @@ $from_count=0;
 																	                                            </form>
 																	                                            <div align="left" id="discu_valid" style="display:none;color:red;margin-left:15px;">The Length Must be 160 Charecters only</div>
 																	                                            <br>
-																	                                            <div class="club_network" style="height:350px; background-color:#eee;">
+																	                                            <div class="club_network" style=" height: 350px; background-color: #fff; border-top:2px solid #7c7c7c; padding-top:5px;">
 																	                                            <div id="club_discuss">
 																	                                                <?php
 																	                                                $twity_exe=mysqli_query($conn,"select * from company_discussions where company='$usr_dis[company]' order by dscussion_id desc");
@@ -836,7 +915,7 @@ $from_count=0;
 																																if($twity_pic['image']!='')
 																																{
 																																?>
-																	                                                                <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70">
+																	                                                                <img src="fb_users/<?php echo $twity_det['Gender']?>/<?php echo $twity_det['Email'];?>/Profile/<?php echo $twity_pic['image'];?>" width="70" height="70">
 																	                                                                <?php
 																																}else
 																																{
@@ -847,29 +926,17 @@ $from_count=0;
 																																	?>
 																	                                                            </div>
 																	                                                        </div>
-																	                                                        <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
-																	                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
-																	    <?php echo $twity_det['Name']?> - <?php echo $twity_det['company']?> - <?php echo $twity_det['designation'];?>  </span><span class="pull-right" style="text-align:right; color:#d3d3d3;font-size:10px;"> <?php echo $twity['date'];?> </span>
+																	                                                        <div class="col-lg-10 club_msg_shape" style=" height: 70px; background-color: #fff; padding-right: 0px; width: 86%; border-botto: 1px solid #7c7c7c;" align="left">
+																	                                                                <span style="text-align:right; color:#7c7c7c;font-size:10px;">
+																	    <?php echo $twity_det['Name']?> - <?php echo $twity_det['company']?> - <?php echo $twity_det['designation'];?>  </span><span class="pull-right" style="text-align:right; color:#7c7c7c;font-size:10px;"> <?php echo $twity['date'];?> </span>
 																	                                                            <p>
 																	                                                                <?php echo $twity['discussion_txt'];?></p>
 																	                                                        </div>
 																	                                                    </div>
+																																											<hr style="margin-top:5px;margin-bottom:5px;border-top:1px solid #7c7c7c">
 																	                                                    <?php
 																	                                                }
 																	                                                ?>
-																	                                                <?php /*?>  <div class="row club_network_row" style="width:100%;">
-																	                                                            <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
-																	                                                                <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
-																	                                                                    <img src="images/profile/6.jpg" width="70">
-																	                                                                </div>
-																	                                                            </div>
-																	                                                            <div class="col-lg-10 club_msg_shape" style=" height:70px; background-color:#eee; padding-right:0px;width:86%;" align="left">
-																	                                                                <span style="text-align:right; color:#d3d3d3;font-size:10px;">
-																	    Rajesh - Beta Solutions - IT - Software  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 30-jan-2017 12:22am </span>
-																	                                                                <p>
-																	        Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, </p>
-																	                                                            </div>
-																	                                                        </div><?php */?>
 
 
 
@@ -882,14 +949,13 @@ $from_count=0;
 <div class="col-lg-6 col-md-6">
 
 
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
-                                            <div class="col-lg-12" tyle="padding:0px;">
-																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>  COMPANY INFO</h4> </div>
-                                                <!-- <h4 class="club_headers" style="margin:0px;float:left;">
-                                                    COMPANY INFO </h4> -->
-																										<a href="#Your_role" class="icon" style="float:left;margin-left:10px;"> <i class="fa fa-pencil icon"></i></a>
-                                                <br>
-																								<div class="col-lg-10 col-md-10">
+                                        <div class="col-lg-12" style="">
+                                            <div class="col-lg-12 pst_box" style=" padding: 0px; border: 2px solid #7c7c7c; margin-top: 20px; background: #fff;">
+												<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>  COMPANY INFO</h4>  </div>
+
+
+                                            <div class="col-lg-12" style="padding:10px;margin-top:15px;">
+											<div class="col-lg-10 col-md-10">
 
 
                                                 <p id="role" style="font-family:lato-light; color:#a9a9a9;">
@@ -897,17 +963,19 @@ $from_count=0;
 												$get_user_role=mysqli_query($conn,"select * from user_info where user_id='$_SESSION[id]'");
 												$rolie=mysqli_fetch_array($get_user_role);
 												?>
-                                                    <?php echo $rolie['company_role_info']; ?></p>
-																										</div>
-                                            </div>
-                                            <div class="col-lg-2" style="padding:0px;">
+                                                    <?php echo $rolie['company_role_info']; ?><a href="#Your_role" style="float:left;">  <i class="fa fa-pencil icon"></i></a></p>
+											</div>
+
+                                            <div class="col-lg-2" style="padding:0px;margin-top:-20px;">
                                                 <img src="images/profile/logo.jpg" width="80" />
                                             </div>
+                                            </div>
+																					</div>
                                         </div>
                                         <br>
-	<!-- colleagues																			 -->
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
-                                            <br>
+	<!-- colleagues-->
+                                        <div class="col-lg-12 pst_box" style=" background: #fff; border: 2px solid #7c7c7c; padding: 0px; margin-top: -5px; margin-left: 15px; width: 516px; height: 310px;">
+
 																						<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>COLLEAGUES</h4> </div>
                                             <!-- <h4 class="club_headers" style="margin:0px;">
                                                 COLLEAGUES </h4> -->
@@ -1002,7 +1070,7 @@ $from_count=0;
                             </div>
                         </div>
                         <div class="tab-pane" id="club-vr">
-                            <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;">
+                           <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;margin-top: 25px;">
                             <div id="club_login">
                             <?php
 							$ckuic_exe=mysqli_query($conn,"select * from club_signup where user_id='$_SESSION[id]'");
@@ -1011,7 +1079,7 @@ $from_count=0;
 							{
 
 								?>
-                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;margin-top:25px;">
+                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;">
                                 <h2 style="color:#4D1B1B;margin-top:90px;">Hello <?php echo $_SESSION['Name'];?></h2>
                                 <h4>Please Join Club</h4>
                                 </div>
@@ -1043,7 +1111,7 @@ $from_count=0;
                                     <br>
 
 								</div>
-                                <!----------------------------------------END CLUB LOGIN------------------------------->
+                               <!-- END CLUB LOGIN-->
                                 <?php
 							}else
 							{
@@ -1053,7 +1121,7 @@ $from_count=0;
                                     <ul class="nav nav-tabs">
                                         <li class="active">
 
-                                            <a href="#tab8" data-toggle="tab">Club</a>
+                                            <a href="#tab8" data-toggle="tab">Club Sheet</a>
                                              <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
                                              <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
                                               <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>-->
@@ -1102,24 +1170,34 @@ $from_count=0;
 
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab8">
-                                        <!-------------------------------------club sheet BEGIN------------------------------------------------->
-<div class="row" style="height:550px;">
+
+
+
+                                                                  <!--club sheet BEGIN-->
+
+
+<div class="row" style="height: 520px;
+    border: 2px solid #808080;
+    margin: 10px;overflow-y: scroll;">
+
 
 
 																						<div class="col-lg-2 grow" align="center" style="
     padding: 10px;
     margin: 10px;
+    margin-top: 20px;
 ">
                                                 <div>
 
                                                     <h4 class="club_headers">
-                                                        CLUB ID # <?php echo $_SESSION['club_id']?></h4>
+                                                        CLUB ID # 1<?php echo $_SESSION['club_id']?></h4>
                                                     <div class="col-lg-12 club_txtbox" style="padding-left:0px; padding-right:10px;paddin-top:0px;margin-top:0px;">
                                                         <?php
                                                         $sug_date=date('Y-m-d');
                                                         ?>
                                                         <form method="post" action="">
                                                         <!--maxlength="160"-->
+
                                                             <input type="text" placeholder="Tag Me To (160 Characters only..)"  class="club_txt" id="suggest_me_to">
                                                             <input type="hidden" name="sug_usrt_id" id="sug_usrt_id" value="<?php echo $_SESSION['id'];?>"/>
                                                             <input type="hidden" name="sug_date" id="sug_date" value="<?php echo $sug_date;?>">
@@ -1160,15 +1238,16 @@ $from_count=0;
                                                     <div class="col-lg-2 grow" align="center" style="
     padding: 10px;
     margin: 10px;
+
 ">
 													<div class="row">
-                                                    <div class="col-md-1" style="float:left;margin-left:-15px" align="left">
+                                                    <div class="col-md-3" align="left" style="margin-left: -5px;">
                                                     <?php
                                                             if($gclb_uspi['image']!='')
 															{
 															?>
 
-                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" width="50" style="margin-top:5px;">
+                                                        <img src="fb_users/<?php echo $fet_mem_de['Gender']?>/<?php echo $fet_mem_de['Email']?>/Profile/<?php echo $gclb_uspi['image']?>" style="width: 55px;">
                                                         <?php
 															}else
 															{
@@ -1178,17 +1257,19 @@ $from_count=0;
 															}
 														?>
                                                     </div>
-                                                    <div class="col-md-11" style="margin-top: -65px;margin-left: 50px;text-align:initial">
-                                                     <h5>
-                                                            <?php echo $fet_mem_de['industry'];?></h5>
+                                                    <div class="col-md-9" style="    text-align: initial;
+    font-size: 12px;
+    line-height: 13px;margin-left: 5px;">
+                                                  
+                                                        <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
-                                                        <span><?php echo $fet_mem_de['Name'];?></span>
+                                                        <?php echo $fet_mem_de['Name'];?>
                                                         <br>
-                                                        <span><?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?></span>
+                                                        <?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?>
                                                         <br>
-                                                        <span><?php echo $fet_mem_de['industry'];?></span>
+                                                        <?php echo $fet_mem_de['industry'];?></span>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" align="center">
                                                      <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
 
                                                         <?php
@@ -1221,7 +1302,7 @@ $from_count=0;
                                                         }
                                                         ?>
                                                     </div>
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12" style="text-align: justify;">
                                                      <p><?php echo $fet_mem_de['description'];?></p>
                                                      </div>
                                                     </div>
@@ -1296,6 +1377,7 @@ $from_count=0;
 
                                             </form>
                                         </div>
+                                        
 
 </div>
 
@@ -1307,17 +1389,19 @@ $from_count=0;
                                <!------------------------------------------END CLUB SHEET-------------------------------------------->
                                         </div>
                                         <div class="tab-pane" id="tab9">
-                        <!-------------------------------BEGIN networking------------------------------------------------------------->
+                                                                       <!--BEGIN networking-->
 
-																					  <div class="row" style="margin: 10px;
-    border: 2px solid #808080;max-height:550px">
+																					  <div class="row" >
+    <div class="col-md-9" style=" border: 2px solid #7c7c7c;margin-top: 10px;height: 495px;">
+    
                                             <br>
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
-                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>CLUBBING</h4> </div>
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;        margin-left: -48px;
+    width: 1120px;"><h4>CLUBBING</h4> </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-12" >
                                                  <div id="club_networks">
-                                            <div class="club_network" style="height:350px;background-color:#fff">
+                                            <div class="club_network" style="height: 385px;background-color:#fff" id="mamber-chat">
                                                 <?php
                                                 $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
                                                 while($grp_ct=mysqli_fetch_array($group_chat_exe))
@@ -1335,7 +1419,7 @@ $from_count=0;
                                                             if($gp_ppic['image']!='')
 															{
 															?>
-                                                                <img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width="80" height="80">
+                                                                <img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width="50" height="80">
                                                                 <?php
 															}else
 															{
@@ -1346,7 +1430,7 @@ $from_count=0;
 																?>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-10 club_msg_shape" style=" height:80px; background-color:#fff; padding-right:0px;width:93%;" align="left">
+                                                        <div class="col-lg-10 club_msg_shape" style=" height:80px; background-color:#fff; padding-right:0px;" align="left">
                                                         <span style="text-align:right; color:#000;font-size:10px;">
     <?php echo $gp_det['Name'];?> / <?php echo $gp_det['company']?> / <?php echo $gp_det['industry'];?> </span>
                                                             <span class="pull-right" style="text-align:right; color:#808080;font-size:10px;"><?php echo $grp_ct['time'];?> </span>
@@ -1376,7 +1460,8 @@ $from_count=0;
 												</div>
                                             </div>
                                                 </div>
-                                                <div class="col-md-12">
+
+                                                <div class="col-md-12" style="margin-top: -20px;">
                                                 <form method="post"  action="">
                                             <!--maxlength="160"-->
                                                 <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
@@ -1391,214 +1476,232 @@ $from_count=0;
                                             <br>
                                             <br>
                                             </div>
+                                            
+                                                </div>
+                                                 <!--members of networking-->
+                                                <div class="col-md-3">
+                                                <div class="col-md-12" style="margin-top: 10px;
+    border: 2px solid #7c7c7c;
+    height: 495px;">
+                                                  <br>
+
+                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;    margin-left: -30px;
+    width: 332px;"><h4>MEMBERS</h4> </div>
+                                                </div>
+                                                <!-- member data -->
+                                                
+                                                <div class="col-md-12">
+                                                 <div id="club_networks">
+                                            <div class="club_network" style="    height: 420px;background-color:#fff">
+                                                <?php
+                                                $group_chat_exe=mysqli_query($conn,"select * from group_chat order by chat_id desc");
+                                                while($grp_ct=mysqli_fetch_array($group_chat_exe))
+                                                {
+                                                    $gp_us_pp_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$grp_ct[user_id]'");
+                                                    $gp_ppic=mysqli_fetch_array($gp_us_pp_exe);
+                                                    $gp_user_details_exe=mysqli_query($conn,"select * from users where user_id='$grp_ct[user_id]'");
+                                                    $gp_det=mysqli_fetch_array($gp_user_details_exe);
+
+                                                    ?>
+                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px; ">
+                                                      
+                                                        <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;    margin-left: -25px;" align="right"><span style="text-align:right; color:#000;font-size:10px;line-height: 0px"><b><?php echo $grp_ct['chat_txt'];?></b><br>
+                                                        
+    <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><?php echo $gp_det['Name'];?></a><br><?php echo $gp_det['company']?> <br><?php echo $gp_det['industry'];?> </span>
+                                                           
+                                                        </div>
+                                                          <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:30px; " align="left">
+                                                            
+                                                            <?php
+                                                            if($gp_ppic['image']!='')
+                              {
+                              ?>
+                                                                <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><img src="fb_users/<?php echo $gp_det['Gender'];?>/<?php echo $gp_det['Email'];?>/Profile/<?php echo $gp_ppic['image'];?>" width= "80" height="65"></a>
+                                                                <?php
+                              }else
+                              {
+                                ?>
+                                                             <img src="images/profile/sq.PNG"     width= "80"
+    height="65"/>
+                                                                <?php
+                              }
+                                ?>
+                                                            
+                                                        </div>
+
+                                                   </div>
+
+                                                    <?php
+                                                }
+                                                ?>
+
+
+                        </div>
+                                            </div>
+                                                </div>
+                                                
+                                                
+                                                <!-- end member data -->
+                                                </div>
+
+                                                <!--end members-->
+                                                </div>
                                                 </div>
 
 
-
-                       <!--------------------------------------END NETWORKING----------------------------------------------------->
+                                                  <!--END NETWORKING-->
 
                                         </div>
+
+
                                         <div class="tab-pane" id="tab10">
-                    <!-------------------------------------------BEGIN CLUB SUGGESTIONS------------------------------------------------->
-<div class="row" style="height:550px;">
 
 
+                                                             <!--BEGIN CLUB SUGGESTIONS-->
 
 
-                                            <!--<div id="txtHint"></div>-->
-																						<div class="col-lg-9 col-md-9">
-																							<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>SUGGESTIONS</h4> </div>
+                                            <div class="row" style="    margin: 10px;
+    border: 2px solid #7c7c7c;
+    width: 99%;
+    height: 497px;">
+   
+                                            <br>
+                                            <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top: -15px;
+    margin-left: -17px;
+    width: 1465px;
+    margin-bottom: 0px;
+;">
+                                            <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;width:1465px"><h4>SUGGESTIONS</h4> </div>
+                                                </div>
+                                                <div class="col-md-12"  id="suggest1">
+                                                 <div id="club_networks" style="    margin-left: -10px;
+    width: 1390px;">
+                                            <div class="club_network" style="height:400px;background-color:#fff" id="mamber-suggestions">
+                                                <?php
+                                                $sug1=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
+                                                while($sug2=mysqli_fetch_array($sug1))
+                                                {
+                                                   
+                                                   
 
 
-                                            <div id="user_suggestions">
-                                            <div class="row" id="txtHint">
-                                                <?php /* <div class="club_suggest_top_div row">
-                                                    <div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
-                                                        <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
-                                                        <?php
-                                                        if($fet_ppic['image']!='')
-														{
-														?>
-                                                            <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email'];?>/Profile/<?php echo $fet_ppic['image'];?>" width="80">
-                                                            <?php
-														}else
-														{
-															?>
-                                                            <img src="images/profile/sq.PNG" width="80"/>
-                                                            <?php
-														}
-															?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-10 club_msg_shape" style=" height:80px; padding-right:0px;width:86%; padding-top:7px;" align="left">
-                                                        <span style="font-size:16px;"><?php echo $usr_dis['Name'];?> </span>
-                                                        <br>
-                                                        <span style="font-size:16px;"> <?php echo $usr_dis['company']?> </span>
-                                                        <br>
-                                                        <span style="font-size:16px;"> <?php echo $usr_dis['industry'];?>  </span>
-                                                    </div>
-                                                </div> */?>
+                                                    // $sug3=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$sug2[suggest_topic_id]'");
+                                                    // $sug4=mysqli_fetch_array($sug3);
+                                                    // $sug5=mysqli_query($conn,"select * from user_profile_pic where user_id='$sug2[user_id]'");
+                                                    // $sug6=mysqli_fetch_array($sug5);
+                                                    // $sug7=mysqli_query($conn,"select * from users where user_id='$sug2[user_id]'");
+                                                    // $sug8=mysqli_fetch_array($sug7);
 
-                                                <div class="club_sugg_scroll" >
-
-                                                    <?php
-                                                    $gu_sugg=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
-                                                    while($dis_usr_sugg=mysqli_fetch_array($gu_sugg))
-                                                    {
-                                                        ?>
-                                                        <div class="td_div club_sug_row_bg" style="  height:30px;">
-                                                            <div class="col-lg-10" style="text-align:left">
-                                                                <span><?php echo $dis_usr_sugg['suggest_topic']?></span>
-                                                            </div>
-                                                            <div align="right" class="col-lg-2" style="text-align:right;">
-                                                                <span style="text-align:right; color:#d3d3d3;font-size:12px; "><?php echo $dis_usr_sugg['sug_date'];?></span>
-                                                            </div>
-                                                        </div>
-
-                                                        <?php
-                                                    }
                                                     ?>
-                                                    <!-- <div class="td_div club_sug_row_bg" style="  height:30px;">
-                                                         <div class="col-lg-10" style="text-align:left">
-                                                             <span>Lorem ipsum dolor sit amet, inimicus electrama </span>
-                                                         </div>
-                                                         <div align="right" class="col-lg-2" style="text-align:right;">
-                                                             <span style="text-align:right; color:#d3d3d3;font-size:12px; ">30-01-2017</span>
-                                                         </div>
-                                                     </div>-->
+                                                    <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px;">
+                                                       <!--  <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:80px; ">
+                                                            <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
+                                                            <?php
+                                                            //if($fet_ppic['image']!='')
+                              {
+                              ?>
+                                                                <img src="fb_users/<?php //echo $usr_dis['Gender'];?>/<?php //echo $usr_dis['Email'];?>/Profile/<?php //echo $fet_ppic['image'];?>" width="50" height="80">
+                                                                <?php
+                              }//else
+                              {
+                                ?>
+                                                             <img src="images/profile/sq.PNG" width="80"/>
+                                                                <?php
+                              }
+                                ?>
+                                                            </div>
+                                                        </div> -->
+                                                        <div class="col-lg-12 club_msg_shape" style="     height: 34px;
+    background-color: #fff;
+    padding-right: 0px;
+    margin-top: 5px;" align="left">
+                                                       <!--  <span style="text-align:right; color:#000;font-size:10px;">
+    <?php// echo $usr_dis['Name'];?> / <?php// echo $usr_dis['company']?> / <?php// echo $usr_dis['industry'];?> </span> -->
 
 
+    <div class="col-md-8" align="left" style=""><p style="color:#808080"> <?php echo $sug2['suggest_topic'];?></p></div>
+                                                            <div class="col-md-2" align="right" style="margin-right: -10px"><span class="pull-right" style="text-align:right; color:#808080;font-size:10px;margin-right: -120px;"><?php echo $sug2['sug_date'];?> </span></div>
+                                                            
 
-
-
-
-
-
-													</div>
-                                                </div>
-                                            </div>
-																					</div>
-
-                                            <div class="col-lg-3 col-md-3">
-                                                <div class="club_suggest_top_div row" style="padding-top:10px;padding-bottom:10px;">
-                                                    <!--<div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
-        <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;" data-pg-id="8677">
-            <img src="images/profile/6.jpg" width="80" data-pg-id="8678">
-        </div>
-    </div>
-    <div class="col-lg-10 club_msg_shape" style=" height:80px; padding-right:0px;width:86%; padding-top:7px;" align="left" data-pg-id="8679">
-        <span style="font-size:16px;" data-pg-id="8680">Rajesh </span>
-        <br data-pg-id="8681">
-        <span style="font-size:16px;" data-pg-id="8682"> Beta Solutions </span>
-        <br data-pg-id="8683">
-        <span style="font-size:16px;" data-pg-id="8684"> IT - Software  </span>
-    </div>-->
-		<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4>CLUB MEMBER SUGGESSTIONS</h4> </div>
-
-                                                    <!-- <span>Club Member Tags</span><!--Suggestions-->
-                                                </div>
-                                                <div id="connect_suggestion2">
-                                                <div class="club_sugg_scroll" >
-                                                    <?php
-                                                    $result_exe_club_mem=mysqli_query($conn,"select * from club_signup where club_id='$_SESSION[club_id]' AND user_id!='$_SESSION[id]'");
-                                                    while($result_club_mem=mysqli_fetch_array($result_exe_club_mem))
-                                                    {
-                                                        $res_clbmem_det=mysqli_query($conn,"select * from users where user_id='$result_club_mem[user_id]'");
-                                                        $clb_mde=mysqli_fetch_array($res_clbmem_det);
-                                                        $cib_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$clb_mde[user_id]'");
-                                                        $clb_pic=mysqli_fetch_array($cib_ppic_exe);
-                                                        $get_clb_sugg=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$result_club_mem[user_id]'  ORDER BY sug_date DESC");
-                                                        $kiloo=mysqli_fetch_array($get_clb_sugg);
-														?>
-
-                                                        <?php
-
-                                                        if($kiloo['suggest_topic']!='')
-                                                        {
-                                                            ?>
-
-                                                            <div class="td_div club_sug_row_bg" style="  height:50px;">
-                                                                <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
-                                                                    <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                        <a href="#" onClick="return Get_clb_user_sugg(<?php echo $result_club_mem['user_id'];?>);">
-                                                                        <?php
-                                                                        if($clb_pic['image']!='')
-																		{
-																		?>
-                                                                         <img src="fb_users/<?php echo $clb_mde['Gender']?>/<?php echo $clb_mde['Email']?>/Profile/<?php echo $clb_pic['image'];?>" width="50"/>
-                                                                         <?php
-																		}else
-																		{
-																		 ?>
-                                                                         <img src="images/profile/sq.PNG" width="50">
-                                                                         <?php
-																		}
-																		 ?>
-                                                                         </a>
-                                                                    </div>
-                                                                    <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
-                                                                        <span><?php echo $kiloo['suggest_topic'];?> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <div align="right" class="col-lg-2" style="text-align:right;">
-                                                                    <span style="text-align:right; color:#d3d3d3;font-size:12px; "><?php echo $kiloo['sug_date'];?></span>
-                                                                    <br>
-                                                                    <?php
-                                                                    $sugg_count_exe=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$kiloo[suggest_topic_id]' AND whos_suggest='$clb_mde[user_id]' AND to_whom_accept='$_SESSION[id]' AND status='1'");
+                                                            <?php
+                                                                    $sugg_count_exe=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$sug2[suggest_topic_id]' AND whos_suggest='$usr_dis[user_id]' AND to_whom_accept='$_SESSION[id]' AND status='1'");
                                                                     $cn1=mysqli_num_rows($sugg_count_exe);
                                                                     if($cn1!=0)
                                                                     {
                                                                         ?>
-                                                                        <span><a href="#" class="btn btn_grn" onClick="return disconnect_suggest(<?php echo $clb_mde['user_id'];?>,<?php echo $kiloo['suggest_topic_id'];?>);" style="margin-left:-15px; height:20px;padding-top:0px;padding-bottom:0px;">Connected</a></span>
-                                                                        <?php
-                                                                    }else
-                                                                    {
-                                                                        ?>
-                                                                        <span><a href="#" class="btn btn_grn" onClick="return connect_suggest(<?php echo $clb_mde['user_id'];?>,<?php echo $kiloo['suggest_topic_id'];?>);" style="margin-left:-15px; height:20px;padding-top:0px;padding-bottom:0px;">Connect</a></span>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                </div>
-                                                            </div>
-                                                            <?php
-                                                        }
-														?>
 
-                                                        <?php
-                                                    }
-                                                    ?>
-														</div>
-                                                    <!-- <div class="td_div club_sug_row_bg" style="  height:50px;">
-                                                         <div class="col-lg-10" style="text-align:left; padding-left:0px;padding-right:0px;">
-                                                             <div class="col-lg-2" style="padding:0px; width:50px;" ata-pg-id="8953">
-                                                                 <img src="images/profile/6.jpg" width="50">
-                                                             </div>
-                                                             <div class="col-lg-10" style="padding-left:10px; padding-right:0px;">
-                                                                 <span>Lorem ipsum dolor sit amet, inimicus electrama </span>
-                                                             </div>
-                                                         </div>
-                                                         <div align="right" class="col-lg-2" style="text-align:right;">
-                                                             <span style="text-align:right; color:#d3d3d3;font-size:12px; ">30-01-2017</span>
-                                                         </div>
-                                                     </div>-->
+                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;margin-left: 115px;" onClick="return disconnect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connected
+                                      </button></div>
 
 
+    <?php } else { ?>
+                                      <div class="col-md-2" align="left" ><button style="color: white;background-color: #808080;margin-left: 115px;" onClick="return connect_suggest(<?php echo $usr_dis['user_id'];?>,<?php echo $sug2['suggest_topic_id'];?>);">connect
+                                      </button></div>
+                                      <?php } ?>
 
+                                                        </div>
+
+                                                   </div>
+
+                                                    <?php
+                                                  }
+                                                ?>
+
+
+                        </div>
+                                            </div>
+                                                </div>
+                                                <!--<div class="col-md-12">
+                                                 <form method="post"  action="">
+                                            <!--maxlength="160"->
+                                                <input type="text" placeholder="Let's Network (160 characters only..)"  class="club_txt" name="chat_txt" id="chat_txt">
+                                                <?php
+                                                //$msg_date=date("Y-m-d h:i");
+                                                ?>
+                                                <input type="hidden" name="msg_time_date" id="msg_time_date" value="<?php //echo $msg_date;?>"/>
+                                                <input type="hidden" name="msg_user_id" id="msg_user_id" value="<?php //echo $_SESSION['id']?>">
+                                                <input type="submit" style="display:none;" name="Message_send" onClick="return inse_msg();"/>
+                                            </form>
+                                            <div align="left" id="network_valid" style="display:none;color:red;font-weight:bold;margin-left:15px;">Message Length Must Be 160 Characters Only</div>
+                                            <br>
+                                            <br>
+                                            </div> -->
+                                                
+                                                 <!--members of suggestion-->
+                                                
+
+                                                <!--end members suggestion-->
 
                                                 </div>
-                                            </div>
-  </div>
+
+
+
+
+
 	</div>
                  <!----------------------------------END CLUB SUGGESTIONS------------------------------------------------------>
 
                                         <div class="tab-pane" id="tab11">
                                         <!-- ---------------------------------------BEGIN CLUB TAGS-------------------------------------->
-                                            <h4 class="club_headers">
-                                                Tags</h4>
+                                            <h4 class="club_headers" style="color: #808080">
+                                                 Add Tags</h4>
                                             <br>
-                                            <div class="row" style="width:400px">
-                                                <h4 class="club_headers">
-                                                    Add Tags</h4>
+                                             <i class="fa fa-plus" style="color: #808080;margin-left: -1450px" data-toggle="modal" data-target="#tags"></i>
+                                             <!-- modal tags -->
+
+                                               <div class="modal fade" id="tags" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">TAGS</h4>
+        </div>
+        <div class="modal-body">
+           <div class="row" style="width:400px">
+                                                
                                                 <form role="form" method="post" action="">
                                                     <div class="form-group">
                                                         <select  name="club_memb" id="club_memb" class="club_txt">
@@ -1631,13 +1734,28 @@ $from_count=0;
                                                     </div>
                                                     <!---->
 
-                                                    <button type="button"  name="add_refrals" onClick="return refrals_insertins();" class="btn btn_grn">Submit</button>
-                                                    <button type="button" class="btn btn_grn">Clear</button>
+                                                    <button type="button"  name="add_refrals" onClick="return refrals_insertins();" class="btn btn_grn" data-dismiss="modal">Submit</button>
+                                                    <button type="button" class="btn btn_grn" data-dismiss="modal">Clear</button>
                                                 </form>
                                             </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+                                             <!-- end tag modal -->
                                             <br>
-                                            <div class="row">
-                                                <div class="club_suggest_top_div row" style="padding-top:10px;padding-bottom:10px;">
+                                            <div class="row" style="margin: 10px">
+                                            <div class="col-md-6" style="    border: 2px solid #7c7c7c;
+    height: 450px;margin-left: -5px;">
+                                                <div class="club_suggest_top_div row" style="padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    background-color: #808080;
+    margin-left: -15px;
+    width: 727px;">
                                                     <!--<div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
             <img src="images/profile/6.jpg" width="80">
@@ -1651,9 +1769,11 @@ $from_count=0;
         <span style="font-size:16px;"> IT - Software  </span>
     </div>-->
                                                     <span>Tagged to you</span>
+
                                                 </div>
                                                 <div id="accept_tag_confirmation">
-                                                <div class="club_sugg_scroll">
+                                                <div class="club_sugg_scroll" style="    height: 400px;
+    width: 100%;">
                                                     <?php
                                                     $find_refer=mysqli_query($conn,"select * from tbl_reference where to_whom_user_id='$_SESSION[id]'  order by date desc");
                                                     while($gred=mysqli_fetch_array($find_refer))
@@ -1750,11 +1870,21 @@ $from_count=0;
 
 
                                                 </div>
-                                            </div>
+                                                </div>
+                                            
                                             <br>
                                             <br>
-                                            <div class="row">
-                                                <div class="club_suggest_top_div row" style="padding-top:10px;padding-bottom:10px;">
+                                            <div class="col-md-6" style="margin-top: -40px;
+    border: 2px solid #7c7c7c;
+    width: 48%;
+    height: 450px;
+    margin-left: 15px;">
+                                                <div class="club_suggest_top_div row" style="    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    margin-left: -15px;
+    background-color: #808080;
+    width: 698px;">
                                                     <!--<div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:80px; ">
         <div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:80px;">
             <img src="images/profile/6.jpg" width="80">
@@ -1769,8 +1899,8 @@ $from_count=0;
     </div>-->
                                                     <span>Tagged others</span>
                                                 </div>
-                                                <div id="add_tags">
-                                                <div class="club_sugg_scroll">
+                                                <div id="add_tags" style="    width: 102%;">
+                                                <div class="club_sugg_scroll" style="height: 400px">
                                                     <?php
                                                     $add_fre=mysqli_query($conn,"select * from tbl_reference where who_user_id='$_SESSION[id]'");
                                                     while($jill=mysqli_fetch_array($add_fre))
@@ -1867,7 +1997,7 @@ $from_count=0;
 
                                                 </div>
                                             </div>
-
+</div>
 
 
 
@@ -1880,11 +2010,12 @@ $from_count=0;
                                             <!---------------------------------------------END CLUB TAGS---------------------------------------->
                                         </div>
                                         <div class="tab-pane" id="tab12">
-                                        <!---------------------------BEGIN CLUB SETTINGS----------------------------------------->
+                                        <!--BEGIN CLUB SETTINGS--><div style="border: 2px solid #7c7c7c;margin: 10px">
                                             <h4 class="club_headers">
                                                 Settings</h4>
                                             <br>
-                                            <div class="row" style="width:400px;">
+                                            <div class="row" style="    margin-top: 70px;
+    width: 400px;">
                                                 <form role="form">
                                                     <div class="form-group">
                                                         <input type="email" class="form-control" id="old_pwd" name="old_pwd" placeholder="Old Password">
@@ -1895,24 +2026,26 @@ $from_count=0;
                                                     <div class="form-group">
                                                         <input type="password" class="form-control" id="re_password" name="re_password" placeholder="Verify">
                                                     </div>
-                                                    <button type="submit" class="btn btn_grn" onClick="change_pwd();">Change Password</button>
+                                                    <button type="submit" class="btn btn_grn" onClick="change_pwd();" style="background-color: #7c7c7c">Change Password</button>
                                                 </form>
                                             </div>
                                             <br>
                                             <div class="row">
-                                                <div class="col-lg-12" style="height:40px; background-color:#F48E8B;">
-                                                    <h4 style="color:#fff; ">
+                                                <div class="col-lg-12" style="height: 40px;
+    background-color: #7c7c7c;">
+                                                    <h4 style="color:#7c7c7c; ">
                                                         Remove From club</h4>
                                                 </div>
-                                                <div class="col-lg-12" style="border:1px dotted #F48E8B">
+                                                <div class="col-lg-12" style="border:1px dotted #7c7c7c">
                                                     <br>
-                                                    <input type="button" value="Remove from this Club" class="btn" onClick="remove_club(<?php echo $_SESSION['id']?>);" style="background-color:#F48E8B; color:#fff;">
+                                                    <input type="button" value="Remove from this Club" class="btn" onClick="remove_club(<?php echo $_SESSION['id']?>);" style="background-color:#7c7c7c; color:#fff;">
                                                     <br>
                                                     <br>
                                                 </div>
                                             </div>
+                                            </div>
 
-                                         <!------------------------------END CLUB TAGS--------------------------------------->
+                                         <!--END CLUB TAGS-->
                                         </div>
                                     </div>
 
@@ -1924,46 +2057,47 @@ $from_count=0;
                              </div>
                             </div>
 						</div>
-                        <div class="tab-pane " id="dairy-vr">
+                         <div class="tab-pane " id="dairy-vr">
                             <ul class="nav nav-tabs" id="id_hover">
                                 <li class="active">
-                                    <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">
-                                    <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
+                                    <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">Feed
+                                    <!-- <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
                                     <img id="dry_feed12" src="images/others/s_n_1.png" width="70" style="display:none;"/>
-                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Feed</h5>
+                                    <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a"> -->
+            <!-- Feed</h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5>--></a>
                                 </li>
+
                                 <li>
-                                    <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">
-                                    <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">Industry
+                                    <!-- <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_indu22" src="images/others/s_n_2.png" width="70" style="display:none;" />
-                               <h5 style="text-align:center; position:absolute; top:45px; left:35px;font-size:12px; color:#5a5a5a">
-            Industry</h5>
+                               <h5 style="text-align:center; position:absolute; top:45px; left:35px;font-size:12px; color:#5a5a5a"> -->
+            <!-- </h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5>--></a>
                                 </li>
                                 <li>
-                                    <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">
-                                    <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">Inked
+                                    <!-- <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_ink32" src="images/others/s_n_2.png" width="70" style="display:none;" />
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Inked</h5>
+            </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5>--></a>
                                 </li>
                                 <li>
-                                    <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">
-                                    <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">Noted
+                                    <!-- <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_not42" src="images/others/s_n_2.png" width="70" style="display:none;" />
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            Noted</h5>
+            </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5>--></a>
                                 </li>
                                 <li>
-                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();">
-                                    <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
+                                    <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();"><?php echo $_SESSION['Name'];?>
+                                    <!-- <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_uinfo52" src="images/others/s_n_2.png" width="70" style="display:none;" />
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">
-            <?php echo $_SESSION['Name'];?></h5>
+            </h5> -->
             <?php /*?><h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff"><?php echo $_SESSION['Name'];?></h5><?php */?></a>
                                 </li>
                             </ul>
@@ -2027,6 +2161,12 @@ $from_count=0;
                                         <div class="bg_pst">
 										<div id="news_feed_like">
                                         <div id="news_feed_comment">
+
+
+               								<div class="container">
+                                            <div class="news_feed">
+
+
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 
@@ -2038,47 +2178,7 @@ $from_count=0;
                                                 $pupe=mysqli_query($conn,"select * from user_profile_pic where user_id='$resp[user_id]'");
                                                 $pupp=mysqli_fetch_array($pupe);
                                                 ?>
-
-                                               <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $resp['user_id'] ?>" ><!--class="pst_head_left"-->
-                                                            <?php
-                                                                if($pupp['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
-        <?php echo $pud['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                            <?php
+                                              <?php
                                                                 $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
                                                                 $ps=mysqli_fetch_array($pse);
                                                                 $psc=mysqli_num_rows($pse);
@@ -2087,17 +2187,13 @@ $from_count=0;
 
 
                                                                 ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou;?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $resp['likes'];?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+
+
+                           <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+        <div>
                                                             <?php
                                                                 if($ps['status']=='Like')
                                                                 {
@@ -2115,228 +2211,74 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                            <a href="#feepost_cmts_<?php echo $resp['post_id'];?>">
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-                                                            <?php
+
+                               <?php
                                                         if($resp['post_pic']!='')
                                                         {
                                                             ?>
 
-                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" />
+                                                              <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
 
                                                               <?php
                                                         }
                                                         ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $resp['post_txt'];?></p>
-                                                            </div>
 
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on <?php echo $resp['post_time'];?></span>
-                                                            </div>
-                                                             </a>
-
-
-
-
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                            <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $resp['post_id'];?>">
-                                                                    <?php
-                                                                    $date=date('Y-m-d h:i');
-
-                                                                    ?>
-                                                                    <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                        </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                    <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" style="height:70px;width:70px;" />
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $pud['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php echo $resp['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $pud['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $pud['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                    <!--<h3>Letterpress asymmetrical</h3>-->
+                                    <p> <?php echo $resp['post_txt'];?></p>
+                                    <hr>
+																		<br>
 
 
-
-
-                                               <!----------feed post begin model------------------>
-
-
-
-                                           <div class="remodal" data-remodal-id="feepost_cmts_<?php echo $resp['post_id'];?>" id="feepost_cmts_<?php echo $resp['post_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
-                                            <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-
-
-
-                                                <!--data-remodal-action="confirm"-->
-                                                <div>
-                                                <?php
-                                                $fee_mol_post_exe=mysqli_query($conn,"select * from user_post where post_id='$resp[post_id]'");
-												$fee_mol_post=mysqli_fetch_array($fee_mol_post_exe);
-												$fee_mo_user_exe=mysqli_query($conn,"select * from users where user_id='$fee_mol_post[user_id]'");
-												$fee_mol_usr=mysqli_fetch_array($fee_mo_user_exe);
-												$fee_mol_ppic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$fee_mol_post[user_id]'");
-												$fee_mol_ppic=mysqli_fetch_array($fee_mol_ppic_exe);
-												?>
-												<div class="box">
-													<div style="
-													max-width: 200px;
-												">
-														<img src="img/04.jpg" alt="">
-														<img src="img/07.jpg" class="img-circle" alt="" style="
-													position: absolute;
-													left: 120px;
-													width: 80px;
-													top: 90px;
-												">
-														<h3>Rajesh</h3>
-														<h5>IT-Software / Beta Solutions / Founder </h5>
-														<h2> My first #d project </h2>
-														<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-													Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-
-												<hr style="margin:10px;">
-
-
-													</div>
-												</div>
-  <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-
-                                                      <div class="col col-lg-8" style="background-color:#fff; height:300px;padding:0px;">
-                                                      <?php
-                                                      $feed_md_liks=mysqli_query($conn,"select * from user_post_status where post_id='$fee_mol_post[post_id]' AND user_id='$_SESSION[id]'");
-													  $fee_lik=mysqli_fetch_array($feed_md_liks);
-													  ?>
-                                                            <div>
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
                                                             <?php
-                                                                if($fee_lik['status']=='Like')
-                                                                {
-
-                                                                    ?>
-                                                                    <a href="#"   onClick="return unlike(<?php echo $fee_mol_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" >
-                                                                <img src="images/others/unnote_1.png" height="90" style="position:absolute;left:365px;top:0px;" /></a>
-                                                                 <?php
-                                                                }else
-                                                                {
-
-                                                                    ?>
-                                                                <a href="#"  onClick="return like(<?php echo $fee_mol_post['post_id'];?>,<?php echo $_SESSION['id'];?>);" ><img src="images/others/note.png" height="90" style="position:absolute;left:365px;top:0px;"  /></a>
-                                                                <?php
-                                                        }
-                                                        ?>
-                                                            </div>
-
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-                                                            <?php
-                                                        if($fee_mol_post['post_pic']!='')
-                                                        {
-                                                            ?>
-
-                                                              <img src="fb_users/<?php echo $fee_mol_usr['Gender']?>/<?php echo $fee_mol_usr['Email'];?>/Post/<?php echo $fee_mol_post['post_pic'];?>" class="img-responsive " width="400" />
-
-                                                              <?php
-                                                        }
-                                                        ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $fee_mol_post['post_txt'];?></p>
-                                                            </div>
-
-
-
-                                                        </div>
-                                                         <div class="col col-lg-4" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                          <div style="bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12"><!--position:absolute;-->
-                                                            <?php
-                                                                $feed_modl_licoun_exe=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]'");
-
-                                                                $feed_lk_coun=mysqli_num_rows($feed_modl_licoun_exe);
-																$ret_coments_feedmd=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
-														         $new_poe_cmcou_feedmd=mysqli_num_rows($ret_coments);
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
 
 
                                                                 ?>
                                                                 <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou_feedmd;?></a></i>
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $new_poe_cmcou;?></a></i>
                                                                 </div>
                                                                 <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $feed_lk_coun;?></a></i>
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $resp['likes'];?></a></i>
                                                                 </div>
                                                                 <br />
                                                             </div>
-                                                         <div class="col-lg-12" style="padding:0px;;bottom:0px;">
-                                                         <!--position:absolute-->
-                                                            <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $fee_mol_post['post_id'];?>">
-                                                                    <?php
-                                                                    $date=date('Y-m-d h:i');
-
-                                                                    ?>
-                                                                    <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" class="form-control" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                        </form>
-                                                            </div>
-                                                           <div class="row col-lg-12" style="height:250px;overflow-y:scroll;">
-                                                            <?php
-												 $ret_cmt_exe=mysqli_query($conn,"select * from user_post_comment where post_id='$fee_mol_post[post_id]'");
-                                                        while($ret_cmt=mysqli_fetch_array($ret_cmt_exe))
-                                                        {
-                                                            $us_co_de=mysqli_query($conn,"select * from users where user_id='$ret_cmt[user_id]'");
-                                                            $use_cm=mysqli_fetch_array($us_co_de);
-                                                            $us_cmt_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$use_cm[user_id]'");
-                                                            $us_cmt_pic=mysqli_fetch_array($us_cmt_pic_exe);
-                                                            ?>
-                                                            <div class="row  pst_cmt_body">
-                                                                <div class="col-lg-2" ><!--style="width:70px;"-->
-                                                                    <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" class="pst_head_left">
-                                                                    <?php
-                                                                    if($us_cmt_pic['image']!='')
-																	{
-																	?>
-                                                                        <img src="fb_users/<?php echo $use_cm['Gender']?>/<?php echo $use_cm['Email']?>/Profile/<?php echo $us_cmt_pic['image'];?>"  width="40" height="40" style="margin-left:-15px;">
-                                                                        <?php
-																	}else
-																	{
-																		?>
-                                                                        <img src="images/profile/sq.PNG" width="70" height="70" style="margin-left:-15px;" />
-                                                                      <?php
-																	}
-																	  ?>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-lg-10" style="padding-top:5px;">
-                                                                    <a href="profile.php?id=<?php echo $use_cm['user_id'] ?>" style="color:#000;"><?php echo $use_cm['Name']; ?></a>
-                                                                    <br>
-                                                                    <span class="pst_head_pos  pst_cmt_muted">- Inked On <?php echo $ret_cmt['comment_time'];?></span>
-                                                                    <br>
-                                                                    <div style="margin-left:10px;"><?php echo $ret_cmt['comment'];?></div>
-                                                                </div>
-                                                            </div>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                           </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                </div>
-
-                                        </div>
-
-
-
-
-									<!-----------------END feed post moddel----------------------->
-
-
+                                </div>
+                            </div>
+                             </div>
+                          </div>
+<!-- </div> -->
 
 
                                                 <?php
                                             }
                                             ?>
+
+                                         </div>
+                                          </div>
 											</div></div>
 											</div>
                                         </div>
@@ -2351,6 +2293,8 @@ $from_count=0;
 
 
                                     <div class="bg_pst">
+                                    <div class="container">
+                                            <div class="news_feed">
 
 
                                         <?php
@@ -2372,65 +2316,21 @@ $from_count=0;
                                                 $industry_post_user_data_retry=mysqli_fetch_array($industry_post_user_data_exeu);
 
                                                 ?>
-
-
-                                                <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>" ><!--class="pst_head_left"-->
-                                                             <?php
-																if($industry_post_usr_profi_pic!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
-       <?php echo $industry_post_user_data_retry['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['company'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
+                                                
+                                                  <?php
                                                                 $industry_post_status_exe=mysqli_query($conn,"select * from user_post_status where post_id='$industry_post_rety[post_id]'");
                                                                 $industry_post_status_count=mysqli_num_rows($industry_post_status_exe);
                                                                 $industry_post_status_retry=mysqli_fetch_array($industry_post_status_exe);
 																$industry_post_comment_exeu=mysqli_query($conn,"select * from user_post_comment where post_id='$industry_post_rety[post_id]'");
                                                         $industry_post_comment_count=mysqli_num_rows($industry_post_comment_exeu);
                                                                 ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $industry_post_comment_count ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $industry_post_status_count;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+
+
+                                                 <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
                                                             <?php
                                                                 if($industry_post_status_retry['status']=='Like')
                                                                 {
@@ -2448,38 +2348,66 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                            <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-                                                            <?php
+                                                            
+                                                            
+                                                              <?php
                                                         if($industry_post_rety['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email'];?>/Post/<?php echo $industry_post_rety['post_pic'];?>" class="img-responsive" width="400" />
+                                                              <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email'];?>/Post/<?php echo $industry_post_rety['post_pic'];?>" class="img-responsive " width="400" style="width:100%;height:240px;" />
                                                               <?php
                                                         }
                                                         ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $industry_post_rety['post_txt'];?></p>
-                                                            </div>
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $industry_post_rety['post_time'];?></span>
-                                                            </div>
+
+                              
+
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                    <img src="fb_users/<?php echo $industry_post_user_data_retry['Gender']; ?>/<?php echo $industry_post_user_data_retry['Email']?>/Profile/<?php echo $industry_post_usr_profi_pic; ?>" style="height:70px;width:70px;" />
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $industry_post_user_data_retry['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $industry_post_rety['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $industry_post_user_data_retry['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['company'];?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $industry_post_user_data_retry['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $industry_post_rety['post_txt'];?></p>
+                                    <hr>
+																		<br>
 
 
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                             <form method="post" action="" id="form_<?php echo $from_count;?>">
-                                                                    <input type="hidden" name="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                    <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $industry_post_rety['post_id'];?>">
-                                                                    <?php
-                                                                    $date=date('Y-m-d h:i');
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                            <?php
+                                                                $pse=mysqli_query($conn,"select * from user_post_status where post_id='$resp[post_id]' AND user_id='$_SESSION[id]'");
+                                                                $ps=mysqli_fetch_array($pse);
+                                                                $psc=mysqli_num_rows($pse);
+																$ret_coments=mysqli_query($conn,"select * from user_post_comment where post_id='$resp[post_id]'");
+														         $new_poe_cmcou=mysqli_num_rows($ret_coments);
 
-                                                                    ?>
-                                                                    <input type="hidden" name="cmt_ins_date_<?php echo $from_count;?>" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text" name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                </form>
+
+                                                                ?>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $industry_post_comment_count ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $industry_post_status_count;?></a></i>
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>
 
 
 
@@ -2488,6 +2416,7 @@ $from_count=0;
                                             }
                                         }
                                         ?>
+                                        </div></div>
 
                                     </div>
 									</div>
@@ -2498,6 +2427,9 @@ $from_count=0;
 									<div id="my_inked">
 
                                     <div class="bg_pst">
+                                    
+                                    <div class="container">
+                                            <div class="news_feed">
 
                                         <?php
                                         $user_profile_photo_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$_SESSION[id]'");
@@ -2511,65 +2443,20 @@ $from_count=0;
                                         { ++$from_count;
                                             $count++;
                                             ?>
-
-
-                                                <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>" ><!--class="pst_head_left"-->
-                                                             <?php
-																if($user_profile_pic['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $industry_post_rety['user_id']?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $usr_dis['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
-        <?php echo $usr_dis['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $usr_dis['company']?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $usr_dis['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
+                                            
+                                            <?php
                                                                 $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
                                                             $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
 															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
 															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
                                                     $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_profile_comment_count; ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_pos_not_cou;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+                                            
+										  <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
                                                             <?php
                                                                 if($user_profilr_bookmark['status']=='Like')
                                                                 {
@@ -2587,43 +2474,91 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
+                                                            
                                                             <?php
                                                         if($user_profile_post['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email']; ?>/Post/<?php echo $user_profile_post['post_pic'];?>" class="img-responsive" width="400" />
+                                                              <img src="fb_users/<?php echo $usr_dis['Gender'];?>/<?php echo $usr_dis['Email']; ?>/Post/<?php echo $user_profile_post['post_pic'];?>"  class="img-responsive " width="400" style="width:100%;height:240px;"  />
                                                               <?php
                                                         }
                                                         ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $user_profile_post['post_txt']?></p>
-                                                            </div>
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $user_profile_post['post_time'];?></span>
-                                                            </div>
+                                                            
+                                                            
+                                                            
 
+                              
 
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                              <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
-                                                                <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                
+                                 <?php
+																if($user_profile_pic['image']!='')
+																{
+																?>
+                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
                                                                 <?php
-                                                                $date=date('Y-m-d h:i');
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
+                                                                    <?php
+																}
+																	?>
+                                
+                                   
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $usr_dis['user_id']?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $usr_dis['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $usr_dis['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $usr_dis['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $usr_dis['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $user_profile_post['post_txt']?></p>
+                                    <hr>
+																		<br>
 
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                           <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                                                <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text"  name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                </form>
+                                                               <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_profile_comment_count; ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_pos_not_cou;?></a></i>
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>			                                            
+                                            
+
+
+                                              
 
 
                                             <?php
                                         }
                                         ?>
+                                        </div></div>
 
 										</div>
                                     </div>
@@ -2633,6 +2568,9 @@ $from_count=0;
                                  <!---------------------------------------------------BEGIN NOTED FILE---------------------------->
 									<div id="noted_likes">
                                     <div class="bg_pst">
+                                     <div class="container">
+                                            <div class="news_feed">
+
                                         <?php
                                         $user_noted_posts_exe=mysqli_query($conn,"select * from user_post_status where user_id='$_SESSION[id]'");
 
@@ -2658,63 +2596,20 @@ $from_count=0;
                                             $user_noted_pers_de_ex=mysqli_query($conn,"select * from users where user_id='".$user_noted_post['user_id']."'");
                                             $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
                                             ?>
-
-                                            <div class="pst_box" style="background-color:#eee;height:300px">
-                                                    <div class="row">
-                                                        <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
-                                                            <div align="center" style="margin-top:5px;">
-                                                           <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>" ><!--class="pst_head_left"-->
-                                                             <?php
-																if($user_noted_ppic['image']!='')
-																{
-																?>
-                                                                <img src="fb_users/<?php echo $user_pos_nrty['Gender']; ?>/<?php echo $user_pos_nrty['Email']; ?>/Profile/<?php echo $user_noted_ppic['image'];?>" width="80" class="triangle-down" />
-                                                                <?php
-																}else
-																{
-																	?>
-                                                                    <img src="images/profile/sq.PNG" width="80" class="triangle-down">
-                                                                    <?php
-																}
-																	?>
-                                                                </a>
-                                                            </div>
-                                                            <div align="center" style="margin-top:5px;">
-                                                                <div style="border-bottom:1px dashed #000;line-height:15px;padding-bottom:5px;">
-                                                                    <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>"><span style="color:#000; font-family:lato-bold;font-size:12px;"><?php echo $user_pos_nrty['Name'];?></span></a>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;">
-        <?php echo $user_pos_nrty['designation'];?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-light;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['company']?></span>
-                                                                    <br />
-                                                                </div>
-                                                                <div style="line-height:15px;border-bottom:1px dashed #000;padding-bottom:5px;">
-                                                                    <span style="color:#000; font-family:lato-regular;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['industry'];?> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
-                                                           <?php
+                                            
+                                             <?php
                                                                 $user_noted_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_noted_post[post_id]'");
 															$ink_noted_not_cou=mysqli_num_rows($user_noted_bookmark_exe);
 															 $user_noted_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_noted_post[post_id]'");
                                                 $user_noted_comment_count=mysqli_num_rows($user_noted_post_comment_execu);
                                                                 ?>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_noted_comment_count ?></a></i>
-                                                                </div>
-                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
-                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_noted_not_cou;?></a></i>
-                                                                </div>
-                                                                <br />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col col-lg-9" style="background-color:#fff; height:300px;padding:0px;">
-                                                            <div>
+
+                                         
+                                          <div class="item ">
+                            <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
+<!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
+			 <div style="background:#fff;">
+                                                     <div>
                                                             <?php
                                                                 if($ret_user_noted['status']=='Like')
                                                                 {
@@ -2732,48 +2627,88 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-
-                                                           <div class="pst_body" style="height:px;overflow-y:scroll; padding-right:10px; height:240px">
-
-                                                            <?php
+                                                            
+                                                           
+                                                            
+                                                           <?php
                                                         if($user_noted_post['post_pic']!='')
                                                         {
                                                             ?>
-                                                              <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive" width="400" />
+                                                              <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive"  style="width:100%;height:240px;" />
                                                               <?php
                                                         }
-                                                        ?>
-                                                                <p style="margin-top:10px;margin-right:30px;text-align:"><?php echo $user_noted_post['post_txt']?></p>
+                                                        ?>   
+                                                            
 
-                                                            </div>
+                              
 
-                                                            <div class="col-lg-12" style=" border-top:1px dashed #eee; position:absolute;bottom:35px;" align="right">
-                                                                <span style="font-size:10px; margin-left:5px;"> - on  <?php echo $user_noted_post['post_time'];?></span>
-                                                            </div>
-
-
-                                                            <div class="col-lg-12" style="padding:0px;position:absolute;bottom:0px;">
-                                                              <form method="post" action="script_code.php" id="form_<?php echo $from_count;?>" >
-                                                                <input type="hidden" name="cmt_ins_id" id="cmt_ins_id_<?php echo $from_count;?>" value="<?php echo $_SESSION['id'];?>">
-                                                                <input type="hidden" name="cmt_post_id" id="cmt_post_id_<?php echo $from_count;?>" value="<?php echo $user_profile_post['post_id'];?>">
+                                <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
+                                <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
+                                
+                                 <?php
+																if($user_profile_pic['image']!='')
+																{
+																?>
+                                                                <img src="fb_users/<?php echo $usr_dis['Gender']; ?>/<?php echo $usr_dis['Email']; ?>/Profile/<?php echo $user_profile_pic['image'];?>" width="80" style="height:70px;width:70px;" />
                                                                 <?php
-                                                                $date=date('Y-m-d h:i');
+																}else
+																{
+																	?>
+                                                                    <img src="images/profile/sq.PNG" width="70" style="height:70px;width:70px;">
+                                                                    <?php
+																}
+																	?>
+                                
+                                   
+                                </div>
+                                <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
+                                    <p >
+            <a href="profile.php?id=<?php echo $user_pos_nrty['user_id'] ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php echo $user_pos_nrty['Name'];?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+        <?php /*echo $pud['designation'];*/?></span></p>
+				<p >
+<a href="profile.php?id=<?php  echo $user_pos_nrty['user_id']; ?>"><span style="color:#000; font-family:lato; font-weight:bold;font-size:12px;"><?php/* echo $pud['Name'];*/?></span></a><span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;">
+<?php echo $user_pos_nrty['designation'];?></span></p>
+                                    <p>
+          <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['company']?></span>/  <span style="color:#5a5a5a; font-family:lato;font-size:11px;line-height:.1px;"><?php echo $user_pos_nrty['industry'];?> </span></p>
+                                </div>
+                                <div style="padding:15px;">
+<br>
+<br>
+                                    <br>
+                                    <hr>
+                                  
+                                    <p> <?php echo $user_noted_post['post_txt']?></p>
+                                    <hr>
+																		<br>
 
+
+                                      <div style="position:absolute;bottom:0px;right:0px;padding:0px;padding-bottom:10px;" lign="center" class=" col-lg-12">
+                                                           <?php
+                                                                $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
+                                                            $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
+															$ink_pos_not_cou=mysqli_num_rows($user_profile_bookmark_exe);
+															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
+                                                    $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                                                <input type="hidden" name="cmt_ins_date" id="cmt_ins_date_<?php echo $from_count;?>" value="<?php echo $date;?>">
-                                                                <input type="text"  name="cmt_txt" id="cmt_txt_<?php echo $from_count;?>" class="form-control" style="width:100%; padding-left:10px;padding-right:10px; border-radius:0px;" placeholder="Ink...">
-                                                                <input type="submit" name="cmt_ins" onClick="return comment_insertion(<?php echo $from_count;?>);" style="display:none;">
-                                                                </form>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-pencil-square-o"> <a href="#" style="font-size:13px">+<?php echo $user_noted_comment_count ?></a></i>
+                                                                </div>
+                                                                <div class="col col-lg-6" style="padding:0px;" align="center">
+                                                                    <i class="fa fa-tag" style=""> <a href="#" style="font-size:13px">+<?php echo $ink_noted_not_cou;?></a></i>
+                                                                </div>
+                                                                <br />
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                </div>
+                            </div>
+                             </div>
+                          </div>			                
 
 
 
                                             <?php
                                         }
                                         ?>
+                                        </div></div>
                                     </div>
 									</div>
                                  <!------------------------------END NOTED FILES----------------------------------------------->
@@ -2788,6 +2723,7 @@ $from_count=0;
                                             <div style="z-index:3;position:relative; top:-50px; left:20px; border:5px solid #fff; width:140px; padding:0px; border-radius:50%;">
                                             <?php
                                             if($fet_ppic['image']!='')
+
 											{
 											?>
                                                 <img src="fb_users/<?php echo $usr_dis['Gender']?>/<?php echo $usr_dis['Email']?>/Profile/<?php echo $fet_ppic['image'];?>" width="130px" height="130px" style="border-radius:50%"  onMouseOver="return on_profile_hover();" onMouseOut="return out_profile_hover();"/>

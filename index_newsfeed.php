@@ -26,7 +26,10 @@ if(!$_SESSION['Email'])
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
        <!-- <link href="assets/css/non-responsive.css" rel="stylesheet">-->
 
+<!-- newsfeed script -->
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
+<!-- end newsfeed script -->
         <!-- Custom styles for this template -->
         <link href="starter-template.css" rel="stylesheet">
         <link rel="stylesheet" href="assets/font/font-awesome/css/font-awesome.min.css">
@@ -250,8 +253,8 @@ $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_i
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
-						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
+<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;">
+						<div class="container">
 								<div class="navbar-header ">
 										<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 												<span class="sr-only">Toggle navigation</span>
@@ -265,14 +268,14 @@ $from_count=0;
 								<div id="navbar" class="collapse navbar-collapse">
 										<ul class="nav navbar-nav">
 
-												<li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
+												<li style=" padding-left:30px; padding-top:10px; padding-right:100px; ">
 													<div style="background-color:#808080;padding-right:5px;">
 														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
-														<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
+														<i class="fa  fa-2x fa-search" style="color:#fff; padding-top:5px;"></i>
 												</div>
 												</li>
 												<li>
-													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
+													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
 												</li>
 												<li >
 														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
@@ -280,7 +283,7 @@ $from_count=0;
 												<li>
 														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
-																							 <li style="height:50px;line-height:10px;padding-top:3px;">
+																							 <li style="height:50px;line-height:13px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
 															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
 															<br>
@@ -293,8 +296,8 @@ $from_count=0;
 														<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
 </div>
 												</li>
-												<li style="height:50px; float:right; padding-top:20px;">
-														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
+												<li style="height:50px; float:right;">
+														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080;">31</span>
 												</li>
 										</ul>
 								</div>
@@ -2023,10 +2026,12 @@ $from_count=0;
                                         </div>
                                         <!--<hr class="style5">-->
                                         <br />
-										<div id="news_feed">
+										<!-- <div id="news_feed"> -->
+
                                         <div class="bg_pst">
-										<div id="news_feed_like">
-                                        <div id="news_feed_comment">
+																					<div id="div1">
+										<!-- <div id="news_feed_like"> -->
+                                        <!-- <div id="news_feed_comment"> -->
                                             <?php
                                             $retpe=mysqli_query($conn,"select * from user_post order by post_id desc");
 
@@ -2038,8 +2043,37 @@ $from_count=0;
                                                 $pupe=mysqli_query($conn,"select * from user_profile_pic where user_id='$resp[user_id]'");
                                                 $pupp=mysqli_fetch_array($pupe);
                                                 ?>
+																								<div class="box">
+																									<div style="max-width: 200px;">
+																										<?php if($resp['post_pic']!='')
+																										{
+																												?>
+																							      <img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Post/<?php echo $resp['post_pic'];?>" width="200" alt="">
+																							<?php		} ?>
+																										<?php
+																												if($pupp['image']!='')
+												{
+												?>
+												<img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" class="img-circle" alt="" style="position: absolute;left: 120px;width: 80px; top: 90px;" >
+																							<?php		}else
+																									{
+																										?>
+																										<img src="images/profile/sq.PNG" class="img-circle" alt="" style="position: absolute;left: 120px;width: 80px; top: 90px;" >
 
-                                               <div class="pst_box" style="background-color:#eee;height:300px">
+																										<?php
+								}
+									?>
+																										<h3><?php echo $pud['Name'];?></h3>
+																							      <h5><?php echo $pud['industry'];?>/ <?php echo $pud['company'];?> / <?php echo $pud['designation'];?> </h5>
+																							      <!-- <h2> My first #d project </h2> -->
+																							      <p><?php echo $resp['post_txt'];?></p>
+																							      <hr style="margin:10px;">
+																							    </div>
+																								</div>
+																								<?php
+																							}
+																							?>
+                                              <?php /* <div class="pst_box" style="background-color:#eee;height:300px">
                                                     <div class="row">
                                                         <div class="col col-lg-3" style="background-color:#eee;  border-right:1px dashed #ddd;height:300px; padding:5px;">
                                                             <div align="center" style="margin-top:5px;">
@@ -2153,7 +2187,7 @@ $from_count=0;
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> */ ?>
 
 
 
@@ -2334,12 +2368,13 @@ $from_count=0;
 
 
 
-                                                <?php
-                                            }
-                                            ?>
-											</div></div>
-											</div>
-                                        </div>
+
+											<!-- </div></div> -->
+											<!-- </div> -->
+</div>
+
+											<!-- newsfeed end -->
+                                        <!-- </div> -->
 
                                      <!-----------------------------------------END NEWS FEED------------------------------------>
 
@@ -3516,6 +3551,30 @@ function chng_dryuinfo()
         $('#summernote').summernote();
     });
   </script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="assets/js/jquery.waterfall.js"></script>
+	<script>
+	$("#div1").waterfall({
+	    itemClass: ".box",
+	    minColCount: 2,
+	    spacingHeight: 10,
+	    resizeable: true,
+	    ajaxCallback: function(success, end) {
+	        var data = {"data": [
+
+	        ]};
+	        var str = "";
+	        var templ = '<div class="box" style="opacity:0;filter:alpha(opacity=0);"><div class="pic"><img src="img/{{src}}" /></div></div>'
+
+	        for(var i = 0; i < data.data.length; i++) {
+	            str += templ.replace("{{src}}", data.data[i].src);
+	        }
+	        $(str).appendTo($("#div1"));
+	        success();
+	        end();
+	    }
+	});
+	</script>
 
     </body>
 </html>

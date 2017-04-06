@@ -13,6 +13,8 @@ if(!$_SESSION['Email'])
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
@@ -65,10 +67,234 @@ if(!$_SESSION['Email'])
   toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
   content_css: '//www.tinymce.com/css/codepen.min.css'
 });</script>
+
 <!-- include libraries(jQuery, bootstrap) -->
 <!-- include summernote css/js-->
 <!--<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>-->
+<link rel="stylesheet" href="style.css">
+<script src="sticky.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.1.3.min.js"
+  integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
+  crossorigin="anonymous"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
+<style>
+  /* * Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* * Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* * Extends the .visuallyhidden class to allow the element to be focusable * when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* * Hide visually and from screenreaders, but maintain layout */
+.invisible {
+  visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.noflick, #board, .note, .button {
+  perspective: 1000;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+button,
+input,
+select,
+textarea {
+  color: #000000;
+}
+
+body {
+  font-size: 1em;
+  line-height: 1;
+  background-color: white;
+  background: linear-gradient(135deg, white 0%, #ebebeb 47%, #dedede 100%);
+}
+
+::selection {
+  background: #B3D4FC;
+  text-shadow: none;
+}
+
+a:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+:placeholder {
+  /* Firefox 18- */
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+#board {
+  padding: 100px 30px 30px;
+  margin-top: 40px;
+  overflow-y: visible;
+}
+
+.note {
+  float: left;
+  display: block;
+  position: relative;
+  padding: 1em;
+  width: 300px;
+  min-height: 300px;
+  margin: 0 30px 30px 0;
+  background: linear-gradient(top, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.25));
+  background-color: #FFFD75;
+  box-shadow: 5px 5px 10px -2px rgba(33, 33, 33, 0.3);
+  transform: rotate(2deg);
+  transform: skew(-1deg, 1deg);
+  transition: transform .15s;
+  z-index: 1;
+}
+.note:hover {
+  cursor: move;
+}
+.note.ui-draggable-dragging:nth-child(n) {
+  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  transform: scale(1.125) !important;
+  z-index: 100;
+  cursor: move;
+  transition: transform .150s;
+}
+.note textarea {
+  background-color: transparent;
+  border: none;
+  resize: vertical;
+  font-family: "Gloria Hallelujah", cursive;
+  width: 100%;
+  padding: 5px;
+}
+.note textarea:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.2) inset;
+}
+.note textarea.title {
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000000;
+  height: 64px;
+  margin-top: 20px;
+}
+.note textarea.cnt {
+  min-height: 200px;
+}
+.note:nth-child(2n) {
+  background: #FAAACA;
+}
+.note:nth-child(3n) {
+  background: #69F098;
+}
+
+/* Button style  */
+.button {
+  font: bold 16px Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
+  padding: 1em 2em;
+  background: linear-gradient(top, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.3));
+  background-color: #00CC00;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3), inset 0 -1px 2px -1px rgba(0, 0, 0, 0.5), inset 0 1px 2px 1px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  transition: transform .150s, background .01s;
+}
+.button:hover {
+  background-color: #00EE00;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3), inset 0 -1px 2px -1px rgba(0, 0, 0, 0.5), inset 0 1px 2px 1px rgba(255, 255, 255, 0.3);
+}
+.button:active {
+  background: linear-gradient(bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.3));
+  background-color: #00CC00;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 -1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 -1px 2px rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+.button.remove {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #E01C12;
+  text-align: center;
+  line-height: 16px;
+  padding: 10px;
+  border-color: #B30000;
+  font-style: 1.6em;
+  font-weight: bolder;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.button.remove:hover {
+  background-color: #EF0005;
+}
+
+#add_new {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.author {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+</style>
+
 
 <!----------------------------------EDITOR------------------------------>
         <!-- Load local jQuery -->
@@ -224,6 +450,225 @@ function settigs_tab12()
       <script type="text/javascript" src="js/scripts.js"></script>
       <link rel="stylesheet" href="../preloaders/css3-preloader-transition-finish/css/main.css">
 	<script src="../preloaders/css3-preloader-transition-finish/js/vendor/modernizr-2.6.2.min.js"></script>
+
+
+
+  <!-- notification -->
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<style type="text/css">
+  
+#notification_li
+{
+position:relative
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#notificationContainer 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 400px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+// Popup Arrow
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+
+}
+#notificationTitle
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 384px;
+border-bottom: 1px solid #dddddd;
+
+}
+#notificationsBody
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+
+}
+#notificationFooter
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count 
+{
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+font-size: 11px;
+
+}
+#notification_li1
+{
+position:relative
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#notificationContainer1 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 400px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+// Popup Arrow
+#notificationContainer1:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+
+}
+#notificationTitle1
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 384px;
+border-bottom: 1px solid #dddddd;
+
+}
+#notificationsBody1
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+
+}
+#notificationFooter1
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count1 
+{
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+font-size: 11px;
+
+}
+
+
+</style>
+<script type="text/javascript" src="js/jquery.min.1.9.js"></script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink").click(function()
+{
+$("#notificationContainer").fadeToggle(300);
+$("#notification_count").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer").hide();
+});
+
+//Popup on click
+$("#notificationContainer").click(function()
+{
+return false;
+});
+
+});
+</script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink1").click(function()
+{
+$("#notificationContainer1").fadeToggle(300);
+$("#notification_count1").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer1").hide();
+});
+
+//Popup on click
+$("#notificationContainer1").click(function()
+{
+return false;
+});
+
+});
+</script>
+<!-- end notification -->
     </head>
     <body class="paper">
     <?php
@@ -250,8 +695,8 @@ $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_i
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
-						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
+<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;">
+						<div class="container">
 								<div class="navbar-header ">
 										<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 												<span class="sr-only">Toggle navigation</span>
@@ -265,14 +710,14 @@ $from_count=0;
 								<div id="navbar" class="collapse navbar-collapse">
 										<ul class="nav navbar-nav">
 
-												<li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
+												<li style=" padding-left:30px; padding-top:10px; padding-right:100px; ">
 													<div style="background-color:#808080;padding-right:5px;">
 														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
-														<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
+														<i class="fa  fa-2x fa-search" style="color:#fff; padding-top:5px;"></i>
 												</div>
 												</li>
 												<li>
-													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
+													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
 												</li>
 												<li >
 														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
@@ -280,7 +725,7 @@ $from_count=0;
 												<li>
 														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
-																							 <li style="height:50px;line-height:10px;padding-top:3px;">
+																							 <li style="height:50px;line-height:13px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
 															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
 															<br>
@@ -293,8 +738,8 @@ $from_count=0;
 														<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
 </div>
 												</li>
-												<li style="height:50px; float:right; padding-top:20px;">
-														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
+												<li style="height:50px; float:right;">
+														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:5px; padding-right:10px;color:#808080;">31</span>
 												</li>
 										</ul>
 								</div>
@@ -3412,8 +3857,114 @@ $from_count=0;
         </div>
     </div>
 		<footer>
-		</footer>
+     
+<li id="notification_li"  style="float:left;list-style-type:none">
+<span id="notification_count" style="float:left;color:red;margin-right;-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg):" >3</span>
+<a href="#" id="notificationLink"><img src="image/notification.png" hspace="100" style="width:30px;height:30px;float:right;-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);"></a>
 
+<div id="notificationContainer" style="float:left;margin-right:">
+<div id="notificationTitle" style="float:right;margin-right:">Notifications</div>
+<div id="notificationsBody" class="notifications" style="overflow-y: scroll; height: 100px;" >
+	<ul>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+
+       
+    </ul>
+	
+</div>
+<div id="notificationFooter " ><a href="#" style="margin-right;-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg):">See All</a></div>
+</div>
+
+</li>
+
+<li id="notification_li1"  style="float:left;list-style-type:none">
+
+<a href="#" id="notificationLink1"><img src="image/setting3.png" hspace="100" style="width:30px;height:30px;float:right;-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);"></a>
+
+<div id="notificationContainer1" style="float:left;margin-right:">
+<div id="notificationTitle1" style="float:right;margin-right:">settings</div>
+<div id="notificationsBody1" class="notifications" style="overflow-y: scroll; height: 100px;" >
+	<ul style="list-style-type:none">
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+	<li style="width:100%;height:80px;border-bottom:1px solid #ccc"><img src="images/profile/1.jpg" hspace="2" style="border-radius:50%";>
+	</li>
+
+
+       
+    </ul>
+	
+</div>
+<div id="notificationFooter1 " ><a href="#" style="margin-right;-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg):">See All</a></div>
+</div>
+
+</li>
+
+  
+<div>
+
+
+<button onclick="myFunction()"><a><img src="image/stick.png" style="width:30px;height:30px;"></a></button>
+
+ 
+</div>
+</footer>
+<script>
+
+function myFunction() {
+    window.open("sticky_note/index.html");
+}
+
+</script>
 <script type="text/javascript">
 //dairy tab change script
 
@@ -3516,6 +4067,113 @@ function chng_dryuinfo()
         $('#summernote').summernote();
     });
   </script>
+
+  <script>(function($)
+{
+    /**
+     * Auto-growing textareas; technique ripped from Facebook
+     *
+     * http://github.com/jaz303/jquery-grab-bag/tree/master/javascripts/jquery.autogrow-textarea.js
+     */
+    $.fn.autogrow = function(options)
+    {
+        return this.filter('textarea').each(function()
+        {
+            var self         = this;
+            var $self        = $(self);
+            var minHeight    = $self.height();
+            var noFlickerPad = $self.hasClass('autogrow-short') ? 0 : parseInt($self.css('lineHeight')) || 0;
+
+            var shadow = $('<div></div>').css({
+                position:    'absolute',
+                top:         -10000,
+                left:        -10000,
+                width:       $self.width(),
+                fontSize:    $self.css('fontSize'),
+                fontFamily:  $self.css('fontFamily'),
+                fontWeight:  $self.css('fontWeight'),
+                lineHeight:  $self.css('lineHeight'),
+                resize:      'none',
+                'word-wrap': 'break-word'
+            }).appendTo(document.body);
+
+            var update = function(event)
+            {
+                var times = function(string, number)
+                {
+                    for (var i=0, r=''; i<number; i++) {if (window.CP.shouldStopExecution(1)){break;}r += string;
+window.CP.exitedLoop(1);
+}
+                    return r;
+                };
+
+                var val = self.value.replace(/</g, '&lt;')
+                                    .replace(/>/g, '&gt;')
+                                    .replace(/&/g, '&amp;')
+                                    .replace(/\n$/, '<br/>&nbsp;')
+                                    .replace(/\n/g, '<br/>')
+                                    .replace(/ {2,}/g, function(space){ return times('&nbsp;', space.length - 1) + ' ' });
+
+                // Did enter get pressed?  Resize in this keydown event so that the flicker doesn't occur.
+                if (event && event.data && event.data.event === 'keydown' && event.keyCode === 13) {
+                    val += '<br />';
+                }
+
+                shadow.css('width', $self.width());
+                shadow.html(val + (noFlickerPad === 0 ? '...' : '')); // Append '...' to resize pre-emptively.
+                $self.height(Math.max(shadow.height() + noFlickerPad, minHeight));
+            }
+
+            $self.change(update).keyup(update).keydown({event:'keydown'},update);
+            $(window).resize(update);
+
+            update();
+        });
+    };
+})(jQuery);
+
+
+var noteTemp =  '<div class="note">'
+        + '<a href="javascript:;" class="button remove">X</a>'
+        +   '<div class="note_cnt">'
+        +   '<textarea class="title" placeholder="Enter note title"></textarea>'
+        +     '<textarea class="cnt" placeholder="Enter note description here"></textarea>'
+        + '</div> '
+        +'</div>';
+
+var noteZindex = 1;
+function deleteNote(){
+    $(this).parent('.note').hide("puff",{ percent: 133}, 250);
+};
+
+function newNote() {
+  $(noteTemp).hide().appendTo("#board").show("fade", 300).draggable().on('dragstart',
+    function(){
+       $(this).zIndex(++noteZindex);
+    });
+
+  $('.remove').click(deleteNote);
+  $('textarea').autogrow();
+
+  $('.note')
+  return false;
+};
+
+
+
+$(document).ready(function() {
+
+    $("#board").height($(document).height());
+
+    $("#add_new").click(newNote);
+
+    $('.remove').click(deleteNote);
+    newNote();
+
+    return false;
+});
+//# sourceURL=pen.js
+</script>
 
     </body>
 </html>

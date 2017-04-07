@@ -3858,21 +3858,26 @@ $from_count=0;
     </div>
 		<footer>
      <div>
-		<ul>
-			<li>
+		<ul style="list-style-type: none;margin-top:2px;">
+			<li style="  float: left; margin-left: 5px; margin-right: 10px;">
 				<!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
         <img src="image/stick.png" style="width:30px;height:30px;" class="img-responsive">
 			</li>
-			<li>
+			<li style="  float: left; margin-left: 10px; margin-right: 10px;">
 				<!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
-        <img src="image/stick.png" style="width:30px;height:30px;" class="img-responsive">
+        <img src="image/notification.png" style="width:30px;height:30px;" class="img-responsive">
 			</li>
-			<li>
+			<li style="  float: left; margin-left: 0px; margin-right: 10px;margin-top:-5px;">
 				<!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
-        <img src="image/stick.png" style="width:30px;height:30px;" class="img-responsive">
+        <img src="image/setting3.png" style="width:45px;height:45px;" class="img-responsive">
 			</li>
 
 		</ui>
+		<div style=" border-left: 2px solid #fff; float: left; height: 30px; margin-left: 10px;">
+		</div>
+		<div style=" float: left; color: #fff; font-size: 15px; text-align: center; width: 80% ; margin-top: 5px;">
+			<span>Design is not just how it look like, It's how it works like - Steve Jobs<span>
+		</div>
 		 </div>
 
 </footer>

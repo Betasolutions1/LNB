@@ -22,11 +22,11 @@
 												<li>
 													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
 												</li>
-												<li >
-														<a href="forum.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
-												</li>
 												<li class="active">
-														<a href="mail.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;color: #fff;background:#808080"">M</a>
+														<a href="forum.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #fff;background:#808080">F</a>
+												</li>
+												<li>
+														<a href="mail.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
 																							 <li style="height:50px;line-height:13px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">

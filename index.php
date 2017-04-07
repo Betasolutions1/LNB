@@ -1559,7 +1559,7 @@ $from_count=0;
 
 ">
 													<div class="row">
-                                                    <div class="col-md-3" align="left" style="margin-left: -5px;">
+                                                    <div class="col-md-3" align="left" style="margin-left: -5px;padding-left: 0px;">
                                                     <?php
                                                             if($gclb_uspi['image']!='')
 															{
@@ -1575,9 +1575,12 @@ $from_count=0;
 															}
 														?>
                                                     </div>
-                                                    <div class="col-md-9" style="    text-align: initial;
+                                                    <div class="col-md-9" style=" 
+    text-align: initial;
     font-size: 12px;
-    line-height: 13px;margin-left: 5px;">
+    line-height: 15px;
+    margin-left: 5px;
+    ">
                                                   
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
@@ -1585,8 +1588,12 @@ $from_count=0;
                                                         <br>
                                                         <?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?>
                                                         <br>
-                                                        <?php echo $fet_mem_de['industry'];?></span>
+                                                        <?php /*echo $fet_mem_de['industry'];*/?></span>
                                                     </div>
+                                                    <!--<br>
+                                                    <div style="border-bottom:1px solid #ddd;position: relative;top: 60px;"></div>
+                                                    <br>
+                                                    <br>-->
                                                     <div class="col-md-12" align="center">
                                                      <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
 
@@ -1620,7 +1627,8 @@ $from_count=0;
                                                         }
                                                         ?>
                                                     </div>
-                                                    <div class="col-md-12" style="text-align: justify;">
+                                                    <br>
+                                                    <div class="col-md-12" style="text-align: justify;background-color:#EEEEEE">
                                                      <p><?php echo $fet_mem_de['description'];?></p>
                                                      </div>
                                                     </div>

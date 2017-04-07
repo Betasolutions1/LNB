@@ -497,15 +497,16 @@ li>a
 
 .btn_grn
 {
-    background-color: #afdf7c;
+    background-color: #808080;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn_grn:hover
 {
-    background-color: #89d03f;
-    color: #fff;
+  border: 1px solid #7c7c7c;
+    background-color: #fff;
+    color: #7c7c7c;
 }
 
 .club_headers
@@ -857,14 +858,15 @@ li>a
 
 .lgn_hovr:hover
 {
-    background-color: #89d03f;
+    background-color: #7c7c7c;
     color: #fff;
 }
 
 .lgn_hovr
 {
+  /*border: 1px solid */
     background-color: #fff;
-    color: #afdf7c;
+    color: #7c7c7c;
 }
 .su_sdw
 {

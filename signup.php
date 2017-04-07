@@ -34,10 +34,10 @@ if(isset($_POST['sub_stage1']))
 	if($_POST['pwd']==$_POST['con_pwd'])
 	{
 	$ins_s1=mysqli_query($conn,"INSERT INTO `users`(`Name`, `Email`, `Password`, `Gender`, `Birthday_Date`, `designation`, `company`, `industry`,`phone`) VALUES ('".$_POST['username']."','".$_POST['email']."','".$_POST['pwd']."','".$_POST['gender']."','".$_POST['day'].$_POST['month'].$_POST['year']."','".$_POST['designation']."','".$_POST['company']."','".$_POST['industry']."','".$_POST['phone']."')");
-	
+
 	if($ins_s1)
 	{
-		
+
 		$path = "fb_users/".$_POST['gender']."/".$_POST['email']."/Profile/";
 		$path2 ="fb_users/".$_POST['gender']."/".$_POST['email']."/Post/";
 		$path3 ="fb_users/".$_POST['gender']."/".$_POST['email']."/Cover/";
@@ -46,14 +46,14 @@ if(isset($_POST['sub_stage1']))
 		mkdir($path2, 0, true);
 		mkdir($path3, 0, true);
 		mkdir($path4, 0, true);
-		
+
 	$last_user=mysqli_insert_id($conn);
 	$ins_use_info=mysqli_query($conn,"insert into user_info (user_id,mobile_no,Email)values('$last_user','$_POST[phone]','$_POST[email]')");
 	$in_se_q=mysqli_query($conn,"insert into user_secret_quotes (user_id) values('$last_user')");
 	$ins_folio=mysqli_query($conn,"insert into folio (user_id)values('$last_user')");
-	
-	
-	
+
+
+
 	$ins_profile_pic=mysqli_query($conn,"insert into user_profile_pic (user_id)values('$last_user')");
 	$ins_cover_pic=mysqli_query($conn,"insert into user_cover_pic (user_id)values('$last_user')");
 	header("location:signup2.php?id=$last_user");
@@ -62,8 +62,8 @@ if(isset($_POST['sub_stage1']))
 	{
 		echo "<script>alert(' Registration Fail')</script>";
 	}
-	
-	
+
+
 	//header("location:signup2.php?id=$id");
 	}else
 	{
@@ -94,19 +94,19 @@ if(isset($_POST['sub_stage1']))
         <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
- 
+
     <![endif]-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
         <!--<link href='flipping_gallery.css' rel='stylesheet' type='text/css'> -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>         
-        <!-- <script type="text/javascript" src="jquery.flipping_gallery.js"></script>      
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="jquery.flipping_gallery.js"></script>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/salon-font.css">
         <link rel="stylesheet" href="css/plugins.css">
-        <link rel="stylesheet" href="css/style.css">        
-        <script src="js/modernizr.min.js"></script>-->         
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/modernizr.min.js"></script>-->
         <link rel="stylesheet" type="text/css" href="css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
@@ -219,7 +219,7 @@ if(isset($_POST['sub_stage1']))
 	      enableScroll: true,
 	      autoplay: 2000
 	    });
-	    
+
 	    $(".next").click(function() {
 	      $(".gallery").flipForward();
 	      return false;
@@ -229,9 +229,9 @@ if(isset($_POST['sub_stage1']))
 	      return false;
 	    });
 	  });
-		
-	</script>     -->         
-        <!-- <style> 
+
+	</script>     -->
+        <!-- <style>
             html {
             height: 100%;
             }
@@ -438,7 +438,7 @@ if(isset($_POST['sub_stage1']))
             font-family: noto serif;
             font-size: 24px;
             }
-            /* 
+            /*
 
             <!-- <script>
       $(document).ready( function() {
@@ -446,7 +446,7 @@ if(isset($_POST['sub_stage1']))
           enableScroll: true,
           autoplay: 2000
         });
-        
+
         $(".next").click(function() {
           $(".gallery").flipForward();
           return false;
@@ -456,82 +456,91 @@ if(isset($_POST['sub_stage1']))
           return false;
         });
       });
-        
-    </script>*/     
-     
+
+    </script>*/
+
             .cintaEsq {
-            position: relative; 
-            display: inline-block; 
-            margin: 50px; 
+            position: relative;
+            display: inline-block;
+            margin: 50px;
             /*text-align: center; */
             }
             .cintaEsq::before {
-            content: ""; 
-            display: block; 
-            position: absolute; 
-            top: 0; left: -20px; 
-            width: 60px; height: 20px; 
-            background-color: rgba(200,200,50,.3); 
-            -webkit-transform: rotate(125deg); 
-            transform: rotate(125deg); 
-            box-shadow: 80px -265px 0 1px rgba(200,200,50,.3); 
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0; left: -20px;
+            width: 60px; height: 20px;
+            background-color: rgba(200,200,50,.3);
+            -webkit-transform: rotate(125deg);
+            transform: rotate(125deg);
+            box-shadow: 80px -265px 0 1px rgba(200,200,50,.3);
             }
             .cintaEsq::after {
-            content: ""; 
-            display: block; 
-            position: absolute; 
-            bottom: 5px; left: -20px; 
-            width: 70px; height: 20px; 
-            background-color: rgba(200,200,50,.3); 
-            -webkit-transform: rotate(55deg); 
-            transform: rotate(55deg); 
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 5px; left: -20px;
+            width: 70px; height: 20px;
+            background-color: rgba(200,200,50,.3);
+            -webkit-transform: rotate(55deg);
+            transform: rotate(55deg);
             box-shadow: -80px -255px 0 1px rgba(200,200,50,.3);
             }
 </style>-->
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top signup_nav_height">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand navbar_center" href="#" style="font-family: Stencil Std;;margin-top:15px;font-size:30px;color:#5a5a5a; ">
-    LN BUSINESS</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse" style="margin-top:20px;">
-                    <ul class="nav navbar-nav pull_right_navbar" style="text-align:right">
-                        <!-- <li style=" padding-left:30px; padding-top:10px; padding-right:100px;">
-                            <input type="text" placeholder="search" style="width:350px; height:30px">
-                        </li>
-                        <li class="active">
-                            <a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #fff;">F</a>
-                        </li>
-                        <li>
-                            <a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
-                        </li>
-                        <li>
-                            <a href="#contact" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;color: #808080;">S</a>
-                        </li> -->
-                        <li style="height:50px;line-height:13px;padding-top:3px;color:#5a5a5a;">
-                            <p class="diary" style="padding-top:0px; padding-left:50px;"><span class="day" style="font-family:Stencil Std; font-size:12px;">friday</span><br><span class="month" style="font-family:Stencil Std; font-size:12px;">August</span><br><span class="year" style="font-family:Stencil Std; font-size:12px; ">2016</span></p>
-                        </li>
-                        <li style="height:50px;">
-                            <!--<hr style="width:0px; height:10px;" class="vertical" />-->
-                            <div style="border-left:2px solid #5a5a5a;margin-top:0px; margin-left:4px; margin-right:4px;height:45px;" class="line_div">
-</div>
-                        </li>
-                        <li style="height:50px;padding-top:0px;">
-                            <span class="date" style="font-family:Stencil Std; font-size:45px; padding-top:0px; padding-right:10px;color:#5a5a5a;position:relative;top:-5px;padding-bottom:5px;">26</span>
-                        </li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </nav>
+			<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
+									<div class="container" align="center" style=" padding-left:100px; height: 100%; position: relative; top: 10%; padding-right: 100px;">
+											<div class="navbar-header ">
+													<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+															<span class="sr-only">Toggle navigation</span>
+															<span class="icon-bar"></span>
+															<span class="icon-bar"></span>
+															<span class="icon-bar"></span>
+													</button> -->
+													<a class="navbar-brand" href="#" style="font-family:Stencil Std;color: #808080;">
+					LN BUSINESS</a>
+											</div>
+											<div id="navbar" class="collapse navbar-collapse" style=" float: right ;">
+													<ul class="nav navbar-nav">
+
+															<!-- <li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
+																<div style="background-color:#808080;padding-right:5px;">
+																	<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
+																	<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
+															</div>
+															</li>
+															<li>
+																<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
+															</li>
+															<li >
+																	<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
+															</li>
+															<li>
+																	<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
+															</li> -->
+																										 <li style="height:50px;line-height:10px;padding-top:10px;">
+																	<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
+																		<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
+																		<br>
+																		<span class="month" style="font-family:Stencil Std; font-size:10px;">March</span>
+																		<br>
+																		<span class="year" style="font-family:Stencil Std; font-size:10px;">2017</span></p>
+															</li>
+															<li style="height:50px;">
+																	<!--<hr style="width:0px; height:10px;" class="vertical" />-->
+																	<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
+			</div>
+															</li>
+															<li style="height:50px; float:right; ">
+																	<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
+															</li>
+													</ul>
+											</div>
+											<!--/.nav-collapse -->
+									</div>
+							</nav>
         <section id="photostack-1" class="photostack photostack-start" hidden>
             <div>
 </div>
@@ -549,11 +558,11 @@ if(isset($_POST['sub_stage1']))
 			?>
                 <figure style="width: 297px;
 text-align: left;
-margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
+margin-top: 0px;padding:0px; height:157px;" class="su_shadow">
                     <div class="col-lg-6 cf_card  " style="width:290px;padding:0px; border:1px solid #fff;">
                         <div class="col-lg-12" style="height:120px;padding-top:10px;">
                             <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                <span style="text-align:center; color:#afdf7c; font-family:lato"> <?php echo $sunny['industry'];?></span>
+                                <span style="text-align:center; color:#7c7c7c; font-family:lato"> <?php echo $sunny['industry'];?></span>
                                 <br>
                                 <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $sunny['Name'];?></span>
                                 <br>
@@ -565,7 +574,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                                 <img src="images/profile/logo.jpg" width="25px;" />
                             </div>
                         </div>
-                        <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                        <div class="col-lg-12" style="height:22px;background-color:#7c7c7c;">
                             <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
                                 <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
                             </div>
@@ -1221,7 +1230,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                         </div>
                     </div>
                 </figure><?php */?>
-               
+
             </div>
         </section>
         <!-- <div class="container-fluid  hgt_signup  su_shdw" align="center" style=" text-align:center; height:270px; ">
@@ -1243,7 +1252,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     </div>
                     <div class="col-lg-6" style="border-left:2px solid #fff; height:50px;" align="left">
                         <h2 style="padding:0px;margin:0px; margin-top:5px;">
-              Business</h2> 
+              Business</h2>
                     </div>
                 </div>
                 <div align="center" style="padding-top:5px;" class="remodal-bg">
@@ -1252,29 +1261,29 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                 </div>
             </div>
              <div class="col-lg-6  su_div_pad col-md-6 pst_box" style="border:2px dotted #afdf7c;background-color:#fff; color:#000;" align="center">
-                <form role="form" method="post" action=""> 
-                    <div class="form-group"> 
-                        <input type="email" class=" club_txt txt_font" name="email" id="exampleInputEmail1" placeholder="Entrepreneur"> 
-                    </div>                     
-                    <div class="form-group"> 
-                        <input type="password" class=" club_txt txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password"> 
-                    </div>                     
+                <form role="form" method="post" action="">
+                    <div class="form-group">
+                        <input type="email" class=" club_txt txt_font" name="email" id="exampleInputEmail1" placeholder="Entrepreneur">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class=" club_txt txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password">
+                    </div>
                     <div align="right" style="padding-right:5px;">
-                        <button type="submit" name="login" class="btn btn_grn" style="float:right;">OPEN DAIRY</button>                         
+                        <button type="submit" name="login" class="btn btn_grn" style="float:right;">OPEN DAIRY</button>
                         <br>
                         <br>
                         <br>
                         <a href="#"><span>Unable to login</span></a>
                     </div>
                 </form>
-            </div> 
+            </div>
         </div>  -->
         <div class="remodal" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
-             <form role="form" style="font-size:14px;" method="post" action=""> 
+             <form role="form" style="font-size:14px;" method="post" action="">
             <div>
                 <h2 class="club_headers" style="text-align:center;">Sign up</h2>
-               
+
                     <input type="text" class="club_txt" placeholder="Name" name="username" />
                     <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="gender">
                         <option>Male</option>
@@ -1328,13 +1337,13 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     </div>
                      <select class="select_color" style="width:599px; margin-left:10px; margin-top:20px;" name="industry">
                         <option>Select Industry</option>
-                        <?php 
+                        <?php
 						$ress_exe=mysqli_query($conn,"select * from add_industry");
 						while($re_in=mysqli_fetch_array($ress_exe))
 						{
 						?>
                         <option value="<?php echo $re_in['INDUSTRY_NAME']?>"><?php echo $re_in['INDUSTRY_NAME']?></option>
-                        <?php 
+                        <?php
 						}
 						?>
                     </select>
@@ -1345,7 +1354,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
                     <input type="email" class="club_txt" name="email" placeholder="Email" />
                     <input type="password" class="club_txt" name="pwd" placeholder="Password" />
                     <input type="password" class="club_txt" name="con_pwd" placeholder="Verify" />
-                
+
             </div>
             <br>
             <button data-remodal-action="cancel" class="btn btn_grn" style="background-color:#F48E8B;">Cancel</button>
@@ -1370,33 +1379,33 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
         </div>
         <div class="col-lg-6" style="border-left:2px solid #000; height:50px; padding-top:10px;" align="left" data-pg-id="4639">
             <h2 style="padding:0px;margin:0px; margin-top:5px;Font-family:Stencil Std" data-pg-id="4640">
-              Business</h2> 
+              Business</h2>
         </div>-->
             </div>
             <div align="center" style="padding-top:5px;" class="remodal-bg">
                 <a href="#modal" class="btn btn_grn" style="width:100px; padding-top:3px;">Signup</a>
             </div>
         </div>
-      <footer class="footer" style="background-color:#afdf7c;height:30px;padding:0px;height:70px;" align="center">
-            <div class="col-lg-12" style="height:70px;">
-                <div class="col-lg-6" align="left" style="padding-top:20px;height:70px;"> 
+      <footer  style="height:10%;" align="center">
+            <div class="container" style=" height: 70px; padding-top: 1%; padding-left: 100px; padding-right: 100px;">
+                <div class="col-lg-6" align="left" style=" padding-top: 20px; height: 70px; float: left ; padding-left:0px;">
                     <span style="text-align:ri; height:30px;"><a href="#" style="color:#fff;margin:10px; margin-bottom:25px;font-size:13px;">About</a><a href="#" style="color:#fff; margin:10px;font-size:13px;">Help</a><a href="#" style="color:#fff;margin:10px;font-size:13px;">Terms</a><a href="#" style="color:#fff; margin:10px;font-size:13px;">Privacy</a><a href="#" style="color:#fff; margin:10px;font-size:13px;">@2017 LN BUSINESS</a> </span>
                 </div>
-                <div class="col-lg-6 " style="color:#000; height:70px;padding:10px;" align="right">
-                    <form role="form" method="post" action=""> 
+                <div class="col-lg-6 " style="color: #000; height: 70px; /* padding-right: 0px; */ float: right; position: relative ; right: -80px;" align="right">
+                    <form role="form" method="post" action="">
                         <div class="col-lg-4" style="height:30px; padding-left:0px; padding-right:0px;margin-top:5px;width:150px;margin-right:5px;margin-left:5px;">
                             <div class="form-group" style="text-align:left;">
-                                <input type="email" class=" club_tx txt_font" name="email" id="exampleInputEmail1" style="padding-top:0px; !important;height:25px;width:150px;" placeholder="Entrepreneur"> 
+                                <input type="email" class=" club_tx txt_font" name="email" id="exampleInputEmail1" style="padding-top:0px; !important;height:25px;width:150px;" placeholder="Entrepreneur">
                             </div>
-                        </div>                         
+                        </div>
                         <div class="col-lg-4" style="height:30px; padding-left:0px; padding-right:0px;width:150px;margin-top:5px; margin-right:0px;margin-left:5px;">
                             <div class="form-group" style="text-align:left;">
-                                <input type="password" class=" club_tx txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password" style="padding-top:0px;height:25px;width:150px;"> 
+                                <input type="password" class=" club_tx txt_font" name="pwd" id="exampleInputPassword1" placeholder="Password" style="padding-top:0px;height:25px;width:150px;">
                             </div>
                         </div>
                         <div>
                             <div class="col-lg-4" align="right" style="margin-top:2px;width:100px">
-                                <button type="submit" class="btn btn_gr lgn_hovr" name="login" style="float:left;width:75px; margin-top:4px;height:24px; padding:2px; border:1px solid #89d03f;border-radius:0px;">DAIRY</button>                                 
+                                <button type="submit" class="btn btn_gr lgn_hovr" name="login" style="float:left;width:75px; margin-top:4px;height:24px; padding:2px; border:1px solid #fff;border-radius:0px;">DAIRY</button>
                                 <br>
                                 <span style="font-size:10px;text-align:left;color:#fff;"><a href="#" style="color:#fff;">Unable to login</a></span>
                             </div>
@@ -1417,7 +1426,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
         <script src="js/photostack.js"></script>
         <script>
             // [].slice.call( document.querySelectorAll( '.photostack' ) ).forEach( function( el ) { new Photostack( el ); } );
-            
+
             new Photostack( document.getElementById( 'photostack-1' ), {
                 callback : function( item ) {
                     //console.log(item)
@@ -1447,7 +1456,7 @@ margin-top: 0px;padding:0px; height:157px;" class="su_card_shadow">
             ps._navigate('next');
         }, 2500);
     }
-}); 
+});
 		</script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="assets/js/jquery.min.js"><\/script>')</script>

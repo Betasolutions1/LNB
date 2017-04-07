@@ -394,7 +394,7 @@ $from_count=0;
 
                     <div class="tab-content">
                        <!--------dairy----------------->
-                       
+
                         <div class="tab-pane active" id="dairy-vr">
                             <ul class="nav nav-tabs" id="id_hover">
                                 <li class="active">
@@ -445,13 +445,13 @@ $from_count=0;
                                         <br>
                                      <!---------------------------------------NEWS FEED BEGIN---------------------------------------->
                                         <div style="background-color:#fff;padding:5px;"  >
-                                           
+
                                             <br style="height:2px;">
                                               <button type="button"  name="sub_post" class="btn btn_grn" data-toggle="modal" data-target="#myModal">INK</button>
                                             <!---ink post modal-->
                                             <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
          <div style="background-color:#fff;padding:5px;"  >
@@ -481,7 +481,7 @@ $from_count=0;
                                                 </div>
                                             </div>
                                             <br style="height:2px;">
-                                                                             
+
                                             <form method="post" action="script_code.php">
                                                 <div class="input-group comment">
                                                     <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
@@ -508,12 +508,12 @@ $from_count=0;
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>
                                             <!--End ink post modal-->
-                                          
-                                           
+
+
                                         </div>
                                         <!--<hr class="style5">-->
                                         <br />
@@ -676,7 +676,7 @@ $from_count=0;
                                                 $industry_post_user_data_retry=mysqli_fetch_array($industry_post_user_data_exeu);
 
                                                 ?>
-                                                
+
                                                   <?php
                                                                 $industry_post_status_exe=mysqli_query($conn,"select * from user_post_status where post_id='$industry_post_rety[post_id]'");
                                                                 $industry_post_status_count=mysqli_num_rows($industry_post_status_exe);
@@ -708,8 +708,8 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                            
-                                                            
+
+
                                                               <?php
                                                         if($industry_post_rety['post_pic']!='')
                                                         {
@@ -719,7 +719,7 @@ $from_count=0;
                                                         }
                                                         ?>
 
-                              
+
 
                                 <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
                                 <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
@@ -740,7 +740,7 @@ $from_count=0;
 <br>
                                     <br>
                                     <hr>
-                                  
+
                                     <p> <?php echo $industry_post_rety['post_txt'];?></p>
                                     <hr>
 																		<br>
@@ -787,7 +787,7 @@ $from_count=0;
 									<div id="my_inked">
 
                                     <div class="bg_pst">
-                                    
+
                                     <div class="container">
                                             <div class="news_feed">
 
@@ -803,7 +803,7 @@ $from_count=0;
                                         { ++$from_count;
                                             $count++;
                                             ?>
-                                            
+
                                             <?php
                                                                 $user_profile_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_profile_post[post_id]'");
                                                             $user_profilr_bookmark=mysqli_fetch_array($user_profile_bookmark_exe);
@@ -811,7 +811,7 @@ $from_count=0;
 															$user_profile_post_comment_execu=mysqli_query($conn,"select * from user_post_comment where post_id='$user_profile_post[post_id]'");
                                                     $user_profile_comment_count=mysqli_num_rows($user_profile_post_comment_execu);
                                                                 ?>
-                                            
+
 										  <div class="item ">
                             <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
 <!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
@@ -834,7 +834,7 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                            
+
                                                             <?php
                                                         if($user_profile_post['post_pic']!='')
                                                         {
@@ -843,15 +843,15 @@ $from_count=0;
                                                               <?php
                                                         }
                                                         ?>
-                                                            
-                                                            
-                                                            
 
-                              
+
+
+
+
 
                                 <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
                                 <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
-                                
+
                                  <?php
 																if($user_profile_pic['image']!='')
 																{
@@ -865,8 +865,8 @@ $from_count=0;
                                                                     <?php
 																}
 																	?>
-                                
-                                   
+
+
                                 </div>
                                 <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
                                     <p >
@@ -883,7 +883,7 @@ $from_count=0;
 <br>
                                     <br>
                                     <hr>
-                                  
+
                                     <p> <?php echo $user_profile_post['post_txt']?></p>
                                     <hr>
 																		<br>
@@ -908,11 +908,11 @@ $from_count=0;
                                 </div>
                             </div>
                              </div>
-                          </div>			                                            
-                                            
+                          </div>
 
 
-                                              
+
+
 
 
                                             <?php
@@ -956,7 +956,7 @@ $from_count=0;
                                             $user_noted_pers_de_ex=mysqli_query($conn,"select * from users where user_id='".$user_noted_post['user_id']."'");
                                             $user_pos_nrty=mysqli_fetch_array($user_noted_pers_de_ex);
                                             ?>
-                                            
+
                                              <?php
                                                                 $user_noted_bookmark_exe=mysqli_query($conn,"select * from user_post_status where post_id='$user_noted_post[post_id]'");
 															$ink_noted_not_cou=mysqli_num_rows($user_noted_bookmark_exe);
@@ -964,7 +964,7 @@ $from_count=0;
                                                 $user_noted_comment_count=mysqli_num_rows($user_noted_post_comment_execu);
                                                                 ?>
 
-                                         
+
                                           <div class="item ">
                             <div class="well su_shadow" style=" background: #fff; border-radius: 0px; border: 0px solid #fff;padding:0px;">
 <!-- box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0); -->
@@ -987,9 +987,9 @@ $from_count=0;
                                                         }
                                                         ?>
                                                             </div>
-                                                            
-                                                           
-                                                            
+
+
+
                                                            <?php
                                                         if($user_noted_post['post_pic']!='')
                                                         {
@@ -997,14 +997,14 @@ $from_count=0;
                                                               <img src="fb_users/<?php echo $user_pos_nrty['Gender'];?>/<?php echo $user_pos_nrty['Email']; ?>/Post/<?php echo $user_noted_post['post_pic'];?>" class="img-responsive"  style="width:100%;height:240px;" />
                                                               <?php
                                                         }
-                                                        ?>   
-                                                            
+                                                        ?>
 
-                              
+
+
 
                                 <?php /*?><img src="fb_users/<?php echo $pud['Gender']?>/<?php echo $pud['Email'];?>/Profile/<?php echo $pupp['image'];?>" alt="img02" style="width:230px;height:240px;" alt="img01" /><?php */?>
                                 <div style="width:60px; position:relative;float:right;top:5px;right:30px;margin-right:-10px;">
-                                
+
                                  <?php
 																if($user_profile_pic['image']!='')
 																{
@@ -1018,8 +1018,8 @@ $from_count=0;
                                                                     <?php
 																}
 																	?>
-                                
-                                   
+
+
                                 </div>
                                 <div style=" position: relative; float: right; right: 35px; top: 5px; text-align: right; line-height: 8px; margin-left: -15px; margin-top: 5px;">
                                     <p >
@@ -1036,7 +1036,7 @@ $from_count=0;
 <br>
                                     <br>
                                     <hr>
-                                  
+
                                     <p> <?php echo $user_noted_post['post_txt']?></p>
                                     <hr>
 																		<br>
@@ -1061,7 +1061,7 @@ $from_count=0;
                                 </div>
                             </div>
                              </div>
-                          </div>			                
+                          </div>
 
 
 
@@ -1384,8 +1384,8 @@ $from_count=0;
                             </div>
 
                         </div>
-                       
-                       
+
+
                        <!-------Dairy ends-------------->
                         <div class="tab-pane" id="club-vr">
                            <div class="pst_main_background pst_box " align="center" style="background-color:#fff; z-index:-1;margin-top: 25px;">
@@ -1578,7 +1578,7 @@ $from_count=0;
                                                     <div class="col-md-9" style="    text-align: initial;
     font-size: 12px;
     line-height: 13px;margin-left: 5px;">
-                                                  
+
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
                                                         <?php echo $fet_mem_de['Name'];?>
@@ -1695,7 +1695,7 @@ $from_count=0;
 
                                             </form>
                                         </div>
-                                        
+
 
 </div>
 
@@ -1711,7 +1711,7 @@ $from_count=0;
 
 																					  <div class="row" >
     <div class="col-md-9" style=" border: 2px solid #7c7c7c;margin-top: 10px;height: 495px;">
-    
+
                                             <br>
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top:-15px">
                                             <div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff;        margin-left: -48px;
@@ -1794,7 +1794,7 @@ $from_count=0;
                                             <br>
                                             <br>
                                             </div>
-                                            
+
                                                 </div>
                                                  <!--members of networking-->
                                                 <div class="col-md-3">
@@ -1808,7 +1808,7 @@ $from_count=0;
     width: 332px;"><h4>MEMBERS</h4> </div>
                                                 </div>
                                                 <!-- member data -->
-                                                
+
                                                 <div class="col-md-12">
                                                  <div id="club_networks">
                                             <div class="club_network" style="    height: 420px;background-color:#fff">
@@ -1823,14 +1823,14 @@ $from_count=0;
 
                                                     ?>
                                                     <div class="col-lg-12" style="border-bottom:1px solid #000;padding-left:0px; ">
-                                                      
+
                                                         <div class="col-lg-10 club_msg_shape" style="background-color:#fff; padding-right:0px;float: left;    margin-left: -25px;" align="right"><span style="text-align:right; color:#000;font-size:10px;line-height: 0px"><b><?php echo $grp_ct['chat_txt'];?></b><br>
-                                                        
+
     <a href="#" class="club1" onclick="return members(<?php echo $grp_ct['user_id'];?>)"><?php echo $gp_det['Name'];?></a><br><?php echo $gp_det['company']?> <br><?php echo $gp_det['industry'];?> </span>
-                                                           
+
                                                         </div>
                                                           <div class="col-lg-2 row club_network_row" style="padding-left:0px;padding-right:0px; width:30px; " align="left">
-                                                            
+
                                                             <?php
                                                             if($gp_ppic['image']!='')
                               {
@@ -1845,7 +1845,7 @@ $from_count=0;
                                                                 <?php
                               }
                                 ?>
-                                                            
+
                                                         </div>
 
                                                    </div>
@@ -1858,8 +1858,8 @@ $from_count=0;
                         </div>
                                             </div>
                                                 </div>
-                                                
-                                                
+
+
                                                 <!-- end member data -->
                                                 </div>
 
@@ -1883,7 +1883,7 @@ $from_count=0;
     border: 2px solid #7c7c7c;
     width: 99%;
     height: 497px;">
-   
+
                                             <br>
                                             <div class="club_suggest_top_di row col-md-12" align="center" style="margin-top: -15px;
     margin-left: -17px;
@@ -1900,8 +1900,8 @@ $from_count=0;
                                                 $sug1=mysqli_query($conn,"select * from tbl_suggest_topic where user_id='$_SESSION[id]' order by sug_date desc");
                                                 while($sug2=mysqli_fetch_array($sug1))
                                                 {
-                                                   
-                                                   
+
+
 
 
                                                     // $sug3=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$sug2[suggest_topic_id]'");
@@ -1940,7 +1940,7 @@ $from_count=0;
 
     <div class="col-md-8" align="left" style=""><p style="color:#808080"> <?php echo $sug2['suggest_topic'];?></p></div>
                                                             <div class="col-md-2" align="right" style="margin-right: -10px"><span class="pull-right" style="text-align:right; color:#808080;font-size:10px;margin-right: -120px;"><?php echo $sug2['sug_date'];?> </span></div>
-                                                            
+
 
                                                             <?php
                                                                     $sugg_count_exe=mysqli_query($conn,"select * from tbl_suggestions where suggest_topic_id='$sug2[suggest_topic_id]' AND whos_suggest='$usr_dis[user_id]' AND to_whom_accept='$_SESSION[id]' AND status='1'");
@@ -1985,9 +1985,9 @@ $from_count=0;
                                             <br>
                                             <br>
                                             </div> -->
-                                                
+
                                                  <!--members of suggestion-->
-                                                
+
 
                                                 <!--end members suggestion-->
 
@@ -2010,7 +2010,7 @@ $from_count=0;
 
                                                <div class="modal fade" id="tags" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -2019,7 +2019,7 @@ $from_count=0;
         </div>
         <div class="modal-body">
            <div class="row" style="width:400px">
-                                                
+
                                                 <form role="form" method="post" action="">
                                                     <div class="form-group">
                                                         <select  name="club_memb" id="club_memb" class="club_txt">
@@ -2057,9 +2057,9 @@ $from_count=0;
                                                 </form>
                                             </div>
         </div>
-        
+
       </div>
-      
+
     </div>
   </div>
 
@@ -2189,7 +2189,7 @@ $from_count=0;
 
                                                 </div>
                                                 </div>
-                                            
+
                                             <br>
                                             <br>
                                             <div class="col-md-6" style="margin-top: -40px;
@@ -2375,7 +2375,7 @@ $from_count=0;
                              </div>
                             </div>
 						</div>
-                        
+
                         <!--work space begin-->
                          <div class="tab-pane " id="workspace-vr">
                             <ul class="nav nav-tabs centered " id="id_hover"style="margin-left:50%;">
@@ -3054,7 +3054,7 @@ $from_count=0;
                             </div>
                         </div>
                         <!--workspace End-->
-                        
+
                         <div class="tab-pane" id="folio-vr">
                          <!-----------------------------------------BEGIN FOLIO---------------------------------------->
 
@@ -3379,6 +3379,28 @@ $from_count=0;
         </div>
     </div>
 		<footer>
+			<div>
+		 <ul style="list-style-type: none;margin-top:2px;">
+			 <li style="  float: left; margin-left: 5px; margin-right: 10px;">
+				 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
+				 <img src="image/stick.png" style="width:30px;height:30px;" class="img-responsive">
+			 </li>
+			 <li style="  float: left; margin-left: 10px; margin-right: 10px;">
+				 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
+				 <img src="image/notification.png" style="width:30px;height:30px;" class="img-responsive">
+			 </li>
+			 <li style="  float: left; margin-left: 0px; margin-right: 10px;margin-top:-5px;">
+				 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
+				 <img src="image/setting3.png" style="width:45px;height:45px;" class="img-responsive">
+			 </li>
+
+		 </ui>
+		 <div style=" border-left: 2px solid #fff; float: left; height: 30px; margin-left: 10px;">
+		 </div>
+		 <div style=" float: left; color: #fff; font-size: 15px; text-align: center; width: 80% ; margin-top: 5px;">
+			 <span>Design is not just how it look like, It's how it works like - Steve Jobs<span>
+		 </div>
+			</div>
 		</footer>
 
 <script type="text/javascript">

@@ -161,7 +161,7 @@ $from_count=0;
 
                     <div class="tab-content">
                         <div class="tab-pane active" id="workspace-vr">
-                           
+
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab6">
                                     <div class="accordion-wrap">
@@ -175,9 +175,9 @@ $from_count=0;
                                                                                                                 <br>
 																											 <div ><h3 align="right" style="border-bottom:4px solid #Dbd8d8;"><span ><b style="border-bottom:12px solid #Dbd8d8;margin-top:-15px;">Recent Topics</b></span></h3></div>
                                                                                                             												<!--<div align="center" style="background:#808080;height:40px;margin-top:-15px;padding-top:1px; color:#fff"><h4> TODO</h4> </div>-->
-																	                                            
-																	                                           
-																	                                     
+
+
+
                                                  <div align="right" class="panel-content col-lg-12" style="height:400px;overflow-y:scroll;">
                                                  <div id="frm_Qus">
                                                       <ul  style="padding:0px;height:10px;">
@@ -188,7 +188,7 @@ $from_count=0;
 							$qt_cou_exe=mysqli_query($conn,"select * from question where INDUSTRY_ID='$ddii[INDUSTRY_ID]'");
 							$di_cou=mysqli_num_rows($qt_cou_exe);
 						?>
-                                                                   
+
                                                                          <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><span class=" todo_right"><a href="#" onClick="get_industryquestions(<?php echo $ddii['INDUSTRY_ID']?>)"> <span> <h5><?php echo $ddii['INDUSTRY_NAME'];?> &nbsp <span class="badge"><?php echo $di_cou;?></span></h5> </span></a></span></li>
                                                                          <?php
 						}
@@ -198,32 +198,33 @@ $from_count=0;
                                                                          <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><a href="#" onClick="return getodotype('CONSIGNMENTS');">Consignments</a></li>
                                                                          <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><a href="#" onClick="return getodotype('MEETINGS');">Meetings</a></li>
                                                                          <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><a href="#" onClick="return getodotype('CALL');">Clients</a></li><?php */?>
-                                                                      
+
                                                                 </ul>
                                                                 </div>
                                                      </div>
 																	                                        </div>
 																																					<!-- discussion end -->
-                                                                                                                                                    
+
 <!-- company info -->
 <div class="col-lg-9 col-md-9 pst_box panel" style="margin-right:-25px;">
  <div class="col-lg-12 " align="center">
-                                            <a href="#fourms" class="btn" style="width:280px;height:50px;padding:12px;background:#808080; ">
-                                               RAISE A TOPIC 
+	 <br>
+                                            <a href="#fourms" class="btn" style="width:280px;height:50px;padding:12px;background:#808080; color:#fff">
+                                               RAISE A TOPIC
 </a>
 
 
-                                        <div class="col-lg-12" style="border-bottom:1px dashed #afdf7c;">
+                                        <div class="col-lg-12" style="border-bottom:1px dashed #808080;">
                                             <div class="col-lg-12" tyle="padding:0px;">
 																							<!--<div align="center" style="background:#808080;height:40px;margin-top:5px;padding-top:1px; color:#fff"><h4> LEDGER</h4> </div>-->
                                                                                              <div ><h3 align="right" style="border-bottom:4px solid #Dbd8d8;"><span ><b style="border-bottom:12px solid #Dbd8d8;margin-right:8px;">FORUM</b></span></h3></div>
-                                              
-												
-                                              
+
+
+
                                                 <br>
 										 <div align="right" id="txtQuest" style="height:450px; overflow-y:scroll;">
-                                         
-                                                    <ul  style="padding:0px;height:10px;">
+
+                                                    <div  style="padding:0px;height:10px;">
                                                                     <?php
                                             $dis_geet_qut=mysqli_query($conn,"select * from question order by  q_id desc");
 											while($qust_d=mysqli_fetch_array($dis_geet_qut))
@@ -233,12 +234,57 @@ $from_count=0;
 												$qusr_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$quser[user_id]'");
 												$qusrpic=mysqli_fetch_array($qusr_pic_exe);
 											?>
-                                                                         <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
-                                                                        
+											<div class="row club_network_row" style="width:100%;">
+												<div class="col-lg-2" style="padding:0px;">
+<div class="col-lg-12" style="margin-bottom:5px;">
+ <i style="float:left;" class="fa fa-comments">+99</i>
+</div>
+<div class="col-lg-12">
+	<span style="float:left;">1 day ago</span>
+</div>
+												</div>
+												<div class="col-lg-8 club_msg_shape" style=" height: 70px; background-color: #fff; padding-right: 0px;  border-botto: 1px solid #7c7c7c;" align="right">
+													<p>
+														<a href="forum_ans.php?Qid=<?php echo $qust_d['q_id'];?>" style="color:#808080;"><?php echo $qust_d['question'];?> &nbsp</a>
+													</p>
+													<span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#808080;"><?php echo $quser['Name']?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $qust_d['datetime'];?></i> </span>
+
+
+												</div>
+
+													<div class="col-lg-2" style="padding-left:0px;padding-right:0px; width:70px; ">
+															<div class="col-lg-4" align="left" style="padding-left:3px;padding-right:0px; width:70px;">
+																<?php
+					if($qusrpic['image']!='')
+	{
+	?>
+							<img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;border-radius:50px" />
+							<?php
+	}else
+	{
+	?>
+							<img src="images/profile/sq.PNG" width="80px" style="margin-left:0px;border-radius:50px" >
+							<?php
+	}
+	?>
+
+
+
+
+															</div>
+													</div>
+
+											</div>
+											<hr style="margin:2px;margin-bottom:5px;">
+											<?php
+			 	}
+			 	?>
+                                                                    <?php /*  <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
+
                                                                          <i style="float:left;" class="fa fa-comments">+99</i>
                                                                          <br/>
                                                                          <span style="float:left;">1 day ago</span>
-                                                                        
+
                                                                          <a href="forum_ans.php?Qid=<?php echo $qust_d['q_id'];?>"><?php echo $qust_d['question'];?> &nbsp</a>
                                                                          <br>
                                                                            <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#afdf7c;"><?php echo $quser['Name']?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $qust_d['datetime'];?></i> </span>
@@ -254,15 +300,13 @@ $from_count=0;
                                                         <img src="images/profile/sq.PNG" width="80px" style="margin-left:0px;border-radius:50px" >
                                                         <?php
 													}
-														?>
-                                                         
-                                                          
-                                                      
-                                                         <?php
-											}
-											  ?>
-                                                                         
-                                                                         </li>
+														*/?>
+
+
+
+
+
+                                                                         <!-- </li> -->
                                                                         <?php /*?> <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;"><a href="#" id="check">Completed</a>
                                                                           <img src="img/16.jpg" style="border-radius:50px;height:50px;width:50px;">
                                                                          </li>
@@ -276,15 +320,15 @@ $from_count=0;
                                                                          <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;"><a href="#" >Clients</a>
                                                                           <img src="img/16.jpg" style="border-radius:50px;height:50px;width:50px;">
                                                                          </li><?php */?>
-                                                                      
-                                                                </ul>
+
+                                                                </div>
                                                     </div>
                                             </div>
-                                           
+
                                         </div>
                                         <br>
                                          <!---------------------------Forums insertion model--------------------------->
-                                        
+
                                            <div class="remodal" data-remodal-id="fourms" id="fourms" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                             <form class="form-horizontal" role="form" method="post" action="script2.php">
@@ -293,7 +337,7 @@ $from_count=0;
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Question</label>
                                                         <div class="col-sm-9">
-                                                           
+
                                                             <input type="text" class="form-control" id="forum_question"  name="forum_question"/>
                                                         </div>
                                                     </div>
@@ -309,7 +353,7 @@ $from_count=0;
                                                             <div class="row">
                                                                 <select class="selectpicker col-md-12 form-control" name="set_indus" id="set_indus">
                                                                 <option>Select Industry</option>
-																<?php 
+																<?php
 																$get_inds=mysqli_query($conn,"select * from add_industry");
 																while($insd=mysqli_fetch_array($get_inds))
 																{
@@ -318,18 +362,18 @@ $from_count=0;
                                                                    <?php
 																}
 																   ?>
-                                                                    
-                                                                  
+
+
                                                                 </select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                  
-                                                 
+
+
 
                                                 </div>
                                                 <br>
-                                                
+
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!--onClick="return gourmquestions();"-->
@@ -337,10 +381,10 @@ $from_count=0;
 
                                             </form>
                                         </div>
-                                        
+
                                         <!--------------------------------END Forums Model------------------------------------>
-	
-                                       
+
+
 									</div>
 
                                     </div>
@@ -348,26 +392,26 @@ $from_count=0;
 
 
 
-                                      
-                                     
 
 
-                                      
-                                         
 
-                                        
+
+
+
+
+
                                     </div>
                                 </div>
-                              
+
                             </div>
                         </div>
-                      
-                      
-                      
+
+
+
                 </div>
 
-                       
-                        
+
+
 
             </div>
             <div>

@@ -240,7 +240,7 @@ $from_count=0;
                                                 if($upiv['image']!='')
 												{
 												?>
-                                                    <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="80" style="margin-left:0px;border-radius:50px"/>
+                                                    <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="40" style="margin-left:0px;border-radius:50px"/>
 												<?php
 												}else{
 													?>

@@ -394,10 +394,11 @@ $from_count=0;
                                     <div class="pst_main_background">
                                         <br>
                                      <!---------------------------------------NEWS FEED BEGIN---------------------------------------->
-                                        <div style="background-color:#fff;padding:5px;"  >
+                                        <div style="background-color:transparent;padding:0px;"  >
 
-                                            <br style="height:2px;">
-                                              <button type="button"  name="sub_post" class="btn btn_grn" data-toggle="modal" data-target="#myModal">INK</button>
+                                            <br >
+																						<i class="fa fa-plus"  style="color:#7c7c7c;" name="sub_post"  data-toggle="modal" data-target="#myModal" ></i>
+                                              <!-- <button type="button"  name="sub_post" class="btn btn_grn" data-toggle="modal" data-target="#myModal">INK</button> -->
                                             <!---ink post modal-->
                                             <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -3317,7 +3318,7 @@ $from_count=0;
                                     <a href="#folio-vr" data-toggle="tab" id="folio_tab">FOLIO</a>
                                 </li>
                                 <li>
-                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">WEBSITED FEED</a>
+                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">HUB</a>
                                 </li>
                                 <!--<li>
         <a href="#settings-vr" data-toggle="tab">Jun</a>

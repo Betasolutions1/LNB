@@ -32,7 +32,7 @@
 												<li>
 														<a href="mail.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
-																							 <li style="height:50px;line-height:10px;padding-top:3px;">
+												<li style="height:50px;line-height:10px;padding-top:3px;text-align:right;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
 															<span class="day" style="font-family:Stencil Std; font-size:10px;"><?php echo date("l"); ?></span>
 															<br>

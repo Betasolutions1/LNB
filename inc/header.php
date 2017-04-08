@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
 						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
 								<div class="navbar-header ">

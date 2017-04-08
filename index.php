@@ -39,9 +39,12 @@ if(!$_SESSION['Email'])
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+   <!--  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" /> --> 
+<link rel="stylesheet" href="/bower_components/lato-font/css/lato-font.css">
 
   <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Pacifico'>
         <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
         <link rel="stylesheet" href="css/style.css">
@@ -1528,15 +1531,15 @@ $from_count=0;
                                                     <div class="col-md-9" style=" 
     text-align: initial;
     font-size: 12px;
-<<<<<<< HEAD
+
     line-height: 15px;
     margin-left: 5px;
     ">
                                                   
-=======
+<!-- =======<<<<<<< HEAD
     line-height: 13px;margin-left: 5px;">
 
->>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0
+>>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0 -->
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
                                                         <?php echo $fet_mem_de['Name'];?>

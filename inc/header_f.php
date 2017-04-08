@@ -15,18 +15,23 @@
 
 												<li style=" padding-left:30px; padding-top:10px; padding-right:100px; ">
 													<div style="background-color:#808080;padding-right:5px;">
-														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
+                                                    <form method="get" action="search.php">
+														<input type="text" name="search_data" id="search_data" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
+                                                        
+                                                        
 														<i class="fa  fa-2x fa-search" style="color:#fff; padding-top:5px;"></i>
+                                                         <input type="submit" name="sub_search" style="display:none;">
+                                                         </form>
 												</div>
 												</li>
 												<li>
 													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:15px;"></i>
 												</li>
-												<li >
-														<a href="forum.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
-												</li>
 												<li class="active">
-														<a href="mail.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px;color: #fff;background:#808080"">M</a>
+														<a href="forum.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #fff;background:#808080">F</a>
+												</li>
+												<li>
+														<a href="mail.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
 																							 <li style="height:50px;line-height:13px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">

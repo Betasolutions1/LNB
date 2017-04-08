@@ -333,57 +333,7 @@ $user_personal_dets_exe=mysqli_query($conn,"select * from user_info where user_i
 $fet_info=mysqli_fetch_array($user_personal_dets_exe);
 $from_count=0;
 ?>
-<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
-						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
-								<div class="navbar-header ">
-										<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-												<span class="sr-only">Toggle navigation</span>
-												<span class="icon-bar"></span>
-												<span class="icon-bar"></span>
-												<span class="icon-bar"></span>
-										</button> -->
-										<a class="navbar-brand" href="#" style="font-family:Stencil Std;color: #808080;">
-		LN BUSINESS</a>
-								</div>
-								<div id="navbar" class="collapse navbar-collapse">
-										<ul class="nav navbar-nav">
-
-												<li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
-													<div style="background-color:#808080;padding-right:5px;">
-														<input type="text" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
-														<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
-												</div>
-												</li>
-												<li>
-													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
-												</li>
-												<li >
-														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
-												</li>
-												<li>
-														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
-												</li>
-																							 <li style="height:50px;line-height:10px;padding-top:3px;">
-														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
-															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
-															<br>
-															<span class="month" style="font-family:Stencil Std; font-size:10px;">March</span>
-															<br>
-															<span class="year" style="font-family:Stencil Std; font-size:10px;">2017</span></p>
-												</li>
-												<li style="height:50px;">
-														<!--<hr style="width:0px; height:10px;" class="vertical" />-->
-														<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
-</div>
-												</li>
-												<li style="height:50px; float:right; padding-top:20px;">
-														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
-												</li>
-										</ul>
-								</div>
-								<!--/.nav-collapse -->
-						</div>
-				</nav>
+<?php include 'inc/header.php';?>
         <div class="container " style="width:100%;">
         <div class="container " style=" padding-top: 30px;">
             <div class="row">
@@ -1560,7 +1510,7 @@ $from_count=0;
 
 ">
 													<div class="row">
-                                                    <div class="col-md-3" align="left" style="margin-left: -5px;">
+                                                    <div class="col-md-3" align="left" style="margin-left: -5px;padding-left: 0px;">
                                                     <?php
                                                             if($gclb_uspi['image']!='')
 															{
@@ -1576,18 +1526,30 @@ $from_count=0;
 															}
 														?>
                                                     </div>
-                                                    <div class="col-md-9" style="    text-align: initial;
+                                                    <div class="col-md-9" style=" 
+    text-align: initial;
     font-size: 12px;
+<<<<<<< HEAD
+    line-height: 15px;
+    margin-left: 5px;
+    ">
+                                                  
+=======
     line-height: 13px;margin-left: 5px;">
 
+>>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
                                                         <?php echo $fet_mem_de['Name'];?>
                                                         <br>
                                                         <?php echo $fet_mem_de['designation']?>-<?php echo $fet_mem_de['company'];?>
                                                         <br>
-                                                        <?php echo $fet_mem_de['industry'];?></span>
+                                                        <?php /*echo $fet_mem_de['industry'];*/?></span>
                                                     </div>
+                                                    <!--<br>
+                                                    <div style="border-bottom:1px solid #ddd;position: relative;top: 60px;"></div>
+                                                    <br>
+                                                    <br>-->
                                                     <div class="col-md-12" align="center">
                                                      <h4><?php echo $get_ur_sugg['suggest_topic'];?></h4>
 
@@ -1621,7 +1583,8 @@ $from_count=0;
                                                         }
                                                         ?>
                                                     </div>
-                                                    <div class="col-md-12" style="text-align: justify;">
+                                                    <br>
+                                                    <div class="col-md-12" style="text-align: justify;background-color:#EEEEEE">
                                                      <p><?php echo $fet_mem_de['description'];?></p>
                                                      </div>
                                                     </div>

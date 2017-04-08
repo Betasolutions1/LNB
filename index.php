@@ -346,17 +346,17 @@ $from_count=0;
                        <!--------dairy----------------->
 
                         <div class="tab-pane active" id="dairy-vr">
-                            <ul class="nav nav-tabs" id="id_hover">
-                                <li class="active">
+                            <ul class="nav nav-tabs" id="id_hover" style="border-bottom:0px solid transparent;margin-left:35%;">
+                                <li class="active tabs_b">
                                     <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">Feed
                                     <!-- <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
                                     <img id="dry_feed12" src="images/others/s_n_1.png" width="70" style="display:none;"/>
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a"> -->
             <!-- Feed</h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5>--></a>
-                                </li>
+                                </li >
 
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">Industry
                                     <!-- <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_indu22" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -364,7 +364,7 @@ $from_count=0;
             <!-- </h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5>--></a>
                                 </li>
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">Inked
                                     <!-- <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_ink32" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -372,7 +372,7 @@ $from_count=0;
             </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5>--></a>
                                 </li>
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">Noted
                                     <!-- <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_not42" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -380,7 +380,7 @@ $from_count=0;
             </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5>--></a>
                                 </li>
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();"><?php echo $_SESSION['Name'];?>
                                     <!-- <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_uinfo52" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -1348,7 +1348,7 @@ $from_count=0;
 							{
 
 								?>
-                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;">
+                                <div class=" " align="center" style="background-color:transparent;height:300px;">
                                 <h2 style="color:#4D1B1B;margin-top:90px;">Hello <?php echo $_SESSION['Name'];?></h2>
                                 <h4>Please Join Club</h4>
                                 </div>
@@ -1387,29 +1387,29 @@ $from_count=0;
 							?>
                             <div id="club_login_acce">
                             <div class="club_sub_div_height">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active">
+                                    <ul class="nav nav-tabs" style="border-bottom:0px solid transparent;margin-left:30%;">
+                                        <li class="active tabs_b">
 
                                             <a href="#tab8" data-toggle="tab">Club Sheet</a>
                                              <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
                                              <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
                                               <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>-->
                                         </li>
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <a href="#tab9" data-toggle="tab" >Clubbing</a>
                                             <!-- <img id="clubingb_tab21" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubingb_tab22"  src="images/others/s_n_1.png" width="70" /> -->
                                            <!-- <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Clubbing</h5>
                                              </a>-->
                                         </li>
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <a href="#tab10" data-toggle="tab" >Suggestions</a>
                                             <!-- <img id="clubtagme_tab31" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubtagme_tab32"  src="images/others/s_n_1.png" width="70" /> -->
                                             <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag Me</h5>
                                              </a>-->
                                         </li>
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <a href="#tab11" data-toggle="tab" >Tags		</a>
                                             <!-- <img id="clubtag_tab41" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" /> -->
@@ -1419,7 +1419,7 @@ $from_count=0;
 
 																			  </li>
 
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <!-- <a href="#tab12" data-toggle="tab" onClick="return settigs_tab12();"> -->
                                             <!-- <img id="clubsettings_tab51" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubsettings_tab52"  src="images/others/s_n_1.png" width="70" /> -->
@@ -1432,7 +1432,7 @@ $from_count=0;
 
                                         </li>
 
-                                         <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
+                                         <a href="club_logout.php" style="on-hover:#808080;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
 
 
                                     </ul>
@@ -1526,18 +1526,15 @@ $from_count=0;
 															}
 														?>
                                                     </div>
-                                                    <div class="col-md-9" style=" 
+                                                    <div class="col-md-9" style="
     text-align: initial;
     font-size: 12px;
-<<<<<<< HEAD
-    line-height: 15px;
-    margin-left: 5px;
-    ">
-                                                  
-=======
+
+
+
     line-height: 13px;margin-left: 5px;">
 
->>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0
+
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
                                                         <?php echo $fet_mem_de['Name'];?>

@@ -49,7 +49,7 @@ if(!$_SESSION['Email'])
             }*/
 </style>
  <!--REmodel Begin-->
-        
+
         <!-- Load local jQuery -->
     <script src="Remodal-1.1.0/libs/jquery-loader.js"></script>
 
@@ -72,104 +72,88 @@ if(!$_SESSION['Email'])
         animation: none;
       }
     </style>
-     
+
         <!--End Remodel-->
 
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.php" style="font-family:Stencil Std;color:#808080;">
-    LN.BUSINESS</a>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                       <li style=" padding-left:30px; padding-top:10px; padding-right:20px;">
-                            <input type="text" placeholder=" Search" class="club_tx" style="width:350px; height:30px;padding:0px;margin:0px; color:#fff;">
-                        </li>
-                        <li style=" padding-top:11px; padding-right:30px; padding-left:30px">
-                            <a href="card_file.php" style="padding:0px;"> <i class="fa fa-id-card fa-2x" style="margin-top:px;color:#808080"></i></a>
-                        </li>
-                        <li class="active">
-                            <a href="forum.php" style="font-family:Stencil Std; color:#808080;font-size:24px; padding-left:25px; padding-right:25px;">F</a>
-                        </li>
-                        <li>
-                            <a href="mail.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">M</a>
-                        </li>
-                        <li>
-                            <a href="logout.php" style="font-family:Stencil Std;color:#808080; font-size:24px; padding-left:25px; padding-right:25px;">S</a>
-                        </li>
-                       <!-- <li>
-                            <a href="#" style="font-family:Stencil Std; font-size:24px;color:#808080; padding-left:25px; padding-right:25px;">N</a>
-                        </li>-->
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </nav>
+			<nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
+									<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
+											<div class="navbar-header ">
+													<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+															<span class="sr-only">Toggle navigation</span>
+															<span class="icon-bar"></span>
+															<span class="icon-bar"></span>
+															<span class="icon-bar"></span>
+													</button> -->
+													<a class="navbar-brand" href="#" style="font-family:Stencil Std;color: #808080;">
+					LN BUSINESS</a>
+											</div>
+											<div id="navbar" class="collapse navbar-collapse">
+													<ul class="nav navbar-nav">
+
+															<li style=" padding-left:30px; padding-top:10px; padding-right:20px; ">
+																<div style="background-color:#808080;padding-right:5px;">
+																													 <form method="get" action="search.php">
+																	<input type="text" name="search_data" id="search_data" style="width:350px; height:30px;background-color:#808080; border:0px; color:#fff;margin-left:5px;">
+																	<i class="fa   fa-search" style="color:#fff; padding-top:5px;"></i>
+																															<input type="submit" name="sub_search" style="display:none;">
+																	</form>
+															</div>
+															</li>
+															<li>
+																<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
+															</li>
+															<li >
+																	<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
+															</li>
+															<li>
+																	<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
+															</li>
+																										 <li style="height:50px;line-height:10px;padding-top:3px;">
+																	<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
+																		<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
+																		<br>
+																		<span class="month" style="font-family:Stencil Std; font-size:10px;">March</span>
+																		<br>
+																		<span class="year" style="font-family:Stencil Std; font-size:10px;">2017</span></p>
+															</li>
+															<li style="height:50px;">
+																	<!--<hr style="width:0px; height:10px;" class="vertical" />-->
+																	<div style="border-left:2px solid #d3d3d3;margin-top:6px; margin-left:4px; margin-right:4px;height:40px;" class="line_div">
+			</div>
+															</li>
+															<li style="height:50px; float:right; padding-top:0px;">
+																	<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
+															</li>
+													</ul>
+											</div>
+											<!--/.nav-collapse -->
+									</div>
+							</nav>
+
         <div class="container-fluid paper" style=" padding-top: 30px;">
-            <div class="row"> 
-                <div class="col-lg-3 col-md-4" align="center">
-                       <div class="row pst_box" style="background-color:#fff; padding-bottom:250px; margin-bottom:30px; height:280px;">
-                        <div class="col-lg-12" style="background-color:#afdf7c; padding:0px;">
-                            <h3 class="club_headers" style="text-align:center; padding:0px; color:#fff">
-           Category</h3>
-                        </div>
-                        <div class="col-lg-12" style="padding:0px; overflow-y:scroll; height:230px">
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>IT-Software &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>IT-Hardware &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Iot &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Textiles &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Gold &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                            <button style="border:1px dotted #afdf7c;background-color:#fff;width:270px;color:#afdf7c;text-align:left;">
-                                <span> <h5>Furniture &nbsp <span class="badge">43</span></h5> </span> 
-                            </button>
-                        </div>
-                    </div>
-                     <div class="jumbotron banner_1_sticky sticky">
-                     <?php
-                    $get_ads_exe=mysqli_query($conn,"select * from advertisments order by RAND() desc limit 1");
-					$ads=mysqli_fetch_array($get_ads_exe);
-					
-					?>
-                        <img src="Console/advertises/<?php echo $ads['advertise_image'];?>" style="width:275px; height:400px; margin-left:-60px; margin-top:-45px; margin-bottom:-45px" />
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-8 "> 
-                    <div class="pst_main_background" style="background-color:#fff;">
-                        <div class="row cf_block_height">
+            <div class="row" >
+<br>
+<br>
+                <div class="col-lg-12 col-md-12 ">
+                    <div class="pst_main_background" style="background-color:transparent;">
+                        <div class="row cf_block_height" style="width:100%;height:500px;">
                         <?php
                         $usr_frnd_list_exe=mysqli_query($conn,"select * from friend_request where who_sent_user_id='".$_SESSION['id']."' AND status='1'");
-						
+
  while($usr_frnd_list=mysqli_fetch_array($usr_frnd_list_exe))
  {
 	 ++$mails_count;
 	 $usr_frnds_deta=mysqli_query($conn,"select * from users where  user_id='$usr_frnd_list[to_whom_user_id]'");
 	 $usr_frnd_details=mysqli_fetch_array($usr_frnds_deta);
-	
+
 	 ?>
-						
-                            <div class="col-lg-4 cf_card  ">
+
+                            <div class="col-lg-4 cf_card  " style="background-color:#fff;border:0px solid #fff;">
                                 <div class="col-lg-12" style="height:120px;padding-top:10px;">
                                     <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                        <span style="text-align:center; color:#afdf7c; font-family:lato;text-transform:uppercase; "> <?php echo $usr_frnd_details['industry'];?></span>
+                                        <span style="text-align:center; color:#808080; font-family:lato;text-transform:uppercase; "> <?php echo $usr_frnd_details['industry'];?></span>
                                         <br>
                                         <span style="color:#d3d3d3;text-transform:capitalize;"><?php echo $usr_frnd_details['Name'];?></span>
                                         <br>
@@ -181,7 +165,7 @@ if(!$_SESSION['Email'])
                                         <img src="images/profile/logo.jpg" width="25px;" />
                                     </div>
                                 </div>
-                                <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                                <div class="col-lg-12" style="height:22px;background-color:#808080;">
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
                                         <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
                                     </div>
@@ -193,9 +177,9 @@ if(!$_SESSION['Email'])
                                     </div>
                                 </div>
                             </div>
-                            
+
                                <!---------------------------Mail insertion model--------------------------->
-                                        
+
                                            <div class="remodal" data-remodal-id="sendmail_<?php echo $usr_frnd_details['user_id'];?>" id="sendmail_<?php echo $usr_frnd_details['user_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                             <form class="form-horizontal" role="form" method="post" action="" id="">
@@ -211,7 +195,7 @@ if(!$_SESSION['Email'])
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Subject</label>
                                                         <div class="col-sm-9">
-                                                           
+
                                                             <input type="text" class="form-control" id="mail_subject_<?php echo $mails_count?>"  name="mail_subject"/>
                                                         </div>
                                                     </div>
@@ -221,11 +205,11 @@ if(!$_SESSION['Email'])
                                                             <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc_<?php echo $mails_count;?>"  name="mail_desc"></textarea>
                                                         </div>
                                                     </div>
-                                                    
-                                                  
+
+
                                                 </div>
                                                 <br>
-                                                
+
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!---->
@@ -233,14 +217,14 @@ if(!$_SESSION['Email'])
 
                                             </form>
                                         </div>
-                                        
+
                                         <!--------------------------------END Mail Model------------------------------------>
-                            
+
                             <?php
  }
 							?>
-                            
-                            
+
+
                              <?php
  $urr_frnd_list_exe=mysqli_query($conn,"select * from friend_request where to_whom_user_id='$_SESSION[id]' AND status='1'");
  while($urr_frnd_list=mysqli_fetch_array($urr_frnd_list_exe))
@@ -248,15 +232,15 @@ if(!$_SESSION['Email'])
 	 ++$mails_count;
 	 $urr_frnds_deta=mysqli_query($conn,"select * from users where  user_id='$urr_frnd_list[who_sent_user_id]'");
 	 $urr_frnd_details=mysqli_fetch_array($urr_frnds_deta);
-	
-	 
-	 
+
+
+
 	 ?>
-                            
-                            <div class="col-lg-4 cf_card  ">
+
+                            <div class="col-lg-4 cf_card  " style="background-color:#fff;border:0px solid #fff;">
                                 <div class="col-lg-12" style="height:120px;padding-top:10px;">
                                     <div class="col-lg-10" style="padding:0px; font-family:lato; ">
-                                        <span style="text-align:center; color:#afdf7c; font-family:lato;text-transform:uppercase;"> <?php echo $urr_frnd_details['industry']?></span>
+                                        <span style="text-align:center; color:#808080; font-family:lato;text-transform:uppercase;"> <?php echo $urr_frnd_details['industry']?></span>
                                         <br>
                                         <span style="color:#d3d3d3; text-transform:capitalize;"><?php echo $urr_frnd_details['Name'];?></span>
                                         <br>
@@ -268,7 +252,7 @@ if(!$_SESSION['Email'])
                                         <img src="images/profile/logo.jpg" width="25px;" />
                                     </div>
                                 </div>
-                                <div class="col-lg-12" style="height:22px;background-color:#afdf7c;">
+                                <div class="col-lg-12" style="height:22px;background-color:#808080;">
                                     <div class="col-lg-4" style="padding:0px; height:20px;" align="center">
                                         <i class="fa fa-1x fa-phone" style="color:#fff;"></i>
                                     </div>
@@ -280,9 +264,9 @@ if(!$_SESSION['Email'])
                                     </div>
                                 </div>
                             </div>
-                           
+
                              <!---------------------------Mail insertion model--------------------------->
-                                        
+
                                            <div class="remodal" data-remodal-id="compose_mail_<?php echo $urr_frnd_details['user_id'];?>" id="compose_mail_<?php echo $urr_frnd_details['user_id'];?>" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                             <form class="form-horizontal" role="form" method="post" action="" id="compose_mail_form_<?php echo $mails_count;?>">
@@ -298,7 +282,7 @@ if(!$_SESSION['Email'])
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Subject</label>
                                                         <div class="col-sm-9">
-                                                           
+
                                                             <input type="text" class="form-control" id="mail_subject_<?php echo $mails_count;?>"  name="mail_subject"/>
                                                         </div>
                                                     </div>
@@ -308,11 +292,11 @@ if(!$_SESSION['Email'])
                                                             <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc_<?php echo $mails_count;?>"  name="mail_desc"></textarea>
                                                         </div>
                                                     </div>
-                                                    
-                                                  
+
+
                                                 </div>
                                                 <br>
-                                                
+
 
                                                 <button  data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                                                 <!---->
@@ -320,17 +304,17 @@ if(!$_SESSION['Email'])
 
                                             </form>
                                         </div>
-                                        
+
                                         <!--------------------------------END Mail Model------------------------------------>
-                           
+
                             <?php
  }
 							?>
-                        
-                           
+
+
                         </div>
                     </div>
-                </div>                 
+                </div>
               <?php /*?>  <div class="col-md-3 col-lg-3 b_s">
                     <div class="row">
                         <div>
@@ -339,11 +323,35 @@ if(!$_SESSION['Email'])
                     </div>
                     <!-- Widget -->
                     <!-- // Widget END -->
-                </div>   <?php */?>              
+                </div>   <?php */?>
             </div>
             <div>
 </div>
         </div>
+				<footer>
+					<div>
+				 <ul style="list-style-type: none;margin-top:2px;">
+					 <li style="  float: left; margin-left: 5px; margin-right: 10px;">
+						 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
+						 <img src="image/stick.png" style="width:30px;height:30px;" class="img-responsive">
+					 </li>
+					 <li style="  float: left; margin-left: 10px; margin-right: 10px;">
+						 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
+						 <img src="image/notification.png" style="width:30px;height:30px;" class="img-responsive">
+					 </li>
+					 <li style="  float: left; margin-left: 0px; margin-right: 10px;margin-top:-5px;">
+						 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
+						 <img src="image/setting3.png" style="width:45px;height:45px;" class="img-responsive">
+					 </li>
+
+				 </ui>
+				 <div style=" border-left: 2px solid #fff; float: left; height: 30px; margin-left: 10px;">
+				 </div>
+				 <div style=" float: left; color: #fff; font-size: 15px; text-align: center; width: 80% ; margin-top: 5px;">
+					 <span>Design is not just how it look like, It's how it works like - Steve Jobs<span>
+				 </div>
+					</div>
+				</footer>
         <!-- /.container -->
         <script type="text/javascript" src="js/space_discussion.js"></script>
         <!-- Bootstrap core JavaScript

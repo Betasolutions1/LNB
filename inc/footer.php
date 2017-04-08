@@ -106,3 +106,10 @@
 		 </div>
 			</div>
 		</footer>
+        
+        <script type="text/javascript">
+		function logout()
+{
+	window.location='logout.php';
+}
+		</script>

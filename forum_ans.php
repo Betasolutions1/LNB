@@ -236,7 +236,7 @@ $from_count=0;
                                                                          <br>
                                                                            <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#afdf7c;"><?php echo $in_qwy['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $ques_desc['datetime'];?></i> </span>
                                                                            
-                                                                      <?php
+                                                 <?php
                                                 if($upiv['image']!='')
 												{
 												?>

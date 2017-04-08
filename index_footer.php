@@ -3859,12 +3859,13 @@ $from_count=0;
 		<footer>
      
 <li id="notification_li"  style="float:left;list-style-type:none">
+
 <span id="notification_count" style="float:left;color:red;margin-right;-ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg):" >3</span>
 <a href="#" id="notificationLink"><img src="image/notification.png" hspace="100" style="width:30px;height:30px;float:right;-ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
-    transform: rotate(180deg);"></a>
+    transform: rotate(180deg);">
 
 <div id="notificationContainer" style="float:left;margin-right:">
 <div id="notificationTitle" style="float:right;margin-right:">Notifications</div>

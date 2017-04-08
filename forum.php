@@ -374,8 +374,7 @@ $from_count=0;
 </div>
         </div>
     </div>
-		<footer>
-		</footer>
+		<?php include 'inc/footer.php';?>
 
 
 

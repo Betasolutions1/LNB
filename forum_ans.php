@@ -189,7 +189,7 @@ $from_count=0;
 							$di_cou=mysqli_num_rows($qt_cou_exe);
 						?>
                                                                    
-                                                                         <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><span class=" todo_right"><a href="#" onClick="get_industryanswers(<?php echo $ddii['INDUSTRY_ID']?>)" <span> <h5><?php echo $ddii['INDUSTRY_NAME'];?> &nbsp <span class="badge"><?php echo $di_cou;?></span></h5> </span></a></span></li>
+                      <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><span class=" todo_right"><a href="#" onClick="get_industryanswers(<?php echo $ddii['INDUSTRY_ID']?>)" <span> <h5><?php echo $ddii['INDUSTRY_NAME'];?> &nbsp <span class="badge"><?php echo $di_cou;?></span></h5> </span></a></span></li>
                                                                          <?php
 						}
 							?>
@@ -226,7 +226,7 @@ $from_count=0;
 										$upiv=mysqli_fetch_array($inqppic);
 										//echo $in_qwy['Name'];
 										?>
-                                                                         <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
+                               <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
                                                                         
                                                                          <i style="float:left;" class="fa fa-comments">+99</i>
                                                                          <br/>
@@ -284,7 +284,7 @@ $from_count=0;
                                                     if($ur_pic['image']!='')
 													{
 													?>
-                                                        <img src="fb_users/<?php echo $watq['Gender'];?>/<?php echo $watq['Email'];?>/Profile/<?php echo $ur_pic['image'];?>" width="80px" style="margin-left:0px;border-radius:50px"/>
+                                                        <img src="fb_users/<?php echo $watq['Gender'];?>/<?php echo $watq['Email'];?>/Profile/<?php echo $ur_pic['image'];?>" width="40" style="margin-left:0px;border-radius:50px"/>
                                                         <?php }else {?>
                                                         <img src="images/profile/sq.PNG" width="80" style="margin-left:0px;border-radius:50px">
                                                         <?php }?>
@@ -315,7 +315,7 @@ $from_count=0;
                                                       
                                                       
                                                                          
-                                                                         </li>
+                              </li>
                                                                        
                                                                       
                                                                 </ul>
@@ -360,8 +360,7 @@ $from_count=0;
 </div>
         </div>
     </div>
-		<footer>
-		</footer>
+		<?php include 'inc/footer.php';?>
 
 
 

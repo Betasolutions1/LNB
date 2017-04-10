@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse navbar-fixed-top " style="height:10%;border-bottom:3px solid #808080;">
 						<div class="container" align="center" style="padding-left:9%;height:100%;position:relative;top:10%;">
 								<div class="navbar-header ">
@@ -26,18 +27,18 @@
 													<i class="fa fa-2x fa-id-card " style="padding-left:0px; padding-right:25px; margin-top:11px;"></i>
 												</li>
 												<li >
-														<a href="#" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
+														<a href="forum.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">F</a>
 												</li>
 												<li>
-														<a href="#about" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
+														<a href="mail.php" style="font-family:Stencil Std; font-size:24px; padding-left:25px; padding-right:25px; color: #808080;">M</a>
 												</li>
 																							 <li style="height:50px;line-height:10px;padding-top:3px;">
 														<p class="diary" style="padding-top:0px; padding-left:50px;color:#808080">
-															<span class="day" style="font-family:Stencil Std; font-size:10px;">friday</span>
+															<span class="day" style="font-family:Stencil Std; font-size:10px;"><?php echo date("l"); ?></span>
 															<br>
-															<span class="month" style="font-family:Stencil Std; font-size:10px;">March</span>
+															<span class="month" style="font-family:Stencil Std; font-size:10px;"><?php echo date("F"); ?></span>
 															<br>
-															<span class="year" style="font-family:Stencil Std; font-size:10px;">2017</span></p>
+															<span class="year" style="font-family:Stencil Std; font-size:10px;"><?php echo date("Y"); ?></span></p>
 												</li>
 												<li style="height:50px;">
 														<!--<hr style="width:0px; height:10px;" class="vertical" />-->
@@ -45,7 +46,7 @@
 </div>
 												</li>
 												<li style="height:50px; float:right; padding-top:20px;">
-														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;">31</span>
+														<span class="date" style="font-family:Stencil Std; font-size:40px; padding-top:0px; padding-right:10px;color:#808080;"><?php echo date("j"); ?></span>
 												</li>
 										</ul>
 								</div>

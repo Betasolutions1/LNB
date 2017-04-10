@@ -20,7 +20,7 @@ if(isset($_GET['q']))
 ?>
 
 
-  <ul  style="padding:0px;height:10px;">
+
 <?php
                                             $dis_geet_qut=mysqli_query($conn,"select * from question where INDUSTRY_ID='$val1'");
 											while($qust_d=mysqli_fetch_array($dis_geet_qut))
@@ -30,44 +30,7 @@ if(isset($_GET['q']))
 												$qusr_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$quser[user_id]'");
 												$qusrpic=mysqli_fetch_array($qusr_pic_exe);
 											?>
-                                            
-                                            
-                                               <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
-                                                                        
-                                                                         <i style="float:left;" class="fa fa-comments">+99</i>
-                                                                         <br/>
-                                                                         <span style="float:left;">1 day ago</span>
-                                                                        
-                                                                         <a href="forum_ans.php?Qid=<?php echo $qust_d['q_id'];?>"> <?php echo $qust_d['question'];?> &nbsp</a>
-                                                                         <br>
-                                                                           <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#afdf7c;"><?php echo $quser['Name']?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $qust_d['datetime'];?></i> </span>
-                                                                          <?php
-                                                    if($qusrpic['image']!='')
-													{
-													?>
-                                                        <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;border-radius:50px" />
-                                                        <?php
-													}else
-													{
-														?>
-                                                        <img src="images/profile/sq.PNG" width="80px" style="margin-left:0px;border-radius:50px" >
-                                                        <?php
-													}
-														?>
-                                                         
-                                                          
-                                                      
-                                                         
-                                                                         
-                                                                         </li>
-                                                                         
-                                                                         
-                                            
-                                            
-                                            
-                                            
-                                            
-                                          <?php /*?>  <div class="row" style="padding:0px;">
+                                            <div class="row" style="padding:0px;">
                                                 <div class="col-lg-12 pad_0" style="height:80px; border-bottom:1px solid #afdf7c;">
                                                     <div class="col-lg-3 pad_0" style="width:80px;">
                                                         <img src="fb_users/<?php echo $quser['Gender']?>/<?php echo $quser['Email'];?>/Profile/<?php echo $qusrpic['image'];?>" width="80px" style="margin-left:0px;" />
@@ -86,13 +49,10 @@ if(isset($_GET['q']))
                                                         </div>
                                                     </div>
                                                 </div>
-                                                </div><?php */?>
-                                                
-                                                
+                                                </div>
                                               <?php
 											}
 											  ?>
-  </ul>
 											  
     <?php
 }

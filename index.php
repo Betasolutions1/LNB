@@ -150,6 +150,224 @@ font-face {
 
 
   <!-- club member -->
+  
+  
+   <!-- notification -->
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<style type="text/css">
+  
+#notification_li
+{
+position:relative
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#notificationContainer 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 300px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+// Popup Arrow
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+
+}
+#notificationTitle
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 290px;
+border-bottom: 1px solid #dddddd;
+
+}
+#notificationsBody
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+
+}
+#notificationFooter
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count 
+{
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+font-size: 11px;
+
+}
+#notification_li1
+{
+position:relative
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#notificationContainer1 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 300px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+// Popup Arrow
+#notificationContainer1:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+
+}
+#notificationTitle1
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 290px;
+border-bottom: 1px solid #dddddd;
+
+}
+#notificationsBody1
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+
+}
+#notificationFooter1
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count1 
+{
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+font-size: 11px;
+
+}
+
+
+</style>
+<script type="text/javascript" src="js/jquery.min.1.9.js"></script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink").click(function()
+{
+$("#notificationContainer").fadeToggle(300);
+$("#notification_count").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer").hide();
+});
+
+//Popup on click
+$("#notificationContainer").click(function()
+{
+return false;
+});
+
+});
+</script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink1").click(function()
+{
+$("#notificationContainer1").fadeToggle(300);
+$("#notification_count1").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer1").hide();
+});
+
+//Popup on click
+$("#notificationContainer1").click(function()
+{
+return false;
+});
+
+});
+</script>
+<!-- end notification -->
 
         <script>
 function members(str) {
@@ -349,17 +567,17 @@ $from_count=0;
                        <!--------dairy----------------->
 
                         <div class="tab-pane active" id="dairy-vr">
-                            <ul class="nav nav-tabs" id="id_hover">
-                                <li class="active">
+                            <ul class="nav nav-tabs" id="id_hover" style="border-bottom:0px solid transparent;margin-left:35%;">
+                                <li class="active tabs_b">
                                     <a href="#tab1" data-toggle="tab" onClick="return chng_dryfeed();">Feed
                                     <!-- <img id="dry_feed11" src="images/others/s_n_2.png" width="70" />
                                     <img id="dry_feed12" src="images/others/s_n_1.png" width="70" style="display:none;"/>
                                     <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a"> -->
             <!-- Feed</h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Feed</h5>--></a>
-                                </li>
+                                </li >
 
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab2" data-toggle="tab" onClick="return chng_dryindu();">Industry
                                     <!-- <img id="dry_indu21" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_indu22" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -367,7 +585,7 @@ $from_count=0;
             <!-- </h5> -->
            <!-- <h5 style="text-align:center; position:absolute; top:25px; left:25px; color:#fff">Industry</h5>--></a>
                                 </li>
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab3" data-toggle="tab" onClick="return chng_dryinkd();">Inked
                                     <!-- <img id="dry_ink31" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_ink32" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -375,7 +593,7 @@ $from_count=0;
             </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Inked</h5>--></a>
                                 </li>
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab4" data-toggle="tab" onClick="return chng_drynoted();">Noted
                                     <!-- <img id="dry_not41" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_not42" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -383,7 +601,7 @@ $from_count=0;
             </h5> -->
             <!--<h5 style="text-align:center; position:absolute; top:25px; left:32px; color:#fff">Noted</h5>--></a>
                                 </li>
-                                <li>
+                                <li class="tabs_b">
                                     <a href="#tab5" data-toggle="tab" style="text-transform:capitalize" onClick="return chng_dryuinfo();"><?php echo $_SESSION['Name'];?>
                                     <!-- <img id="dry_uinfo51" src="images/others/s_n_1.png" width="70" />
                                     <img id="dry_uinfo52" src="images/others/s_n_2.png" width="70" style="display:none;" />
@@ -397,10 +615,11 @@ $from_count=0;
                                     <div class="pst_main_background">
                                         <br>
                                      <!---------------------------------------NEWS FEED BEGIN---------------------------------------->
-                                        <div style="background-color:#fff;padding:5px;"  >
+                                        <div style="background-color:transparent;padding:0px;"  >
 
-                                            <br style="height:2px;">
-                                              <button type="button"  name="sub_post" class="btn btn_grn" data-toggle="modal" data-target="#myModal">INK</button>
+                                            <br >
+																						<i class="fa fa-plus"  style="color:#7c7c7c;" name="sub_post"  data-toggle="modal" data-target="#myModal" ></i>
+                                              <!-- <button type="button"  name="sub_post" class="btn btn_grn" data-toggle="modal" data-target="#myModal">INK</button> -->
                                             <!---ink post modal-->
                                             <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -1350,7 +1569,7 @@ $from_count=0;
 							{
 
 								?>
-                                <div class="pst_main_background pst_box " align="center" style="background-color:#fff;height:300px;">
+                                <div class=" " align="center" style="background-color:transparent;height:300px;">
                                 <h2 style="color:#4D1B1B;margin-top:90px;">Hello <?php echo $_SESSION['Name'];?></h2>
                                 <h4>Please Join Club</h4>
                                 </div>
@@ -1389,29 +1608,29 @@ $from_count=0;
 							?>
                             <div id="club_login_acce">
                             <div class="club_sub_div_height">
-                                    <ul class="nav nav-tabs">
-                                        <li class="active">
+                                    <ul class="nav nav-tabs" style="border-bottom:0px solid transparent;margin-left:30%;">
+                                        <li class="active tabs_b">
 
                                             <a href="#tab8" data-toggle="tab">Club Sheet</a>
                                              <!-- <img id="club_tab11" src="images/others/s_n_2.png" width="70" />
                                              <img id="club_tab12" style="display:none" src="images/others/s_n_1.png" width="70" /> -->
                                               <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Club Sheet</h5></a>-->
                                         </li>
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <a href="#tab9" data-toggle="tab" >Clubbing</a>
                                             <!-- <img id="clubingb_tab21" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubingb_tab22"  src="images/others/s_n_1.png" width="70" /> -->
                                            <!-- <h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Clubbing</h5>
                                              </a>-->
                                         </li>
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <a href="#tab10" data-toggle="tab" >Suggestions</a>
                                             <!-- <img id="clubtagme_tab31" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubtagme_tab32"  src="images/others/s_n_1.png" width="70" /> -->
                                             <!--<h5 style="text-align:center; position:absolute; top:45px; left:45px;font-size:12px; color:#5a5a5a">Tag Me</h5>
                                              </a>-->
                                         </li>
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <a href="#tab11" data-toggle="tab" >Tags		</a>
                                             <!-- <img id="clubtag_tab41" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubtag_tab42"  src="images/others/s_n_1.png" width="70" /> -->
@@ -1421,7 +1640,7 @@ $from_count=0;
 
 																			  </li>
 
-                                        <li class="hover_li">
+                                        <li class="tabs_b">
                                             <!-- <a href="#tab12" data-toggle="tab" onClick="return settigs_tab12();"> -->
                                             <!-- <img id="clubsettings_tab51" style="display:none" src="images/others/s_n_2.png" width="70" />
                                             <img id="clubsettings_tab52"  src="images/others/s_n_1.png" width="70" /> -->
@@ -1434,7 +1653,7 @@ $from_count=0;
 
                                         </li>
 
-                                         <a href="club_logout.php" style="on-hover:#AFDF7C;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
+                                         <a href="club_logout.php" style="on-hover:#808080;" ><i style="margin-top:15px;" class="fa fa-sign-out icon"></i></a>
 
 
                                     </ul>
@@ -1528,10 +1747,11 @@ $from_count=0;
 															}
 														?>
                                                     </div>
-                                                    <div class="col-md-9" style=" 
+                                                    <div class="col-md-9" style="
     text-align: initial;
     font-size: 12px;
 
+<<<<<<< HEAD
     line-height: 15px;
     margin-left: 5px;
     ">
@@ -1540,6 +1760,13 @@ $from_count=0;
     line-height: 13px;margin-left: 5px;">
 
 >>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0 -->
+=======
+
+
+    line-height: 13px;margin-left: 5px;">
+
+
+>>>>>>> b1727eb5cc8fe006dcf08374bda1ad045ccaf481
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
                                                         <?php echo $fet_mem_de['Name'];?>
@@ -3320,7 +3547,7 @@ $from_count=0;
                                     <a href="#folio-vr" data-toggle="tab" id="folio_tab">FOLIO</a>
                                 </li>
                                 <li>
-                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">WEBSITED FEED</a>
+                                    <a href="#hub-vr" data-toggle="tab" id="hub_tab">HUB</a>
                                 </li>
                                 <!--<li>
         <a href="#settings-vr" data-toggle="tab">Jun</a>
@@ -3344,32 +3571,14 @@ $from_count=0;
 </div>
         </div>
     </div>
-		<footer>
-			<div>
-		 <ul style="list-style-type: none;margin-top:2px;">
-			 <li style="  float: left; margin-left: 5px; margin-right: 10px;">
-				 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
-				 <img src="image/stick.png" style="width:30px;height:30px;" class="img-responsive">
-			 </li>
-			 <li style="  float: left; margin-left: 10px; margin-right: 10px;">
-				 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
-				 <img src="image/notification.png" style="width:30px;height:30px;" class="img-responsive">
-			 </li>
-			 <li style="  float: left; margin-left: 0px; margin-right: 10px;margin-top:-5px;">
-				 <!-- <i class="fa fa-pencil" style="color:#fff;"></i> -->
-				 <img src="image/setting3.png" style="width:45px;height:45px;" class="img-responsive">
-			 </li>
-
-		 </ui>
-		 <div style=" border-left: 2px solid #fff; float: left; height: 30px; margin-left: 10px;">
-		 </div>
-		 <div style=" float: left; color: #fff; font-size: 15px; text-align: center; width: 80% ; margin-top: 5px;">
-			 <span>Design is not just how it look like, It's how it works like - Steve Jobs<span>
-		 </div>
-			</div>
-		</footer>
+	<?php include 'inc/footer.php'?>
 
 <script type="text/javascript">
+function logout()
+{
+	window.location='logout.php';
+}
+
 //dairy tab change script
 
 function chng_dryfeed()

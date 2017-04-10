@@ -93,6 +93,222 @@ if(!$_SESSION['Email'])
         animation: none;
       }
     </style>
+ <!-- notification -->
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<style type="text/css">
+  
+#notification_li
+{
+position:relative
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#notificationContainer 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 300px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+// Popup Arrow
+#notificationContainer:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+
+}
+#notificationTitle
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 290px;
+border-bottom: 1px solid #dddddd;
+
+}
+#notificationsBody
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+
+}
+#notificationFooter
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count 
+{
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+font-size: 11px;
+
+}
+#notification_li1
+{
+position:relative
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+#notificationContainer1 
+{
+background-color: #fff;
+border: 1px solid rgba(100, 100, 100, .4);
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+overflow: visible;
+position: absolute;
+top: 30px;
+margin-left: -170px;
+width: 300px;
+z-index: -1;
+display: none; // Enable this after jquery implementation 
+-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+// Popup Arrow
+#notificationContainer1:before {
+content: '';
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+color: transparent;
+border: 10px solid black;
+border-color: transparent transparent white;
+margin-top: -20px;
+margin-left: 188px;
+
+}
+#notificationTitle1
+{
+font-weight: bold;
+padding: 8px;
+font-size: 13px;
+background-color: #ffffff;
+position: fixed;
+z-index: 1000;
+width: 290px;
+border-bottom: 1px solid #dddddd;
+
+}
+#notificationsBody1
+{
+padding: 33px 0px 0px 0px !important;
+min-height:300px;
+
+}
+#notificationFooter1
+{
+background-color: #e9eaed;
+text-align: center;
+font-weight: bold;
+padding: 8px;
+font-size: 12px;
+border-top: 1px solid #dddddd;
+}
+#notification_count1 
+{
+padding: 3px 7px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px; 
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -11px;
+font-size: 11px;
+
+}
+
+
+</style>
+<script type="text/javascript" src="js/jquery.min.1.9.js"></script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink").click(function()
+{
+$("#notificationContainer").fadeToggle(300);
+$("#notification_count").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer").hide();
+});
+
+//Popup on click
+$("#notificationContainer").click(function()
+{
+return false;
+});
+
+});
+</script>
+<script type="text/javascript" >
+$(document).ready(function()
+{
+$("#notificationLink1").click(function()
+{
+$("#notificationContainer1").fadeToggle(300);
+$("#notification_count1").fadeOut("slow");
+return false;
+});
+
+//Document Click hiding the popup 
+$(document).click(function()
+{
+$("#notificationContainer1").hide();
+});
+
+//Popup on click
+$("#notificationContainer1").click(function()
+{
+return false;
+});
+
+});
+</script>
+<!-- end notification -->
 
         <!--End Remodel-->
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Stencil+Std" />
@@ -189,7 +405,7 @@ $from_count=0;
 							$di_cou=mysqli_num_rows($qt_cou_exe);
 						?>
                                                                    
-                                                                         <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><span class=" todo_right"><a href="#" onClick="get_industryanswers(<?php echo $ddii['INDUSTRY_ID']?>)" <span> <h5><?php echo $ddii['INDUSTRY_NAME'];?> &nbsp <span class="badge"><?php echo $di_cou;?></span></h5> </span></a></span></li>
+                      <li style="border-bottom:1px solid  #DBD8D8;list-style:none;padding:6px;"><span class=" todo_right"><a href="#" onClick="get_industryanswers(<?php echo $ddii['INDUSTRY_ID']?>)" <span> <h5><?php echo $ddii['INDUSTRY_NAME'];?> &nbsp <span class="badge"><?php echo $di_cou;?></span></h5> </span></a></span></li>
                                                                          <?php
 						}
 							?>
@@ -226,7 +442,7 @@ $from_count=0;
 										$upiv=mysqli_fetch_array($inqppic);
 										//echo $in_qwy['Name'];
 										?>
-                                                                         <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
+                               <li style="border-bottom:2px solid  #DBD8D8;list-style:none;padding:6px;">
                                                                         
                                                                          <i style="float:left;" class="fa fa-comments">+99</i>
                                                                          <br/>
@@ -236,11 +452,11 @@ $from_count=0;
                                                                          <br>
                                                                            <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#afdf7c;"><?php echo $in_qwy['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $ques_desc['datetime'];?></i> </span>
                                                                            
-                                                                      <?php
+                                                 <?php
                                                 if($upiv['image']!='')
 												{
 												?>
-                                                    <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="80" style="margin-left:0px;border-radius:50px"/>
+                                                    <img src="fb_users/<?php echo $in_qwy['Gender']?>/<?php echo $in_qwy['Email'];?>/Profile/<?php echo $upiv['image'];?>" width="40" style="margin-left:0px;border-radius:50px"/>
 												<?php
 												}else{
 													?>
@@ -284,7 +500,7 @@ $from_count=0;
                                                     if($ur_pic['image']!='')
 													{
 													?>
-                                                        <img src="fb_users/<?php echo $watq['Gender'];?>/<?php echo $watq['Email'];?>/Profile/<?php echo $ur_pic['image'];?>" width="80px" style="margin-left:0px;border-radius:50px"/>
+                                                        <img src="fb_users/<?php echo $watq['Gender'];?>/<?php echo $watq['Email'];?>/Profile/<?php echo $ur_pic['image'];?>" width="40" style="margin-left:0px;border-radius:50px"/>
                                                         <?php }else {?>
                                                         <img src="images/profile/sq.PNG" width="80" style="margin-left:0px;border-radius:50px">
                                                         <?php }?>
@@ -315,7 +531,7 @@ $from_count=0;
                                                       
                                                       
                                                                          
-                                                                         </li>
+                              </li>
                                                                        
                                                                       
                                                                 </ul>
@@ -360,8 +576,7 @@ $from_count=0;
 </div>
         </div>
     </div>
-		<footer>
-		</footer>
+		<?php include 'inc/footer.php';?>
 
 
 

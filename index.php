@@ -147,13 +147,13 @@ font-face {
 
 
   <!-- club member -->
-  
-  
+
+
    <!-- notification -->
 <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <style type="text/css">
-  
+
 #notification_li
 {
 position:relative
@@ -161,7 +161,7 @@ position:relative
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
 }
-#notificationContainer 
+#notificationContainer
 {
 background-color: #fff;
 border: 1px solid rgba(100, 100, 100, .4);
@@ -172,7 +172,7 @@ top: 30px;
 margin-left: -170px;
 width: 300px;
 z-index: -1;
-display: none; // Enable this after jquery implementation 
+display: none; // Enable this after jquery implementation
 -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
@@ -218,7 +218,7 @@ padding: 8px;
 font-size: 12px;
 border-top: 1px solid #dddddd;
 }
-#notification_count 
+#notification_count
 {
 padding: 3px 7px 3px 7px;
 background: #cc0000;
@@ -226,7 +226,7 @@ color: #ffffff;
 font-weight: bold;
 margin-left: 77px;
 border-radius: 9px;
--moz-border-radius: 9px; 
+-moz-border-radius: 9px;
 -webkit-border-radius: 9px;
 position: absolute;
 margin-top: -11px;
@@ -240,7 +240,7 @@ position:relative
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
 }
-#notificationContainer1 
+#notificationContainer1
 {
 background-color: #fff;
 border: 1px solid rgba(100, 100, 100, .4);
@@ -251,7 +251,7 @@ top: 30px;
 margin-left: -170px;
 width: 300px;
 z-index: -1;
-display: none; // Enable this after jquery implementation 
+display: none; // Enable this after jquery implementation
 -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
@@ -297,7 +297,7 @@ padding: 8px;
 font-size: 12px;
 border-top: 1px solid #dddddd;
 }
-#notification_count1 
+#notification_count1
 {
 padding: 3px 7px 3px 7px;
 background: #cc0000;
@@ -305,7 +305,7 @@ color: #ffffff;
 font-weight: bold;
 margin-left: 77px;
 border-radius: 9px;
--moz-border-radius: 9px; 
+-moz-border-radius: 9px;
 -webkit-border-radius: 9px;
 position: absolute;
 margin-top: -11px;
@@ -326,7 +326,7 @@ $("#notification_count").fadeOut("slow");
 return false;
 });
 
-//Document Click hiding the popup 
+//Document Click hiding the popup
 $(document).click(function()
 {
 $("#notificationContainer").hide();
@@ -350,7 +350,7 @@ $("#notification_count1").fadeOut("slow");
 return false;
 });
 
-//Document Click hiding the popup 
+//Document Click hiding the popup
 $(document).click(function()
 {
 $("#notificationContainer1").hide();
@@ -624,7 +624,7 @@ $from_count=0;
       <!-- Modal content-->
       <div class="modal-content">
          <div style="background-color:#fff;padding:5px;"  >
-                                            <div class="media  bg" style="background:#afdf7c">
+                                            <div class="media  bg" style="background:#808080">
                                                 <a href="" class="pull-left">
                                                 <?php
                                                 if($fet_ppic['image']!='')
@@ -642,7 +642,7 @@ $from_count=0;
                                                 </a>
                                                 <div class="media-body innerTB half bg" style="padding-top:4px;">
                                                     <a href="#" class="pull-right innerT innerR text-white"> </a>
-                                                    <a href="" class="text-white strong display-block"><?php echo $usr_dis['Name']?></a>
+                                                    <a href="" class="text-white strong display-block" style="color:#fff;"><?php echo $usr_dis['Name']?></a>
                                                     <br>
                                                     <span style="color:#fff;"><?php echo $usr_dis['designation'];?></span>
                                                     <span style="color:#fff;">-</span>
@@ -654,12 +654,12 @@ $from_count=0;
                                             <form method="post" action="script_code.php">
                                                 <div class="input-group comment">
                                                     <!--<input type="text" class="form-control" placeholder="Ink Your Reflections..."> -->
-                                                    <textarea style="resize:none;border:1px solid #afdf7c;" class=" span12 form-control" name="post_data" id="post_data" data-id="post_data" cols="90" rows="2" placeholder=" Ink your reflections..."></textarea>
+                                                    <textarea style="resize:none;border:1px solid #808080;" class=" span12 form-control" name="post_data" id="post_data" data-id="post_data" cols="100" rows="2" placeholder=" Ink your reflections..."></textarea>
 
 
 
                                                 </div>
-                                                <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; margin-top:10px; ">
+                                                <div style="border-bottom:5px solid #ADCA8CM; margin-bottom: 10px; margin-top:10px; " align="center">
                                                 <!-- -->
                                                     <button type="submit" name="sub_post" onClick="return ins_posts();" class="btn btn_grn">
                                                         INK
@@ -673,9 +673,9 @@ $from_count=0;
                                                 </div>
                                             </form>
                                         </div>
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+        </div> -->
       </div>
 
     </div>

@@ -366,7 +366,7 @@ return false;
                                 <br>
                                 <div class="club_sub_div_height" style="height:575px; overflow-y:scroll;">
                                     <div class="row" style="padding:0px;">
-                                    <div id="mail_msgs">
+                                    <div id="mail_msgs" class="display-message">
                                     <?php
                 //check $_GET['id'] is set
                 if(isset($_GET['mailu2_id'])){
@@ -382,7 +382,7 @@ return false;
                         if(mysqli_num_rows($conver) == 1){
                             //fetch the converstaion id
                             $fetch = mysqli_fetch_assoc($conver);
-                            $conversation_id = $fetch['id'];
+                            $conversation_id = $fetch['conversation_id'];
                         }else{ //they do not have a conversation
                             //start a new converstaion and fetch its id
                             $q = mysqli_query($conn, "INSERT INTO `mail_conversation` VALUES ('','$_SESSION[id]',$user_two)");
@@ -398,13 +398,7 @@ return false;
                                     
                                     </div>
                                        
-                                        
-                                    
-                                  
-                                   
-                                    </div>
-                                </div>
-                                <div  class="send-message" style="border:1px solid #CDC7C7;height:250px;">
+                                        <div  class="send-message" style="border:1px solid #CDC7C7;height:250px;">
                                
                                  <form class="form-horizontal" role="form" method="post" action="">
                                             
@@ -424,7 +418,7 @@ return false;
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Description</label>
                                                         <div class="col-sm-9">
-                                                            <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
+                                       <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
                                                         </div>
                                                     </div>
                                                     
@@ -435,12 +429,18 @@ return false;
 
                                                 
                                                
-                                                <button type="submit" name="sub_forms" id="mail_rply" data-remodal-action="confirm"  class="remodal-confirm">Send Mail</button>
+                                                <button type="submit" name="sub_forms" id="mail_rply" onClick="return smails();"  class="remodal-confirm">Send Mail</button>
 
                                             </form>
                                
                                
+                                </div>  
+                                    
+                                  
+                                   
+                                    </div>
                                 </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -514,7 +514,14 @@ return false;
                                         </div><?php */?>
                                         
                                         <!--------------------------------END Mail Model------------------------------------>
-               <?php include 'inc/footer.php';?>                         
+               <?php include 'inc/footer.php';?>   
+ <script type="text/javascript">
+    
+	
+			   
+ </script>
+               
+                                     
           <script  type="text/javascript" src="js/mail.js"></script>                              
                                         
         <script type="text/javascript" src="js/space_discussion.js"></script>

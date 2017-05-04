@@ -1759,14 +1759,14 @@ $from_count=0;
 <!-- =======<<<<<<< HEAD
     line-height: 13px;margin-left: 5px;">
 
->>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0 -->
+>>>>>>> e8f9f67ac0d4f7a1ee04597369ef385960a322e0 
 =======
 
 
     line-height: 13px;margin-left: 5px;">
 
 
->>>>>>> b1727eb5cc8fe006dcf08374bda1ad045ccaf481
+>>>>>>> b1727eb5cc8fe006dcf08374bda1ad045ccaf481-->
                                                         <span>   <b><?php echo $fet_mem_de['industry'];?></b><br>
 
                                                         <?php echo $fet_mem_de['Name'];?>

@@ -107,21 +107,27 @@ function insert_answer(faid)
 	var recer_user_id = document.getElementById("recer_user_id_"+mci).value;
     var mail_subject = document.getElementById("mail_subject_"+mci).value;
 	var mail_desc = document.getElementById("mail_desc_"+mci).value;
+	var conversation_id = document.getElementById("conversation_id_"+mci).value;
+	//var user_form =document.getElementById("user_form_"+mci).value;
+	//var user_to = document.getElementById("user_to_"+mci).value;
 	alert('hello'+mci);
 	//alert("hello" + que_id);
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'recer_user_id=' + recer_user_id + '&mail_subject=' + mail_subject + '&mail_desc=' + mail_desc ;
+    var dataString = 'recer_user_id=' + recer_user_id + '&mail_subject=' + mail_subject + '&mail_desc=' + mail_desc + '&conversation_id=' + conversation_id ;
+	//+ '&user_form=' + user_form + '&user_to=' + user_to;
       
                     // AJAX code to submit form.
                     $.ajax({
                     type: "POST",
-                    url: "script2.php",
+                    url: "send_mail.php",
                     data: dataString,
                     cache: false,
                     success: function(html) {
                     //alert(html);
 					document.getElementById("mail_desc").value='';
 					document.getElementById("mail_subject").value='';
+				    $("#mail_msgs").load("get_mail.php?c_id="+conversation_id);
+   
 					//$('#txtAnswe').load('forum_ans.php #txtAnswe');
                     }
                     });

@@ -8,7 +8,7 @@ if(!$_SESSION['Email'])
 }
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -307,279 +307,55 @@ return false;
                     </div>
                     <div class="col-lg-12 pad_0" style="overflow-y:scroll;height: 465px;">
                     <?php
-                    $maily_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' group by recive_user_id order by datetime desc");
-					while($maly_de=mysqli_fetch_array($maily_exe))
+					$frnd_liat_exe=mysqli_query($conn,"select * from friend_request where who_sent_user_id='".$_SESSION['id']."' OR to_whom_user_id='".$_SESSION['id']."' AND status='1'");
+					while($frnd_list=mysqli_fetch_array($frnd_liat_exe))
 					{
-						$reci_users=mysqli_query($conn,"select * from send_mails where recive_user_id='$_SESSION[id]' and sender_user_id='$maly_de[recive_user_id]' order by datetime desc");
-						$recmails=mysqli_fetch_array($reci_users);
-						//$rec_sen=mysqli_query($conn,"select * from send_mails where  recive_user_id='$_SESSION[id]' group by sender_user_id order by datetime desc");
-						//$rec_semil=mysqli_fetch_array($rec_sen);
-						$maily_user_exe=mysqli_query($conn,"select * from users where user_id='$maly_de[recive_user_id]'");
-						$maily_usr=mysqli_fetch_array($maily_user_exe);
-						$maily_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$maly_de[recive_user_id]'");
-						$maily_pic=mysqli_fetch_array($maily_ppicexe);
-						//where recive_user_id='$maily_de[user_id]'
-						
+						$fend_det_exe=mysqli_query($conn,"select * from users where (user_id='$frnd_list[who_sent_user_id]' OR user_id='$frnd_list[to_whom_user_id]') AND user_id!='$_SESSION[id]'");
+						$fend_dets=mysqli_fetch_array($fend_det_exe);
+						$frnd_pic_exe=mysqli_query($conn,"select * from user_profile_pic where user_id='$fend_dets[user_id]'");
+						$frnd_pic=mysqli_fetch_array($frnd_pic_exe);
 						
 					?>
                         <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
                         	
                             <div class="col-lg-2 pad_0" style="width:80px;">
                             <?php
-                            if($maily_pic['image']!='')
+                            if($frnd_pic['image']!='')
 							{
-							?>
-                                <img class="img-circle" src="fb_users/<?php echo $maily_usr['Gender'];?>/<?php echo $maily_usr['Email'];?>/Profile/<?php echo $maily_pic['image'];?>" width="80px" style="margin-top: 12px;"/>
+							?><a href="mail.php?mailu2_id=<?php echo $fend_dets['user_id'];?>">
+                                <img class="img-circle" src="fb_users/<?php echo $fend_dets['Gender'];?>/<?php echo $fend_dets['Email'];?>/Profile/<?php echo $frnd_pic['image'];?>" width="80px" style="margin-top: 12px;"/></a>
                                 <?php
 							}else{
 								?>
+                                <a href="mail.php?mailu2_id=<?php echo $fend_dets['user_id'];?>">
                                 <img class="img-circle" src="images/profile/sq.PNG" width="80px">
+                                </a>
                                 <?php
 							}
 								?>
                             </div> 
-                            <?php
-                            if($maly_de['datetime'] > $recmails['datetime'])
-							{
-							?>                            
+                                                     
                             <div class="col-lg-10 pad_0" style="width:320px;padding-top:10px;line-height: 15px;">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;"><?php echo $maily_usr['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#7c7c7c; font-size:13px;">&nbsp <?php echo $maly_de['datetime'];?></i> </span>
+                                <span class="club_headers" style="color:#808080;"> <a href="mail.php?mailu2_id=<?php echo $fend_dets['user_id'];?>" style="color:#7c7c7c;font-size:18px;"><?php echo $fend_dets['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#7c7c7c; font-size:13px;">&nbsp <?php echo $maly_de['datetime'];?></i> </span>
                                 <br>
                                 <h4 style="padding-left:10px;color:808080;">
             <?php echo $maly_de['subject']?></h4>
             <p style="padding-left:10px;color:#808080">
             <?php echo $maly_de['matter_desc']?></p>
                             </div>
-                           <!--  <div class="col-lg-12">
-                                <p style="color:#808080">
-            <?php //echo $maly_de['matter_desc']?></p>
-                            </div> -->
-                            <?php
-							}else if($maly_de['datetime'] < $recmails['datetime'])
-							{?>
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;"><?php echo $maily_usr['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $maly_de['datetime'];?></i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            <?php echo $recmails['subject']?></h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            <?php echo $recmails['matter_desc']?></p>
-                            </div>
-                            <?php
-							}
-							?>
+                           
+                            
+                           
+                          
+                           
                         </div>
                        <?php
 					}
 					   ?>
-                       <?php /*?> <?php
-                        if($maly_de['sender_user_id']!=$_SESSION['id'])
-						{
-						$maily_user_exe=mysqli_query($conn,"select * from users where user_id='$maly_de[sender_user_id]'");
-						$maily_usr=mysqli_fetch_array($maily_user_exe);
-						$maily_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$maly_de[sender_user_id]'");
-						$maily_pic=mysqli_fetch_array($maily_ppicexe);
-						//where recive_user_id='$maily_de[user_id]'
-						$get_maily=mysqli_query($conn,"select * from send_mails sender_user_id='$maly_de[sender_user_id]' AND recive_user_id='$_SESSION[id]'");
-						$maies=mysqli_fetch_array($get_maily);
-						
-					?>
-                        <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                        	
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="fb_users/<?php echo $maily_usr['Gender'];?>/<?php echo $maily_usr['Email'];?>/Profile/<?php echo $maily_pic['image'];?>" width="80px" />
-                            </div> 
-                            <?php
-                            if($maly_de['datetime']>$maies['datetime'] );
-							{
-							?>                            
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;"><?php echo $maily_usr['Name'];?></a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp <?php echo $maly_de['datetime'];?></i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            <?php echo $maly_de['subject']?></h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            <?php echo $maly_de['matter_desc']?></p>
-                            </div>
-                            <?php
-							}
-							?>
-                        </div>
-                        <?php
-					}
-                       
-					}
-					
-						?><?php */?>
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                        <!--<div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                        <!--<div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                       <!-- <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
-                      <!--  <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;">
-                            <div class="col-lg-2 pad_0" style="width:80px;">
-                                <img src="images/profile/1.jpg" width="80px" />
-                            </div>                             
-                            <div class="col-lg-10 pad_0" style="width:320px; padding-top:10px">
-                                <span class="club_headers" style="color:#808080;"> <a href="#" style="color:#7c7c7c;font-size:18px;">Rajesh</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                <br>
-                                <h4 style="padding-left:10px;color:808080;">
-            Please share the document to my mail id...</h4>
-                            </div>
-                            <div class="col-lg-12">
-                                <p style="color:#808080">
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem....</p>
-                            </div>
-                        </div>-->
+                      
+                      
+                    
+                     
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 "> 
@@ -590,196 +366,81 @@ return false;
                                 <br>
                                 <div class="club_sub_div_height" style="height:575px; overflow-y:scroll;">
                                     <div class="row" style="padding:0px;">
-                                    <?php 
-									$mails_exe=mysqli_query($conn,"select * from send_mails where sender_user_id='$_SESSION[id]' order by send_id desc limit 1");
-									$mails=mysqli_fetch_array($mails_exe);
-									$rev_urs_de_exe=mysqli_query($conn,"select * from users where user_id='$mails[recive_user_id]'");
-									$urs_fe=mysqli_fetch_array($rev_urs_de_exe);
-									$use_ppicexe=mysqli_query($conn,"select * from user_profile_pic where user_id='$urs_fe[user_id]'");
-									$usr_pic=mysqli_fetch_array($use_ppicexe);
-									$get_total_mail_exe=mysqli_query($conn,"select * from send_mails where recive_user_id='$mails[recive_user_id]'");
-									while($gmail=mysqli_fetch_array($get_total_mail_exe))
-									{
-									?>
-                                        <div class="col-lg-12" style="border-bottom:2px solid #7c7c7c; margin-bottom:10px; padding-top:10px;">
-                                            <div class="col-lg-12 pad_0" style="margin-bottom:10px;">
-                                                <div class="col-lg-3 pad_0" align="left" style="width:80px;">
-                                                    <img class="img-circle" src="fb_users/<?php echo $urs_fe['Gender']?>/<?php echo $urs_fe['Email'];?>/Profile/<?php echo $usr_pic['image'];?>" width="80" />
-                                                </div>
-                                                <div class="col-lg-9" style="width:91%"> 
-                                                    <div class="col-lg-12 pad_0">
-                                                        <div class="col-lg-9 pad_0">
-                                                            <h3 class="club_headers" style="width:500px;color: #808080">
-           Rajesh </h3> 
-                                                        </div><div class="col-lg-1"></div>
-                                                        <div class="col-lg-2" align="right" style="padding:15px;">
-                                                            <a href="#"><i class="fa fa-forward" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-share" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-trash" style="color:#7c7c7c;padding-right:5px;"></i></a>
+                                    <div id="mail_msgs" class="display-message">
+                                    <?php
+                //check $_GET['id'] is set
+                if(isset($_GET['mailu2_id'])){
+                    $user_two = trim(mysqli_real_escape_string($conn, $_GET['mailu2_id']));
+                    //check $user_two is valid
+                    $q = mysqli_query($conn, "SELECT `user_id` FROM `users` WHERE user_id='$user_two' AND user_id!='$_SESSION[id]'");
+                    //valid $user_two
+                    if(mysqli_num_rows($q) == 1){
+                        //check $user_id and $user_two has conversation or not if no start one
+                        $conver = mysqli_query($conn, "SELECT * FROM `mail_conversation` WHERE (user_one='$_SESSION[id]' AND user_two='$user_two') OR (user_one='$user_two' AND user_two='$_SESSION[id]')");
+ 
+                        //they have a conversation
+                        if(mysqli_num_rows($conver) == 1){
+                            //fetch the converstaion id
+                            $fetch = mysqli_fetch_assoc($conver);
+                            $conversation_id = $fetch['conversation_id'];
+                        }else{ //they do not have a conversation
+                            //start a new converstaion and fetch its id
+                            $q = mysqli_query($conn, "INSERT INTO `mail_conversation` VALUES ('','$_SESSION[id]',$user_two)");
+                            $conversation_id = mysqli_insert_id($conn);
+                        }
+                    }else{
+                        die("Invalid $_GET ID.");
+                    }
+                }else {
+                    die("Click On the Person to start Chating.");
+                }
+            ?>
+                                    
+                                    </div>
+                                       
+                                        <div  class="send-message" style="border:1px solid #CDC7C7;height:250px;">
+                               
+                                 <form class="form-horizontal" role="form" method="post" action="">
+                                            
+                                    <input type="hidden" id="conversation_id" value="<?php echo base64_encode($conversation_id); ?>">
+                                    <input type="hidden" id="user_form" value="<?php echo base64_encode($_SESSION['id']); ?>">
+                                    <input type="hidden" id="user_to" value="<?php echo base64_encode($user_two); ?>">
+                                                <div>
+                                                
+                                            
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Subject</label>
+                                                        <div class="col-sm-9">
+                                                           
+                                                            <input type="text" class="form-control" id="mail_subject"  name="mail_subject"/>
                                                         </div>
                                                     </div>
-                                                    <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#7c7c7c;">Valli</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Description</label>
+                                                        <div class="col-sm-9">
+                                       <textarea rows="3" style="resize:none;"  class="club_txt" id="mail_desc"  name="mail_desc"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  
                                                 </div>
+                                                <br>
+                                                
 
+                                                
+                                               
+                                                <button type="submit" name="sub_forms" id="mail_rply" onClick="return smails();"  class="remodal-confirm">Send Mail</button>
 
-
-                                                <div class="col-lg-12 pad_0">
-                                                    <h4>
-    Please Share the document to my mail id....</h4>
-                                                </div>
-                                            </div>
-                                             <hr style="color: #7c7c7c;width: 100%">
-                                            <div class="col-lg-12" style="margin-bottom:15px;">
-                                                <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer recusabo, te labore equidem vix, cu eam singulis mediocrem. Et nec facete maiestatis, quo impedit aliquando ei. Saepe animal recteque ad eam, sea vitae putent causae ei, eu qui everti vituperata.</p>
-                                                <span style="color:#a9a9a9">thanks</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">Rajesh</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">www.ln.business</span>
-                                            </div>
-                                        </div>
-                                        <?php
-									}
-										?>
-                                     <!--   <div class="col-lg-12" style="border-bottom:2px solid #7c7c7c; margin-bottom:10px; padding-top:10px;">
-                                            <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;margin-bottom:10px;">
-                                                <div class="col-lg-2 pad_0" align="left" style="width:80px;">
-                                                    <img src="images/profile/6.jpg" width="80" />
-                                                </div>
-                                                <div class="col-lg-10" style="width:675px"> 
-                                                    <div class="col-lg-12 pad_0">
-                                                        <div class="col-lg-10 pad_0">
-                                                            <h3 class="club_headers" style="width:500px;">
-           Rajesh </h3> 
-                                                        </div>
-                                                        <div class="col-lg-2" align="right" style="padding:15px;">
-                                                            <a href="#"><i class="fa fa-forward" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-share" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-trash" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#7c7c7c;">Valli</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                                </div>
-                                                <div class="col-lg-12 pad_0">
-                                                    <h4>
-    Please Share the document to my mail id....</h4>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12" style="margin-bottom:15px;">
-                                                <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer recusabo, te labore equidem vix, cu eam singulis mediocrem. Et nec facete maiestatis, quo impedit aliquando ei. Saepe animal recteque ad eam, sea vitae putent causae ei, eu qui everti vituperata.</p>
-                                                <span style="color:#a9a9a9">thanks</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">Rajesh</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">www.ln.business</span>
-                                            </div>
-                                        </div>-->
-                                      <!--  <div class="col-lg-12" style="border-bottom:2px solid #7c7c7c; margin-bottom:10px; padding-top:10px;">
-                                            <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;margin-bottom:10px;">
-                                                <div class="col-lg-2 pad_0" align="left" style="width:80px;">
-                                                    <img src="images/profile/6.jpg" width="80" />
-                                                </div>
-                                                <div class="col-lg-10" style="width:675px"> 
-                                                    <div class="col-lg-12 pad_0">
-                                                        <div class="col-lg-10 pad_0">
-                                                            <h3 class="club_headers" style="width:500px;">
-           Rajesh </h3> 
-                                                        </div>
-                                                        <div class="col-lg-2" align="right" style="padding:15px;">
-                                                            <a href="#"><i class="fa fa-forward" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-share" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-trash" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#7c7c7c;">Valli</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                                </div>
-                                                <div class="col-lg-12 pad_0">
-                                                    <h4>
-    Please Share the document to my mail id....</h4>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12" style="margin-bottom:15px;">
-                                                <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer recusabo, te labore equidem vix, cu eam singulis mediocrem. Et nec facete maiestatis, quo impedit aliquando ei. Saepe animal recteque ad eam, sea vitae putent causae ei, eu qui everti vituperata.</p>
-                                                <span style="color:#a9a9a9">thanks</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">Rajesh</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">www.ln.business</span>
-                                            </div>
-                                        </div>-->
-                                    <?php /*?>    <div class="col-lg-12" style="border-bottom:2px solid #7c7c7c; margin-bottom:10px; padding-top:10px;">
-                                            <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;margin-bottom:10px;">
-                                                <div class="col-lg-2 pad_0" align="left" style="width:80px;">
-                                                    <img src="images/profile/6.jpg" width="80" />
-                                                </div>
-                                                <div class="col-lg-10" style="width:675px"> 
-                                                    <div class="col-lg-12 pad_0">
-                                                        <div class="col-lg-10 pad_0">
-                                                            <h3 class="club_headers" style="width:500px;">
-           Rajesh </h3> 
-                                                        </div>
-                                                        <div class="col-lg-2" align="right" style="padding:15px;">
-                                                            <a href="#"><i class="fa fa-forward" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-share" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-trash" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#7c7c7c;">Valli</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                                </div>
-                                                <div class="col-lg-12 pad_0">
-                                                    <h4>
-    Please Share the document to my mail id....</h4>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12" style="margin-bottom:15px;">
-                                                <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer recusabo, te labore equidem vix, cu eam singulis mediocrem. Et nec facete maiestatis, quo impedit aliquando ei. Saepe animal recteque ad eam, sea vitae putent causae ei, eu qui everti vituperata.</p>
-                                                <span style="color:#a9a9a9">thanks</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">Rajesh</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">www.ln.business</span>
-                                            </div>
-                                        </div><?php */?>
-                                     <?php /*?>   <div class="col-lg-12" style="border-bottom:2px solid #7c7c7c; margin-bottom:10px; padding-top:10px;">
-                                            <div class="col-lg-12 pad_0" style="border-bottom:1px solid #7c7c7c;margin-bottom:10px;">
-                                                <div class="col-lg-2 pad_0" align="left" style="width:80px;">
-                                                    <img src="images/profile/6.jpg" width="80" />
-                                                </div>
-                                                <div class="col-lg-10" style="width:675px"> 
-                                                    <div class="col-lg-12 pad_0">
-                                                        <div class="col-lg-10 pad_0">
-                                                            <h3 class="club_headers" style="width:500px;">
-           Rajesh </h3> 
-                                                        </div>
-                                                        <div class="col-lg-2" align="right" style="padding:15px;">
-                                                            <a href="#"><i class="fa fa-forward" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-share" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                            <a href="#"><i class="fa fa-trash" style="color:#7c7c7c;padding-right:5px;"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <span class="club_headers" style="color:#000;">Inked by <a href="#" style="color:#7c7c7c;">Valli</a> &nbsp <i class="fa fa-clock-o" style="color:#a9a9a9; font-size:13px;">&nbsp 11-02-2017 12:10</i> </span>
-                                                </div>
-                                                <div class="col-lg-12 pad_0">
-                                                    <h4>
-    Please Share the document to my mail id....</h4>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12" style="margin-bottom:15px;">
-                                                <p>
-            Lorem ipsum dolor sit amet, inimicus electram convenire ad mel, no his verear delicata concludaturque, laudem singulis est id. Enim sale adolescens vim te. Ea ignota gloriatur eos, no minim zril quo. Mei graece recteque id. Cu per facer recusabo, te labore equidem vix, cu eam singulis mediocrem. Et nec facete maiestatis, quo impedit aliquando ei. Saepe animal recteque ad eam, sea vitae putent causae ei, eu qui everti vituperata.</p>
-                                                <span style="color:#a9a9a9">thanks</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">Rajesh</span>
-                                                <br>
-                                                <span style="color:#a9a9a9">www.ln.business</span>
-                                            </div>
-                                        </div><?php */?>
+                                            </form>
+                               
+                               
+                                </div>  
+                                    
+                                  
+                                   
                                     </div>
                                 </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -791,23 +452,29 @@ return false;
         
           <!---------------------------Mail insertion model--------------------------->
                                         
-                                           <div class="remodal" data-remodal-id="sendmail" id="sendmail" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                                        <?php /*?>   <div class="remodal" data-remodal-id="sendmail" id="sendmail" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                                             <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                                             <form class="form-horizontal" role="form" method="post" action="">
-                                                <div>
-                                                <?php
+                                            <?php
                                                 $dummy_count=1;
 												?>
+                                    <input type="hidden" id="conversation_id_<?php echo $dummy_count;?>" value="<?php echo base64_encode($conversation_id); ?>">
+									<input type="hidden" id="user_form" value="<?php echo base64_encode($_SESSION['id']); ?>">
+                                    <input type="hidden" id="user_to" value="<?php echo base64_encode($user_two); ?>">
+                                          <div>
+                                                
                                                 <div class="form-group">
                                                         <label class="col-sm-3 control-label">Select User</label>
                                                         <div class="col-sm-9">
                                                             <div class="row">
                                                                 <select class="selectpicker col-md-12 form-control" name="recer_user_id" id="recer_user_id_<?php echo $dummy_count;?>">
                                                                 <option>Select User</option>
-																<?php 
-																$get_urd=mysqli_query($conn,"select * from users where user_id!='$_SESSION[id]'");
-																while($urde=mysqli_fetch_array($get_urd))
+																<?php
+																$get_frnbd_list_Exe=mysqli_query($conn,"select * from friend_request where who_sent_user_id='".$_SESSION['id']."' OR to_whom_user_id='".$_SESSION['id']."' AND status='1'") ;
+																while($getfrnd_list=mysqli_fetch_array($get_frnbd_list_Exe))
 																{
+																$get_urd=mysqli_query($conn,"select * from users where (user_id='$getfrnd_list[who_sent_user_id]' OR user_id='$getfrnd_list[to_whom_user_id]') AND user_id!='$_SESSION[id]'");
+																$urde=mysqli_fetch_array($get_urd);
 																?>
                                                                     <option value="<?php echo $urde['user_id'];?>"><?php echo $urde['Name'];?></option>
                                                                    <?php
@@ -844,13 +511,18 @@ return false;
                                                 <button type="submit" name="sub_forms" data-remodal-action="confirm" onClick="return sendmails(<?php echo $dummy_count;?>);" class="remodal-confirm">Send Mail</button>
 
                                             </form>
-                                        </div>
+                                        </div><?php */?>
                                         
                                         <!--------------------------------END Mail Model------------------------------------>
-               <?php include 'inc/footer.php';?>                         
-          <script  type="text/javascript">
-         
-</script>                              
+               <?php include 'inc/footer.php';?>   
+ <script type="text/javascript">
+    
+	
+			   
+ </script>
+               
+                                     
+          <script  type="text/javascript" src="js/mail.js"></script>                              
                                         
         <script type="text/javascript" src="js/space_discussion.js"></script>
         <!-- /.container -->
